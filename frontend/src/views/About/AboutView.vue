@@ -1,10 +1,12 @@
 <template>
-  <h1>왼쪽 컨트롤러</h1>
+  <div>
+    <h1>TRPG 가이드</h1>
+  </div>
+  
 </template>
 
 <script>
 export default {
-  name: LeftController
 }
 </script>
 

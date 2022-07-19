@@ -1,10 +1,10 @@
 <template>
-  <h1>왼쪽 컨트롤러</h1>
+  <h1>내 컨트롤러</h1>
 </template>
 
 <script>
 export default {
-  name: LeftController
+  name: MyController
 }
 </script>
 

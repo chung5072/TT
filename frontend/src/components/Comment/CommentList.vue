@@ -1,10 +1,9 @@
 <template>
-  <h1>왼쪽 컨트롤러</h1>
+  <h1>댓글창이에요 선플^^</h1>
 </template>
 
 <script>
 export default {
-  name: LeftController
 }
 </script>
 

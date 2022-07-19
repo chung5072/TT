@@ -1,10 +1,10 @@
 <template>
-  <h1>왼쪽 컨트롤러</h1>
+  <div><h1>회원가입</h1></div>
+  
 </template>
 
 <script>
 export default {
-  name: LeftController
 }
 </script>
 
