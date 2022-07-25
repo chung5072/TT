@@ -9,5 +9,6 @@ export const request : any = (method: any, url: any, data: any) => {
     data,
   })
     .then((res) => res.data)
+    .then((res) => console.log('hi'))
     .catch((err) => console.log(err));
 };
