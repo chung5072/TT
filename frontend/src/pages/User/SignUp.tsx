@@ -1,15 +1,33 @@
 import { initialState } from "../../features/user/userSlice"
 import React from 'react'
 import { useFormik } from 'formik'
-import { sendRegisterRequest } from "../../features/user/userSlice"
 import { request } from "../../utils/axios"
-
+import * as Yup from 'yup'
 
 export default function SignUp() {
   const formik = useFormik({
     initialValues: initialState,
+    validationSchema: Yup.object({
+      id: Yup.string()
+      .max(15, 'Must be 15 characters or less')
+      .required('Required'),
+      password: Yup.string()
+      .max(20, 'Must be 20 characters or less')
+      .min(10, 'Must be 10 characters or more')
+      .required('Required'),
+      nickname: Yup.string()
+      .max(10, 'Must be 10 characters or less')
+      .required('Required'),
+      email: Yup.string()
+      .email('Invalid email address')
+      .required('Required'),
+      phone: Yup.string()
+      .required('Required'),
+      gender: Yup.string()
+      .required('Required')
+    }),
     onSubmit: (data) => {request('POST', 'api/user/register', data)} 
-    
+  
   })
     return (
       <div>

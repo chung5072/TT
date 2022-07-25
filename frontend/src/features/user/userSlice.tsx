@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { create } from 'yup/lib/array';
 import { request } from '../../utils/axios'
 
@@ -31,7 +31,11 @@ const userSlice = createSlice({
     },
   );
 
-export const sendRegisterRequest = (data : Object) => {
-    request('POST', 'api/user/register', data)
-} 
+// export const sendRegisterRequest = (data : Object) => {
+//     request('POST', 'api/user/register', data)
+// } 
+
+export const sendRegisterRequest = createAsyncThunk('sendRegisterRequest', async (data) => {
+  return request('POST', 'api/user/register', data)
+}  )
 
