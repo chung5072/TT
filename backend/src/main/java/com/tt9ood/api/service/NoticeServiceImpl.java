@@ -6,7 +6,6 @@ import com.tt9ood.db.repository.NoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,8 +31,8 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public List<Notice> readAllNotice() {
-        return noticeRepository.findAll();
+    public List<NoticeDto> readAllNotice() {
+        return noticeRepository.findAllBy();
     }
 
     @Override

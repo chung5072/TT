@@ -10,7 +10,7 @@ public interface NoticeService {
     Notice createNotice(NoticeDto noticeDto);
     // 조회
     // 전체 조회
-    List<Notice> readAllNotice();
+    List<NoticeDto> readAllNotice();
     // 특정 게시글 조회
     NoticeDto readNotice(long noticeCode);
 

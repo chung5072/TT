@@ -6,13 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import java.time.LocalDateTime;
 
 @Getter @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @ApiModel("NoticeDto")
 public class NoticeDto {
     // 자동 생성되는 공지사항 pk
@@ -25,4 +21,12 @@ public class NoticeDto {
     private String noticeDate;
     @ApiModelProperty(name="공지사항 내용", example="공지할 내용")
     private String noticeArticle;
+
+    public NoticeDto(Long noticeCode, String noticeTitle, String noticeAuthor, String noticeDate, String noticeArticle) {
+        this.noticeCode = noticeCode;
+        this.noticeTitle = noticeTitle;
+        this.noticeAuthor = noticeAuthor;
+        this.noticeDate = noticeDate;
+        this.noticeArticle = noticeArticle;
+    }
 }
