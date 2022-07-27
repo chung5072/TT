@@ -3,6 +3,8 @@ import React from 'react'
 import { useFormik } from 'formik'
 import { request } from "../../utils/axios"
 import * as Yup from 'yup'
+import './SignUp.css'
+
 
 export default function SignUp() {
   const formik = useFormik({
@@ -26,7 +28,7 @@ export default function SignUp() {
       userGender: Yup.string()
       .required('Required')
     }),
-    onSubmit: (data) => {console.log(data)} 
+    onSubmit: (data) => {request('POST','api/user/register', data)} 
   
   })
     return (

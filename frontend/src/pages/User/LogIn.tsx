@@ -4,8 +4,8 @@ import { useFormik } from 'formik'
 
 import * as Yup from 'yup'
 import axios from "axios"
-import { useAppDispatch } from "../../app/hooks"
-import { saveToken } from "../../features/user/loginSlice"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { saveToken, removeToken } from "../../features/user/loginSlice"
 
 // Login Dispatch
 export default function Login() {
@@ -18,12 +18,15 @@ export default function Login() {
       data: data
     })
       .then(res => {
-        const token = res.data.key
+        const token = res.data.accessToken
         dispatch(saveToken(token))
       })
       .catch(err => {
         console.error(err.response.data)
       })
+  }
+  const logoutRequest: any = () => {
+    dispatch(removeToken())
   }
   //  user Formik
   const formik = useFormik({
@@ -44,13 +47,14 @@ export default function Login() {
       <h1>Login</h1>
       <form action="" onSubmit={ formik.handleSubmit }>
 
-        <label htmlFor="loginId">Id</label>
-        <input id="loginId" name="loginId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
+        <label htmlFor="userId">Id</label>
+        <input id="loginId" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
 
-        <label htmlFor="password">Password</label>
-        <input id="password" name="password" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
+        <label htmlFor="userPw">Password</label>
+        <input id="password" name="userPw" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
         <button type="submit">Submit</button>
       </form>
+      <button onClick={logoutRequest}>LogOut</button>
     </div>
         
     )
