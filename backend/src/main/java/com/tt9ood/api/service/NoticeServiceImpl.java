@@ -6,6 +6,8 @@ import com.tt9ood.db.repository.NoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +16,8 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Autowired
     NoticeRepository noticeRepository;
+    @PersistenceContext
+    EntityManager entityManager;
 
     /**
      * NoticeDto -> Notice Entity -> Database
@@ -69,6 +73,7 @@ public class NoticeServiceImpl implements NoticeService {
 
             // 수정 쿼리를 디비에 날람
             noticeRepository.flush();
+            entityManager.clear();
 
             // 수정한 내용을 출력할 수 있게 반환해준다.
             updatedNotice.setNoticeCode(notice.getNoticeCode());

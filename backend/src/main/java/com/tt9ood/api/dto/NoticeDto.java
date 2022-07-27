@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 공지글 정보 전달 클래스
+ */
 @Getter @Setter
 @NoArgsConstructor
 @ApiModel("NoticeDto")
