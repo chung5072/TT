@@ -27,6 +27,18 @@ const loginSlice = createSlice({
       saveToken: (state: loginData, action) => {
         state.token = action.payload
         state.isLoggedIn = true
+        localStorage.setItem('token', action.payload)
+        console.log(localStorage.getItem('token'))
+        console.log(state.token)
+        console.log(state.isLoggedIn)
+      },
+      removeToken: (state: loginData) => {
+        localStorage.setItem('token', '')
+        state.isLoggedIn = false
+        state.token = ''
+        console.log(localStorage.getItem('token'))
+        console.log(state.token)
+        console.log(state.isLoggedIn)
       }
   
       },
@@ -43,5 +55,5 @@ export const sendLoginRequest = createAsyncThunk('sendRegisterRequest', async (d
 }  )
 
 const { reducer, actions } =loginSlice
-export const {saveToken} = actions
+export const {saveToken, removeToken} = actions
 export default loginSlice.reducer
