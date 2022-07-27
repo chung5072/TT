@@ -1,20 +1,20 @@
-import { initialState } from "../../features/user/userSlice"
+
 import React from 'react'
 import { useFormik } from 'formik'
-import { request } from "../../utils/axios"
+
 import * as Yup from 'yup'
 import axios from "axios"
 import { useAppDispatch } from "../../app/hooks"
 import { saveToken } from "../../features/user/loginSlice"
 
-
+// Login Dispatch
 export default function Login() {
   const dispatch = useAppDispatch()
   const DOMAIN = "http://localhost:8080/"
   const loginRequest: any = (method: string, url: string, data: object) => {
     return axios({
+      method,
       url: DOMAIN + url,
-      method: 'post',
       data: data
     })
       .then(res => {
@@ -25,28 +25,30 @@ export default function Login() {
         console.error(err.response.data)
       })
   }
-
+  //  user Formik
   const formik = useFormik({
-    initialValues: {id: '', password:''},
+    initialValues: {userId: '', userPw:''},
     validationSchema: Yup.object({
-      id: Yup.string()
+      userId: Yup.string()
       .required('Required'),
-      password: Yup.string()
+      userPw: Yup.string()
       .required('Required'),
     }),
     onSubmit: (credentials) => {loginRequest('POST', 'api/user/login', credentials)} 
   
   })
+
+  // HTML
     return (
       <div>
       <h1>Login</h1>
       <form action="" onSubmit={ formik.handleSubmit }>
 
-        <label htmlFor="id">Id</label>
-        <input id="id" name="id" type="text" onChange={formik.handleChange} value={ formik.values.id }/>
+        <label htmlFor="loginId">Id</label>
+        <input id="loginId" name="loginId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
 
         <label htmlFor="password">Password</label>
-        <input id="password" name="password" type="text" onChange={formik.handleChange} value={ formik.values.password }/>
+        <input id="password" name="password" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
         <button type="submit">Submit</button>
       </form>
     </div>
