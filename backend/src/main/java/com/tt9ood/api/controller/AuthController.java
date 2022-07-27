@@ -1,29 +1,19 @@
 package com.tt9ood.api.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.tt9ood.api.request.UserLoginPostReq;
 import com.tt9ood.api.response.UserLoginPostRes;
 import com.tt9ood.api.service.UserService;
 import com.tt9ood.common.model.response.BaseResponseBody;
 import com.tt9ood.common.util.JwtTokenUtil;
 import com.tt9ood.db.entity.User;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 인증 관련 API 요청 처리를 위한 컨트롤러 정의.
@@ -60,19 +50,9 @@ public class AuthController {
 		User user = userService.getUserByUserId(userId);
 		// 로그인 요청한 유저로부터 입력된 패스워드 와 디비에 저장된 유저의 암호화된 패스워드가 같은지 확인.(유효한 패스워드인지 여부 확인)
 		if(passwordEncoder.matches(password, user.getUserPw())) {
-			// 추가한 부분 시작
-//			UsernamePasswordAuthenticationToken authenticationToken =
-//					new UsernamePasswordAuthenticationToken(userId, password);
-//
-//			System.out.println("authenticationToken = " + authenticationToken);
-//
-//			Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
-//			SecurityContextHolder.getContext().setAuthentication(authentication);
-			// 추가한 부분 끝
-			// 유효한 패스워드가 맞는 경우, 로그인 성공으로 응답.(액세스 토큰을 포함하여 응답값 전달)
-			return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(userId)));
+			return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(userId), userId));
 		}
 		// 유효하지 않는 패스워드인 경우, 로그인 실패로 응답.
-		return ResponseEntity.status(401).body(UserLoginPostRes.of(401, "Invalid Password", null));
+		return ResponseEntity.status(401).body(UserLoginPostRes.of(401, "Invalid Password", null, null));
 	}
 }
