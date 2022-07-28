@@ -51,6 +51,8 @@ public class ShareDto {
             this.shareContent = share.getShareContent();
             this.shareLike = share.getShareLike();
             this.shareView = share.getShareView();
+            this.createDate = share.getCreatedDate();
+            this.modifiedDate = share.getModifiedDate();
         }
     }
 }

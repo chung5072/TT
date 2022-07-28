@@ -33,4 +33,9 @@ public class Share extends TimeEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    public void update(String shareTitle, String shareContent){
+        this.shareTitle = shareTitle;
+        this.shareContent = shareContent;
+    }
 }

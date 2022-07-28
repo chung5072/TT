@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/api/share")
 @RequiredArgsConstructor
 @RestController
@@ -44,8 +46,50 @@ public class ShareController {
             @ApiResponse(code = 404, message = "사용자 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<? extends BaseResponseBody> read(@PathVariable Long shareCode){
-        return null;
+    public ResponseEntity<ShareDto.Response> read(@PathVariable Long shareCode){
+        return ResponseEntity.status(200).body(shareService.readShare(shareCode));
     }
+
+    /*
+     정보 공유 게시글 삭제 DELETE
+     */
+    @DeleteMapping("{shareCode}")
+    @ApiOperation(value = "정보 공유 게시글 삭제", notes = "정보 공유 게시글을 삭제한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "사용자 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<?> deleteShare(@PathVariable Long shareCode){
+        shareService.deleteShare(shareCode);
+        return ResponseEntity.status(200).body(shareCode);
+    }
+
+    /*
+     정보 공유 게시글 수정 UPDATE
+     */
+    @PutMapping("{shareCode}")
+    @ApiOperation(value = "정보 공유 게시글 수정", notes = "정보 공유 게시글을 수정한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "사용자 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<?> updateShare(@PathVariable Long shareCode, @RequestBody ShareDto.Request dto){
+        shareService.updateShare(shareCode, dto);
+        return ResponseEntity.status(200).body(shareCode);
+    }
+
+    @GetMapping
+    @ApiOperation(value = "정보 공유 게시글 전체 조회", notes = "정보 공유 게시글을 전체 조회한다.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "사용자 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public List<ShareDto.Response> readAllShare(){
+        return shareService.readAllShare();
+    }
+
 
 }
