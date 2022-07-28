@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -79,6 +80,10 @@ public class ShareController {
         shareService.updateShare(shareCode, dto);
         return ResponseEntity.status(200).body(shareCode);
     }
+    
+    /*
+     정보 공유 게시글 전체 조회
+     */
 
     @GetMapping
     @ApiOperation(value = "정보 공유 게시글 전체 조회", notes = "정보 공유 게시글을 전체 조회한다.")
@@ -91,5 +96,10 @@ public class ShareController {
         return shareService.readAllShare();
     }
 
+    @GetMapping
+    public String index(Long shareCode, Model model){
+        model.addAttribute("shareView", shareService.updateShareView(shareCode));
+        return "index";
+    }
 
 }
