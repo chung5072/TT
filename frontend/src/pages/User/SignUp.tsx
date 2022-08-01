@@ -4,9 +4,26 @@ import { useFormik } from 'formik'
 import { request } from "../../utils/axios"
 import * as Yup from 'yup'
 import './SignUp.css'
-
+import axios from "axios"
 
 export default function SignUp() {
+  // const dispatch = useAppDispatch()
+  const DOMAIN = "http://localhost:8080/"
+  const registerRequest: any = (method: string, url: string, data: object) => {
+    return axios({
+      method,
+      url: DOMAIN + url,
+      data: data
+    })
+      .then((res) =>{ 
+      
+      console.log(res.data)
+    })
+      .catch(err => {
+        console.error(err.response.data)
+      })
+  }
+
   const formik = useFormik({
     initialValues: initialState,
     validationSchema: Yup.object({
@@ -28,13 +45,15 @@ export default function SignUp() {
       userGender: Yup.string()
       .required('Required')
     }),
-    onSubmit: (data) => {request('POST','api/user/register', data)} 
-  
+    onSubmit: (credentials) => {registerRequest('POST','api/user/register', credentials)}
   })
+  const test: any = () => {
+    console.log('아아아아앙ㅜㅜ')
+  }
     return (
       <div>
       <h1>SignUp</h1>
-      <form action="" onSubmit={ formik.handleSubmit }>
+      <form action="" onSubmit={formik.handleSubmit}>
 
         <label htmlFor="userId">Id</label>
         <input id="userId" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>

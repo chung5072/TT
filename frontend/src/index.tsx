@@ -38,16 +38,16 @@ root.render(
           <Route path="/profile/:userId" element={<Profile />}></Route>
           <Route path="/recruit" element={<RecuritList />}></Route>
           <Route path="/recruit/create" element={<RecuritCreate />}></Route>
-          <Route path="/recruit/edit/:articeId" element={<RecuritEdit />}></Route>
+          <Route path="/recruit/:articeId/edit" element={<RecuritEdit />}></Route>
           <Route path="/recruit/:articleId" element={<RecuritDetail />}></Route>
           <Route path="/notice" element={<NoticeList />}></Route>
           <Route path="/notice/create" element={<NoticeCreate />}></Route>
-          <Route path="/notice/edit/:articeId" element={<NoticeEdit />}></Route>
+          <Route path="/notice/:articeId/edit" element={<NoticeEdit />}></Route>
           <Route path="/notice/:articleId" element={<NoticeDetail />}></Route>
-          <Route path="/info" element={<InfoList />}></Route>
-          <Route path="/info/create" element={<InfoCreate />}></Route>
-          <Route path="/info/edit/:articeId" element={<InfoEdit />}></Route>
-          <Route path="/info/:articleId" element={<InfoDetail />}></Route>
+          <Route path="/share" element={<InfoList />}></Route>
+          <Route path="/share/create" element={<InfoCreate />}></Route>
+          <Route path="/share/edit/:articleId/" element={<InfoEdit />}></Route>
+          <Route path="/share/:articleId" element={<InfoDetail />}></Route>
         </Routes> 
       </BrowserRouter>
     </Provider>

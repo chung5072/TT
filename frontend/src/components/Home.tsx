@@ -7,7 +7,7 @@ export default function Home() {
             <Link to="/signup">SignUp</Link>
             <Link to="/notice">Notice</Link>
             <Link to="/recruit">Recruit</Link>
-            <Link to="/info">Information</Link>
+            <Link to="/share">Information</Link>
           </span>
         </div>
         
