@@ -30,10 +30,13 @@ const leftSlice = createSlice({
       // }
 
       // )
+    },
+    setStatus: (state:leftData, action) => {
+      state.divStatus = action.payload
     }
   }
 })
 
 const { reducer, actions } =leftSlice
-export const {setPlayerProfile} = actions
+export const {setPlayerProfile, setStatus} = actions
 export default leftSlice.reducer
