@@ -20,16 +20,16 @@ const leftSlice = createSlice({
     setPlayerProfile: (state:leftData, action) => {
       state.playerNum = action.payload
       state.divStatus = 1
-      axios({
-        method: 'GET',
-        url: '#',
-        data: state.playerNum
-      })
-      .then( res => {
-        state.playerProfile = res.data
-      }
+      // axios({
+      //   method: 'GET',
+      //   url: '#',
+      //   data: state.playerNum
+      // })
+      // .then( res => {
+      //   state.playerProfile = res.data
+      // }
 
-      )
+      // )
     }
   }
 })
