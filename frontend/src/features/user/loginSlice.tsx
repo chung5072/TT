@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+
 import { request } from '../../utils/axios'
 
 export type loginData = {
@@ -54,6 +55,6 @@ export const sendLoginRequest = createAsyncThunk('sendRegisterRequest', async (d
   return request('POST', 'api/user/register', data)
 }  )
 
-const { reducer, actions } =loginSlice
+const { reducer, actions } = loginSlice //
 export const {saveToken, removeToken} = actions
 export default loginSlice.reducer
