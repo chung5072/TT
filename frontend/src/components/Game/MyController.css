@@ -1,0 +1,38 @@
+@media all and (min-width:768px) and (max-width:1023px) {
+    .my-controller {
+        grid-area: bottom;
+        width: 666.624px;
+        height: 61.776px;
+    }
+
+}
+
+@media all and (min-width:1024px) and (max-width:1919px) {
+    .my-controller {
+        grid-area: bottom;
+        width: 888.832px;
+        height: 109.824px;
+    }
+}
+
+@media all and (min-width:1920px) and (max-width:2559px) {
+    .my-controller {
+        grid-area: bottom;
+        width: 1666px;
+        height: 135px;
+    }
+
+}
+
+@media all and (min-width:2560px) {
+    .my-controller {
+        grid-area: bottom;
+        width: 2222.08px;
+        height: 205.92px;
+    }
+
+}
+
+.my-controller {
+    background-color: grey;
+}
