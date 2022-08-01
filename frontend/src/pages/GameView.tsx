@@ -8,6 +8,7 @@ import { useAppDispatch } from "../app/hooks"
 import { setGameState } from "../features/Game/GameSlice"
 import { useParams } from "react-router-dom"
 import { RootState } from "../app/store"
+import "./GameView.css"
 
 
 export default function GameView() {
@@ -19,8 +20,8 @@ export default function GameView() {
   }, [gameState])
 
     return (
-        <div>
-          <h1>GameView</h1>
+        <div className="game-view">
+          {/* <h1>GameView</h1> */}
           <LeftController/>
           <GamePlay/>
           <CameraView/>
