@@ -1,7 +1,7 @@
 @media all and (min-width:768px) and (max-width:1023px) {
     .camera-view {
         grid-area: camera;
-        width: 422.4px;
+        width: 412.4px;
         height: 370.224px;
     }
 
@@ -10,7 +10,7 @@
 @media all and (min-width:1024px) and (max-width:1919px) {
     .camera-view {
         grid-area: camera;
-        width: 563.2px;
+        width: 553.2px;
         height: 658.176px;
     }
 }
@@ -18,7 +18,7 @@
 @media all and (min-width:1920px) and (max-width:2559px) {
     .camera-view {
         grid-area: camera;
-        width: 1056px;
+        width: 1046px;
         height: 900px;
     }
 
@@ -27,12 +27,16 @@
 @media all and (min-width:2560px) {
     .camera-view {
         grid-area: camera;
-        width: 1408px;
+        width: 1398px;
         height: 1234.08px;
     }
 
 }
 
 .camera-view {
-    background-color: orange;
+    background-color: #000;
+    opacity:0.55;
+    margin-top: 10px;
+    margin-left:10px;
+    border-radius: 38px;
 }
