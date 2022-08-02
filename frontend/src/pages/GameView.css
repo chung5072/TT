@@ -8,7 +8,6 @@
         grid-template-areas:
         "left play camera"
         "left bottom bottom";
-        background-color:purple;
         justify-content: center;
     }
 
@@ -24,7 +23,6 @@
         grid-template-areas:
         "left play camera"
         "left bottom bottom";
-        background-color:green;
         justify-content: center;
     }
 }
@@ -39,7 +37,6 @@
         grid-template-areas:
         "left play camera"
         "left bottom bottom";
-        background-color:yellow;
         justify-content: center;
     }
 
@@ -55,8 +52,12 @@
         grid-template-areas:
         "left play camera"
         "left bottom bottom";
-        background-color:blue;
         justify-content: center;
     }
+}
+
+.game-view{
+    background-image: url("../assets/image/game_background.jpg");
+    background-size: cover;
 }
 

@@ -34,5 +34,20 @@
 }
 
 .game-play {
-    background-color: brown;
+    margin-top: 10px;
+    border-radius: 38px;
+
 }
+
+#basic-theme {
+    background-color: rgba(0,0,0,0.55)
+}
+
+#rulebook-theme {
+    background-color: rgba(0,0,0,0.55)
+}
+
+#map-theme {
+
+}
+

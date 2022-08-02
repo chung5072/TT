@@ -4,6 +4,7 @@ import loginReducer from '../features/user/loginSlice'
 import articleReducer from '../features/article/articleSlice'
 import leftReducer from '../features/Game/LeftSlice'
 import gameReducer from '../features/Game/GameSlice'
+import userReducer from '../features/user/userSlice'
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
@@ -11,6 +12,7 @@ export const store = configureStore({
     info: articleReducer,
     left: leftReducer,
     game: gameReducer,
+    user: userReducer,
   },
 });
 

@@ -2,7 +2,7 @@
     .my-controller {
         grid-area: bottom;
         width: 666.624px;
-        height: 61.776px;
+        height: 51.776px;
     }
 
 }
@@ -11,7 +11,7 @@
     .my-controller {
         grid-area: bottom;
         width: 888.832px;
-        height: 109.824px;
+        height: 99.824px;
     }
 }
 
@@ -19,7 +19,7 @@
     .my-controller {
         grid-area: bottom;
         width: 1666px;
-        height: 135px;
+        height: 125px;
     }
 
 }
@@ -28,11 +28,10 @@
     .my-controller {
         grid-area: bottom;
         width: 2222.08px;
-        height: 205.92px;
+        height: 195.92px;
     }
 
 }
 
 .my-controller {
-    background-color: grey;
 }
