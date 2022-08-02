@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 export type loginData = {
     token: string
     credentials:object
-    isLoggedIn: boolean
+    isLoggedIn: number
     currentUser: string
     
 }
@@ -16,7 +16,7 @@ export type loginPayload ={
 const initialState: loginData = {
     token: localStorage.getItem('token') || '' ,
     credentials: {},
-    isLoggedIn: localStorage.getItem('token') === '' ? false : true,
+    isLoggedIn: localStorage.getItem('token') === '' ? 0 : 1,
     currentUser: '',
 
 }
@@ -29,17 +29,13 @@ const loginSlice = createSlice({
         state.token = action.payload.accessToken
         state.currentUser = action.payload.currentUser
         localStorage.setItem('token', action.payload)
-        console.log(localStorage.getItem('token'))
-        console.log(state.token)
-        console.log(state.isLoggedIn)
+
       },
       removeToken: (state: loginData) => {
         localStorage.setItem('token', '')
         state.token = ''
         state.currentUser = ''
-        console.log(localStorage.getItem('token'))
-        console.log(state.token)
-        console.log(state.isLoggedIn)
+
       }
   
       },

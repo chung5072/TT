@@ -30,7 +30,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     fetchProfile: (state: userData) => {
-      console.log(tokenData);
+      console.log(tokenData)
       axios({
         method: "GET",
         url: "http://localhost:8080/api/user/userinfo",
