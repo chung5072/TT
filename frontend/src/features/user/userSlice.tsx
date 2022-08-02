@@ -21,16 +21,16 @@ export const initialState: userData = {
   userGender: "",
 };
 
-
 const tokenData = {
-  authentication: localStorage.getItem('token') || ''
-}
+  authentication: localStorage.getItem("token") || "",
+};
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     fetchProfile: (state: userData) => {
+      console.log(tokenData);
       axios({
         method: "GET",
         url: "http://localhost:8080/api/user/userinfo",
