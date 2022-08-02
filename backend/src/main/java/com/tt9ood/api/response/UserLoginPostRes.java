@@ -15,13 +15,15 @@ import lombok.Setter;
 public class UserLoginPostRes extends BaseResponseBody{
 	@ApiModelProperty(name="JWT 인증 토큰", example="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN...")
 	String accessToken;
+	String refreshToken;
 	String userId;
 	
-	public static UserLoginPostRes of(Integer statusCode, String message, String accessToken, String userId) {
+	public static UserLoginPostRes of(Integer statusCode, String message, String accessToken,String refreshToken, String userId) {
 		UserLoginPostRes res = new UserLoginPostRes();
 		res.setStatusCode(statusCode);
 		res.setMessage(message);
 		res.setAccessToken(accessToken);
+		res.setRefreshToken(refreshToken);
 		res.setUserId(userId);
 		return res;
 	}
