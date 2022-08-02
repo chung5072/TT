@@ -21,10 +21,9 @@ export const initialState: userData = {
   userGender: "",
 };
 
-
 const tokenData = {
-  authentication: localStorage.getItem('token') || ''
-}
+  authentication: localStorage.getItem("token") || "",
+};
 
 const userSlice = createSlice({
   name: "user",
