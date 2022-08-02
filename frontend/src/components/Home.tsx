@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
-import { useAppDispatch } from "../app/hooks";
-import { removeToken } from "../features/user/loginSlice";
-import { useSelector } from "react-redux";
-import { RootState } from "../app/store";
-import Login from "../pages/User/LogIn";
-import "./Home.css";
+import { Link} from "react-router-dom"
+import { useAppDispatch } from "../app/hooks"
+import { removeToken } from "../features/user/loginSlice"
+import { useSelector } from "react-redux"
+import { RootState } from "../app/store"
+import Login from "../pages/User/LogIn"
+import "./Home.css"
 export default function Home() {
   const isLoggedIn = useSelector((state:RootState) => state.login.isLoggedIn)
   const token = useSelector((state:RootState) => state.login.token)
   const currentUser = useSelector((state:RootState) => state.login.currentUser)
   const dispatch = useAppDispatch()
-  console.log(localStorage.getItem('token'))
   const logoutRequest: any = () => {
     dispatch(removeToken())
   }
@@ -23,16 +22,7 @@ export default function Home() {
             <Link to="/recruit">Recruit</Link>
             <Link to="/share">Information</Link>
           </span>
-        ) : (
-          <div>
-            <span onClick={logoutRequest}>Logout</span>
-            <Link to={`/profile/${currentUser}`}>Profile</Link>
-          </div>
-        )}
-        <Link to="/notice">Notice</Link>
-        <Link to="/recruit">Recruit</Link>
-        <Link to="/share">Information</Link>
-      </span>
-    </div>
-  );
+        </div>
+        
+    )
 }

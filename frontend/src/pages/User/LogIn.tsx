@@ -23,7 +23,8 @@ export default function Login() {
         console.log(res.data)
         const token = res.data.accessToken
         const currentUser = res.data.userId
-        const payload = {accessToken : token, currentUser: currentUser}
+        const refreshToken = res.data.refreshToken
+        const payload = {accessToken : token, currentUser: currentUser, refreshToken: refreshToken}
         await dispatch(saveToken(payload))
         navigate('/')
       })
