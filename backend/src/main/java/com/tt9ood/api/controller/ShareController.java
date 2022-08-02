@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -96,10 +95,5 @@ public class ShareController {
         return shareService.readAllShare();
     }
 
-    @GetMapping
-    public String index(Long shareCode, Model model){
-        model.addAttribute("shareView", shareService.updateShareView(shareCode));
-        return "index";
-    }
 
 }

@@ -55,8 +55,4 @@ public class ShareServiceImpl implements ShareService{
         return shares.stream().map(ShareDto.Response::new).collect(Collectors.toList());
     }
 
-    @Override
-    public int updateShareView(Long shareCode) {
-        return shareRepository.updateView(shareCode);
-    }
 }
