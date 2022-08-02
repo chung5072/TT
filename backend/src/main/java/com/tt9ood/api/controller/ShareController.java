@@ -79,6 +79,10 @@ public class ShareController {
         shareService.updateShare(shareCode, dto);
         return ResponseEntity.status(200).body(shareCode);
     }
+    
+    /*
+     정보 공유 게시글 전체 조회
+     */
 
     @GetMapping
     @ApiOperation(value = "정보 공유 게시글 전체 조회", notes = "정보 공유 게시글을 전체 조회한다.")

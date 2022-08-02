@@ -13,4 +13,5 @@ public interface ShareService {
     void updateShare(Long shareCode, ShareDto.Request dto);
 
     List<ShareDto.Response> readAllShare();
+
 }
