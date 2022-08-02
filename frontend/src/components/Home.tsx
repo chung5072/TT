@@ -17,7 +17,7 @@ export default function Home() {
         <div id="home">
           <h1>hello {currentUser}</h1>
           <span>
-          {token === '' ? <span><Link to="/login">Login</Link><Link to="/signup">SignUp</Link></span> : <span onClick={logoutRequest}>Logout</span>}
+          {token === '' ? <span><Link to="/login">Login</Link><Link to="/signup">SignUp</Link></span> : <div><span onClick={logoutRequest}>Logout</span><Link to={`/profie/${currentUser}`}>Profile</Link></div>}
             <Link to="/notice">Notice</Link>
             <Link to="/recruit">Recruit</Link>
             <Link to="/share">Information</Link>

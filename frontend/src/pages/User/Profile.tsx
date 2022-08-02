@@ -15,7 +15,7 @@ export default function Profile() {
 
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(fetchProfile(data))
+    dispatch(fetchProfile())
   },[data])
     return (
         <div>
