@@ -1,0 +1,105 @@
+#meeting-create {
+  width: 100vw;
+  height: 100vh;
+  background-color: #262626;
+}
+
+
+.contents {
+  width: 680px;
+  margin:0 auto;
+  padding: 10px;
+}
+
+.contents > h1 {
+  color: #d9aa52;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contents .inp {
+  width: 99%;
+  height: 40px;
+  margin-top: 5px;
+  border-radius: 20px;
+  padding: 5px;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.contents .txtarea {
+  width: 97%;
+  height: 300px;
+  margin-top: 5px;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.contents .rowgroup {
+  margin-top: 7px;
+}
+
+.contents .subtitle {
+  color: #d9aa52;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.contents .radiogroup {
+  margin-left: 20px;
+}
+
+.radiogroup .choice {
+  color: #d9aa52;
+  font-size: 25px;
+}
+
+.contents .btngroup {
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.btngroup .btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 20px;
+  color: #d9aa52;
+  margin: 5px 0px;
+}
+
+.ininp {
+  width: 100%;
+}
+
+.menu {
+  width: 100%;
+  height: 70px;
+}
+
+.menu > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  float: right;
+}
+
+.menu > ul:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.menu > ul > li {
+  margin: 0 10px;
+  padding: 0;
+  border: 0;
+  float: left;
+}
+
+
+.commu {
+  text-decoration: none;
+  color: #d9aa52
+}

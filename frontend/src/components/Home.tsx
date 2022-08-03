@@ -14,14 +14,14 @@ export default function Home() {
     dispatch(removeToken())
   }
     return (
-        <div id="home" className="container">
+        <div id="home"  className="container">
           {/* <h1>{isLoggedIn} {currentUser} {token}</h1> */}
-          <h1><img src="" alt="" /></h1>
           <div id="home-1" className="home1">
-              {token === '' ? <span><Link className="login" to="/login">Login</Link><Link className="signup" to="/signup">SignUp</Link></span> : <span><span className="logout" onClick={logoutRequest}>Logout</span><Link className="profile" to={`/profile/${currentUser}`}>Profile</Link></span>}
-              <Link className="noti" to="/notice">Notice</Link>
-              <Link className="meet" to="/meeting">Meeting</Link>
-              <Link className="info" to="/share">Information</Link>
+          <div className="imglogo"><img className="logo" src="/dice.png" alt="dice" /></div>
+              {token === '' ? <span><Link className="menu" to="/login">Login</Link><Link className="menu" to="/signup">SignUp</Link></span> : <span><span className="logout" onClick={logoutRequest}>Logout</span><Link className="profile" to={`/profile/${currentUser}`}>Profile</Link></span>}
+              <Link className="menu" to="/notice">Notice</Link>
+              <Link className="menu" to="/meeting">Meeting</Link>
+              <Link className="menu" to="/share">Information</Link>
 
           {/* ) : (
             <div>
