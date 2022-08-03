@@ -34,8 +34,9 @@
 }
 
 .left-controller {
-    background-color: aqua;
     offset: 0.5%;
     margin-right: 10px;
+    display: flex;
+    flex-direction: row;
     
 }

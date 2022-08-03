@@ -5,6 +5,7 @@ import { fetchProfile } from "../../features/user/userSlice"
 import { useAppSelector } from "../../app/hooks"
 import { RootState } from "../../app/store"
 export default function Profile() {
+  const token = useAppSelector((state: RootState) => state.login.token)
   const data = useAppSelector((state:RootState) => state.login.currentUser)
   const userId = useAppSelector((state:RootState) => state.user.userId)
   const userPw = useAppSelector((state:RootState) => state.user.userPw)
@@ -15,7 +16,7 @@ export default function Profile() {
 
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(fetchProfile())
+    dispatch(fetchProfile(token))
   },[data])
     return (
         <div>
