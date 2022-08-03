@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import axios from 'axios'
 import { StringSchema } from 'yup'
+import { warrior } from '../../components/Game/ProfileInfoList'
 export type profileData = {
   playerUserCode: number
   playerSpecies: string
@@ -25,6 +26,7 @@ export type profileData = {
   skill2: string
   skill3: string
   chooseLevel: number
+  jobInfo: object
 
 } 
 
@@ -50,7 +52,8 @@ const initialState = {
   skill1: '',
   skill2: '',
   skill3: '',
-  chooseLevel: 0
+  chooseLevel: 0,
+  jobInfo: warrior
 
 }
 
@@ -66,10 +69,13 @@ const profileSlice = createSlice({
         console.log(state.chooseLevel)
         state.chooseLevel -= 1
       },
+      setJobInfo: (state:profileData, action) => {
+        state.jobInfo = action.payload
+      }
         
     }
 })
 
 const { reducer, actions } =profileSlice
-export const {addChooseLevel, subtractChooseLevel} = actions
+export const {addChooseLevel, subtractChooseLevel,setJobInfo} = actions
 export default profileSlice.reducer
