@@ -34,6 +34,7 @@ export default function Map() {
     }
     return (
         <div id="map">
+          <span id ="map-name">{mapId === 0 ? "Myrian": mapId === 1? "Swamp Denizens": mapId === 2? "Black Forest": mapId === 3? "Dark Cavern": mapId ===4? "Deep Under the Mountain": "DevilDom"}</span>
           <ImageMapper src={map_mk2} map={MAP} width={width}
           onMouseEnter = {(index) => {console.log(index)}}
           onClick = {(area) => dispatch(setMapState(area))
