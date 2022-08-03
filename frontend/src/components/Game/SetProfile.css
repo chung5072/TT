@@ -6,6 +6,7 @@
   height: 60%;
   background-color: rgba(0,0,0,0.75);
   border-radius: 38px;
+  font-size: 0.5em;
 }
 
 #job-form {
@@ -60,6 +61,12 @@
 
 }
 
+#job-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 .off-btn{
   display:none;
@@ -74,6 +81,9 @@
   display:none;
 }
 .off-btn#job-info {
+  display: none;
+}
+.off-btn#job-submit {
   display: none;
 }
 
@@ -184,6 +194,12 @@ form {
 .job-info-btn-box {
   width: 100%;
   height:10%;
+  display: flex;
+}
+
+.job-info-btn {
+  width: 20%;
+  height: 60%;
 }
 
 .job-info-hp-box {
@@ -204,4 +220,12 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.job-info-skill {
+  font-size: 0.5em;
+}
+
+.job-info-value {
+  font-size: 0.5em;
 }
