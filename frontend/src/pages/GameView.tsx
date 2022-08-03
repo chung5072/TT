@@ -2,6 +2,7 @@ import LeftController from "../components/Game/LeftController"
 import GamePlay from "../components/Game/GamePlay"
 import CameraView from "../components/Game/CameraView"
 import MyController from "../components/Game/MyController"
+import SetProfile from "../components/Game/SetProfile"
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useAppDispatch } from "../app/hooks"
@@ -26,6 +27,7 @@ export default function GameView() {
           <GamePlay/>
           <CameraView/>
           <MyController/>
+          <SetProfile/>
         </div>
         
     )

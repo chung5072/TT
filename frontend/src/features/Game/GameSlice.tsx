@@ -7,6 +7,7 @@ export type gameData = {
   isGm: boolean
   mapStatus: number
   windowSize: number
+  playerNum: number
 
 } 
 
@@ -15,7 +16,8 @@ const initialState = {
     meetCode: 0,
     isGm: false,
     mapStatus: 1,
-    windowSize: 0
+    windowSize: 0,
+    playerNum: 0,
 
 }
 
