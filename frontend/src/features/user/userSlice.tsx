@@ -21,20 +21,24 @@ export const initialState: userData = {
   userGender: "",
 };
 
-const tokenData = {
-  authentication: localStorage.getItem("token") || "",
-};
+
+
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    fetchProfile: (state: userData) => {
-      console.log(tokenData)
+    fetchProfile: (state: userData, action) => {
+
+      const tokenData = {
+        authentication: action.payload,
+      };
+      console.log('token///  ' +action.payload)
       axios({
         method: "GET",
         url: "http://localhost:8080/api/user/userinfo",
         data: tokenData,
+        
       })
         .then((res) => {
           state.userEmail = res.data.useEmail;
