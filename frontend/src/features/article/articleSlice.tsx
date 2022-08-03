@@ -40,7 +40,6 @@ export const articleSlice = createSlice({
         state.shareAuthor = action.payload.shareAuthor
         state.shareLike = action.payload.shareLike
         state.shareView = action.payload.shareView
-        console.log(state.shareTitle)
       },
 
       editContent: (state:articleState, action) => {
@@ -50,7 +49,6 @@ export const articleSlice = createSlice({
         state.shareAuthor = action.payload.shareAuthor
         state.shareLike = action.payload.shareLike
         state.shareView = action.payload.shareView
-        console.log(state.shareTitle)
       }
     }
   })

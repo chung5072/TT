@@ -68,6 +68,9 @@ const InfoList = () => {
         <div>
           <button onClick={() => navigate('/share/create')}>create</button>
         </div>
+        <div>
+          <button onClick={() => navigate('/')}>back</button>
+        </div>
         
       </div>
       

@@ -10,10 +10,10 @@ import SignUp from './pages/User/SignUp';
 import LogIn from './pages/User/LogIn';
 import GameView from './pages/GameView';
 import Profile from './pages/User/Profile';
-import RecuritList from './pages/Recruit/RecruitList';
-import RecuritCreate from './pages/Recruit/RecruitCreate';
-import RecuritEdit from './pages/Recruit/RecruitEdit';
-import RecuritDetail from './pages/Recruit/RecruitDetail';
+import MeetingList from './pages/Meeting/MeetingList';
+import MeetingCreate from './pages/Meeting/MeetingCreate';
+import MeetingEdit from './pages/Meeting/MeetingEdit';
+import MeetingDetail from './pages/Meeting/MeetingDetail';
 import NoticeList from './pages/Notice/NoticeList';
 import NoticeCreate from './pages/Notice/NoticeCreate';
 import NoticeEdit from './pages/Notice/NoticeEdit';
@@ -36,13 +36,13 @@ root.render(
           <Route path="/login" element={<LogIn />}></Route>
           <Route path="/game/:gameId" element={<GameView />}></Route>
           <Route path="/profile/:userId" element={<Profile />}></Route>
-          <Route path="/recruit" element={<RecuritList />}></Route>
-          <Route path="/recruit/create" element={<RecuritCreate />}></Route>
-          <Route path="/recruit/:articeId/edit" element={<RecuritEdit />}></Route>
-          <Route path="/recruit/:articleId" element={<RecuritDetail />}></Route>
+          <Route path="/meeting" element={<MeetingList />}></Route>
+          <Route path="/meeting/create" element={<MeetingCreate />}></Route>
+          <Route path="/meeting/edit/:articleId" element={<MeetingEdit />}></Route>
+          <Route path="/meeting/:articleId" element={<MeetingDetail />}></Route>
           <Route path="/notice" element={<NoticeList />}></Route>
           <Route path="/notice/create" element={<NoticeCreate />}></Route>
-          <Route path="/notice/:articeId/edit" element={<NoticeEdit />}></Route>
+          <Route path="/notice/:articleId/edit" element={<NoticeEdit />}></Route>
           <Route path="/notice/:articleId" element={<NoticeDetail />}></Route>
           <Route path="/share" element={<InfoList />}></Route>
           <Route path="/share/create" element={<InfoCreate />}></Route>
