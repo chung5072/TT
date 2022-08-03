@@ -8,6 +8,7 @@ export type gameData = {
   mapStatus: number
   windowSize: number
   playerNum: number
+  profileDone: boolean;
 
 } 
 
@@ -18,6 +19,7 @@ const initialState = {
     mapStatus: 1,
     windowSize: 0,
     playerNum: 0,
+    profileDone: false,
 
 }
 
@@ -52,10 +54,13 @@ const gameSlice = createSlice({
         },
         setWindowSize: (state:gameData, action) => {
             state.windowSize = action.payload
+        },
+        setProfileDone: (state:gameData) => {
+            state.profileDone = true
         }
     }
 })
 
 const { reducer, actions } =gameSlice
-export const {setGameState, setMapState, setWindowSize} = actions
+export const {setGameState, setMapState, setWindowSize, setProfileDone} = actions
 export default gameSlice.reducer

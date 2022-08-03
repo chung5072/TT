@@ -4,12 +4,26 @@ import { useSelector } from "react-redux"
 import * as Yup from 'yup'
 import { useAppDispatch } from "../../app/hooks"
 import { RootState } from "../../app/store"
-import { addChooseLevel, subtractChooseLevel } from "../../features/Game/ProfileSlice"
+import { setProfileDone } from "../../features/Game/GameSlice"
+import { addChooseLevel, setJobInfo, subtractChooseLevel } from "../../features/Game/ProfileSlice"
 import "./SetProfile.css"
+import { warrior,wizard } from "./ProfileInfoList"
 
 export default function SetProfile() {
   const dispatch = useAppDispatch()
   const chooseLevel = useSelector((state: RootState) => state.profile.chooseLevel)
+  const profileDone = useSelector((state:RootState) => state.game.profileDone)
+  const jobInfo = useSelector((state:RootState) => state.profile.jobInfo)
+  const selectJobInfo = (job:string) => {
+    if (job === 'warrior') {
+      dispatch(setJobInfo(warrior))
+    }
+    if (job === 'wizard') {
+      dispatch(setJobInfo(wizard))
+    }
+    
+  }
+  
   const formik = useFormik({
     initialValues: {
       playerUserCode: 0,
@@ -29,7 +43,7 @@ export default function SetProfile() {
       playerstat4: 0,
       playerstat5: 0,
       playerstat6: 0,
-      class_name: '11',
+      class_name: '',
       skill1: '',
       skill2: '',
       skill3: '',
@@ -65,12 +79,16 @@ export default function SetProfile() {
 
      
     }),
-    onSubmit: (credentials) => console.log('done')}
+    onSubmit: (credentials) => {
+      dispatch(setProfileDone())
+    }}
   )
     return (
-        <div id="select-profile-modal">
-          <div id="blank"></div>
+        <div id="select-profile-modal" className={profileDone? "off-btn" : "on"}>
+          <div id="blank">{chooseLevel===-1? jobInfo.name: chooseLevel===0 ?"Select Class" : chooseLevel===1 ? "Input Profile" :"Roll Stats"}</div>
           <form action="" onSubmit={formik.handleSubmit}>
+
+            {/* job */}
             <div id="job-form" className={chooseLevel===0 ?"on" : "off-btn"}>
               <h1>{formik.values.class_name}</h1>
               <div className="btn-box">
@@ -86,13 +104,147 @@ export default function SetProfile() {
               </div>
             </div>
             <div id="profile-form" className={chooseLevel===1 ?"on" : "off-btn"}>
-              <h1>hi</h1>
+              <div className="profile-input-box">
+                <label htmlFor="playerName" className="profile-label">Name</label>
+                <input id="playerName" name="playerName" type="text" className="profile-input" onChange={formik.handleChange} value={ formik.values.playerName }/>
+              </div>
+
+              {/* profile */}
+              <div className="profile-input-box">
+                <label htmlFor="playerSpecies" className="profile-label">Species</label>
+                <input id="playerSpecies" name="playerSpecies" type="text" className="profile-input" onChange={formik.handleChange} value={ formik.values.playerSpecies }/>
+              </div>
+              <div className="profile-input-box">
+                <label htmlFor="playerLook" className="profile-label">Look</label>
+                <textarea id="playerLook" name="playerLook"  className="profile-text" onChange={formik.handleChange} value={ formik.values.playerLook}/>
+              </div>
+              <div className="profile-input-box">
+                <label htmlFor="playerValue" className="profile-label">Value</label>
+                <select name="playerValue" id="playerValue" onChange={formik.handleChange} value={ formik.values.playerValue} className="profile-input">
+                  <option value="good">Good</option>
+                  <option value="evil">Evil</option>
+                  <option value="neutral">Neutral</option>
+                </select>
+              </div>
             </div>
-          </form>
-          <div id="nav-bot">
+             
+             {/* stat */}
+            <div id="stat-form" className={chooseLevel===2 ?"on" : "off-btn"}>
+              <div className="profile-stat-box">
+                <label htmlFor="playerstat1" className="profile-label">Stat1 :</label>
+                <div className="stat-container">
+                  <span>{formik.values.playerstat1}</span>
+                  <button className="stat-btn" id="playerstat1" name="playerstat1" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                    Roll
+                  </button>
+                </div> 
+              </div>
+              <div className="profile-stat-box">
+                <label htmlFor="playerstat2" className="profile-label">Stat2 :</label>
+                <div className="stat-container">
+                  <span>{formik.values.playerstat2}</span>
+                  <button className="stat-btn" id="playerstat2" name="playerstat2" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                    Roll
+                  </button>
+                </div> 
+              </div>
+              <div className="profile-stat-box">
+                <label htmlFor="playerstat3" className="profile-label">Stat3 :</label>
+                <div className="stat-container">
+                  <span>{formik.values.playerstat3}</span>
+                  <button className="stat-btn" id="playerstat3" name="playerstat3" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                    Roll
+                  </button>
+                </div> 
+              </div>
+              <div className="profile-stat-box">
+                <label htmlFor="playerstat4" className="profile-label">Stat4 :</label>
+                <div className="stat-container">
+                  <span>{formik.values.playerstat4}</span>
+                  <button className="stat-btn" id="playerstat4" name="playerstat4" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                    Roll
+                  </button>
+                </div> 
+              </div>
+              <div className="profile-stat-box">
+                <label htmlFor="playerstat5" className="profile-label">Stat5 :</label>
+                <div className="stat-container">
+                  <span>{formik.values.playerstat5}</span>
+                  <button className="stat-btn" id="playerstat5" name="playerstat5" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                    Roll
+                  </button>
+                </div> 
+              </div>
+              <div className="profile-stat-box">
+                <label htmlFor="playerstat6" className="profile-label">Stat6 :</label>
+                <div className="stat-container">
+                  <span>{formik.values.playerstat6}</span>
+                  <button className="stat-btn" id="playerstat6" name="playerstat6" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                    Roll
+                  </button>
+                </div> 
+              </div>
+              
+            </div>
+
+            {/* Info */}
+            <div className={chooseLevel=== -1 ?"on" : "off-btn"} id="job-info">
+              <div className="job-info-btn-box">
+                <button onClick={() => selectJobInfo('warrior')} className="job-info-btn">Warrior</button>
+                <button onClick={() => selectJobInfo('wizard')} className="job-info-btn">Wizard</button>
+                <button onClick={() => selectJobInfo('hunter')} className="job-info-btn">Hunter</button>
+                <button onClick={() => selectJobInfo('thief')} className="job-info-btn">Thief</button>
+                <button onClick={() => selectJobInfo('priest')} className="job-info-btn">Priest</button>
+              </div>
+              <div className="job-info-hp-box">
+                HP : {jobInfo.hp}
+              </div>
+              <div className="job-info-skill-box">
+                <div className="job-info-skill">
+                  <span>{jobInfo.skill[0][0]} : {jobInfo.skill[0][1]}</span>
+                  <span>{jobInfo.skill[0][2]}</span>
+                </div>
+                <div className="job-info-skill">
+                  <span>{jobInfo.skill[1][0]} : {jobInfo.skill[1][1]}</span>
+                  <span>{jobInfo.skill[1][2]}</span>
+                </div>
+                <div className="job-info-skill">
+                  <span>{jobInfo.skill[1][0]} : {jobInfo.skill[1][1]}</span>
+                  <span>{jobInfo.skill[1][2]}</span>
+                </div>
+              </div>
+              <div className="job-info-value-box">
+                <div className="job-info-value">
+                  <span>Good : {jobInfo.value.good}</span>
+                </div>
+                <div className="job-info-value">
+                  <span>Evil : {jobInfo.value.evil}</span>
+                </div>
+                <div className="job-info-value">
+                  <span>Neutral : {jobInfo.value.neutral}</span>
+                </div>
+              </div>
+            </div>
+        </form>
+
+
+          {/* Navbar */}
+          {chooseLevel===-1 ? <div className="nav-bot" id="first-nav-bot">
+            <button onClick={() => dispatch(addChooseLevel()) } className="ctrl-btn">Next</button>
+          </div> : chooseLevel===0 ?
+          <div className="nav-bot">
+            <button onClick={() => dispatch(subtractChooseLevel()) } className="ctrl-btn">Info</button>
+            <button onClick={() => dispatch(addChooseLevel()) } className="ctrl-btn">Next</button>
+          </div> : chooseLevel === 1?
+          <div className="nav-bot">
             <button onClick={() => dispatch((subtractChooseLevel()))} className="ctrl-btn">Back</button>
             <button onClick={() => dispatch(addChooseLevel()) } className="ctrl-btn">Next</button>
-          </div>
+          </div> :
+          <div className="nav-bot">
+            <button onClick={() => dispatch((subtractChooseLevel()))} className="ctrl-btn">Back</button>
+            <button type="submit" className="ctrl-btn">Submit</button>
+          </div>}
+          
         </div>
         
     )
