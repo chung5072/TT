@@ -7,6 +7,7 @@ import axios from "axios"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 
 import { saveToken } from "../../features/user/loginSlice"
+import { fetchProfile } from '../../features/user/userSlice'
 
 // Login Dispatch
 export default function Login() {
@@ -26,6 +27,18 @@ export default function Login() {
         const refreshToken = res.data.refreshToken
         const payload = {accessToken : token, currentUser: currentUser, refreshToken: refreshToken}
         await dispatch(saveToken(payload))
+        axios({
+          method: "GET",
+          url: `http://localhost:8080/api/user/userinfo/${localStorage.getItem('current_user')}`,
+          
+        })
+          .then((res) => {
+            dispatch(fetchProfile(res.data))
+            localStorage.setItem('userCode', res.data.userCode)
+          })
+          .catch((err) => {
+            console.error(err.response.data);
+          });
         navigate('/')
       })
       .catch(err => {

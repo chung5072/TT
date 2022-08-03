@@ -41,26 +41,27 @@ const loginSlice = createSlice({
         state.currentUser = ''
         localStorage.setItem('token', '')
         localStorage.setItem('current_user', '')
+        localStorage.setItem('userCode', '')
         cookies.remove('refresh_token')
 
       },
 
-      getAccessToken: (state:loginData) => {
-        const refresh_token = cookies.get('refresh_token');
-        console.log('refresh!!')
-        console.log(refresh_token)
-        axios({
-          method:'POST',
-          url: "http://localhost:8080/api/user/login",
-          headers: {
-            Authorization: `Bearer ${refresh_token}`
-        }
-        })
-        .then((res) =>{
-          state.token = res.data.accessToken
-          state.currentUser = res.data.userId
-        })
-      }
+      // getAccessToken: (state:loginData) => {
+      //   const refresh_token = cookies.get('refresh_token');
+      //   console.log('refresh!!')
+      //   console.log(refresh_token)
+      //   axios({
+      //     method:'POST',
+      //     url: "http://localhost:8080/api/user/login",
+      //     headers: {
+      //       Authorization: `Bearer ${refresh_token}`
+      //   }
+      //   })
+      //   .then((res) =>{
+      //     state.token = res.data.accessToken
+      //     state.currentUser = res.data.userId
+      //   })
+      // }
   
       },
       
@@ -76,5 +77,5 @@ const loginSlice = createSlice({
 // }  )
 
 const { reducer, actions } = loginSlice //
-export const {saveToken, removeToken, getAccessToken} = actions
+export const {saveToken, removeToken} = actions
 export default loginSlice.reducer

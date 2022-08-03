@@ -10,6 +10,7 @@ export type userData = {
   userEmail: string;
   userPhone: string;
   userGender: string;
+  userCode: any;
 };
 
 export const initialState: userData = {
@@ -19,6 +20,7 @@ export const initialState: userData = {
   userEmail: "",
   userPhone: "",
   userGender: "",
+  userCode: localStorage.getItem('userCode'),
 };
 
 
@@ -29,28 +31,13 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     fetchProfile: (state: userData, action) => {
-
-      const tokenData = {
-        authentication: action.payload,
-      };
-      console.log('token///  ' +action.payload)
-      axios({
-        method: "GET",
-        url: "http://localhost:8080/api/user/userinfo",
-        data: tokenData,
-        
-      })
-        .then((res) => {
-          state.userEmail = res.data.useEmail;
-          state.userPhone = res.data.userPhone;
-          state.userId = res.data.userId;
-          state.userPw = res.data.userPw;
-          state.userNickname = res.data.userNickname;
-          state.userGender = res.data.userGender;
-        })
-        .catch((err) => {
-          console.error(err.response.data);
-        });
+      state.userEmail = action.payload.userEmail;
+      state.userPhone = action.payload.userPhone;
+      state.userId = action.payload.userId;
+      state.userPw = action.payload.userPw;
+      state.userNickname = action.payload.userNickname;
+      state.userGender =action.payload.userGender;
+      state.userCode = action.payload.userCode
     },
   },
 });

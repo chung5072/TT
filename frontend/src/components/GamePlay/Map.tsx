@@ -8,6 +8,7 @@ import { useAppDispatch } from "../../app/hooks";
 import { setMapState, setWindowSize } from "../../features/Game/GameSlice";
 import { useEffect } from "react";
 export default function Map() {
+    useEffect(() => {dispatch(setWindowSize(window.innerWidth))}, [window.innerWidth])
     const dispatch = useAppDispatch()
     const mapId = useAppSelector((state: RootState) => state.game.mapStatus)
     const windowSize = useAppSelector((state:RootState) => state.game.windowSize)
