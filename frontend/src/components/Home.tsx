@@ -20,19 +20,19 @@ export default function Home() {
           <span>
           {token === '' ? <span><Link to="/login">Login</Link><Link to="/signup">SignUp</Link></span> : <div><span onClick={logoutRequest}>Logout</span><Link to={`/profile/${currentUser}`}>Profile</Link></div>}
             <Link to="/notice">Notice</Link>
-            <Link to="/recruit">Recruit</Link>
+            <Link to="/meeting">Recruit</Link>
             <Link to="/share">Information</Link>
           </span>
-        ) : (
+        {/* ) : (
           <div>
             <span onClick={logoutRequest}>Logout</span>
             <Link to={`/profile/${currentUser}`}>Profile</Link>
           </div>
         )}
         <Link to="/notice">Notice</Link>
-        <Link to="/recruit">Recruit</Link>
+        <Link to="/meeting">Meeting</Link>
         <Link to="/share">Information</Link>
-      </span>
+      </span> */}
     </div>
   );
 }

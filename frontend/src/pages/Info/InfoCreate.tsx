@@ -16,7 +16,7 @@ export default function InfoCreate() {
       data: data
     })
       .then(res => {
-        console.log(res.data)
+        console.log(1, res.data)
         navigate('/share')
       })
       .catch(err => {
@@ -43,6 +43,7 @@ export default function InfoCreate() {
             <input id="shareAuthor" name="shareAuthor" type="text" onChange={formik.handleChange} value={ formik.values.shareAuthor} />
 
             <button type="submit">Submit</button>
+            <button onClick={() => navigate('/share')}>Back</button>
           </form>
         </div>
         

@@ -15,6 +15,7 @@ export default function InfoEdit() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   let articleId = useParams().articleId
+  const DOMAIN = "http://localhost:8080/"
   
 
 
@@ -22,7 +23,7 @@ export default function InfoEdit() {
     console.log(title)
       axios({ 
         method: 'GET',
-        url: `http://localhost:8080/api/share/${articleId}`
+        url: DOMAIN +`api/share/${articleId}`
       })
         .then((res) => {
           dispatch(getArticleDetail(res.data))
@@ -37,7 +38,6 @@ export default function InfoEdit() {
   const author = useSelector((state:RootState) => state.info.shareAuthor)
   const code = useSelector((state:RootState) => state.info.shareCode)
 
-  const DOMAIN = "http://localhost:8080/"
 
 
 
