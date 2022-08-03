@@ -14,24 +14,26 @@ export default function Home() {
     dispatch(removeToken())
   }
     return (
-        <div id="home">
-          <h1>Hello {isLoggedIn} {currentUser} {token}</h1>
-          <span>
-          {token === '' ? <span><Link to="/login">Login</Link><Link to="/signup">SignUp</Link></span> : <div><span onClick={logoutRequest}>Logout</span><Link to={`/profile/${currentUser}`}>Profile</Link></div>}
-            <Link to="/notice">Notice</Link>
-            <Link to="/meeting">Recruit</Link>
-            <Link to="/share">Information</Link>
-          </span>
-        {/* ) : (
-          <div>
-            <span onClick={logoutRequest}>Logout</span>
-            <Link to={`/profile/${currentUser}`}>Profile</Link>
+        <div id="home" className="container">
+          {/* <h1>{isLoggedIn} {currentUser} {token}</h1> */}
+          <h1><img src="" alt="" /></h1>
+          <div id="home-1" className="home1">
+              {token === '' ? <span><Link className="login" to="/login">Login</Link><Link className="signup" to="/signup">SignUp</Link></span> : <span><span className="logout" onClick={logoutRequest}>Logout</span><Link className="profile" to={`/profile/${currentUser}`}>Profile</Link></span>}
+              <Link className="noti" to="/notice">Notice</Link>
+              <Link className="meet" to="/meeting">Meeting</Link>
+              <Link className="info" to="/share">Information</Link>
+
+          {/* ) : (
+            <div>
+              <span onClick={logoutRequest}>Logout</span>
+              <Link to={`/profile/${currentUser}`}>Profile</Link>
+            </div>
+          )}
+          <Link to="/notice">Notice</Link>
+          <Link to="/meeting">Meeting</Link>
+          <Link to="/share">Information</Link>
+        </span> */}
           </div>
-        )}
-        <Link to="/notice">Notice</Link>
-        <Link to="/meeting">Meeting</Link>
-        <Link to="/share">Information</Link>
-      </span> */}
     </div>
   );
 }

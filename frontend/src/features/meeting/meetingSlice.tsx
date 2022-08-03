@@ -41,7 +41,6 @@ export const meetingSlice = createSlice({
       state.meetingDate = action.payload.meetingView
       state.meetingPyNum = action.payload.meetingPyNum
       state.meetingPyTime = action.payload.meetingPyTime
-      console.log(state.meetingTitle)
     },
 
     editMeetingContent: (state:meetingState, action) => {
