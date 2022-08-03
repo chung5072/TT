@@ -20,7 +20,6 @@ export default function InfoEdit() {
 
 
   useEffect(() => {
-    console.log(title)
       axios({ 
         method: 'GET',
         url: DOMAIN +`api/share/${articleId}`
@@ -96,7 +95,7 @@ export default function InfoEdit() {
               </tbody>
             </table>
               <button type="submit">submit</button>
-              {/* <button onClick={}>cancle</button> */}
+              <button onClick={() => navigate('/share')}>cancle</button>
               <input type="hidden" id="shareAuthor" value={author}/>
               <input type="hidden" id="shareCode" value={code} />
           </form>

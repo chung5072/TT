@@ -14,12 +14,10 @@ export default function MeetingEdit() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   let articleId = useParams().articleId
-  console.log(articleId)
 
   const DOMAIN = "http://localhost:8080/"
 
   useEffect(() => {
-    console.log(articleId)
       axios({ 
         method: 'GET',
         url: DOMAIN + `api/meeting/${articleId}`
@@ -55,7 +53,7 @@ export default function MeetingEdit() {
       },
     })
       .then(res => {
-        console.log(res.data)
+        console.log(res)
         navigate(`/meeting/${articleId}`,)
       })
       .catch(err => {
@@ -64,7 +62,7 @@ export default function MeetingEdit() {
   }
 
   const formik = useFormik({
-    initialValues: {meetingCode:articleId, meetingTitle: title, meetingContent: content, meetingAuthor:author},
+    initialValues: {meetingCode:articleId, meetingTitle: title, meetingContent: content, meetingPyNum: player, meetingPyTime: time, meetingAuthor: author  },
     onSubmit: (data) => {
       console.log(data)
       meetingEditRequest('PUT', `api/meeting/${articleId}`, data)}
@@ -94,10 +92,28 @@ export default function MeetingEdit() {
                     <input type="text" onChange={ formik.handleChange } id="meetingContent" defaultValue={content} />
                   </td>
                 </tr>
+                <tr>
+                  <td>
+                    Time
+                  </td>
+                  <td>
+                    <input type="time" onChange={ formik.handleChange } id="meetingPyTime" defaultValue={time} />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    player
+                  </td>
+                  <td>
+                    <input type="number" min="2" max="6" onChange={ formik.handleChange } id="meetingPyNum" defaultValue={player} />
+                  </td>
+                </tr>
               </tbody>
             </table>
             <button type="submit">submit</button>
             <button onClick={() => navigate('/meeting')}>cancle</button>
+            <input type="hidden" id="meetingAuthor" value={author}/>
+            <input type="hidden" id="meetingCode" value={code} />
           </form>
         </div>
         

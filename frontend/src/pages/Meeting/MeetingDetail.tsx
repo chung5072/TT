@@ -91,8 +91,18 @@ export default function MeetingDetail() {
               {time}
             </div>
             <div>
+
+              <button>enroll</button>
+            </div>
+            <div>
+              <button>enroll</button>
+            </div>
+            <div>
               <button onClick={() => navigate(`/meeting/edit/${code}`)}>edit</button>
               <button type='submit'>delete</button>
+            </div>
+            <div>
+              <button onClick={() => navigate('/meeting')}>Back</button>
             </div>
           </form>
         </div>

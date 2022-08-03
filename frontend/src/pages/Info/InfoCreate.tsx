@@ -39,11 +39,8 @@ export default function InfoCreate() {
             <label htmlFor="shareContent">Content</label>
             <input id="shareContent" name="shareContent" type="text" onChange={formik.handleChange} value={ formik.values.shareContent} />
 
-            <label htmlFor="shareAuthor">Author</label>
-            <input id="shareAuthor" name="shareAuthor" type="text" onChange={formik.handleChange} value={ formik.values.shareAuthor} />
-
             <button type="submit">Submit</button>
-            <button onClick={() => navigate('/share')}>Back</button>
+            <button onClick={() => navigate('/share')}>Cancle</button>
           </form>
         </div>
         
