@@ -18,9 +18,9 @@ public interface MeetingService {
     MeetingDto readMeeting(long meetingCode);
     // 특정 제목(추가. 내용) 구인 게시글 조회
 
-    // 수정
-    MeetingDto updateMeeting(long meetingCode, MeetingDto meetingDto);
-
     // 삭제
     void deleteMeeting(long meetingCode);
+
+    // 수정
+    MeetingDto updateMeeting(long meetingCode, MeetingDto meetingDto);
 }
