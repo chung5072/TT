@@ -42,15 +42,15 @@ const MeetingList = () => {
         <div id='articles'>
           <div id='search'>
             <div>
-              <button id='serchbtn'>search</button>
+              <button id='search-btn'>search</button>
               <label htmlFor=""></label>
-              <input type="text" />
+              <input id='search-input' type="text" />
             </div>
             <div>
-              <button onClick={() => navigate('/share/create')}>create</button>
+              <button id='create-btn' onClick={() => navigate('/share/create')}>create</button>
             </div>
             <div>
-              <button onClick={() => navigate('/')}>back</button>
+              <button id='back-btn' onClick={() => navigate('/')}>back</button>
             </div>
           </div>
           

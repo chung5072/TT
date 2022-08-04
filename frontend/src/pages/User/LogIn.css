@@ -1,0 +1,74 @@
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#all-login {
+    padding-top: 10%;
+    padding-left: 40%;
+}
+#login-text { 
+    color: #FFC860;
+}
+
+#id-label, #pwd-label {
+    color: #FFC860;
+    margin-top: 10px;
+}
+#id-input, #pwd-input {
+    width: 36%;
+    height: 50px;
+    border-radius: 20px;
+}
+
+#login-button {
+    width: 36%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #FFC860;
+    margin-top: 3%;
+    color: black;
+    font-size: medium;
+    font-weight: bold;
+}
+
+#login-with-text {
+    text-align: center;
+    color: #FFC860;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-weight: bold;
+}
+
+#login-with {
+    display: flex;
+    justify-content: center;
+}
+
+#line {
+    margin-top: 2%;
+    width: 10%;
+}
+
+#login-with-btn {
+    display: flex;
+    justify-content: center;
+}
+
+#login-with-google, #login-with-kakao {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+#find-id-pwd {
+    display: flex;
+    justify-content: center;
+}
+
+#find-id-pwd > p {
+    color: #FFC860;
+    font-weight: bold;
+}
