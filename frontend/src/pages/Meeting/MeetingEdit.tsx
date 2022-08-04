@@ -12,6 +12,15 @@ import { Navigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import './MeetingEdit.css'
 
+type meetingType = {
+  meetingAuthor: string,
+  meetingCode: string,
+  meetingTitle: string,
+  meetingContent: string,
+  meetingPyNum: string,
+  meetingPyTime: string
+}
+
 export default function MeetingEdit() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()

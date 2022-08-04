@@ -71,7 +71,6 @@ export default function MeetingDetail() {
       meetingDeleteRequest('DELETE', `api/meeting/${articleId}`, data)}
   })
 
-
     return (
         <div id='meeting-detail' className='dcontainer'>
           {/* <nav className="menu">
