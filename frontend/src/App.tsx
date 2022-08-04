@@ -5,17 +5,19 @@ import { useAppDispatch } from './app/hooks';
 import { getAccessToken } from './features/user/loginSlice';
 import { useAppSelector } from './app/hooks';
 import { RootState } from './app/store';
+import { setWindowSize } from './features/Game/GameSlice';
 
 
 function App() {
+  useEffect(() => {dispatch(setWindowSize(window.innerWidth))}, [window.innerWidth])
   const token = useAppSelector((state:RootState) => state.login.token)
   const dispatch = useAppDispatch()
-  useEffect(() => {
-    if (token){
-      dispatch(getAccessToken())
-    }
+  // useEffect(() => {
+  //   if (token){
+  //     dispatch(getAccessToken())
+  //   }
    
-  },[token])
+  // },[token])
 
   return (
     <div className="App">

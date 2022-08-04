@@ -7,7 +7,8 @@ import { RootState } from "../../app/store"
 import { setProfileDone } from "../../features/Game/GameSlice"
 import { addChooseLevel, setJobInfo, subtractChooseLevel } from "../../features/Game/ProfileSlice"
 import "./SetProfile.css"
-import { warrior,wizard } from "./ProfileInfoList"
+import { hunter, priest, thief, warrior,wizard } from "./ProfileInfoList"
+import axios from "axios"
 
 export default function SetProfile() {
   const dispatch = useAppDispatch()
@@ -21,6 +22,16 @@ export default function SetProfile() {
     if (job === 'wizard') {
       dispatch(setJobInfo(wizard))
     }
+    if (job === 'hunter') {
+      dispatch(setJobInfo(hunter))
+    }
+    if (job === 'thief') {
+      dispatch(setJobInfo(thief))
+    }
+    if (job === 'priest') {
+      dispatch(setJobInfo(priest))
+    }
+
     
   }
   
@@ -49,37 +60,87 @@ export default function SetProfile() {
       skill3: '',
     
     },
-    validationSchema: Yup.object({
-      playerSpecies: Yup.string()
-      .required('Required'),
-      playerName: Yup.string()
-      .required('Required'),
-      playerLook: Yup.string()
-      .required('Required'),
-      playerValue: Yup.string()
-      .required('Required'),
-      playerWeapon: Yup.string()
-      .required('Required'),
-      playerArmor: Yup.string()
-      .required('Required'),
-      playerstat1: Yup.number()
-      .required('Required'),
-      playerstat2: Yup.number()
-      .required('Required'),
-      playerstat3: Yup.number()
-      .required('Required'),
-      playerstat4: Yup.number()
-      .required('Required'),
-      playerstat5: Yup.number()
-      .required('Required'),
-      playerstat6: Yup.number()
-      .required('Required'),
-      class_name: Yup.string()
-      .required('Required'),
+    // validationSchema: Yup.object({
+    //   playerSpecies: Yup.string()
+    //   .required('Required'),
+    //   playerName: Yup.string()
+    //   .required('Required'),
+    //   playerLook: Yup.string()
+    //   .required('Required'),
+    //   playerValue: Yup.string()
+    //   .required('Required'),
+    //   playerstat1: Yup.number()
+    //   .required('Required'),
+    //   playerstat2: Yup.number()
+    //   .required('Required'),
+    //   playerstat3: Yup.number()
+    //   .required('Required'),
+    //   playerstat4: Yup.number()
+    //   .required('Required'),
+    //   playerstat5: Yup.number()
+    //   .required('Required'),
+    //   playerstat6: Yup.number()
+    //   .required('Required'),
+    //   class_name: Yup.string()
+    //   .required('Required'),
 
      
-    }),
-    onSubmit: (credentials) => {
+    // }),
+    onSubmit: (profile) => {
+      console.log('보내는중')
+      if (profile.class_name === 'warrior') {
+        formik.values.playerHP =10
+        formik.values.skill1 = "피의 향기"
+        formik.values.skill2 = "고유 병기의 종류"
+        formik.values.skill3 = "병기의 영"
+        formik.values.playerWeapon = "평범한 한손 대검"
+      }
+      if (profile.class_name === 'wizard') {
+        formik.values.playerHP =4
+        formik.values.skill1 = "주문강화"
+        formik.values.skill2 = "화염탄"
+        formik.values.skill3 = "마력의 방패"
+        formik.values.playerWeapon = "평범한 완드"
+      }
+      if (profile.class_name === 'hunter') {
+        formik.values.playerHP =8
+        formik.values.skill1 = "암습"
+        formik.values.skill2 = "프로의 솜씨"
+        formik.values.skill3 = "덫 전문가"
+        formik.values.playerWeapon = "평범한 활"
+      }
+      if (profile.class_name === 'hunter') {
+        formik.values.playerHP =8
+        formik.values.skill1 = "정조준"
+        formik.values.skill2 = "야성의 교감"
+        formik.values.skill3 = "더블샷"
+        formik.values.playerWeapon = "평범한 활"
+      }
+      if (profile.class_name === 'thief') {
+        formik.values.playerHP =6
+        formik.values.skill1 = "암습"
+        formik.values.skill2 = "프로의 솜씨"
+        formik.values.skill3 = "덫 전문가"
+        formik.values.playerWeapon = "평범한 단도"
+      }
+      if (profile.class_name === 'priest') {
+        formik.values.playerHP =8
+        formik.values.skill1 = "신 + 탄원"
+        formik.values.skill2 = "치유"
+        formik.values.skill3 = "천벌"
+        formik.values.playerWeapon = "평범한 기도서"
+      }
+      console.log(profile)
+      axios({
+        method: 'POST',
+        url: 'http://localhost:8080/api/player',
+        data: profile
+      })
+      .then( (res) => {
+        console.log(res)
+      }
+
+      )
       dispatch(setProfileDone())
     }}
   )
@@ -190,11 +251,11 @@ export default function SetProfile() {
             {/* Info */}
             <div className={chooseLevel=== -1 ?"on" : "off-btn"} id="job-info">
               <div className="job-info-btn-box">
-                <button onClick={() => selectJobInfo('warrior')} className="job-info-btn">Warrior</button>
-                <button onClick={() => selectJobInfo('wizard')} className="job-info-btn">Wizard</button>
-                <button onClick={() => selectJobInfo('hunter')} className="job-info-btn">Hunter</button>
-                <button onClick={() => selectJobInfo('thief')} className="job-info-btn">Thief</button>
-                <button onClick={() => selectJobInfo('priest')} className="job-info-btn">Priest</button>
+                <button onClick={() => selectJobInfo('warrior')} type="button" className="job-info-btn">Warrior</button>
+                <button onClick={() => selectJobInfo('wizard')} type="button" className="job-info-btn">Wizard</button>
+                <button onClick={() => selectJobInfo('hunter')} type="button" className="job-info-btn">Hunter</button>
+                <button onClick={() => selectJobInfo('thief')} type="button" className="job-info-btn">Thief</button>
+                <button onClick={() => selectJobInfo('priest')}type="button"  className="job-info-btn">Priest</button>
               </div>
               <div className="job-info-hp-box">
                 HP : {jobInfo.hp}
@@ -225,6 +286,9 @@ export default function SetProfile() {
                 </div>
               </div>
             </div>
+            <div className={chooseLevel===3 ?"on" : "off-btn"} id="job-submit">
+              <button type="submit" className="ctrl-btn">Submit</button>
+            </div>
         </form>
 
 
@@ -239,11 +303,13 @@ export default function SetProfile() {
           <div className="nav-bot">
             <button onClick={() => dispatch((subtractChooseLevel()))} className="ctrl-btn">Back</button>
             <button onClick={() => dispatch(addChooseLevel()) } className="ctrl-btn">Next</button>
-          </div> :
+          </div> : chooseLevel === 2?
           <div className="nav-bot">
             <button onClick={() => dispatch((subtractChooseLevel()))} className="ctrl-btn">Back</button>
-            <button type="submit" className="ctrl-btn">Submit</button>
-          </div>}
+            <button onClick={() => dispatch(addChooseLevel()) } className="ctrl-btn">Next</button>
+            
+          </div> :
+          <div><button onClick={() => dispatch((subtractChooseLevel()))} className="ctrl-btn">Back</button></div>}
           
         </div>
         
