@@ -1,20 +1,27 @@
 #meeting-create {
+  background-color: #262626;
   width: 100vw;
-  height: 100vh;
+  height: 200vh;
+}
+
+.container {
   background-color: #262626;
 }
 
 
 .contents {
-  width: 680px;
+  width: 600px;
+  height: 800px;
   margin:0 auto;
   padding: 10px;
+  background-color: #262626;
 }
 
 .contents > h1 {
   color: #d9aa52;
   font-weight: bold;
   text-align: center;
+  background-color: #262626;
 }
 
 .contents .inp {

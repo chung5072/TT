@@ -47,7 +47,7 @@ const MeetingList = () => {
               <input type="text" />
             </div>
             <div>
-              <button onClick={() => navigate('/share/create')}>create</button>
+              <button onClick={() => navigate('/meeting/create')}>create</button>
             </div>
             <div>
               <button onClick={() => navigate('/')}>back</button>

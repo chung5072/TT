@@ -75,7 +75,7 @@ export default function MeetingCreate() {
               <div className="rowgroup">
                 <label className="subtitle" htmlFor="meetingPyTime">Play Time</label>
                 <div className="ininp">
-                  <input className="inp" id="meetingPyTime" name="meetingPyTime" type="time" onChange={formik.handleChange} value={ formik.values.meetingPyTime} />
+                  <input className="inp" id="meetingPyTime" name="meetingPyTime" type="datetime-local" onChange={formik.handleChange} value={ formik.values.meetingPyTime} />
                 </div>
               </div>
               <div className="rowgroup">
@@ -93,7 +93,7 @@ export default function MeetingCreate() {
               </div>
               <div className="btngroup">
                 <button className="btn" type="submit">SUBMIT</button>
-                <button className="btn" onClick={() => navigate('/meeting')}>Cancle</button>
+                {/* <button className="btn" onClick={() => navigate('/meeting')}>Cancle</button> */}
               </div>
             </form>
           </div>

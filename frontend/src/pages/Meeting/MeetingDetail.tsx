@@ -7,6 +7,8 @@ import { getMeetingDetail }  from '../../features/meeting/meetingSlice';
 import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
+import './MeetingDetail.css'
+import { Link } from 'react-router-dom';
 
 
 export default function MeetingDetail() {
@@ -69,42 +71,84 @@ export default function MeetingDetail() {
       meetingDeleteRequest('DELETE', `api/meeting/${articleId}`, data)}
   })
 
-    return (
-        <div>
-          <h1>MeetingDetail</h1>
-          <form action="" onSubmit={formik.handleSubmit}>
-            <div>
-              <h3>
-                {title}
-              </h3>
-            </div>
-            <div>
-              {author}
-            </div>
-            <div>
-              {content}
-            </div>
-            <div>
-              {player}
-            </div>
-            <div>
-              {time}
-            </div>
-            <div>
 
-              <button>enroll</button>
+    return (
+        <div id='meeting-detail' className='dcontainer'>
+          {/* <nav className="menu">
+            <div className="logo">
+              <Link to='/'>home</Link>
             </div>
-            <div>
-              <button>enroll</button>
-            </div>
-            <div>
-              <button onClick={() => navigate(`/meeting/edit/${code}`)}>edit</button>
-              <button type='submit'>delete</button>
-            </div>
-            <div>
-              <button onClick={() => navigate('/meeting')}>Back</button>
-            </div>
-          </form>
+            <ul>
+              <li>
+                <Link className="commu" to='/notice'>notice</Link>
+              </li>
+              <li>
+                <Link className="commu" to='/meeting'>meeting</Link>
+              </li>
+              <li>
+                <Link className="commu" to='/share'>information</Link>
+              </li>
+              <li>
+                <a onClick={() => navigate(`/profile/${userId}`)}>profile</a>
+              </li>
+            </ul>
+          </nav> */}
+          <div>           
+            <form action="" onSubmit={formik.handleSubmit}>
+                <div className='dcontents'>
+                  <div className='backbtn'>
+                    <button className='bbtn' onClick={() => navigate('/meeting')}>Back</button>
+                  </div>
+                  <div className='headtitle'>
+                    {title}
+                  </div>
+                  <div className='drowgroup'>
+                    <label className='dsubtitle' htmlFor="meetingAuthor">POSTED BY</label>
+                    <div className='dinp'>
+                      {author}
+                    </div>
+                  </div>
+                  <div className='drowgroup'>
+                    <label className='dsubtitle' htmlFor="meetingPyTime">PLAY TIME</label>
+                    <div className='dinp'>
+                      {time}
+                    </div>
+                  </div>
+                  <div className='drowgroup'>
+                    <label className='dsubtitle' htmlFor="meetingPyNum">PLAYER NUMBER</label>
+                    <div className='dinp'>
+                      {player}
+                    </div>
+                  </div>
+                  <div className='drowgroup'>
+                    <label className='dsubtitle' htmlFor="meetingContent">CONTENT</label>
+                    <div className='dinp'>
+                      {content}
+                    </div>
+                  </div>
+                  <div className='positiongroup'>
+                    <div className='pygroup'>
+                      <label className='pysubtitle' htmlFor="">GM</label>
+                      <div className='player'>
+                      </div>
+                      <button className='enroll'>enroll</button>
+                    </div>
+                    <div className='pygroup'>
+                      <label className='pysubtitle' htmlFor="">Player</label>
+                      <div className='player'>
+                        <p>player1</p>
+                        <p>player2</p>
+                      </div>
+                      <button className='enroll'>enroll</button>
+                    </div>
+                  </div>
+                  <div className='dbtngroup'>
+                    <button className='dbtn' onClick={() => navigate(`/meeting/edit/${code}`)}>edit</button>
+                    <button className='dbtn' type='submit'>delete</button>
+                  </div>
+                </div>
+            </form>
+          </div>
         </div>
         
     )

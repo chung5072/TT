@@ -1,0 +1,112 @@
+#meeting-edit {
+    background-color: #262626;
+    width: 100vw;
+    height: 150vh;
+  }
+
+.econtainer {
+    background-color: #262626;
+}
+  
+  
+  .econtents {
+    width: 600px;
+    height: 800px;
+    margin:0 auto;
+    padding: 10px;
+    background-color: #262626;
+  }
+  
+  .econtents > h1 {
+    color: #d9aa52;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .econtents .einp {
+    width: 99%;
+    height: 40px;
+    margin-top: 5px;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .econtents .etxtarea {
+    width: 97%;
+    height: 300px;
+    margin-top: 5px;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 20px;
+  }
+  
+  .econtents .erowgroup {
+    margin-top: 7px;
+  }
+  
+  .econtents .esubtitle {
+    color: #d9aa52;
+    font-size: 20px;
+    margin-left: 15px;
+  }
+  
+  /* .econtents .eradiogroup {
+    margin-left: 20px;
+  }
+  
+  .eradiogroup .echoice {
+    color: #d9aa52;
+    font-size: 25px;
+  }
+   */
+  .econtents .ebtngroup {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    margin-top: 5px;
+  }
+  
+  .ebtngroup .ebtn {
+    width: 100%;
+    height: 50px;
+    border-radius: 20px;
+    color: #d9aa52;
+    margin: 5px 0px;
+  }
+  
+  .eininp {
+    width: 100%;
+  }
+  
+  .menu {
+    width: 100%;
+    height: 70px;
+  }
+  
+  .menu > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    float: right;
+  }
+  
+  .menu > ul:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  
+  .menu > ul > li {
+    margin: 0 10px;
+    padding: 0;
+    border: 0;
+    float: left;
+  }
+  
+  
+  .commu {
+    text-decoration: none;
+    color: #d9aa52
+  }
