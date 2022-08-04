@@ -2,6 +2,7 @@ package com.tt9ood.api.service;
 
 import com.tt9ood.api.dto.ShareDto;
 import com.tt9ood.db.entity.Share;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,5 +14,7 @@ public interface ShareService {
     void updateShare(Long shareCode, ShareDto.Request dto);
 
     List<ShareDto.Response> readAllShare();
+
+    int updateView(Long shareCode);
 
 }
