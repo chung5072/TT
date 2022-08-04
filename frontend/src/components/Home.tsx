@@ -9,13 +9,14 @@ export default function Home() {
   const isLoggedIn = useSelector((state:RootState) => state.login.isLoggedIn)
   const token = useSelector((state:RootState) => state.login.token)
   const currentUser = useSelector((state:RootState) => state.login.currentUser)
+  const userCode = useSelector((state:RootState) => state.user.userCode)
   const dispatch = useAppDispatch()
   const logoutRequest: any = () => {
     dispatch(removeToken())
   }
     return (
         <div id="home"  className="container">
-          {/* <h1>{isLoggedIn} {currentUser} {token}</h1> */}
+          <h1>{userCode}</h1>
           <div id="home-1" className="home1">
           <div className="imglogo"><img className="logo" src="/dice.png" alt="dice" /></div>
               {token === '' ? <span><Link className="menu" to="/login">Login</Link><Link className="menu" to="/signup">SignUp</Link></span> : <span><span className="logout" onClick={logoutRequest}>Logout</span><Link className="profile" to={`/profile/${currentUser}`}>Profile</Link></span>}

@@ -4,6 +4,7 @@ import com.tt9ood.api.dto.ShareDto;
 import com.tt9ood.api.service.ShareService;
 import com.tt9ood.common.model.response.BaseResponseBody;
 import com.tt9ood.db.entity.Share;
+import com.tt9ood.db.repository.ShareRepository;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -93,6 +95,12 @@ public class ShareController {
     })
     public List<ShareDto.Response> readAllShare(){
         return shareService.readAllShare();
+    }
+
+    @GetMapping("/share/read/{shareCode}")
+    public String read(@PathVariable Long shareCode, Model model){
+        model.addAttribute("shareView", shareService.updateView(shareCode));
+        return "share";
     }
 
 
