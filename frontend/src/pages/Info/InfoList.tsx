@@ -30,6 +30,7 @@ const InfoList = () => {
         url: "http://localhost:8080/api/share"
       })
         .then((res) => {
+          console.log(shareList)
           setList(res.data)
           //dispatch(getArticleList(res.data))
           // console.log(res.data)

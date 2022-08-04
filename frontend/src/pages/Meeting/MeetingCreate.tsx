@@ -23,6 +23,7 @@ export default function MeetingCreate() {
     })
     .then(res => {
         console.log(res.data)
+        
       })
       .catch(err => {
         console.error(err.response.data)
@@ -35,6 +36,7 @@ export default function MeetingCreate() {
 
   })
 
+  
 
     return (
         <div id="meeting-create" className="container">
