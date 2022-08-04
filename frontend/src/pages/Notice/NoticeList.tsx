@@ -9,15 +9,15 @@ export default function NoticeList() {
             <div id='articles'>
               <div id='search'>
                 <div>
-                  <button id='serchbtn'>search</button>
+                  <button id='search-btn'>search</button>
                   <label htmlFor=""></label>
-                  <input type="text" />
+                  <input id='search-input' type="text" />
                 </div>
                 <div>
-                  <button>create</button>
+                  <button id='create-btn'>create</button>
                 </div>
                 <div>
-                  <button>back</button>
+                  <button id='back-btn'>back</button>
                 </div>
               </div>
               
@@ -31,7 +31,7 @@ export default function NoticeList() {
                   <tr className='article'>
                     <td>1</td>
                     <th>
-                      <a href="">서울8반 9조 프론트 화이팅!</a>
+                      <a href="/###">서울8반 9조 프론트 화이팅!</a>
                     </th>
                     <td>베컴</td>
                   </tr>
