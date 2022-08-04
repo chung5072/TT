@@ -9,6 +9,8 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { getMeetingDetail }  from '../../features/meeting/meetingSlice';
 import { Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import './MeetingEdit.css'
 
 export default function MeetingEdit() {
   const dispatch = useAppDispatch()
@@ -36,6 +38,7 @@ export default function MeetingEdit() {
   const code = useSelector((state:RootState) => state.meeting.meetingCode)
   const player = useSelector((state:RootState) => state.meeting.meetingPyNum)
   const time = useSelector((state:RootState) => state.meeting.meetingPyTime)
+  // const position = useSelector((state:RootState) => state.meeting.meetingPosition)
 
 
 
@@ -50,6 +53,7 @@ export default function MeetingEdit() {
         meetingAuthor: author,
         meetingPyNum: player,
         meetingPyTime: time,
+        // meetingPosition: position
       },
     })
       .then(res => {
@@ -62,7 +66,7 @@ export default function MeetingEdit() {
   }
 
   const formik = useFormik({
-    initialValues: {meetingCode:articleId, meetingTitle: title, meetingContent: content, meetingPyNum: player, meetingPyTime: time, meetingAuthor: author  },
+    initialValues: {meetingCode:articleId, meetingTitle: title, meetingContent: content, meetingPyNum: player, meetingPyTime: time, meetingAuthor: author, },
     onSubmit: (data) => {
       console.log(data)
       meetingEditRequest('PUT', `api/meeting/${articleId}`, data)}
@@ -70,51 +74,60 @@ export default function MeetingEdit() {
 
 
   return (
-        <div>
-          <h1>MeetingEdit</h1>
-          <form action="" onSubmit={ formik.handleSubmit }>
-            <table>
-              <thead></thead>
-              <tbody>
-                <tr>
-                  <td>
-                    Title
-                  </td>
-                  <td>
-                    <input type="text" onChange={ formik.handleChange } id="meetingTitle" defaultValue={title} />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Content
-                  </td>
-                  <td>
-                    <input type="text" onChange={ formik.handleChange } id="meetingContent" defaultValue={content} />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Time
-                  </td>
-                  <td>
-                    <input type="time" onChange={ formik.handleChange } id="meetingPyTime" defaultValue={time} />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    player
-                  </td>
-                  <td>
-                    <input type="number" min="2" max="6" onChange={ formik.handleChange } id="meetingPyNum" defaultValue={player} />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <button type="submit">submit</button>
-            <button onClick={() => navigate('/meeting')}>cancle</button>
-            <input type="hidden" id="meetingAuthor" value={author}/>
-            <input type="hidden" id="meetingCode" value={code} />
-          </form>
+        <div id='meeting-edit' className='econtainer'>
+          <nav className="menu">
+            <div className="logo">
+              <Link to='/'>home</Link>
+            </div>
+            <ul>
+              <li>
+                <Link className="commu" to='/notice'>notice</Link>
+              </li>
+              <li>
+                <Link className="commu" to='/meeting'>meeting</Link>
+              </li>
+              <li>
+                <Link className="commu" to='/share'>information</Link>
+              </li>
+              <li>
+                {/* <a onClick={() => navigate(`/profile/${userId}`)}>profile</a> */}
+              </li>
+            </ul>
+          </nav>
+          <div className='econtents'>
+            <h1>MeetingEdit</h1>
+            <form action="" onSubmit={ formik.handleSubmit }>
+              <div className='erowgroup'>
+                <label className='esubtitle' htmlFor="meetingTitle">Title</label>
+                <div className='einpgroup'>
+                  <input className='einp' type="text" onChange={ formik.handleChange } id="meetingTitle" defaultValue={title} />
+                </div>
+              </div>
+                <div className='erowgroup'>
+                  <label className='esubtitle' htmlFor="meetingPyNum">Player Number</label>
+                  <div className='einpgroup'>
+                    <input className='einp' type="number" min="2" max="6" onChange={ formik.handleChange } id="meetingPyNum" defaultValue={player} />
+                  </div>
+                </div>
+                <div className='erowgroup'>
+                  <label className='esubtitle' htmlFor="meetingTime">Play Time</label>
+                  <div className='einpgroup'>
+                    <input className='einp' type="time" onChange={ formik.handleChange } id="meetingPyTime" defaultValue={time} />
+                  </div>
+                </div>
+                <div className='erowgroup'>
+                  <label className='esubtitle' htmlFor="meetingContent">Content</label>
+                  <div className='einpgroup'>
+                    <textarea className='etxtarea' onChange={ formik.handleChange } id="meetingContent" defaultValue={content} />
+                  </div>
+                </div>
+              <div className='ebtngroup'>
+                <button className='ebtn' type="submit">SUBMIT</button>
+              </div>
+              <input type="hidden" id="meetingAuthor" value={author}/>
+              <input type="hidden" id="meetingCode" value={code} />
+            </form>
+          </div>
         </div>
         
     )
