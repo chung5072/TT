@@ -2,7 +2,7 @@ import { useFormik } from "formik"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import * as Yup from 'yup'
-import { useAppDispatch } from "../../app/hooks"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { RootState } from "../../app/store"
 import { setProfileDone } from "../../features/Game/GameSlice"
 import { addChooseLevel, setJobInfo, subtractChooseLevel } from "../../features/Game/ProfileSlice"
@@ -15,6 +15,7 @@ export default function SetProfile() {
   const chooseLevel = useSelector((state: RootState) => state.profile.chooseLevel)
   const profileDone = useSelector((state:RootState) => state.game.profileDone)
   const jobInfo = useSelector((state:RootState) => state.profile.jobInfo)
+  const userCode = useAppSelector((state:RootState) => state.user.userCode)
   const selectJobInfo = (job:string) => {
     if (job === 'warrior') {
       dispatch(setJobInfo(warrior))
@@ -37,11 +38,11 @@ export default function SetProfile() {
   
   const formik = useFormik({
     initialValues: {
-      playerUserCode: 0,
+      playerUserCode: userCode ,
       playerSpecies: '',
       playerName: '',
       playerLook: '',
-      playerValue: '',
+      playerValue: 'good',
       playerWeapon: '',
       playerArmor: '',
       playerHP: 0,
@@ -60,32 +61,36 @@ export default function SetProfile() {
       skill3: '',
     
     },
-    // validationSchema: Yup.object({
-    //   playerSpecies: Yup.string()
-    //   .required('Required'),
-    //   playerName: Yup.string()
-    //   .required('Required'),
-    //   playerLook: Yup.string()
-    //   .required('Required'),
-    //   playerValue: Yup.string()
-    //   .required('Required'),
-    //   playerstat1: Yup.number()
-    //   .required('Required'),
-    //   playerstat2: Yup.number()
-    //   .required('Required'),
-    //   playerstat3: Yup.number()
-    //   .required('Required'),
-    //   playerstat4: Yup.number()
-    //   .required('Required'),
-    //   playerstat5: Yup.number()
-    //   .required('Required'),
-    //   playerstat6: Yup.number()
-    //   .required('Required'),
-    //   class_name: Yup.string()
-    //   .required('Required'),
+    validationSchema: Yup.object({
+      // playerSpecies: Yup.string()
+      // .required('Required'),
+      // playerName: Yup.string()
+      // .required('Required'),
+      playerLook: Yup.string()
+      .required('Required'),
+      playerstat1: Yup.number()
+      .required('Required')
+      .min(3),
+      playerstat2: Yup.number()
+      .required('Required')
+      .min(3),
+      playerstat3: Yup.number()
+      .required('Required')
+      .min(3),
+      playerstat4: Yup.number()
+      .required('Required')
+      .min(3),
+      playerstat5: Yup.number()
+      .required('Required')
+      .min(3),
+      playerstat6: Yup.number()
+      .required('Required')
+      .min(3),
+      class_name: Yup.string()
+      .required('Required'),
 
      
-    // }),
+    }),
     onSubmit: (profile) => {
       console.log('보내는중')
       if (profile.class_name === 'warrior') {
