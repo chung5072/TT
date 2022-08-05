@@ -12,6 +12,7 @@ import { isFocusable } from '@testing-library/user-event/dist/types/utils';
 import { useNavigate } from 'react-router-dom';
 import '../BoardList.css'
 
+
 // const DOMAIN = "http://localhost:8080/"
 const InfoList = () => {
   
@@ -30,7 +31,7 @@ const InfoList = () => {
         url: "http://localhost:8080/api/share"
       })
         .then((res) => {
-          console.log(shareList)
+          // console.log(shareList)
           setList(res.data)
           //dispatch(getArticleList(res.data))
           // console.log(res.data)
@@ -39,6 +40,13 @@ const InfoList = () => {
           console.error(err.response.data)
         }) 
   }, [])
+
+
+  const [limit, setLimit] = useState(10)
+  const [page, setPage] = useState(1)
+  const offset = (page - 1) * limit
+
+
 
   const navigate = useNavigate()
   // const list = useSelector((state:RootState) => state.info.shareList)
@@ -64,9 +72,11 @@ const InfoList = () => {
           
           <table className='board-table'>
             <thead>
+              <tr>
                 <th scope="col" id='number'>NUMBER</th>
                 <th scope="col" id='title'>TITLE</th>
                 <th scope="col" id='name'>NAME</th>
+              </tr>
             </thead>
             <tbody>
           {shareList.map((share, idx) => {
@@ -88,7 +98,6 @@ const InfoList = () => {
         <div>
           <button onClick={() => navigate('/')}>back</button>
         </div>
-        
       </div>
       
   )

@@ -23,7 +23,7 @@ export default function MeetingCreate() {
     })
     .then(res => {
         console.log(res.data)
-        
+        navigate('/meeting')
       })
       .catch(err => {
         console.error(err.response.data)
@@ -40,7 +40,7 @@ export default function MeetingCreate() {
 
     return (
         <div id="meeting-create" className="container">
-          <nav className="menu">
+          {/* <nav className="menu">
             <div className="logo">
               <Link to='/'>home</Link>
             </div>
@@ -58,7 +58,7 @@ export default function MeetingCreate() {
                 <a onClick={() => navigate(`/profile/${userId}`)}>profile</a>
               </li>
             </ul>
-          </nav>
+          </nav> */}
           <div className="contents">
             <h1>MeetingCreate</h1>
             <form action="" onSubmit={ formik.handleSubmit }>

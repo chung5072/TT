@@ -4,6 +4,7 @@ import { request } from '../../utils/axios'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom';
 import { getMeetingDetail }  from '../../features/meeting/meetingSlice';
+import { fetchProfile } from '../../features/user/userSlice';
 import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
@@ -15,14 +16,50 @@ export default function MeetingDetail() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   let articleId = useParams().articleId
+  let startTime = useSelector((state:RootState) => state.meeting.meetingGameIsStart)
+  let userId = useParams().userId
+
+  const playerUser = []
   
-  function onClickUpdScrn() {
-    window.location.replace("/meeting/edit/" + `${articleId}`)
+
+  // 1. userId 찾는법
+  // 2. 배열 형태가 {GM, [player1,2,3,...]}? {[  ]} 
+
+
+  // 버튼 누르면 그 유저의 아이디를 배열에 저장
+  
+  const enrollGm = () => {
+    const playerGm = userId  
   }
 
-  const onClickDeleteBtn = () => {
-    return axios.delete(`api/meeting/${articleId}`)
-  }
+    const enrollPy = () => {
+      playerUser.push(userId)
+    }
+
+
+    
+    //서버에 post로 요청 보내기
+    const roomInfoRequest: any= (method: string, url: string, data: object) => {
+      return axios({
+        method,
+        url: DOMAIN + url,
+        data: data
+      })
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
+    }
+    
+  // const submitRoomInfo = (data) => {
+    
+  // }
+  
+  
+
+
 
   const DOMAIN = "http://localhost:8080/"
 
@@ -63,6 +100,12 @@ export default function MeetingDetail() {
   const player = useSelector((state:RootState) => state.meeting.meetingPyNum)
   const time = useSelector((state:RootState) => state.meeting.meetingPyTime)
   const code = useSelector((state:RootState) => state.meeting.meetingCode)
+  // const userId = useSelector((state:RootState) => state.user.userId)
+
+  //입장시간 나타내는 함수
+  setTimeout(function() {
+    startTime = true;
+  }, 3000)
 
   const formik = useFormik({
     initialValues: {meetingCode:articleId},
@@ -130,7 +173,7 @@ export default function MeetingDetail() {
                       <label className='pysubtitle' htmlFor="">GM</label>
                       <div className='player'>
                       </div>
-                      <button className='enroll'>enroll</button>
+                      <button className='enroll' onClick={(userId) => enrollGm()}>enroll</button>
                     </div>
                     <div className='pygroup'>
                       <label className='pysubtitle' htmlFor="">Player</label>
@@ -138,13 +181,18 @@ export default function MeetingDetail() {
                         <p>player1</p>
                         <p>player2</p>
                       </div>
-                      <button className='enroll'>enroll</button>
+                      <button className='enroll' onClick={(userId) => enrollPy()}>enroll</button>
                     </div>
                   </div>
                   <div className='dbtngroup'>
                     <button className='dbtn' onClick={() => navigate(`/meeting/edit/${code}`)}>edit</button>
                     <button className='dbtn' type='submit'>delete</button>
                   </div>
+                  {startTime &&
+                    <div>
+                      <button>입장하기</button>
+                    </div>
+                  }
                 </div>
             </form>
           </div>
