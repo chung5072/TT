@@ -62,7 +62,7 @@ export default function InfoEdit() {
   }
 
   const formik = useFormik({
-    initialValues: {shareCode:articleId, shareTitle: title, shareContent: content, shareAuthor:author},
+    initialValues: {shareCode:articleId, shareTitle: title, shareContent: content},
     onSubmit: (data) => {
       console.log(data)
       shareEditRequest('PUT', `api/share/${articleId}`, data)}
