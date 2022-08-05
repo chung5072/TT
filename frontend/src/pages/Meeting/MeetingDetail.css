@@ -11,7 +11,7 @@
     width: 30%;
     height: 100vh;
     margin: 0 auto;
-    padding: 10x;
+    padding: 10px;
     flex-wrap: wrap;
     justify-content: center space-between;
 }
@@ -94,6 +94,7 @@
     width: 90%;
     height: 18%;
     border-radius: 20px;
+    color:#d9aa52
 }
 
 .dcontents .btngroup {
