@@ -53,9 +53,11 @@ const NoticeList = () => {
           
           <table className='board-table'>
             <thead>
+              <tr>
                 <th scope="col" id='number'>NUMBER</th>
                 <th scope="col" id='title'>TITLE</th>
                 <th scope="col" id='name'>NAME</th>
+              </tr>
             </thead>
             <tbody>
           {noticeList.map((notice, idx) => {
