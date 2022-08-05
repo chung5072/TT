@@ -230,7 +230,7 @@ public class MeetingServiceImpl implements MeetingService {
     }
 
     private LocalDateTime stringToLocal(String inputTime) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         LocalDateTime dateTime = LocalDateTime.parse(inputTime, formatter);
         return dateTime;
     }
