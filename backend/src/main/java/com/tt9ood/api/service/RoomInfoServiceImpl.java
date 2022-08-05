@@ -1,6 +1,7 @@
 package com.tt9ood.api.service;
 
 import com.tt9ood.api.dto.MeetingDto;
+import com.tt9ood.api.dto.RoomInfoDto;
 import com.tt9ood.db.entity.RoomInfo;
 import com.tt9ood.db.repository.RoomInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,5 +94,23 @@ public class RoomInfoServiceImpl implements RoomInfoService {
         }
 
         return findRoomInfo;
+    }
+
+    @Override
+    public RoomInfoDto readRoomInfo(long roomCode) {
+        RoomInfoDto roomInfoDto=new RoomInfoDto();
+        Optional<RoomInfo> byId=roomInfoRepository.findById(roomCode);
+        if(byId!=null){
+            RoomInfo roomInfo=byId.get();
+            roomInfoDto.setGmUserCode(roomInfo.getGmUserCode());
+            roomInfoDto.setPy1Code(roomInfo.getPy1Code());
+            roomInfoDto.setPy2Code(roomInfo.getPy2Code());
+            roomInfoDto.setPy3Code(roomInfo.getPy3Code());
+            roomInfoDto.setPy4Code(roomInfo.getPy4Code());
+            roomInfoDto.setPy5Code(roomInfo.getPy5Code());
+
+            return roomInfoDto;
+        }
+        return null;
     }
 }

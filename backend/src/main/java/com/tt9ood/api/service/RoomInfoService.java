@@ -1,6 +1,7 @@
 package com.tt9ood.api.service;
 
 import com.tt9ood.api.dto.MeetingDto;
+import com.tt9ood.api.dto.RoomInfoDto;
 import com.tt9ood.db.entity.RoomInfo;
 
 public interface RoomInfoService {
@@ -10,4 +11,6 @@ public interface RoomInfoService {
     void deleteRoomInfo(long roomInfoCode);
     // 수정
     RoomInfo updateRoomInfo(long roomInfoCode, MeetingDto meetingDto);
+
+    RoomInfoDto readRoomInfo(long roomCode);
 }
