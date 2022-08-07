@@ -8,6 +8,7 @@ import { useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
 import { Formik, useFormik } from 'formik';
+import '../ArticleDetail.css'
 
 export default function NoticeDetail() {
   const dispatch = useAppDispatch()
@@ -63,25 +64,36 @@ const formik = useFormik({
   
   console.log(content)
     return (
-        <div>
-          <h1>NoticeDetail</h1>
-          <form action="" onSubmit={formik.handleSubmit}>
-            <div>
-              <h3>
-                {title}
-              </h3>
-            </div>
-            <div>
-              {author}
-            </div>
-            <div>
-              {content}
-            </div>
-            <div>
-              <button onClick={onClickUpdScrn}>edit</button>
-              <button type='submit'>delete</button>
-            </div>
-          </form>
+<div id='detail'>
+          <div className='detail-container'>
+            <h1 className='detail-title'>{title}</h1>
+            <form action="" onSubmit={formik.handleSubmit}>
+              <div className='author-views'>
+                <div className='postedby'>
+                  <label className='author-tag' htmlFor="shareAuthor">POSTED BY | </label>
+                  <div className='author-name'>
+                    {author}
+                  </div>
+                </div>
+                {/* <div className='views'>
+                  <label className='view-tag' htmlFor="shareView">VIEWS | </label>
+                  <div className='view-cnt'>
+                    {view}
+                  </div>
+                </div> */}
+              </div>
+              <div className='detail-rows'>
+                <div className='content-part'>
+                  {content}
+                </div>
+              </div>
+              <div className='detail-btn-group'>
+                <button className='detail-btn' onClick={onClickUpdScrn}>edit</button>
+                <button className='detail-btn' type='submit'>delete</button>
+              </div>
+              <hr className='comment-hr'/>
+            </form>
+          </div>
         </div>
         
     )

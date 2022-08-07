@@ -2,6 +2,9 @@ import React from 'react'
 import { useFormik } from 'formik'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import * as Yup from 'yup'
+import '../ArticleCreate.css'
+
 
 export default function NoticeCreate() {
   const DOMAIN = "http://localhost:8080/"
@@ -24,23 +27,47 @@ export default function NoticeCreate() {
 
   const formik = useFormik({
     initialValues: {noticeTitle:'', noticeContent: '', noticeAuthor:''},
+    validationSchema: Yup.object({
+      noticeTitle: Yup.string()
+        .required('제목을 입력해주세요.')
+        .max(30, '30자를 초과할 수 없습니다.'),
+
+      noticeContent: Yup.string()
+        .required('내용을 입력해주세요.')
+        .max(1000, '1000자를 초과할 수 없습니다.')
+    }),
     onSubmit: (data) => {noticeRegisterRequest('POST', 'api/notice', data)}
   })
 
     return (
-        <div>
+      <div id='create'>
+      <div className='create-container'>
           <h1>NoticeCreate</h1>
-          <form action="" onSubmit={ formik.handleSubmit }>
-            <label htmlFor='noticeTitle'>Title</label>
-            <input id='noticeTitle' name='noticeTitle' type='text' onChange={formik.handleChange} value={formik.values.noticeTitle} />
-
-            <label htmlFor="noticeContent">Content</label>
-            <input id="noticeContent" name="noticeContent" type="text" onChange={formik.handleChange} value={ formik.values.noticeContent} />
-
-            <button type="submit">Submit</button>
-            {/* <button onClick={() => navigate('/notice')}>Cancle</button> */}
-          </form>
-        </div>
+        <form action="" onSubmit={ formik.handleSubmit }>
+          <div className='rows'>
+            <label className='mini-title' htmlFor='noticeTitle'>Title</label>
+            <div className='inp-group'>
+              <input className='inp-tags' name='noticeTitle' type='text' onChange={formik.handleChange} value={formik.values.noticeTitle} />
+              {formik.touched.noticeTitle && formik.errors.noticeTitle ? (
+                <div className='error-message'>{formik.errors.noticeTitle}</div>
+              ) : null}
+            </div>           
+          </div>
+          <div className='rows'>
+            <label className='mini-title' htmlFor="noticeContent">Content</label>
+            <div className='inp-group'>
+              <textarea className='txtarea-tags' name="noticeContent" onChange={formik.handleChange} value={ formik.values.noticeContent} />
+              {formik.touched.noticeContent && formik.errors.noticeContent ? (
+                <div className='error-message'>{formik.errors.noticeContent}</div>
+              ) : null}
+            </div>
+          </div>
+          <div className='btn-group'>
+            <button className='btn-tags' type="submit" >Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
         
     )
 }

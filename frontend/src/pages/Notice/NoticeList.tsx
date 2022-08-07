@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import '../BoardList.css'
 import { Link } from 'react-router-dom';
 
+
 const NoticeList = () => {
   const DOMAIN = 'http://localhost:8080/'
   const navigate = useNavigate()
@@ -39,15 +40,15 @@ const NoticeList = () => {
         <div id='articles'>
           <div id='search'>
             <div>
-              <button id='serchbtn'>search</button>
+              <button id='search-btn'>search</button>
               <label htmlFor=""></label>
-              <input type="text" />
+              <input id='search-input' type="text" />
             </div>
             <div>
-              <button onClick={() => navigate('/notice/create')}>create</button>
+              <button id='create-btn' onClick={() => navigate('/notice/create')}>create</button>
             </div>
             <div>
-              <button onClick={() => navigate('/')}>back</button>
+              <button id='back-btn' onClick={() => navigate('/')}>back</button>
             </div>
           </div>
           

@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { getMeetingDetail }  from '../../features/meeting/meetingSlice';
 import { Navigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import './MeetingEdit.css'
+import '../ArticleCreate.css'
 
 type meetingType = {
   meetingAuthor: string,
@@ -83,58 +83,48 @@ export default function MeetingEdit() {
 
 
   return (
-        <div id='meeting-edit' className='econtainer'>
-          <nav className="menu">
-            <div className="logo">
-              <Link to='/'>home</Link>
-            </div>
-            <ul>
-              <li>
-                <Link className="commu" to='/notice'>notice</Link>
-              </li>
-              <li>
-                <Link className="commu" to='/meeting'>meeting</Link>
-              </li>
-              <li>
-                <Link className="commu" to='/share'>information</Link>
-              </li>
-              <li>
-                {/* <a onClick={() => navigate(`/profile/${userId}`)}>profile</a> */}
-              </li>
-            </ul>
-          </nav>
-          <div className='econtents'>
+        <div id='edit'>
+          <div className='create-container'>
             <h1>MeetingEdit</h1>
             <form action="" onSubmit={ formik.handleSubmit }>
-              <div className='erowgroup'>
-                <label className='esubtitle' htmlFor="meetingTitle">Title</label>
-                <div className='einpgroup'>
-                  <input className='einp' type="text" onChange={ formik.handleChange } id="meetingTitle" defaultValue={title} />
+              <div className='rows'>
+                <label className='mini-title' htmlFor="meetingTitle">Title</label>
+                <div className='inp-group'>
+                  <input className='inp-tags' type="text" onChange={ formik.handleChange } id="meetingTitle" defaultValue={title} />
                 </div>
               </div>
-                <div className='erowgroup'>
-                  <label className='esubtitle' htmlFor="meetingPyNum">Player Number</label>
-                  <div className='einpgroup'>
-                    <input className='einp' type="number" min="2" max="6" onChange={ formik.handleChange } id="meetingPyNum" defaultValue={player} />
+                <div className='rows'>
+                  <label className='mini-title' htmlFor="meetingPyNum">Player Number</label>
+                  <div className='inp-group'>
+                    <input className='inp-tags' type="number" min="2" max="6" onChange={ formik.handleChange } id="meetingPyNum" defaultValue={player} />
                   </div>
                 </div>
-                <div className='erowgroup'>
-                  <label className='esubtitle' htmlFor="meetingTime">Play Time</label>
-                  <div className='einpgroup'>
-                    <input className='einp' type="time" onChange={ formik.handleChange } id="meetingPyTime" defaultValue={time} />
+                <div className='rows'>
+                  <label className='mini-title' htmlFor="meetingTime">Play Time</label>
+                  <div className='inp-group'>
+                    <input className='inp-tags' type="time" onChange={ formik.handleChange } id="meetingPyTime" defaultValue={time} />
                   </div>
                 </div>
-                <div className='erowgroup'>
-                  <label className='esubtitle' htmlFor="meetingContent">Content</label>
-                  <div className='einpgroup'>
-                    <textarea className='etxtarea' onChange={ formik.handleChange } id="meetingContent" defaultValue={content} />
+                <div className="rows">
+                <label className="mini-title" htmlFor="meetingPosition">Position</label>
+                <div className="radio-group">
+                  <div className="position-choice">
+                    <input id="gamePlayer" type="radio" name="position" /><label htmlFor="gameMaster" className="choice">GM</label>
+                  </div>
+                  <div className="position-choice">
+                    <input id="gamePlayer" type="radio" name="position" /><label htmlFor="gamePlayer" className="choice">Player</label>
                   </div>
                 </div>
-              <div className='ebtngroup'>
-                <button className='ebtn' type="submit">SUBMIT</button>
               </div>
-              <input type="hidden" id="meetingAuthor" value={author}/>
-              <input type="hidden" id="meetingCode" value={code} />
+                <div className='rows'>
+                  <label className='mini-title' htmlFor="meetingContent">Content</label>
+                  <div className='inp-group'>
+                    <textarea className='txtarea-tags' onChange={ formik.handleChange } id="meetingContent" defaultValue={content} />
+                  </div>
+                </div>
+              <div className='btn-group'>
+                <button className='btn-tags' type="submit">SUBMIT</button>
+              </div>
             </form>
           </div>
         </div>

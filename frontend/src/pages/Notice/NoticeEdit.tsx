@@ -7,6 +7,8 @@ import { useAppDispatch } from '../../app/hooks'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { getNoticeDetail } from '../../features/notice/noticeSlice'
+import '../ArticleCreate.css'
+import * as Yup from 'yup'
 
 
 export default function NoticeEdit() {
@@ -64,36 +66,35 @@ const formik = useFormik({
 })
 
     return (
-        <div>
-          <h1>NoticeEdit</h1>
-          <form action="" onSubmit={formik.handleSubmit}>
-            <table>
-              <thead></thead>
-              <tbody>
-              <tr>
-                <td>
-                  Title
-                </td>
-                <td>
-                  <input type="text" onChange={formik.handleChange} id="noticeTitle" defaultValue={title} />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Content
-                </td>
-                <td>
-                  <input type="text" onChange={formik.handleChange} id="noticeContent" defaultValue={content} />
-                </td>
-              </tr>
-              </tbody>
-            </table>
-              <button type="submit">submit</button>
-              <button onClick={() => navigate('/notice')}>cancle</button>
-              <input type="hidden" id="noticeAuthor" value={author}/>
-              <input type="hidden" id="noticeCode" value={code} />
-            </form>
-        </div>
+      <div id='edit'>
+      <div className='create-container'>
+        <h1>NoticeEdit</h1>
+        <form action="" onSubmit={formik.handleSubmit}>
+          <div className='rows'>
+            <label className='mini-title' htmlFor='noticeTitle'>Title</label>
+            <div className='inp-group'>
+              <input className='inp-tags' type="text" onChange={formik.handleChange} id="noticeTitle" defaultValue={title} />
+              {/* {formik.touched.noticeTitle && formik.errors.noticeTitle ? (
+                <div className='error-message'>{formik.errors.noticeTitle}</div>
+              ) : null} */}
+            </div>           
+          </div>
+          <div className='rows'>
+            <label className='mini-title' htmlFor="noticeContent">Content</label>
+              <div className='inp-group'>
+                <textarea className='txtarea-tags' onChange={formik.handleChange} id="noticeContent" defaultValue={content} />
+                {/* {formik.touched.noticeContent && formik.errors.noticeContent ? (
+                <div className='error-message'>{formik.errors.noticeContent}</div>
+              ) : null} */}
+              </div>
+          </div >
+          <div className='btn-group'>
+            <button className='edit-btn-tags' type="submit">submit</button>
+            <button className='edit-btn-tags' onClick={() => navigate('/notice')}>cancle</button>
+          </div>
+        </form>
+      </div>
+    </div>
         
     )
 }

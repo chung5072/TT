@@ -1,10 +1,13 @@
 import React from 'react'
 // import { initialState } from "../../features/article/articleSlice"
 import { useFormik } from 'formik'
+import { Formik, Field } from 'formik';
 import { request } from "../../utils/axios"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import '../ArticleCreate.css'
+import * as Yup from 'yup'
+
 
 export default function InfoCreate() {
   const DOMAIN = "http://localhost:8080/"
@@ -17,7 +20,7 @@ export default function InfoCreate() {
       data: data
     })
       .then(res => {
-        console.log(1, res.data)
+        console.log(res.data)
         navigate('/share')
       })
       .catch(err => {
@@ -25,10 +28,21 @@ export default function InfoCreate() {
       })
   }
 
+
   const formik = useFormik({
-    initialValues: {shareTitle:'', shareContent: '', shareAuthor:''},
-    onSubmit: (data) => {shareRegisterRequest('POST', 'api/share/register', data)}
-  })
+    initialValues: {shareTitle:'', shareContent: ''},
+    validationSchema: Yup.object({
+      shareTitle: Yup.string()
+        .required('제목을 입력해주세요.')
+        .max(30, '30자를 초과할 수 없습니다.'),
+
+      shareContent: Yup.string()
+        .required('내용을 입력해주세요.')
+        .max(1000, '1000자를 초과할 수 없습니다.')
+    }),
+    onSubmit: (data) => {shareRegisterRequest('POST', 'api/share/register', data)},
+    })
+
 
     return (
         <div id='create'>
@@ -38,19 +52,24 @@ export default function InfoCreate() {
               <div className='rows'>
                 <label className='mini-title' htmlFor='shareTitle'>Title</label>
                 <div className='inp-group'>
-                  <input className='inp-tags' id='shareTitle' name='shareTitle' type='text' onChange={formik.handleChange} value={formik.values.shareTitle} />
+                  <input className='inp-tags' name='shareTitle' type='text' onChange={formik.handleChange} value={formik.values.shareTitle} />
+                  {formik.touched.shareTitle && formik.errors.shareTitle ? (
+                    <div className='error-message'>{formik.errors.shareTitle}</div>
+                  ) : null}
                 </div>           
               </div>
               <div className='rows'>
                 <label className='mini-title' htmlFor="shareContent">Content</label>
                 <div className='inp-group'>
-                  <textarea className='txtarea-tags' id="shareContent" name="shareContent" onChange={formik.handleChange} value={ formik.values.shareContent} />
+                  <textarea className='txtarea-tags' name="shareContent" onChange={formik.handleChange} value={ formik.values.shareContent} />
+                  {formik.touched.shareContent && formik.errors.shareContent ? (
+                    <div className='error-message'>{formik.errors.shareContent}</div>
+                  ) : null}
                 </div>
               </div>
               <div className='btn-group'>
-                <button className='btn-tags' type="submit">Submit</button>
+                <button className='btn-tags' type="submit" >Submit</button>
               </div>
-              {/* <button onClick={() => navigate('/share')}>Cancle</button> */}
             </form>
           </div>
         </div>
