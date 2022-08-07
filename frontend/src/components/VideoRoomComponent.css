@@ -1,0 +1,68 @@
+#header {
+  color: #ffffff;
+  background-color: #333333;
+  padding: 0 14px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  min-width: 400px !important;
+}
+
+.video-container {
+  width: 100%;
+  height: 100%;
+}
+
+.toolbar{
+  min-height: 40px !important;
+
+}
+
+#titleContent{
+  max-width: 100px;
+  background-color: #494949;
+  margin: 5px -18px;
+  padding: 0px 15px;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buttonsContent{
+	height: 40px !important;
+	text-align: center;
+	margin: auto;
+    min-width: 400px;
+}
+.navButton{
+	height: 40px !important;
+	width : 40px !important;
+}
+
+#navChatButton{
+  position: absolute;
+  right: 0;
+}
+.stream-container {
+    padding: 0;
+}
+
+
+.bounds {
+  background-color: #494949;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border-radius: 20px;
+}
+
+#users {
+  width: 100%;
+  height: 200px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  border-radius: 20px;
+}
