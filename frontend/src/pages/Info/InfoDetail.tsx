@@ -9,7 +9,7 @@ import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
 import { Formik, useFormik } from 'formik';
 import { Root } from 'react-dom/client';
-import '../ArticleCreate.css'
+import '../ArticleDetail.css'
 
 
 export default function InfoDetail() {
@@ -74,37 +74,50 @@ export default function InfoDetail() {
   
     return (
         <div id='detail'>
-          <div className='create-container'>
+          <div className='detail-container'>
             <h1 className='detail-title'>{title}</h1>
             <form action="" onSubmit={formik.handleSubmit}>
               <div className='author-views'>
                 <div className='postedby'>
-                  <label className='author-tag' htmlFor="shareAuthor"></label>
+                  <label className='author-tag' htmlFor="shareAuthor">POSTED BY | </label>
                   <div className='author-name'>
-                    POSTED BY | {author}
+                    {author}
                   </div>
                 </div>
                 <div className='views'>
-                  <label className='view-tag' htmlFor="shareView"></label>
+                  <label className='view-tag' htmlFor="shareView">VIEWS | </label>
                   <div className='view-cnt'>
-                    views | {view}
+                    {view}
                   </div>
                 </div>
               </div>
-              <div className='rows'>
-                <label htmlFor="detail-mini-title">CONTENT</label>
+              <div className='detail-rows'>
+                {/* <label className='detail-mini-title' htmlFor="shareContent">CONTENT</label> */}
                 <div className='content-part'>
                   {content}
                 </div>
               </div>
-              <div className='rows'>
+              <div className='detail-rows'>
                 <div className='like-part'>
-                  {like}
+                  <div>
+                      {like}
+                  </div>
+                  <div>
+                    <button className='like-btn'>like</button>
+                  </div>
                 </div>
               </div>
               <div className='detail-btn-group'>
                 <button className='detail-btn' onClick={onClickUpdScrn}>edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
+              </div>
+              <hr className='comment-hr'/>
+                <div className='mini-comment-title'>
+                  comment
+                </div>
+              <hr className='comment-hr'/>
+              <div className='comment-part'>
+                댓글이 없습니다.
               </div>
             </form>
           </div>

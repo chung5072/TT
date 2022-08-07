@@ -3,8 +3,8 @@ import axios from 'axios'
 
 interface articleState  {
     shareCode: any
-    shareTitle:any
-    shareContent:any
+    shareTitle: any
+    shareContent: any
     shareAuthor: any
     shareLike: any
     shareView: any

@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { RootState } from '../../app/store';
 import { getMeetingList } from '../../features/meeting/meetingSlice'
+import '../BoardList.css'
 
 
 
@@ -38,9 +39,9 @@ const MeetingList = () => {
 
     return (
       <div id='container'>
-      {/* <div className='navbar'>
-        <p id='info'>COMMUNITY1 COMMUNITY2 COMMUNITY3 PRP</p>
-      </div> */}
+        <div className='navbar'>
+          <p id='info'>COMMUNITY1 COMMUNITY2 COMMUNITY3 PRP</p>
+        </div>
         <div id='articles'>
           <div id='search'>
             <div>
@@ -49,7 +50,7 @@ const MeetingList = () => {
               <input id='search-input' type="text" />
             </div>
             <div>
-              <button onClick={() => navigate('/meeting/create')}>create</button>
+              <button id='create-btn' onClick={() => navigate('/meeting/create')}>create</button>
             </div>
             <div>
               <button id='back-btn' onClick={() => navigate('/')}>back</button>
@@ -75,12 +76,6 @@ const MeetingList = () => {
                   </tr>
               )
            })}
-            <tr>
-              <td>
-                <button onClick={() => navigate('/meeting/create')}>Create</button>
-                <button onClick={() => navigate('/')}>Back</button>
-              </td>
-            </tr>
            </tbody>
           </table>
         </div>

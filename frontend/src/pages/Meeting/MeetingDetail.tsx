@@ -8,7 +8,7 @@ import { fetchProfile } from '../../features/user/userSlice';
 import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
-import './MeetingDetail.css'
+import '../ArticleDetail.css'
 import { Link } from 'react-router-dom';
 
 
@@ -115,85 +115,66 @@ export default function MeetingDetail() {
   })
 
     return (
-        <div id='meeting-detail' className='dcontainer'>
-          {/* <nav className="menu">
-            <div className="logo">
-              <Link to='/'>home</Link>
-            </div>
-            <ul>
-              <li>
-                <Link className="commu" to='/notice'>notice</Link>
-              </li>
-              <li>
-                <Link className="commu" to='/meeting'>meeting</Link>
-              </li>
-              <li>
-                <Link className="commu" to='/share'>information</Link>
-              </li>
-              <li>
-                <a onClick={() => navigate(`/profile/${userId}`)}>profile</a>
-              </li>
-            </ul>
-          </nav> */}
-          <div>           
+        <div id='detail'>
+          <div  className='detail-container'>           
+            <h1 className='detail-title'>{title}</h1>                  
             <form action="" onSubmit={formik.handleSubmit}>
-                <div className='dcontents'>
-                  <div className='backbtn'>
-                    <button className='bbtn' onClick={() => navigate('/meeting')}>Back</button>
-                  </div>
-                  <div className='headtitle'>
-                    {title}
-                  </div>
-                  <div className='drowgroup'>
-                    <label className='dsubtitle' htmlFor="meetingAuthor">POSTED BY</label>
-                    <div className='dinp'>
-                      {author}
-                    </div>
-                  </div>
-                  <div className='drowgroup'>
-                    <label className='dsubtitle' htmlFor="meetingPyTime">PLAY TIME</label>
-                    <div className='dinp'>
-                      {time}
-                    </div>
-                  </div>
-                  <div className='drowgroup'>
-                    <label className='dsubtitle' htmlFor="meetingPyNum">PLAYER NUMBER</label>
-                    <div className='dinp'>
-                      {player}
-                    </div>
-                  </div>
-                  <div className='drowgroup'>
-                    <label className='dsubtitle' htmlFor="meetingContent">CONTENT</label>
-                    <div className='dinp'>
-                      {content}
-                    </div>
-                  </div>
-                  <div className='positiongroup'>
-                    <div className='pygroup'>
-                      <label className='pysubtitle' htmlFor="">GM</label>
-                      <div className='player'>
-                      </div>
-                      <button className='enroll' onClick={(userId) => enrollGm()}>enroll</button>
-                    </div>
-                    <div className='pygroup'>
-                      <label className='pysubtitle' htmlFor="">Player</label>
-                      <div className='player'>
-                        <p>player1</p>
-                        <p>player2</p>
-                      </div>
-                      <button className='enroll' onClick={(userId) => enrollPy()}>enroll</button>
-                    </div>
-                  </div>
-                  <div className='dbtngroup'>
-                    <button className='dbtn' onClick={() => navigate(`/meeting/edit/${code}`)}>edit</button>
-                    <button className='dbtn' type='submit'>delete</button>
-                  </div>
-                  {startTime &&
-                    <div>
-                      <button>입장하기</button>
-                    </div>
-                  }
+              <div className='postedby'>
+                <label className='author-tag' htmlFor="meetingAuthor">POSTED BY | </label>
+                <div className='author-name'>
+                  {author}
                 </div>
+              </div>
+              <div className='detail-rows'>
+                <label className='subtitle' htmlFor="meetingPyTime">PLAY TIME</label>
+                <div className='dinp'>
+                  {time}
+                </div>
+              </div>
+              <div className='detail-rows'>
+                <label className='subtitle' htmlFor="meetingPyNum">PLAYER NUMBER</label>
+                <div className='dinp'>
+                  {player}
+                </div>
+              </div>
+              <div className='detail-rows'>
+                <label className='subtitle' htmlFor="meetingContent">CONTENT</label>
+                <div className='content-part'>
+                  {content}
+                </div>
+              </div>
+              <div className='positiongroup'>
+                <div className='pygroup'>
+                  <label className='pysubtitle' htmlFor="">GM</label>
+                  <div className='player'>GM</div>
+                  <button className='enroll' onClick={(userId) => enrollGm()}>enroll</button>
+                </div>
+                <div className='pygroup'>
+                  <label className='pysubtitle' htmlFor="">Player</label>
+                  <div className='player'>
+                    <p>player1</p>
+                    <p>player2</p>
+                  </div>
+                  <button className='enroll' onClick={(userId) => enrollPy()}>enroll</button>
+                </div>
+              </div>
+              {startTime &&
+                <div>
+                  <button>입장하기</button>
+                </div>
+              }
+              <div className='detail-btn-group'>
+                <button className='detail-btn' onClick={() => navigate(`/meeting/edit/${code}`)}>edit</button>
+                <button className='detail-btn' type='submit'>delete</button>
+              </div>
+              <hr className='comment-hr'/>
+                <div className='mini-comment-title'>
+                  comment
+                </div>
+              <hr className='comment-hr'/>
+              <div className='comment-part'>
+                댓글이 없습니다.
+              </div>
             </form>
           </div>
         </div>
