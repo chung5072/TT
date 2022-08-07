@@ -1,9 +1,10 @@
 import "./CameraView.css"
+import VideoRoomComponent from "../VideoRoomComponent"
 
 export default function CameraView() {
     return (
         <div className="camera-view">
-          <h1>CameraView</h1>
+          <VideoRoomComponent />
         </div>
         
     )
