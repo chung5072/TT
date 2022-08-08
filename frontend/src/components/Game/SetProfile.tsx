@@ -275,8 +275,8 @@ export default function SetProfile() {
                   <span>{jobInfo.skill[1][2]}</span>
                 </div>
                 <div className="job-info-skill">
-                  <span>{jobInfo.skill[1][0]} : {jobInfo.skill[1][1]}</span>
-                  <span>{jobInfo.skill[1][2]}</span>
+                  <span>{jobInfo.skill[2][0]} : {jobInfo.skill[2][1]}</span>
+                  <span>{jobInfo.skill[2][2]}</span>
                 </div>
               </div>
               <div className="job-info-value-box">
