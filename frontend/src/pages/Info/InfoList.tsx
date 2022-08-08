@@ -28,7 +28,7 @@ const InfoList = () => {
   useEffect(() => {
       axios({ 
         method: 'GET',
-        url: "https://i7a809.p.ssafy.io/api/share"
+        url: "http://172.26.15.89:3000/api/share"
       })
         .then((res) => {
           // console.log(shareList)

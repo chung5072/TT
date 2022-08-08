@@ -19,7 +19,7 @@ export default function Profile() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: `https://i7a809.p.ssafy.io/api/user/userinfo/${localStorage.getItem('current_user')}`,
+      url: `http://172.26.15.89:3000/api/user/userinfo/${localStorage.getItem('current_user')}`,
       
     })
       .then((res) => {

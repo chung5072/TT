@@ -61,7 +61,7 @@ export default function MeetingDetail() {
 
 
 
-  const DOMAIN = "https://i7a809.p.ssafy.io/"
+  const DOMAIN = "http://172.26.15.89:3000/"
 
   useEffect(() => {
       axios({ 

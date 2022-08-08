@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 import * as Yup from 'yup'
 
 export default function MeetingCreate() {
-  const DOMAIN = "https://i7a809.p.ssafy.io/"
+  const DOMAIN = "http://172.26.15.89:3000/"
   const navigate = useNavigate()
   let articleId = useParams().articleId
   let userId = useParams().userId

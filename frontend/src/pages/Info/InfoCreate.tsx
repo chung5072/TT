@@ -10,7 +10,7 @@ import * as Yup from 'yup'
 
 
 export default function InfoCreate() {
-  const DOMAIN = "https://i7a809.p.ssafy.io/"
+  const DOMAIN = "http://172.26.15.89:3000/"
   const navigate = useNavigate()
 
   const shareRegisterRequest: any = (method: string, url: string, data: object) => {
