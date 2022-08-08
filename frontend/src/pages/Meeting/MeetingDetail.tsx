@@ -113,6 +113,14 @@ export default function MeetingDetail() {
       console.log(data)
       meetingDeleteRequest('DELETE', `api/meeting/${articleId}`, data)}
   })
+  const onClick = () => {
+    navigate(`/game/${articleId}`,{
+      state: {
+        sessionId: articleId,
+        username: userId
+      }
+    })
+  }
 
     return (
         <div id='detail'>
@@ -158,11 +166,12 @@ export default function MeetingDetail() {
                   <button className='enroll' onClick={(userId) => enrollPy()}>enroll</button>
                 </div>
               </div>
-              {startTime &&
+              <button className='enroll-game' onClick={onClick}>입장</button>
+              {/* {startTime &&
                 <div>
                   <button>입장하기</button>
                 </div>
-              }
+              } */}
               <div className='detail-btn-group'>
                 <button className='detail-btn' onClick={() => navigate(`/meeting/edit/${code}`)}>edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
