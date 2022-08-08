@@ -23,34 +23,42 @@ import InfoCreate from './pages/Info/InfoCreate';
 import InfoEdit from './pages/Info/InfoEdit';
 import InfoDetail from './pages/Info/InfoDetail';
 
+//* 새로고침해도 로그가 유지되기 위해서 persist 도입
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+
+let persistor = persistStore(store);
+
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-          <Route path="/signup" element={<SignUp />}></Route>
-          <Route path="/login" element={<LogIn />}></Route>
-          <Route path="/game/:gameId" element={<GameView />}></Route>
-          <Route path="/profile/:userId" element={<Profile />}></Route>
-          <Route path="/meeting" element={<MeetingList />}></Route>
-          <Route path="/meeting/create" element={<MeetingCreate />}></Route>
-          <Route path="/meeting/edit/:articleId" element={<MeetingEdit />}></Route>
-          <Route path="/meeting/:articleId" element={<MeetingDetail />}></Route>
-          <Route path="/notice" element={<NoticeList />}></Route>
-          <Route path="/notice/create" element={<NoticeCreate />}></Route>
-          <Route path="/notice/:articleId" element={<NoticeEdit />}></Route>
-          <Route path="/notice/:articleId" element={<NoticeDetail />}></Route>
-          <Route path="/share" element={<InfoList />}></Route>
-          <Route path="/share/create" element={<InfoCreate />}></Route>
-          <Route path="/share/edit/:articleId/" element={<InfoEdit />}></Route>
-          <Route path="/share/:articleId" element={<InfoDetail />}></Route>
-        </Routes> 
-      </BrowserRouter>
-    </Provider>
+      <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}></Route>
+            <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/login" element={<LogIn />}></Route>
+            <Route path="/game/:gameId" element={<GameView />}></Route>
+            <Route path="/profile/:userId" element={<Profile />}></Route>
+            <Route path="/meeting" element={<MeetingList />}></Route>
+            <Route path="/meeting/create" element={<MeetingCreate />}></Route>
+            <Route path="/meeting/edit/:articleId" element={<MeetingEdit />}></Route>
+            <Route path="/meeting/:articleId" element={<MeetingDetail />}></Route>
+            <Route path="/notice" element={<NoticeList />}></Route>
+            <Route path="/notice/create" element={<NoticeCreate />}></Route>
+            <Route path="/notice/:articleId" element={<NoticeEdit />}></Route>
+            <Route path="/notice/:articleId" element={<NoticeDetail />}></Route>
+            <Route path="/share" element={<InfoList />}></Route>
+            <Route path="/share/create" element={<InfoCreate />}></Route>
+            <Route path="/share/edit/:articleId/" element={<InfoEdit />}></Route>
+            <Route path="/share/:articleId" element={<InfoDetail />}></Route>
+          </Routes> 
+        </BrowserRouter>
+      </PersistGate>
+      </Provider>
   </React.StrictMode>
 );
 
