@@ -16,7 +16,7 @@ export default function InfoEdit() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   let articleId = useParams().articleId
-  const DOMAIN = "http://localhost:8080/"
+  const DOMAIN = "https://i7a809.p.ssafy.io/"
   
 
 

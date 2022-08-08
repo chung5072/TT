@@ -14,7 +14,7 @@ import { fetchProfile } from '../../features/user/userSlice'
 export default function Login() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const DOMAIN = "http://localhost:8080/"
+  const DOMAIN = "https://i7a809.p.ssafy.io/"
   const loginRequest: any = (method: string, url: string, data: object) => {
     return axios({
       method,
@@ -30,7 +30,7 @@ export default function Login() {
         await dispatch(saveToken(payload))
         axios({
           method: "GET",
-          url: `http://localhost:8080/api/user/userinfo/${localStorage.getItem('current_user')}`,
+          url: `https://i7a809.p.ssafy.io/api/user/userinfo/${localStorage.getItem('current_user')}`,
           
         })
           .then((res) => {

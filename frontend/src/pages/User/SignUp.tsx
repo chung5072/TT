@@ -8,7 +8,7 @@ import axios from "axios"
 
 export default function SignUp() {
   // const dispatch = useAppDispatch()
-  const DOMAIN = "http://localhost:8080/"
+  const DOMAIN = "https://i7a809.p.ssafy.io/"
   const registerRequest: any = (method: string, url: string, data: object) => {
     return axios({
       method,

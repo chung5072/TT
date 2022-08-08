@@ -19,7 +19,7 @@ export default function NoticeDetail() {
     window.location.replace("edit/" + `${articleId}`)
   }
 
-  const DOMAIN = "http://localhost:8080/"
+  const DOMAIN = "https://i7a809.p.ssafy.io/"
 
   useEffect(() => {
     axios({ 

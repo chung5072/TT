@@ -11,7 +11,7 @@ import '../BoardList.css'
 
 const MeetingList = () => {
   const navigate = useNavigate()
-  const DOMAIN = "http://localhost:8080/" 
+  const DOMAIN = "https://i7a809.p.ssafy.io/" 
   
   const [meetList, setMeetList] = useState([{
     meetingCode: '',

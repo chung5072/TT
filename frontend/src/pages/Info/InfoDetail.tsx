@@ -26,7 +26,7 @@ export default function InfoDetail() {
     return axios.delete(`api/share/${articleId}`)
   }
 
-  const DOMAIN = "http://localhost:8080/"
+  const DOMAIN = "https://i7a809.p.ssafy.io/"
 
   useEffect(() => {
       axios({ 
