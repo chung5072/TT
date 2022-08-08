@@ -7,7 +7,16 @@ import { RootState } from "../../app/store";
 import { useAppDispatch } from "../../app/hooks";
 import { setMapState, setWindowSize } from "../../features/Game/GameSlice";
 import { useEffect } from "react";
-export default function Map() {
+
+type areaType = {
+  name : string,
+  shape : string,
+  coords : number[],
+  scaledCoords : number[],
+  center : number[]
+}
+
+export default function Map({client, gameId} : {client : any, gameId : any}) {
     useEffect(() => {dispatch(setWindowSize(window.innerWidth))}, [window.innerWidth])
     const dispatch = useAppDispatch()
     const mapId = useAppSelector((state: RootState) => state.game.mapStatus)
@@ -36,8 +45,13 @@ export default function Map() {
           <span id ="map-name">{mapId === 0 ? "Myrian": mapId === 1? "Swamp Denizens": mapId === 2? "Black Forest": mapId === 3? "Dark Cavern": mapId ===4? "Deep Under the Mountain": "DevilDom"}</span>
           <ImageMapper src={map_mk2} map={MAP} width={width}
           onMouseEnter = {(index) => {console.log(index)}}
-          onClick = {(area) => dispatch(setMapState(area))
-            
+          onClick = {
+            (area) => {
+              dispatch(setMapState(area))
+               //* 서버에 메세지 전송
+              //? connect를 하고 callback으로 send을 하면 값이 나가지 않음 
+              client.send(`/ttrpg/map/${gameId}/sendSignal`, JSON.stringify(area), {id : gameId});
+            }
           } />
           <img src={map_pin} alt="" id= {windowSize >=2560 ? "QHD-swamp":1920 <=windowSize  ? "HD-swamp": 1024 <= windowSize ? "SD-swamp" :"mobile-swamp"} className={mapId === 1 ? "on" : "off"}/>
           <img src={map_pin} alt="" id= {windowSize >=2560 ? "QHD-start":1920 <=windowSize  ? "HD-start": 1024 <= windowSize ? "SD-start" :"mobile-start"} className={mapId === 0 ? "on" : "off"}/>
@@ -51,4 +65,3 @@ export default function Map() {
         
     )
 }
-
