@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import axios from "axios"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import './LogIn.css'
 
 import { saveToken } from "../../features/user/loginSlice"
 import { fetchProfile } from '../../features/user/userSlice'
@@ -61,18 +62,42 @@ export default function Login() {
 
   // HTML
     return (
-      <div>
-      <h1>Login</h1>
-      <form action="" onSubmit={ formik.handleSubmit }>
+      <div id='container'>
+        <div id='all-login'>
+          <div id='login-form'>
+            <h1 id='login-text'>Login</h1>
+            <form id='login-form' action="" onSubmit={ formik.handleSubmit }>
+              
+              <label id='id-label' htmlFor="userId">ID</label>
+              <input id="id-input" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
 
-        <label htmlFor="userId">Id</label>
-        <input id="loginId" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
+              <label id='pwd-label' htmlFor="userPw">Password</label>
+              <input id="pwd-input" name="userPw" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
+              <button id='login-button' type="submit">LogIn</button>
+            </form>
+          </div>
+            <div id='login-with'>
+              <div id='line'>
+                <hr />
+              </div>
+              <div id='login-with-text'>
+                <p>or LogIn with</p>
+              </div>
+              <div id='line'>
+                <hr />
+              </div>
+          </div>
+          <div id='login-with-btn'>
+            <button id='login-with-google'></button>
+            <button id='login-with-kakao'></button>  
+          </div>
 
-        <label htmlFor="userPw">Password</label>
-        <input id="password" name="userPw" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+          <div id='find-id-pwd'>
+            <p>Forgot Id or Password</p>
+          </div>
+
+        </div>
+      </div>
         
     )
 }

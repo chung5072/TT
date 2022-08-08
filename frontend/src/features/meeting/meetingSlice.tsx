@@ -8,6 +8,7 @@ interface meetingState  {
   meetingContent:any
   meetingPyNum: any
   meetingPyTime: any
+  meetingGameIsStart: any
   meetingList: Array<object>
 }
 
@@ -19,6 +20,7 @@ export const initialState: meetingState = {
   meetingContent:'',
   meetingPyNum: '',
   meetingPyTime: '',
+  meetingGameIsStart: '',
   meetingList: [],
 }
 
@@ -30,7 +32,7 @@ export const meetingSlice = createSlice({
     getMeetingList:(state:meetingState, action) => {
       state.meetingList = action.payload
       //console.log(state)
-      // console.log(state.meetingList)
+      console.log(state.meetingList)
     },
 
     getMeetingDetail: (state:meetingState, action) => {

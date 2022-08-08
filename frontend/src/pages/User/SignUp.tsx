@@ -51,34 +51,53 @@ export default function SignUp() {
     console.log('아아아아앙ㅜㅜ')
   }
     return (
-      <div>
-      <h1>SignUp</h1>
-      <form action="" onSubmit={formik.handleSubmit}>
+      <div id='container'>
+        <div id='all-signup'>
+          <div id='signup-form'>
+            <h1 id='signup-text'>SignUp</h1>
+            <form id='signup-form' action="" onSubmit={formik.handleSubmit}>
 
-        <label htmlFor="userId">Id</label>
-        <input id="userId" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
+            <label htmlFor="userId">Id</label>
+            <input id="userId" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
 
-        <label htmlFor="userPw">Password</label>
-        <input id="userPw" name="userPw" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
+            <label htmlFor="userPw">Password</label>
+            <input id="userPw" name="userPw" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
 
-        <label htmlFor="userNickname">Nickname</label>
-        <input id="userNickname" name="userNickname" type="text" onChange={formik.handleChange} value={ formik.values.userNickname }/>
+            <label htmlFor="userNickname">Nickname</label>
+            <input id="userNickname" name="userNickname" type="text" onChange={formik.handleChange} value={ formik.values.userNickname }/>
 
-        <label htmlFor="userEmail">e-mail</label>
-        <input id="userEmail" name="userEmail" type="text" onChange={formik.handleChange} value={ formik.values.userEmail }/>
+            <label htmlFor="userEmail">e-mail</label>
+            <input id="userEmail" name="userEmail" type="text" onChange={formik.handleChange} value={ formik.values.userEmail }/>
 
-        <label htmlFor="userPhone">Phone</label>
-        <input id="userPhone" name="userPhone" type="text" onChange={formik.handleChange} value={ formik.values.userPhone }/>
+            <label htmlFor="userPhone">Phone</label>
+            <input id="userPhone" name="userPhone" type="text" onChange={formik.handleChange} value={ formik.values.userPhone }/>
 
-        <label htmlFor="userGender">Gender</label>
-        <input id="userGender" name="userGender" type="text" onChange={formik.handleChange} value={ formik.values.userGender } />
-        {/* <select name="" id="">
-          <option value="">Male</option>
-          <option value="">Female</option>
-          <option value="">None</option>
-        </select> */}
-        <button type="submit">Submit</button>
-      </form>
+            <label htmlFor="userGender">Gender</label>
+            <input id="userGender" name="userGender" type="text" onChange={formik.handleChange} value={ formik.values.userGender } />
+            {/* <select name="" id="">
+              <option value="">Male</option>
+              <option value="">Female</option>
+              <option value="">None</option>
+            </select> */}
+            <button id="signup-button" type="submit">Sign up</button>
+          </form>
+          </div>
+          <div id='signup-with'>
+              <div id='line'>
+                <hr />
+              </div>
+              <div id='signup-with-text'>
+                <p>or Sign Up with</p>
+              </div>
+              <div id='line'>
+                <hr />
+              </div>
+          </div>
+          <div id='signup-with-btn'>
+            <button id='signup-with-google'></button>
+            <button id='signup-with-kakao'></button>  
+          </div>
+        </div>
     </div>
         
     )

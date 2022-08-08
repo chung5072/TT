@@ -1,0 +1,108 @@
+#create {
+  background-color: #262626;
+  width: 100vw;
+  height: 200vh;
+}
+
+#edit {
+  background-color: #262626;
+  width: 100vw;
+  height: 200vh;
+}
+
+
+.create-container {
+  display: flex;
+  width: 27%;
+  height: 80vh;
+  margin: 0 auto;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.big-title > h1 {
+  color:#d9aa52;
+  text-align: center;
+}
+
+.rows {
+  width:100%;
+  margin-bottom: 3%;
+}
+
+.inp-group {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+.mini-title {
+  color: #d9aa52;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-left: 3%;
+}
+
+.inp-tags {
+  height: 4vh;
+  font-size: 1em;
+  font-weight: bold;
+  padding:3%;
+  border-radius: 20px;
+  
+}
+
+.txtarea-tags {
+  height: 45vh;
+  font-size: 1em;
+  border-radius: 20px;
+  padding: 5%;
+}
+
+.error-message {
+  width: 100%;
+  color: red;
+}
+
+.btn-group {
+  width: 100%;
+  height: 9vh;
+  display: flex;
+  justify-content: center;
+}
+
+
+.btn-tags {
+  width: 95%;
+  height: 7vh;
+  border-radius: 20px;
+  border: none;
+  color:#d9aa52;
+}
+
+.btn-tags:hover {
+  background-color: #a67841;
+}
+
+.edit-btn-tags {
+  width: 48%;
+  height: 7vh;
+  margin:0 1%;
+  border-radius: 20px;
+  border: none;
+  color:#d9aa52;
+}
+
+/* --------------meeting--------------- */
+.radio-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.position-choice {
+  width:50%;
+}

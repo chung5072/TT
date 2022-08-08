@@ -47,7 +47,7 @@ tr {
     border-spacing: 0px 15px;
 }
 
-button {
+#search-btn, #create-btn, #back-btn {
     background-color: #262626;
     color: #D9AA52;
     border : 1px solid #D9AA52;
@@ -61,4 +61,8 @@ button {
     margin-right:auto;
     display: flex;
     justify-content: center;
+}
+
+#search-input {
+    border-radius: 20px;
 }

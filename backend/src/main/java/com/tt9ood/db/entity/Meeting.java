@@ -2,6 +2,7 @@ package com.tt9ood.db.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -33,14 +34,24 @@ public class Meeting {
     // 게임 시작 시간
     @Column(name = "meet_py_time")
     private String meetingPyTime;
+    // 게임이 시작할 시간인지 아닌지
+    @Column(name = "meet_game_isStart")
+    private Boolean meetingGameIsStart;
 
-    public Meeting(String meetingTitle, String meetingAuthor, String meetingContent, int meetingPyNum, String meetingPyTime) {
+    // 게임 방 정보
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "room_code")
+    private RoomInfo roomInfo;
+
+    public Meeting(String meetingTitle, String meetingAuthor,
+                   String meetingContent, int meetingPyNum, String meetingPyTime) {
         this.meetingTitle = meetingTitle;
         this.meetingAuthor = meetingAuthor;
         this.meetingDate = currTime();
         this.meetingContent = meetingContent;
         this.meetingPyNum = meetingPyNum;
         this.meetingPyTime = meetingPyTime;
+        this.meetingGameIsStart = false;
     }
 
     /**
@@ -51,13 +62,26 @@ public class Meeting {
      * @param meetingPyNum 모집하는 인원 수
      * @param meetingPyTime 게임 시작하는 시간
      */
-    public void updateMeeting(String meetingTitle, String meetingAuthor, String meetingContent, int meetingPyNum, String meetingPyTime) {
+    public void updateMeeting(String meetingTitle, String meetingAuthor, String meetingContent,
+                              int meetingPyNum, String meetingPyTime, boolean meetingGameIsStart) {
         this.meetingTitle = meetingTitle;
         this.meetingAuthor = meetingAuthor;
         this.meetingDate = currTime();
         this.meetingContent = meetingContent;
         this.meetingPyNum = meetingPyNum;
         this.meetingPyTime = meetingPyTime;
+        this.meetingGameIsStart = meetingGameIsStart;
+    }
+
+    public void setRoomInfo(RoomInfo roomInfo) {
+        this.roomInfo = roomInfo;
+    }
+
+    /**
+     * 게임 시작시간이면 변경하는 메서드
+     */
+    public void setMeetingGameIsStart(Boolean meetingGameIsStart) {
+        this.meetingGameIsStart = meetingGameIsStart;
     }
 
     /**
@@ -66,11 +90,10 @@ public class Meeting {
      */
     private String currTime() {
         // 형식
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         // 현재 시간을 문자열로 변환
         String formattedDateTime = LocalDateTime.now().format(formatter);
 
         return formattedDateTime;
     }
-
 }

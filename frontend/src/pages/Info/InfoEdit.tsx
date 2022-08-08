@@ -9,7 +9,8 @@ import { useAppDispatch } from '../../app/hooks'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { getArticleDetail }  from '../../features/article/articleSlice';
-import { Navigate } from 'react-router-dom'
+import '../ArticleCreate.css'
+import * as Yup from 'yup'
 
 export default function InfoEdit() {
   const dispatch = useAppDispatch()
@@ -62,7 +63,16 @@ export default function InfoEdit() {
   }
 
   const formik = useFormik({
-    initialValues: {shareCode:articleId, shareTitle: title, shareContent: content, shareAuthor:author},
+    initialValues: {shareCode:articleId, shareTitle: title, shareContent: content},
+    validationSchema: Yup.object({
+      shareTitle: Yup.string()
+        .required('제목을 입력해주세요.')
+        .max(30, '30자를 초과할 수 없습니다.'),
+
+      shareContent: Yup.string()
+        .required('내용을 입력해주세요.')
+        .max(1000, '1000자를 초과할 수 없습니다.')
+    }),
     onSubmit: (data) => {
       console.log(data)
       shareEditRequest('PUT', `api/share/${articleId}`, data)}
@@ -70,38 +80,34 @@ export default function InfoEdit() {
 
   
     return (
-        <div>
-          <h1>InfoEdit</h1>
-          <form action="" onSubmit={formik.handleSubmit}>
-            <table>
-              <thead></thead>
-              <tbody>
-              <tr>
-                <td>
-                  Title
-                </td>
-                <td>
-                  <input type="text" onChange={formik.handleChange} id="shareTitle" defaultValue={title} />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Content
-                </td>
-                <td>
-                  <input type="text" onChange={formik.handleChange} id="shareContent" defaultValue={content} />
-                </td>
-              </tr>
-              </tbody>
-            </table>
-              <button type="submit">submit</button>
-              <button onClick={() => navigate('/share')}>cancle</button>
-              <input type="hidden" id="shareAuthor" value={author}/>
-              <input type="hidden" id="shareCode" value={code} />
-          </form>
-
+        <div id='edit'>
+          <div className='create-container'>
+            <h1>InfoEdit</h1>
+            <form action="" onSubmit={formik.handleSubmit}>
+              <div className='rows'>
+                <label className='mini-title' htmlFor='shareTitle'>Title</label>
+                <div className='inp-group'>
+                  <input className='inp-tags' type="text" onChange={formik.handleChange} id="shareTitle" defaultValue={title} />
+                  {/* {formik.touched.shareTitle && formik.errors.shareTitle ? (
+                    <div className='error-message'>{formik.errors.shareTitle}</div>
+                  ) : null} */}
+                </div>           
+              </div>
+              <div className='rows'>
+                <label className='mini-title' htmlFor="shareContent">Content</label>
+                  <div className='inp-group'>
+                    <textarea className='txtarea-tags' onChange={formik.handleChange} id="shareContent" defaultValue={content} />
+                    {/* {formik.touched.shareContent && formik.errors.shareContent ? (
+                    <div className='error-message'>{formik.errors.shareContent}</div>
+                  ) : null} */}
+                  </div>
+              </div >
+              <div className='btn-group'>
+                <button className='edit-btn-tags' type="submit">submit</button>
+                <button className='edit-btn-tags' onClick={() => navigate('/share')}>cancle</button>
+              </div>
+            </form>
+          </div>
         </div>
-       
-        
     )
 }

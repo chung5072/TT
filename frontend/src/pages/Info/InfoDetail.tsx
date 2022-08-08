@@ -8,6 +8,8 @@ import { useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
 import { Formik, useFormik } from 'formik';
+import { Root } from 'react-dom/client';
+import '../ArticleDetail.css'
 
 
 export default function InfoDetail() {
@@ -15,6 +17,7 @@ export default function InfoDetail() {
   const navigate = useNavigate()
   let articleId = useParams().articleId
   
+
   function onClickUpdScrn() {
     window.location.replace("/share/edit/" + `${articleId}`)
   }
@@ -60,6 +63,7 @@ export default function InfoDetail() {
   const content = useSelector((state:RootState) => state.info.shareContent)
   const author = useSelector((state:RootState) => state.info.shareAuthor)
   const like = useSelector((state:RootState) => state.info.shareLike)
+  const view = useSelector((state:RootState) => state.info.shareView)
 
   const formik = useFormik({
     initialValues: {shareCode:articleId},
@@ -69,28 +73,54 @@ export default function InfoDetail() {
   })
   
     return (
-        <div>
-          <h1>InfoDetail </h1>
-          <form action="" onSubmit={formik.handleSubmit}>
-            <div>
-              <h3>
-                {title}
-              </h3>
-            </div>
-            <div>
-              {author}
-            </div>
-            <div>
-              {content}
-            </div>
-            <div>
-              {like}
-            </div>
-            <div>
-              <button onClick={onClickUpdScrn}>edit</button>
-              <button type='submit'>delete</button>
-            </div>
-          </form>
+        <div id='detail'>
+          <div className='detail-container'>
+            <h1 className='detail-title'>{title}</h1>
+            <form action="" onSubmit={formik.handleSubmit}>
+              <div className='author-views'>
+                <div className='postedby'>
+                  <label className='author-tag' htmlFor="shareAuthor">POSTED BY | </label>
+                  <div className='author-name'>
+                    {author}
+                  </div>
+                </div>
+                <div className='views'>
+                  <label className='view-tag' htmlFor="shareView">VIEWS | </label>
+                  <div className='view-cnt'>
+                    {view}
+                  </div>
+                </div>
+              </div>
+              <div className='detail-rows'>
+                {/* <label className='detail-mini-title' htmlFor="shareContent">CONTENT</label> */}
+                <div className='content-part'>
+                  {content}
+                </div>
+              </div>
+              <div className='detail-rows'>
+                <div className='like-part'>
+                  <div>
+                      {like}
+                  </div>
+                  <div>
+                    <button className='like-btn'>like</button>
+                  </div>
+                </div>
+              </div>
+              <div className='detail-btn-group'>
+                <button className='detail-btn' onClick={onClickUpdScrn}>edit</button>
+                <button className='detail-btn' type='submit'>delete</button>
+              </div>
+              <hr className='comment-hr'/>
+                <div className='mini-comment-title'>
+                  comment
+                </div>
+              <hr className='comment-hr'/>
+              <div className='comment-part'>
+                댓글이 없습니다.
+              </div>
+            </form>
+          </div>
         </div>
         
     )

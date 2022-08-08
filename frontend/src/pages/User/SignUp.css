@@ -1,0 +1,58 @@
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#all-signup {
+    padding-top: 10%;
+    padding-left: 40%;
+}
+label{
+    color: #FFC860;
+}
+#userId, #userPw, #userNickname, #userEmail, #userPhone, #userGender {
+    width: 36%;
+    height: 20px;
+    border-radius: 20px;
+}
+
+#signup-text {
+    color: #FFC860;
+}
+
+
+#signup-with-btn {
+    display: flex;
+    justify-content: center;
+}
+
+#signup-with-google, #signup-with-kakao {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+#signup-with-text {
+    text-align: center;
+    color: #FFC860;
+    margin-left: 2%;
+    margin-right: 2%;
+    font-weight: bold;
+}
+
+#signup-with {
+    display: flex;
+    justify-content: center;
+}
+#signup-button {
+    width: 36%;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #FFC860;
+    margin-top: 3%;
+    color: black;
+    font-size: medium;
+    font-weight: bold;
+}
