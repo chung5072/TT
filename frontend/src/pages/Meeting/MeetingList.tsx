@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../app/hooks';
 import { RootState } from '../../app/store';
 import { getMeetingList } from '../../features/meeting/meetingSlice'
 import '../BoardList.css'
-
+import Navbar from '../../components/Navbar';
 
 
 const MeetingList = () => {
@@ -39,9 +39,7 @@ const MeetingList = () => {
 
     return (
       <div id='container'>
-        <div className='navbar'>
-          <p id='info'>COMMUNITY1 COMMUNITY2 COMMUNITY3 PRP</p>
-        </div>
+        <Navbar />
         <div id='articles'>
           <div id='search'>
             <div>

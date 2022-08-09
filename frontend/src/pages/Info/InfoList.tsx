@@ -11,7 +11,7 @@ import { info } from 'console';
 import { isFocusable } from '@testing-library/user-event/dist/types/utils';
 import { useNavigate } from 'react-router-dom';
 import '../BoardList.css'
-
+import Navbar from '../../components/Navbar';
 
 // const DOMAIN = "http://localhost:8080/"
 const InfoList = () => {
@@ -52,9 +52,7 @@ const InfoList = () => {
   // const list = useSelector((state:RootState) => state.info.shareList)
   return (
     <div id='container'>
-      <div className='navbar'>
-        <p id='info'>COMMUNITY1 COMMUNITY2 COMMUNITY3 PRP</p>
-      </div>
+        <Navbar />
         <div id='articles'>
           <div id='search'>
             <div>

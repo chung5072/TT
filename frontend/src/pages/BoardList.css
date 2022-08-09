@@ -4,17 +4,6 @@
     height: 1294px;
 }
 
-.navbar {
-    margin: 0px;
-    background-color: #262626;
-    height: 150px;
-}
-
-#info {
-    text-align: right;
-    color: #D9AA52;
-}
-
 #articles {
     height: 823px;
 }
