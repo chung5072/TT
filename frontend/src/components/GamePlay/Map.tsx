@@ -42,7 +42,7 @@ export default function Map({client, gameId} : {client : any, gameId : any}) {
     }
     return (
         <div id="map">
-          
+          <span id ="map-name">{mapId === 0 ? "Myrian": mapId === 1? "Swamp Denizens": mapId === 2? "Black Forest": mapId === 3? "Dark Cavern": mapId ===4? "Deep Under the Mountain": "DevilDom"}</span>
           <ImageMapper src={map_mk2} map={MAP} width={width}
           onMouseEnter = {(index) => {console.log(index)}}
           onClick = {
@@ -53,7 +53,6 @@ export default function Map({client, gameId} : {client : any, gameId : any}) {
               client.send(`/ttrpg/map/${gameId}/sendSignal`, JSON.stringify(area), {id : gameId});
             }
           } />
-          <span id ="map-name">{mapId === 0 ? "Myrian": mapId === 1? "Swamp Denizens": mapId === 2? "Black Forest": mapId === 3? "Dark Cavern": mapId ===4? "Deep Under the Mountain": "DevilDom"}</span>
           <img src={map_pin} alt="" id= {windowSize >=2560 ? "QHD-swamp":1920 <=windowSize  ? "HD-swamp": 1024 <= windowSize ? "SD-swamp" :"mobile-swamp"} className={mapId === 1 ? "on" : "off"}/>
           <img src={map_pin} alt="" id= {windowSize >=2560 ? "QHD-start":1920 <=windowSize  ? "HD-start": 1024 <= windowSize ? "SD-start" :"mobile-start"} className={mapId === 0 ? "on" : "off"}/>
           <img src={map_pin} alt="" id= {windowSize >=2560 ? "QHD-forest":1920 <=windowSize  ? "HD-forest": 1024 <= windowSize ? "SD-forest" :"mobile-forest"} className={mapId === 2 ? "on" : "off"}/>

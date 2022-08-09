@@ -34,4 +34,36 @@
 }
 
 .my-controller {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#my-controller-bgm-box {
+    margin-right: 3%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 55%;
+    background-color: rgba(0,0,0,0.55);
+    border-radius: 20px;
+
+}
+.off#my-controller-bgm-box {
+    display:none;
+}
+#my-controller-audio-control {
+    background-color: rgba(0,0,0,0);
+    border-color: #a6a6a6;
+}
+
+#my-controller-audio-play {
+    width: 15%;
+}
+
+#my-controller-audio-control-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
