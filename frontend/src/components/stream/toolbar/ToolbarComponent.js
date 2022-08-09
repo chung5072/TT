@@ -68,7 +68,7 @@ export default class ToolbarComponent extends Component {
             <AppBar className="toolbar" id="footer">
                 <Toolbar className="toolbar">
                     <div id="navSessionInfo">
-                        <h1>TT!</h1>
+                        <h1>{'TT' + window.location.href.substr(27)}</h1>
 
                         {this.props.sessionId && <div id="titleContent">
                             <span id="session-title">{mySessionId}</span>
