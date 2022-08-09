@@ -2,9 +2,55 @@ import "./MyController.css"
 import { resetSignalHistory } from "../../features/Game/SignalSlice";
 import { resetMonster } from "../../features/Game/MonsterSlice";
 import { useNavigate } from 'react-router-dom'
+import map0 from "../../assets/music/map0.mp3"
+import map2 from "../../assets/music/map2.mp3"
+import playbtn from "../../assets/image/play-btn.png"
+import pausebtn from "../../assets/image/pause-btn.png"
+import { useFormik } from "formik";
+import { useEffect, useRef } from "react";
+import  { useDidMountEffect,useAppSelector,useAppDispatch } from "../../app/hooks";
+import { RootState } from "../../app/store";
+import { setAudioStatus } from "../../features/Game/GameSlice";
+
 
 export default function MyController({client, gameId, dispatch} : {client : any, gameId : any, dispatch : any}) {
   const navigate = useNavigate()
+  const audioStatus = useAppSelector((state: RootState) => state.game.audioStatus)
+  const usedispatch = useAppDispatch()
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const profileDone = useAppSelector((state:RootState) => state.game.profileDone)
+  const mapStatus = useAppSelector((state:RootState) => state.game.mapStatus)
+  
+  useDidMountEffect(() => {
+if (audioRef.current != null && audioStatus === true) {
+  audioRef.current.load()
+  pauseAudio()
+  playAudio()
+  
+}}, [profileDone,mapStatus])
+
+  const setAudioVolume = (volume: any) => {
+    if (audioRef.current != null) {
+    audioRef.current.volume = volume / 100
+    }
+  }
+
+  const playAudio = () => {
+    if (audioRef.current != null) {
+      console.log('play')
+      audioRef.current.play()
+      usedispatch(setAudioStatus(true))
+      }
+  }
+
+  const pauseAudio = () => {
+    if (audioRef.current != null) {
+      console.log('pause')
+      audioRef.current.pause()
+      usedispatch(setAudioStatus(false))
+      }
+  }
+
   function clickHandlerForExit() {
     // 테스트 출력 - state 비우기
     // console.log("state를 비워보자");
@@ -24,10 +70,28 @@ export default function MyController({client, gameId, dispatch} : {client : any,
   }
     return (
         <div className="my-controller">
-          <h1>MyController</h1>
-          <button
-            onClick={clickHandlerForExit}
-          >나가는 버튼</button>
+          <div id="my-controller-exit-box">
+            <button onClick={clickHandlerForExit}>
+              나가는 버튼
+            </button>
+          </div>
+          <div id="my-controller-control-box">
+
+          </div>
+          <div id="my-controller-bgm-box">
+            <audio id="my-controller-audio-control" ref={audioRef}>
+              {mapStatus === 0 ? <source src={map0} type="audio/mp3"/> : mapStatus === 1 ? <source src={map0} type="audio/mp3"/>:mapStatus===2 ? <source src={map2} type="audio/mp3"/>: mapStatus === 3? <source src={map2} type="audio/mp3"/>: <source src={map2} type="audio/mp3"/>}
+              
+              
+            </audio>
+            <div id="my-controller-audio-control-box">
+              <img src={playbtn} alt="" id="my-controller-audio-play" className={audioStatus === false? 'on': 'off'} onClick={() => playAudio()}/>
+              <img src={pausebtn} alt="" id="my-controller-audio-play" onClick={() => pauseAudio()}  className={audioStatus === true? 'on': 'off'}/>
+              <input type="range" min="1" max="100" id="volume" name="volume" onChange={(event) => setAudioVolume(event.target.value)}/>   
+            </div>
+          </div>
+          
+
         </div>
         
     )

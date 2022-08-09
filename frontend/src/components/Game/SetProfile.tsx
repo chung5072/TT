@@ -4,7 +4,7 @@ import { useSelector } from "react-redux"
 import * as Yup from 'yup'
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { RootState } from "../../app/store"
-import { setProfileDone } from "../../features/Game/GameSlice"
+import { setAudioStatus, setProfileDone } from "../../features/Game/GameSlice"
 import { addChooseLevel, setJobInfo, subtractChooseLevel } from "../../features/Game/ProfileSlice"
 import "./SetProfile.css"
 import { hunter, priest, thief, warrior,wizard } from "./ProfileInfoList"
@@ -147,6 +147,7 @@ export default function SetProfile() {
 
       )
       dispatch(setProfileDone())
+      dispatch(setAudioStatus(true))
     }}
   )
     return (

@@ -23,8 +23,8 @@ class VideoRoomComponent extends Component {
         this.OPENVIDU_SERVER_SECRET = this.props.openviduSecret ? this.props.openviduSecret : 'MY_SECRET';
         this.hasBeenUpdated = false;
         // this.layout = new OpenViduLayout();
-        let sessionName = ''
-        let userName = '';
+        let sessionName = 'TT' + window.location.href.substr(27)
+        let userName = '임완택'
         this.remotes = [];
         this.players = [];
         this.localUserAccessAllowed = false;
@@ -78,7 +78,7 @@ class VideoRoomComponent extends Component {
         window.addEventListener('beforeunload', this.onbeforeunload);
         // window.addEventListener('resize', this.updateLayout);
         window.addEventListener('resize', this.checkSize);
-        // this.joinSession();
+        this.joinSession();
     }
 
     componentWillUnmount() {

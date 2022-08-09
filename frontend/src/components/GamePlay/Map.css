@@ -25,7 +25,7 @@
 
 #map-name {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   top: 5%;
   left: 10%;
 }
@@ -34,7 +34,7 @@
 }
 
 .off {
-  visibility: hidden;
+  display: none;
 }
 
 /* QHD */
@@ -59,9 +59,8 @@
 #QHD-forest {
   width: 60px;
   position: relative;
-  bottom: 610px;
-  left:390px;
-
+  bottom: 500px;
+  left:420px;
   z-index: 2;
 
 }
@@ -70,8 +69,7 @@
   width: 60px;
   position: relative;
   bottom: 590px;
-  left:460px;
-
+  left:630px;
   z-index: 2;
 
 }
@@ -80,7 +78,7 @@
   width: 60px;
   position: relative;
   bottom: 780px;
-  left:120px;
+  left:320px;
 
   z-index: 2;
 
@@ -90,7 +88,7 @@
   width: 60px;
   position: relative;
   bottom: 830px;
-  left:220px;
+  left:520px;
 
   z-index: 2;
 
@@ -120,7 +118,7 @@
   width: 50px;
   position: relative;
   bottom: 380px;
-  left:260px;
+  left:320px;
 
   z-index: 2;
 
@@ -130,7 +128,7 @@
   width: 50px;
   position: relative;
   bottom: 470px;
-  left:320px;
+  left:480px;
 
   z-index: 2;
 
@@ -140,7 +138,7 @@
   width: 50px;
   position: relative;
   bottom: 580px;
-  left:60px;
+  left:270px; 
 
   z-index: 2;
 
@@ -150,7 +148,7 @@
   width: 50px;
   position: relative;
   bottom: 630px;
-  left:150px;
+  left:400px;
 
   z-index: 2;
 
@@ -171,7 +169,7 @@
   width: 25px;
   position: relative;
   bottom:140px;
-  left:120px;
+  left:150px;
 
   z-index: 2;
 
@@ -180,7 +178,7 @@
   width: 25px;
   position: relative;
   bottom: 200px;
-  left:130px;
+  left:190px;
 
   z-index: 2;
 
@@ -190,7 +188,7 @@
   width: 25px;
   position: relative;
   bottom: 250px;
-  left:175px;
+  left:255px;
 
   z-index: 2;
 
@@ -200,7 +198,7 @@
   width: 25px;
   position: relative;
   bottom: 320px;
-  left:30px;
+  left:130px;
 
   z-index: 2;
 
@@ -210,8 +208,7 @@
   width: 25px;
   position: relative;
   bottom: 330px;
-  left:90px;
-
+  left:210px;
   z-index: 2;
 
 }
