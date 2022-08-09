@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import '../BoardList.css'
 import { Link } from 'react-router-dom';
-
+import Navbar from '../../components/Navbar';
 
 const NoticeList = () => {
   const DOMAIN = 'http://localhost:8080/'
@@ -34,9 +34,7 @@ const NoticeList = () => {
   return (
     <div>
       <div id='container'>
-      <div className='navbar'>
-        <p id='info'>COMMUNITY1 COMMUNITY2 COMMUNITY3 PRP</p>
-      </div>
+        <Navbar />
         <div id='articles'>
           <div id='search'>
             <div>
