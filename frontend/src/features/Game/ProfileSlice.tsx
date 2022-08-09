@@ -71,6 +71,30 @@ const profileSlice = createSlice({
       },
       setJobInfo: (state:profileData, action) => {
         state.jobInfo = action.payload
+      },
+      playerProfile: (state:profileData, action) => {
+        state.playerUserCode = action.payload.playerUserCode
+        state.playerSpecies = action.payload.playerSpecies
+        state.playerName = action.payload.playerName
+        state.playerLook = action.payload.playerLook
+        state.playerValue = action.payload.playerValue
+        state.playerWeapon = action.payload.playerWeapon
+        state.playerArmor = action.payload.playerArmor
+        state.playerHP = action.payload.playerHP
+        state.playerSup1 = action.payload.playerSup1
+        state.playerSup2 = action.payload.playerSup2
+        state.playerSup3 = action.payload.playerSup3
+        state.playerstat1 = action.payload.playerstat1
+        state.playerstat2 = action.payload.playerstat2
+        state.playerstat3 = action.payload.playerstat3
+        state.playerstat4 = action.payload.playerstat4
+        state.playerstat5 = action.payload.playerstat5
+        state.playerstat6 = action.payload.playerstat6
+        state.skill1 = action.payload.skill1
+        state.skill2 = action.payload.skill2
+        state.skill3 = action.payload.skill3
+        state.chooseLevel = action.payload.chooseLevel
+        state.jobInfo = action.payload.jobInfo
       }
         
     }

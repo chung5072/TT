@@ -10,6 +10,7 @@ import profileReducer from '../features/Game/ProfileSlice'
 import noticeReducer from '../features/notice/noticeSlice'
 import signalSlice from '../features/Game/SignalSlice'
 import monsterSlice from '../features/Game/MonsterSlice'
+import roomSlice from '../features/room/RoomSlice'
 
 //* 해당 정보를 페이지에 남도록 지속해서 저장하는 것이 아니기 때문에 sessionStorage를 이용함
 import { persistReducer } from 'redux-persist';
@@ -41,7 +42,8 @@ export const store = configureStore({
     meeting: meetingReducer,
     profile:profileReducer,
     notice: noticeReducer,
-    session : sessionPersistReducer
+    room: roomSlice,
+    session : sessionPersistReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: [thunk],
