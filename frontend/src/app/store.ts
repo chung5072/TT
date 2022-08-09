@@ -9,6 +9,7 @@ import meetingReducer from '../features/meeting/meetingSlice'
 import profileReducer from '../features/Game/ProfileSlice'
 import noticeReducer from '../features/notice/noticeSlice'
 import signalSlice from '../features/Game/SignalSlice'
+import monsterSlice from '../features/Game/MonsterSlice'
 
 //* 해당 정보를 페이지에 남도록 지속해서 저장하는 것이 아니기 때문에 sessionStorage를 이용함
 import { persistReducer } from 'redux-persist';
@@ -18,7 +19,8 @@ import storageSession from 'redux-persist/lib/storage/session';
 
 //? 아직 사용법을 잘 모름
 export const sessionReducers = combineReducers({
-  signal : signalSlice
+  signal : signalSlice,
+  monster : monsterSlice
 });
 
 const sessionConfig = {
@@ -39,7 +41,7 @@ export const store = configureStore({
     meeting: meetingReducer,
     profile:profileReducer,
     notice: noticeReducer,
-    signal : sessionPersistReducer
+    session : sessionPersistReducer
   },
   devTools: process.env.NODE_ENV !== 'production',
   middleware: [thunk],

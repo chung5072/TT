@@ -47,10 +47,10 @@ const gameSlice = createSlice({
                 state.mapStatus = 3
             }
             if (map ==='Mountain') {
-                state.mapStatus = 4
+                state.mapStatus = 5
             }
             if (map ==='Devil') {
-                state.mapStatus = 5
+                state.mapStatus = 4
             }
             
         },

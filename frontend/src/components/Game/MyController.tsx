@@ -1,5 +1,6 @@
 import "./MyController.css"
 import { resetSignalHistory } from "../../features/Game/SignalSlice";
+import { resetMonster } from "../../features/Game/MonsterSlice";
 import { useNavigate } from 'react-router-dom'
 import map0 from "../../assets/music/map0.mp3"
 import map2 from "../../assets/music/map2.mp3"
@@ -52,10 +53,11 @@ if (audioRef.current != null && audioStatus === true) {
 
   function clickHandlerForExit() {
     // 테스트 출력 - state 비우기
-    console.log("state를 비워보자");
+    // console.log("state를 비워보자");
 
     //* redux state를 초기값으로 바꾸고 sessionStoreage를 clear() 시킴
     dispatch(resetSignalHistory());
+    dispatch(resetMonster());
 
     //? 아직 뭔지 모르겠음
     // client.unsubscribe(roomId as string);
