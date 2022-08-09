@@ -22,6 +22,7 @@ export default function GameButtons() {
         <button id="player-five" className="left-button" onClick={() => setDivStatus(3)}>Item</button>
         <button id="player-five" className="left-button" onClick={() => setDivStatus(4)}>Mon</button>
         <button id="player-five" className="left-button" onClick={() => setDivStatus(5)}>Rule</button>
+        {/* <button id="player-five" className="left-button" onClick={() => setDivStatus(6)}>확인용 버튼 - MonsterStage</button> */}
         <button id="player-five" className="left-button" onClick={() => setDivStatus(0)}>Home</button>
         <button id="player-five" className="left-button" onClick={() => setDivStatus(99)}>GM</button>
       </div>
