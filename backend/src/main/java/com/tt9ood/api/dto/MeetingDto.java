@@ -32,10 +32,12 @@ public class MeetingDto {
     private int meetingPyNum;
     // 구인 게시글 - 게임 시작 시간
     @Schema(description = "게임 시작 시간", type = "String", example = "2022-01-01 12:00")
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private String meetingPyTime;
     // 구인 게시글 - 게임을 시작하는 것인지 아닌지
     private Boolean meetingGameIsStart;
+    // 게임 방 번호
+    private long roomInfoCode;
     // GM 유저의 코드
     private long gmUserCode;
     // 플레이어들의 유저 코드 리스트
@@ -43,7 +45,7 @@ public class MeetingDto {
 
     public MeetingDto(Long meetingCode, String meetingTitle, String meetingAuthor,
                       String meetingDate, String meetingContent, int meetingPyNum, String meetingPyTime,
-                      long gmUserCode, List<Long> pyUserCodeList) {
+                      long roomInfoCode, long gmUserCode, List<Long> pyUserCodeList) {
         this.meetingCode = meetingCode;
         this.meetingTitle = meetingTitle;
         this.meetingAuthor = meetingAuthor;
@@ -51,7 +53,16 @@ public class MeetingDto {
         this.meetingContent = meetingContent;
         this.meetingPyNum = meetingPyNum;
         this.meetingPyTime = meetingPyTime;
+        this.roomInfoCode = roomInfoCode;
         this.gmUserCode = gmUserCode;
         this.pyUserCodeList = pyUserCodeList;
+    }
+
+    @Getter @Setter
+    @NoArgsConstructor
+    public static class Enroll{
+        private Long meetingCode;
+        private Long usercode;
+        private Boolean isGm = false;
     }
 }

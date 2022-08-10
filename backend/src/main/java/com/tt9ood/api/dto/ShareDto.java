@@ -1,8 +1,12 @@
 package com.tt9ood.api.dto;
 
+import com.tt9ood.db.entity.Comment;
 import com.tt9ood.db.entity.Share;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShareDto {
     @Data
@@ -43,8 +47,9 @@ public class ShareDto {
         private int shareLike;
         private int shareView;
         private String createDate, modifiedDate;
+        private List<CommentDto> commentDtoList = new ArrayList<>();
 
-        public Response(Share share){
+        public Response(Share share, List<CommentDto> commentDtoList){
             this.shareCode = share.getShareCode();
             this.shareTitle = share.getShareTitle();
             this.shareAuthor = share.getShareAuthor();
@@ -53,6 +58,7 @@ public class ShareDto {
             this.shareView = share.getShareView();
             this.createDate = share.getCreatedDate();
             this.modifiedDate = share.getModifiedDate();
+            this.commentDtoList = commentDtoList;
         }
     }
 }
