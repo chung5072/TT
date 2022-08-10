@@ -10,6 +10,9 @@ interface meetingState  {
   meetingPyTime: any
   meetingGameIsStart: any
   meetingList: Array<object>
+  roomCode: number
+  playerList: Array<object>
+  Gm: object
 }
 
 export const initialState: meetingState = {
@@ -22,6 +25,9 @@ export const initialState: meetingState = {
   meetingPyTime: '',
   meetingGameIsStart: '',
   meetingList: [],
+  roomCode: 0,
+  playerList: [],
+  Gm: {},
 }
 
 export const meetingSlice = createSlice({
@@ -43,6 +49,9 @@ export const meetingSlice = createSlice({
       state.meetingDate = action.payload.meetingView
       state.meetingPyNum = action.payload.meetingPyNum
       state.meetingPyTime = action.payload.meetingPyTime
+      state.roomCode = action.payload.roomInfoCode
+      state.Gm = action.payload.gmUserCode
+      state.playerList = action.payload.pyUserCodeList
     },
 
     editMeetingContent: (state:meetingState, action) => {
