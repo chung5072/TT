@@ -49,7 +49,7 @@ root.render(
             <Route path="/meeting/:articleId" element={<MeetingDetail />}></Route>
             <Route path="/notice" element={<NoticeList />}></Route>
             <Route path="/notice/create" element={<NoticeCreate />}></Route>
-            <Route path="/notice/:articleId" element={<NoticeEdit />}></Route>
+            <Route path="/notice/edit/:articleId" element={<NoticeEdit />}></Route>
             <Route path="/notice/:articleId" element={<NoticeDetail />}></Route>
             <Route path="/share" element={<InfoList />}></Route>
             <Route path="/share/create" element={<InfoCreate />}></Route>
