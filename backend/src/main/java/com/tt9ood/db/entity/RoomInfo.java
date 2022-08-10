@@ -33,4 +33,5 @@ public class RoomInfo {
     @Column(name = "room_py5_user_code")
     private long py5Code;
 
+
 }

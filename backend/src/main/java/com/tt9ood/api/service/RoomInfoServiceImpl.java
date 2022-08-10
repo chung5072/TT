@@ -2,6 +2,7 @@ package com.tt9ood.api.service;
 
 import com.tt9ood.api.dto.MeetingDto;
 import com.tt9ood.api.dto.RoomInfoDto;
+import com.tt9ood.api.response.UserRes;
 import com.tt9ood.db.entity.RoomInfo;
 import com.tt9ood.db.repository.RoomInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,30 +21,30 @@ public class RoomInfoServiceImpl implements RoomInfoService {
     public RoomInfo createRoomInfo(MeetingDto meetingDto) {
         RoomInfo roomInfo = new RoomInfo();
         // gm 코드
-        roomInfo.setGmUserCode(meetingDto.getGmUserCode());
+        roomInfo.setGmUserCode(meetingDto.getGmUserRes().getUserCode());
         // 플레이어 코드
-        List<Long> userCodeList = meetingDto.getPyUserCodeList();
+        List<UserRes> userCodeList = meetingDto.getPyUserResList();
         // 각 사이즈별로 값이 들어감
         if (userCodeList.size() == 1) {
-            roomInfo.setPy1Code(userCodeList.get(0));
+            roomInfo.setPy1Code(userCodeList.get(0).getUserCode());
         } else if (userCodeList.size() == 2) {
-            roomInfo.setPy1Code(userCodeList.get(0));
-            roomInfo.setPy2Code(userCodeList.get(1));
+            roomInfo.setPy1Code(userCodeList.get(0).getUserCode());
+            roomInfo.setPy2Code(userCodeList.get(1).getUserCode());
         } else if (userCodeList.size() == 3) {
-            roomInfo.setPy1Code(userCodeList.get(0));
-            roomInfo.setPy2Code(userCodeList.get(1));
-            roomInfo.setPy3Code(userCodeList.get(2));
+            roomInfo.setPy1Code(userCodeList.get(0).getUserCode());
+            roomInfo.setPy2Code(userCodeList.get(1).getUserCode());
+            roomInfo.setPy3Code(userCodeList.get(2).getUserCode());
         } else if (userCodeList.size() == 4) {
-            roomInfo.setPy1Code(userCodeList.get(0));
-            roomInfo.setPy2Code(userCodeList.get(1));
-            roomInfo.setPy3Code(userCodeList.get(2));
-            roomInfo.setPy4Code(userCodeList.get(3));
+            roomInfo.setPy1Code(userCodeList.get(0).getUserCode());
+            roomInfo.setPy2Code(userCodeList.get(1).getUserCode());
+            roomInfo.setPy3Code(userCodeList.get(2).getUserCode());
+            roomInfo.setPy4Code(userCodeList.get(3).getUserCode());
         } else if (userCodeList.size() == 5) {
-            roomInfo.setPy1Code(userCodeList.get(0));
-            roomInfo.setPy2Code(userCodeList.get(1));
-            roomInfo.setPy3Code(userCodeList.get(2));
-            roomInfo.setPy4Code(userCodeList.get(3));
-            roomInfo.setPy5Code(userCodeList.get(4));
+            roomInfo.setPy1Code(userCodeList.get(0).getUserCode());
+            roomInfo.setPy2Code(userCodeList.get(1).getUserCode());
+            roomInfo.setPy3Code(userCodeList.get(2).getUserCode());
+            roomInfo.setPy4Code(userCodeList.get(3).getUserCode());
+            roomInfo.setPy5Code(userCodeList.get(4).getUserCode());
         }
 
         return roomInfoRepository.save(roomInfo);
@@ -59,38 +60,38 @@ public class RoomInfoServiceImpl implements RoomInfoService {
         Optional<RoomInfo> byId = roomInfoRepository.findById(roomInfoCode);
         RoomInfo findRoomInfo = byId.get();
 
-        findRoomInfo.setGmUserCode(meetingDto.getGmUserCode());
-        List<Long> pyUserCodeList = meetingDto.getPyUserCodeList();
+        findRoomInfo.setGmUserCode(meetingDto.getGmUserRes().getUserCode());
+        List<UserRes> pyUserCodeList = meetingDto.getPyUserResList();
         if (pyUserCodeList.size() == 1) {
-            findRoomInfo.setPy1Code(pyUserCodeList.get(0));
+            findRoomInfo.setPy1Code(pyUserCodeList.get(0).getUserCode());
             findRoomInfo.setPy2Code(0);
             findRoomInfo.setPy3Code(0);
             findRoomInfo.setPy4Code(0);
             findRoomInfo.setPy5Code(0);
         } else if (pyUserCodeList.size() == 2) {
-            findRoomInfo.setPy1Code(pyUserCodeList.get(0));
-            findRoomInfo.setPy2Code(pyUserCodeList.get(1));
+            findRoomInfo.setPy1Code(pyUserCodeList.get(0).getUserCode());
+            findRoomInfo.setPy2Code(pyUserCodeList.get(1).getUserCode());
             findRoomInfo.setPy3Code(0);
             findRoomInfo.setPy4Code(0);
             findRoomInfo.setPy5Code(0);
         } else if (pyUserCodeList.size() == 3) {
-            findRoomInfo.setPy1Code(pyUserCodeList.get(0));
-            findRoomInfo.setPy2Code(pyUserCodeList.get(1));
-            findRoomInfo.setPy3Code(pyUserCodeList.get(2));
+            findRoomInfo.setPy1Code(pyUserCodeList.get(0).getUserCode());
+            findRoomInfo.setPy2Code(pyUserCodeList.get(1).getUserCode());
+            findRoomInfo.setPy3Code(pyUserCodeList.get(2).getUserCode());
             findRoomInfo.setPy4Code(0);
             findRoomInfo.setPy5Code(0);
         } else if (pyUserCodeList.size() == 4) {
-            findRoomInfo.setPy1Code(pyUserCodeList.get(0));
-            findRoomInfo.setPy2Code(pyUserCodeList.get(1));
-            findRoomInfo.setPy3Code(pyUserCodeList.get(2));
-            findRoomInfo.setPy4Code(pyUserCodeList.get(3));
+            findRoomInfo.setPy1Code(pyUserCodeList.get(0).getUserCode());
+            findRoomInfo.setPy2Code(pyUserCodeList.get(1).getUserCode());
+            findRoomInfo.setPy3Code(pyUserCodeList.get(2).getUserCode());
+            findRoomInfo.setPy4Code(pyUserCodeList.get(3).getUserCode());
             findRoomInfo.setPy5Code(0);
         } else if (pyUserCodeList.size() == 5) {
-            findRoomInfo.setPy1Code(pyUserCodeList.get(0));
-            findRoomInfo.setPy2Code(pyUserCodeList.get(1));
-            findRoomInfo.setPy3Code(pyUserCodeList.get(2));
-            findRoomInfo.setPy4Code(pyUserCodeList.get(3));
-            findRoomInfo.setPy5Code(pyUserCodeList.get(4));
+            findRoomInfo.setPy1Code(pyUserCodeList.get(0).getUserCode());
+            findRoomInfo.setPy2Code(pyUserCodeList.get(1).getUserCode());
+            findRoomInfo.setPy3Code(pyUserCodeList.get(2).getUserCode());
+            findRoomInfo.setPy4Code(pyUserCodeList.get(3).getUserCode());
+            findRoomInfo.setPy5Code(pyUserCodeList.get(4).getUserCode());
         }
 
         return findRoomInfo;
