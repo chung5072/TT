@@ -15,7 +15,8 @@ import { Link } from 'react-router-dom';
 export default function MeetingDetail() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  let articleId = useParams().articleId
+  const userCode = useSelector((state: RootState) => state.user.userCode)
+  let articleId = useParams()
   let startTime = useSelector((state:RootState) => state.meeting.meetingGameIsStart)
   let userId = useParams().userId
 
@@ -64,6 +65,7 @@ export default function MeetingDetail() {
   const DOMAIN = "http://localhost:8080/"
 
   useEffect(() => {
+    console.log(articleId)
       axios({ 
         method: 'GET',
         url: DOMAIN +`api/meeting/${articleId}`
@@ -155,7 +157,7 @@ export default function MeetingDetail() {
                 <div className='pygroup'>
                   <label className='pysubtitle' htmlFor="">GM</label>
                   <div className='player'>GM</div>
-                  <button className='enroll' onClick={(userId) => enrollGm()}>enroll</button>
+                  <button className='enroll' onClick={(userId) => enrollGm()} type="button">enroll</button>
                 </div>
                 <div className='pygroup'>
                   <label className='pysubtitle' htmlFor="">Player</label>
@@ -163,17 +165,17 @@ export default function MeetingDetail() {
                     <p>player1</p>
                     <p>player2</p>
                   </div>
-                  <button className='enroll' onClick={(userId) => enrollPy()}>enroll</button>
+                  <button className='enroll' onClick={(userId) => enrollPy()} type="button">enroll</button>
                 </div>
               </div>
-              <button className='enroll-game' onClick={onClick}>입장</button>
+              <button className='enroll-game' onClick={onClick} type="button">입장</button>
               {/* {startTime &&
                 <div>
                   <button>입장하기</button>
                 </div>
               } */}
               <div className='detail-btn-group'>
-                <button className='detail-btn' onClick={() => navigate(`/meeting/edit/${code}`)}>edit</button>
+                <button className='detail-btn' onClick={() => navigate(`/meeting/edit/${code}`)} type="button">edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
               </div>
               <hr className='comment-hr'/>

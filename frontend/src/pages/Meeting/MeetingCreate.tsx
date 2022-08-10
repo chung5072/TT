@@ -47,8 +47,8 @@ export default function MeetingCreate() {
       meetingPyTime: Yup.string()
         .required('게임 시작 시간을 입력해주세요.'),
 
-      meetingPosition: Yup.string()
-        .required('포지션을 선택해주세요.')
+      // meetingPosition: Yup.string()
+      //   .required('포지션을 선택해주세요.')
     }),
     onSubmit: (data) => {meetingRegisterRequest('POST', 'api/meeting/register', data)},
   })
