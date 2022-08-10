@@ -4,11 +4,14 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import '../ArticleCreate.css'
+import { useAppSelector } from '../../app/hooks'
+import { RootState } from '../../app/store'
 
 
 export default function NoticeCreate() {
   const DOMAIN = "http://localhost:8080/"
   const navigate = useNavigate()
+  const userNickname = useAppSelector((state: RootState) => state.user.userNickname)
 
   const noticeRegisterRequest: any = (method: string, url: string, data: object) => {
     return axios({
@@ -36,7 +39,11 @@ export default function NoticeCreate() {
         .required('내용을 입력해주세요.')
         .max(1000, '1000자를 초과할 수 없습니다.')
     }),
-    onSubmit: (data) => {noticeRegisterRequest('POST', 'api/notice', data)}
+    onSubmit: (data) => {
+      formik.values.noticeAuthor = userNickname
+      console.log(data)
+      {noticeRegisterRequest('POST', 'api/notice', data)}
+    }
   })
 
     return (

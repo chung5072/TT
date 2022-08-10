@@ -103,12 +103,12 @@ export default function InfoDetail() {
                       {like}
                   </div>
                   <div>
-                    <button className='like-btn'>like</button>
+                    <button className='like-btn' type="button">like</button>
                   </div>
                 </div>
               </div>
               <div className='detail-btn-group'>
-                <button className='detail-btn' onClick={onClickUpdScrn}>edit</button>
+                <button className='detail-btn' onClick={onClickUpdScrn} type="button">edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
               </div>
               <hr className='comment-hr'/>

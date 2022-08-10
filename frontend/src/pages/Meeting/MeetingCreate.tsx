@@ -7,12 +7,15 @@ import { RootState } from "../../app/store"
 import '../ArticleCreate.css'
 import { Link } from "react-router-dom"
 import * as Yup from 'yup'
+import { useAppSelector } from "../../app/hooks"
 
 export default function MeetingCreate() {
   const DOMAIN = "http://localhost:8080/"
   const navigate = useNavigate()
   let articleId = useParams().articleId
   let userId = useParams().userId
+  const userNickname = useAppSelector((state: RootState) => state.user.userNickname)
+
 
   const code = useSelector((state:RootState) => state.meeting.meetingCode)
   const meetingRegisterRequest: any = (method: string, url: string, data: object) => {
@@ -50,8 +53,10 @@ export default function MeetingCreate() {
       // meetingPosition: Yup.string()
       //   .required('포지션을 선택해주세요.')
     }),
-    onSubmit: (data) => {meetingRegisterRequest('POST', 'api/meeting/register', data)},
-  })
+    onSubmit: (data) => {
+      formik.values.meetingAuthor = userNickname
+      {meetingRegisterRequest('POST', 'api/meeting/register', data)}
+  }})
 
     return (
         <div id="create">

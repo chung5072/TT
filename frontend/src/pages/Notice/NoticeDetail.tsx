@@ -27,6 +27,7 @@ export default function NoticeDetail() {
       url: DOMAIN +`api/notice/${articleId}`
     })
       .then((res) => {
+        console.log(res.data)
         dispatch(getNoticeDetail(res.data))
 
       })
@@ -88,7 +89,7 @@ const formik = useFormik({
                 </div>
               </div>
               <div className='detail-btn-group'>
-                <button className='detail-btn' onClick={onClickUpdScrn}>edit</button>
+                <button className='detail-btn' onClick={onClickUpdScrn} type="button">edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
               </div>
               <hr className='comment-hr'/>
