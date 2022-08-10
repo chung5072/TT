@@ -34,7 +34,7 @@ public class ShareController {
             @ApiResponse(code = 500, message = "서버 오류")
     })
     public ResponseEntity<? extends BaseResponseBody> save(@RequestBody ShareDto.Request dto){
-        Share share = shareService.createShare(dto);
+        shareService.createShare(dto);
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success"));
     }
 

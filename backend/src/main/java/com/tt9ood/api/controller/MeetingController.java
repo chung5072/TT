@@ -55,7 +55,7 @@ public class MeetingController {
             @ApiResponse(code = 404, message = "구인 글 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<?> readAllList() {
+    public ResponseEntity<?> readAllMeetingList() {
 
         return ResponseEntity.status(200).body(meetingService.readAllMeeting());
     }
@@ -72,7 +72,7 @@ public class MeetingController {
             @ApiResponse(code = 404, message = "구인 글 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<?> readNotice(@PathVariable long meetingCode) {
+    public ResponseEntity<?> readMeeting(@PathVariable long meetingCode) {
 
         return ResponseEntity.status(200).body(meetingService.readMeeting(meetingCode));
     }
@@ -89,7 +89,7 @@ public class MeetingController {
             @ApiResponse(code = 404, message = "구인 글 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<?> deleteNotice(@PathVariable int meetingCode) {
+    public ResponseEntity<?> deleteMeeting(@PathVariable int meetingCode) {
 
         meetingService.deleteMeeting(meetingCode);
 
@@ -115,5 +115,38 @@ public class MeetingController {
         MeetingDto updatedMeeting = meetingService.updateMeeting(meetingCode, meetingForUpdate);
 
         return ResponseEntity.status(200).body(updatedMeeting);
+    }
+
+    // 수정 - gm 및 player 등록
+    @PutMapping("/gmEnroll")
+    @ApiOperation(value = "구인 게시글_gm 등록", notes = "특정 구인글 gm등록_구인글 코드번호 필요.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "구인 글 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<?> enrollGm(@RequestBody(required = false) @ApiParam(value="gm 역할을 할 플레이어 코드와 방 번호", required = true) MeetingDto.Enroll meetingEnroll) {
+
+        meetingEnroll.setIsGm(true);
+
+        MeetingDto meetingDto = meetingService.enrollToGame(meetingEnroll);
+
+        return ResponseEntity.status(200).body(meetingDto);
+    }
+
+    @PutMapping("/playerEnroll")
+    @ApiOperation(value = "구인 게시글_플레이어 등록", notes = "특정 구인글 플레이어 등록_구인글 코드번호 필요.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "구인 글 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<?> enrollPlayer(@RequestBody(required = false) @ApiParam(value="방에 참가할 플레이어 코드와 방 번호", required = true) MeetingDto.Enroll meetingEnroll) {
+
+        meetingEnroll.setIsGm(false);
+
+        MeetingDto meetingDto = meetingService.enrollToGame(meetingEnroll);
+
+        return ResponseEntity.status(200).body(meetingDto);
     }
 }

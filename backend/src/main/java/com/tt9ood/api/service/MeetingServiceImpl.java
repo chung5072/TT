@@ -8,6 +8,7 @@ import com.tt9ood.db.repository.RoomInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class MeetingServiceImpl implements MeetingService {
     MeetingRepository meetingRepository;
     @Autowired
     RoomInfoRepository roomInfoRepository;
+
+    EntityManager entityManager;
 
     @Autowired
     RoomInfoService roomInfoService;
@@ -151,6 +154,7 @@ public class MeetingServiceImpl implements MeetingService {
             updatedMeeting.setMeetingContent(meeting.getMeetingContent());
             updatedMeeting.setMeetingPyNum(meeting.getMeetingPyNum());
             updatedMeeting.setMeetingPyTime(meeting.getMeetingPyTime());
+            updatedMeeting.setRoomInfoCode(meeting.getRoomInfo().getRoomCode());
 
             // 구인 게시글 마스터 코드
             updatedMeeting.setGmUserCode(meeting.getRoomInfo().getGmUserCode());
@@ -180,6 +184,60 @@ public class MeetingServiceImpl implements MeetingService {
         return null;
     }
 
+    @Override
+    public MeetingDto enrollToGame(MeetingDto.Enroll enroll) {
+        // 1. 방 번호를 찾아야 함
+        // 1-1. 구인 게시글 찾음
+        Optional<Meeting> byIdMeeting = meetingRepository.findById(enroll.getMeetingCode());
+        Long roomCode = byIdMeeting.get().getRoomInfo().getRoomCode();
+        // 1-2. 방 정보 찾음
+        Optional<RoomInfo> byIdRoomInfo = roomInfoRepository.findById(roomCode);
+        RoomInfo findRoomInfo = byIdRoomInfo.get();
+
+        // 2. gm이면 gm에 set을 해줌
+        if (enroll.getIsGm()) {
+            // 2-1. gm에 추가
+            findRoomInfo.setGmUserCode(enroll.getUsercode());
+            roomInfoRepository.flush();
+            meetingRepository.flush();
+        }
+        // 3. 플레이어면 플레이어 리스트에 변화
+        else {
+            // 3-1. 플레이어면 리스트에 변화
+            MeetingDto findMeetingDto = readMeeting(enroll.getMeetingCode());
+            System.out.println("findMeetingDto = " + findMeetingDto.getGmUserCode());
+            int findPlayerNum = findMeetingDto.getPyUserCodeList().size();
+            switch (findPlayerNum) {
+                // 기존 0명
+                case 0 :
+                    findRoomInfo.setPy1Code(enroll.getUsercode());
+                    break;
+                // 기존 1명
+                case 1 :
+                    findRoomInfo.setPy2Code(enroll.getUsercode());
+                    break;
+                // 기존 2명
+                case 2 :
+                    findRoomInfo.setPy3Code(enroll.getUsercode());
+                    break;
+                // 기존 3명
+                case 3 :
+                    findRoomInfo.setPy4Code(enroll.getUsercode());
+                    break;
+                // 기존 4명
+                case 4 :
+                    findRoomInfo.setPy5Code(enroll.getUsercode());
+                    break;
+            }
+
+            roomInfoRepository.flush();
+            meetingRepository.flush();
+        }
+
+        //4. 다시 구인 게시글 정보 반환
+        return getMeetingInfo(byIdMeeting.get());
+    }
+
     /**
      * 데이터베이스로부터 구인 게시글 정보를 얻어서 구인 게시글 정보 반환
      * @param meeting 구인 게시글 정보 - 데이터베이스
@@ -203,6 +261,8 @@ public class MeetingServiceImpl implements MeetingService {
         meetingDto.setMeetingPyNum(meeting.getMeetingPyNum());
         // 만약 지금 시간이 디비에 저장한 시간이면 true로 변환해서 불러옴
         meetingDto.setMeetingGameIsStart(meeting.getMeetingGameIsStart());
+        // 구인 게시글 방 번호 코드
+        meetingDto.setRoomInfoCode(meeting.getRoomInfo().getRoomCode());
         // 구인 게시글 마스터 코드
         meetingDto.setGmUserCode(meeting.getRoomInfo().getGmUserCode());
         // 구인 게시글 플레이어 코드 리스트
@@ -230,7 +290,7 @@ public class MeetingServiceImpl implements MeetingService {
     }
 
     private LocalDateTime stringToLocal(String inputTime) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateTime = LocalDateTime.parse(inputTime, formatter);
         return dateTime;
     }
