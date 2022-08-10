@@ -32,7 +32,7 @@ export const noticeSlice = createSlice({
       getNoticeDetail: (state:noticeState, action) => {
         state.noticeCode = action.payload.noticeCode
         state.noticeTitle = action.payload.noticeTitle
-        state.noticeContent = action.payload.noticeContent
+        state.noticeContent = action.payload.noticeArticle
         state.noticeAuthor = action.payload.noticeAuthor
       },
 

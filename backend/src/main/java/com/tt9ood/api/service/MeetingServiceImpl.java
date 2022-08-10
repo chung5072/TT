@@ -1,13 +1,17 @@
 package com.tt9ood.api.service;
 
 import com.tt9ood.api.dto.MeetingDto;
+import com.tt9ood.api.response.UserRes;
 import com.tt9ood.db.entity.Meeting;
 import com.tt9ood.db.entity.RoomInfo;
+import com.tt9ood.db.entity.User;
 import com.tt9ood.db.repository.MeetingRepository;
 import com.tt9ood.db.repository.RoomInfoRepository;
+import com.tt9ood.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -20,6 +24,10 @@ public class MeetingServiceImpl implements MeetingService {
     MeetingRepository meetingRepository;
     @Autowired
     RoomInfoRepository roomInfoRepository;
+    @Autowired
+    UserRepository userRepository;
+
+    EntityManager entityManager;
 
     @Autowired
     RoomInfoService roomInfoService;
@@ -151,33 +159,87 @@ public class MeetingServiceImpl implements MeetingService {
             updatedMeeting.setMeetingContent(meeting.getMeetingContent());
             updatedMeeting.setMeetingPyNum(meeting.getMeetingPyNum());
             updatedMeeting.setMeetingPyTime(meeting.getMeetingPyTime());
+            updatedMeeting.setRoomInfoCode(meeting.getRoomInfo().getRoomCode());
 
             // 구인 게시글 마스터 코드
-            updatedMeeting.setGmUserCode(meeting.getRoomInfo().getGmUserCode());
+            updatedMeeting.setGmUserRes(convertToUserRes(meeting.getRoomInfo().getGmUserCode()));
             // 구인 게시글 플레이어 코드 리스트
             // 플레이어 코드 리스트
-            List<Long> pyCodeList = new ArrayList<>();
+            List<UserRes> pyUserResList = new ArrayList<>();
             // 플레이어 코드
             if (meeting.getRoomInfo().getPy1Code() != 0) {
-                pyCodeList.add(meeting.getRoomInfo().getPy1Code());
+                pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy1Code()));
             }
             if (meeting.getRoomInfo().getPy2Code() != 0) {
-                pyCodeList.add(meeting.getRoomInfo().getPy2Code());
+                pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy2Code()));
             }
             if (meeting.getRoomInfo().getPy3Code() != 0) {
-                pyCodeList.add(meeting.getRoomInfo().getPy3Code());
+                pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy3Code()));
             }
             if (meeting.getRoomInfo().getPy4Code() != 0) {
-                pyCodeList.add(meeting.getRoomInfo().getPy4Code());
+                pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy4Code()));
             }
             if (meeting.getRoomInfo().getPy5Code() != 0) {
-                pyCodeList.add(meeting.getRoomInfo().getPy5Code());
+                pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy5Code()));
             }
-            updatedMeeting.setPyUserCodeList(pyCodeList);
+            updatedMeeting.setPyUserResList(pyUserResList);
 
             return updatedMeeting;
         }
         return null;
+    }
+
+    @Override
+    public MeetingDto enrollToGame(MeetingDto.Enroll enroll) {
+        // 1. 방 번호를 찾아야 함
+        // 1-1. 구인 게시글 찾음
+        Optional<Meeting> byIdMeeting = meetingRepository.findById(enroll.getMeetingCode());
+        Long roomCode = byIdMeeting.get().getRoomInfo().getRoomCode();
+        // 1-2. 방 정보 찾음
+        Optional<RoomInfo> byIdRoomInfo = roomInfoRepository.findById(roomCode);
+        RoomInfo findRoomInfo = byIdRoomInfo.get();
+
+        // 2. gm이면 gm에 set을 해줌
+        if (enroll.getIsGm()) {
+            // 2-1. gm에 추가
+            findRoomInfo.setGmUserCode(enroll.getUserCode());
+            roomInfoRepository.flush();
+            meetingRepository.flush();
+        }
+        // 3. 플레이어면 플레이어 리스트에 변화
+        else {
+            // 3-1. 플레이어면 리스트에 변화
+            MeetingDto findMeetingDto = readMeeting(enroll.getMeetingCode());
+            int findPlayerNum = findMeetingDto.getPyUserResList().size();
+            switch (findPlayerNum) {
+                // 기존 0명
+                case 0 :
+                    findRoomInfo.setPy1Code(enroll.getUserCode());
+                    break;
+                // 기존 1명
+                case 1 :
+                    findRoomInfo.setPy2Code(enroll.getUserCode());
+                    break;
+                // 기존 2명
+                case 2 :
+                    findRoomInfo.setPy3Code(enroll.getUserCode());
+                    break;
+                // 기존 3명
+                case 3 :
+                    findRoomInfo.setPy4Code(enroll.getUserCode());
+                    break;
+                // 기존 4명
+                case 4 :
+                    findRoomInfo.setPy5Code(enroll.getUserCode());
+                    break;
+            }
+
+            roomInfoRepository.flush();
+            meetingRepository.flush();
+        }
+
+        //4. 다시 구인 게시글 정보 반환
+        return getMeetingInfo(byIdMeeting.get());
     }
 
     /**
@@ -203,28 +265,31 @@ public class MeetingServiceImpl implements MeetingService {
         meetingDto.setMeetingPyNum(meeting.getMeetingPyNum());
         // 만약 지금 시간이 디비에 저장한 시간이면 true로 변환해서 불러옴
         meetingDto.setMeetingGameIsStart(meeting.getMeetingGameIsStart());
+        // 구인 게시글 방 번호 코드
+        meetingDto.setRoomInfoCode(meeting.getRoomInfo().getRoomCode());
         // 구인 게시글 마스터 코드
-        meetingDto.setGmUserCode(meeting.getRoomInfo().getGmUserCode());
+
+        meetingDto.setGmUserRes(convertToUserRes(meeting.getRoomInfo().getGmUserCode()));
         // 구인 게시글 플레이어 코드 리스트
         // 플레이어 코드 리스트
-        List<Long> pyCodeList = new ArrayList<>();
+        List<UserRes> pyUserResList = new ArrayList<>();
         // 플레이어 코드
         if (meeting.getRoomInfo().getPy1Code() != 0) {
-            pyCodeList.add(meeting.getRoomInfo().getPy1Code());
+            pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy1Code()));
         }
         if (meeting.getRoomInfo().getPy2Code() != 0) {
-            pyCodeList.add(meeting.getRoomInfo().getPy2Code());
+            pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy2Code()));
         }
         if (meeting.getRoomInfo().getPy3Code() != 0) {
-            pyCodeList.add(meeting.getRoomInfo().getPy3Code());
+            pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy3Code()));
         }
         if (meeting.getRoomInfo().getPy4Code() != 0) {
-            pyCodeList.add(meeting.getRoomInfo().getPy4Code());
+            pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy4Code()));
         }
         if (meeting.getRoomInfo().getPy5Code() != 0) {
-            pyCodeList.add(meeting.getRoomInfo().getPy5Code());
+            pyUserResList.add(convertToUserRes(meeting.getRoomInfo().getPy5Code()));
         }
-        meetingDto.setPyUserCodeList(pyCodeList);
+        meetingDto.setPyUserResList(pyUserResList);
 
         return meetingDto;
     }
@@ -233,5 +298,12 @@ public class MeetingServiceImpl implements MeetingService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         LocalDateTime dateTime = LocalDateTime.parse(inputTime, formatter);
         return dateTime;
+    }
+
+    private UserRes convertToUserRes(long userCode) {
+        Optional<User> byUserCode = userRepository.findByUserCode(userCode);
+        User findUser = byUserCode.get();
+
+        return UserRes.of(findUser);
     }
 }

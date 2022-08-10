@@ -3,6 +3,8 @@ package com.tt9ood.db.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -34,8 +36,16 @@ public class Share extends TimeEntity{
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(mappedBy = "share")
+    private List<Comment> commentList = new ArrayList<>();
+
     public void update(String shareTitle, String shareContent){
         this.shareTitle = shareTitle;
         this.shareContent = shareContent;
+    }
+
+    public void addComment(Comment comment) {
+        commentList.add(comment);
+        comment.setShare(this);
     }
 }

@@ -23,4 +23,7 @@ public interface MeetingService {
 
     // 수정
     MeetingDto updateMeeting(long meetingCode, MeetingDto meetingDto);
+
+    // 수정 - enroll
+    MeetingDto enrollToGame(MeetingDto.Enroll enroll);
 }

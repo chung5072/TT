@@ -66,6 +66,9 @@ const NoticeList = () => {
                         {notice.noticeCode}
                       </td>
                       <td><Link to={"/notice/" + `${notice.noticeCode}`}>{notice.noticeTitle}</Link></td>
+                      <td>
+                        {notice.noticeAuthor}
+                      </td>
                   </tr>
               )
            })}
