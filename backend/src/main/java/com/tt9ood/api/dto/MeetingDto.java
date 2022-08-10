@@ -32,7 +32,7 @@ public class MeetingDto {
     private int meetingPyNum;
     // 구인 게시글 - 게임 시작 시간
     @Schema(description = "게임 시작 시간", type = "String", example = "2022-01-01 12:00")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private String meetingPyTime;
     // 구인 게시글 - 게임을 시작하는 것인지 아닌지
     private Boolean meetingGameIsStart;
