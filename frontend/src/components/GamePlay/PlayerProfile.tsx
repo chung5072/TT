@@ -30,7 +30,7 @@ export default function PlayerProfile() {
       })
       .then((res) => {
         console.log(res.data)
-        // dispatch(getPlayerProfile(res.data))
+        dispatch(getPlayerProfile(res.data))
       })
       .catch(err => {
         console.error(err.response.data)
@@ -47,7 +47,7 @@ export default function PlayerProfile() {
     const armor = useSelector((state:RootState)=>state.profile.playerArmor)
     const hp = useSelector((state:RootState)=>state.profile.playerHP)
     const level = useSelector((state:RootState)=>state.profile.chooseLevel)
-    const job = useSelector((state:RootState)=>state.profile.jobInfo.name)
+    const job = useSelector((state:RootState)=>state.profile.playerClass)
     const sup1 = useSelector((state:RootState)=>state.profile.playerSup1)
     const sup2 = useSelector((state:RootState)=>state.profile.playerSup2)
     const sup3 = useSelector((state:RootState)=>state.profile.playerSup3)
