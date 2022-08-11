@@ -34,7 +34,7 @@ export default function MeetingCreate() {
   }
 
   const formik = useFormik({
-    initialValues: {meetingCode:'', meetingTitle: '', meetingContent: '', meetingAuthor: '', meetingPyNum:'', meetingPyTime:'', meetingPosition:''},
+    initialValues: {meetingCode:'', meetingTitle: '', meetingContent: '', meetingAuthor: '', meetingPyNum:'', meetingPyTime:'', meetingPosition: 0},
     validationSchema: Yup.object({
       meetingTitle: Yup.string()
         .required('제목을 입력해주세요.')
@@ -94,10 +94,10 @@ export default function MeetingCreate() {
                 <label className="mini-title" htmlFor="meetingPosition">Position</label>
                 <div className="radio-group">
                   <div className="position-choice">
-                    <input id="gamePlayer" type="radio" name="position" /><label htmlFor="gameMaster" className="choice">GM</label>
+                    <input id="gamePlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={0}/><label htmlFor="gameMaster" className="choice">GM</label>
                   </div>
                   <div className="position-choice">
-                    <input id="gamePlayer" type="radio" name="position" /><label htmlFor="gamePlayer" className="choice">Player</label>
+                    <input id="gamePlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={1}/><label htmlFor="gamePlayer" className="choice">Player</label>
                   </div>
                   {/* {formik.touched.meetingPosition && formik.errors.meetingPosition ? (
                     <div className='error-message'>{formik.errors.meetingPosition}</div>
