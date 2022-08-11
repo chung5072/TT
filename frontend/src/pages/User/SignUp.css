@@ -1,3 +1,9 @@
+.signup-background {
+    background: url(../../../../기획/화면설계서/assets/desert-4779167222.png);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 #signup-form {
     display: flex;
     flex-direction: column;
@@ -5,16 +11,19 @@
 }
 
 #all-signup {
-    padding-top: 10%;
+    padding-top: 5%;
     padding-left: 40%;
 }
-label{
-    color: #FFC860;
-}
+
 #userId, #userPw, #userNickname, #userEmail, #userPhone, #userGender {
-    width: 36%;
-    height: 20px;
+    width: 45%;
+    height: 30px;
     border-radius: 20px;
+}
+
+.signup-label {
+    color: #FFC860;
+    margin-top: 20px;
 }
 
 #signup-text {
@@ -47,7 +56,7 @@ label{
     justify-content: center;
 }
 #signup-button {
-    width: 36%;
+    width: 45%;
     height: 50px;
     border-radius: 20px;
     background-color: #FFC860;

@@ -24,7 +24,7 @@ public class MeetingController {
 
     /**
      * 구인 게시글 등록
-     * @param meetingDto 게시글 내용
+     * @param meetingDtoReq 게시글 내용
      * @return ResponseEntity 등록 이후 응답 상태
      */
     @PostMapping("register")
@@ -35,10 +35,10 @@ public class MeetingController {
             @ApiResponse(code = 500, message = "서버 오류")
     })
     public ResponseEntity<? extends BaseResponseBody> register(
-            @RequestBody @ApiParam(value="구인 게시글 내용", required = true) MeetingDto meetingDto) {
+            @RequestBody @ApiParam(value="구인 게시글 내용", required = true) MeetingDto.Req meetingDtoReq) {
 
         // 구인 게시글 생성
-        meetingService.createMeeting(meetingDto);
+        meetingService.createMeeting(meetingDtoReq);
 
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success"));
     }
@@ -99,7 +99,7 @@ public class MeetingController {
     /**
      * 구인 글 수정
      * @param meetingCode 구인 게시글 코드
-     * @param meetingForUpdate 수정 이후 응답 상태 및 수정할 게시글 내용
+     * @param meetingReqForUpdate 수정 이후 응답 상태 및 수정할 게시글 내용
      * @return
      */
     @PutMapping("{meetingCode}")
@@ -110,9 +110,9 @@ public class MeetingController {
             @ApiResponse(code = 500, message = "서버 오류")
     })
     public ResponseEntity<?> updateNotice(@PathVariable int meetingCode,
-                                          @RequestBody @ApiParam(value="수정할 공지사항 내용", required = true) MeetingDto meetingForUpdate) {
+                                          @RequestBody @ApiParam(value="수정할 공지사항 내용", required = true) MeetingDto.Req meetingReqForUpdate) {
 
-        MeetingDto updatedMeeting = meetingService.updateMeeting(meetingCode, meetingForUpdate);
+        MeetingDto updatedMeeting = meetingService.updateMeeting(meetingCode, meetingReqForUpdate);
 
         return ResponseEntity.status(200).body(updatedMeeting);
     }

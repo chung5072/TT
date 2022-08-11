@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface MeetingService {
     // 등록
-    Meeting createMeeting(MeetingDto meetingDto);
+    Meeting createMeeting(MeetingDto.Req meetingDtoReq);
 
     // 조회
     // 전체 구인 게시글 조회
@@ -22,7 +22,7 @@ public interface MeetingService {
     void deleteMeeting(long meetingCode);
 
     // 수정
-    MeetingDto updateMeeting(long meetingCode, MeetingDto meetingDto);
+    MeetingDto updateMeeting(long meetingCode, MeetingDto.Req meetingDtoReq);
 
     // 수정 - enroll
     MeetingDto enrollToGame(MeetingDto.Enroll enroll);

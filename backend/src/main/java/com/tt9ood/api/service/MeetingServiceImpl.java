@@ -11,7 +11,6 @@ import com.tt9ood.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -27,27 +26,25 @@ public class MeetingServiceImpl implements MeetingService {
     @Autowired
     UserRepository userRepository;
 
-    EntityManager entityManager;
-
     @Autowired
     RoomInfoService roomInfoService;
 
     /**
      * 구인 게시글 생성
-     * @param meetingDto
+     * @param meetingDtoReq
      * @return
      */
     @Override
-    public Meeting createMeeting(MeetingDto meetingDto) {
+    public Meeting createMeeting(MeetingDto.Req meetingDtoReq) {
         // 구인 게시글 내용 생성 - 게시판 테이블 저장
-        Meeting meeting = new Meeting(meetingDto.getMeetingTitle(),
-                meetingDto.getMeetingAuthor(),
-                meetingDto.getMeetingContent(),
-                meetingDto.getMeetingPyNum(),
-                meetingDto.getMeetingPyTime()
+        Meeting meeting = new Meeting(meetingDtoReq.getMeetingTitle(),
+                meetingDtoReq.getMeetingAuthor(),
+                meetingDtoReq.getMeetingContent(),
+                meetingDtoReq.getMeetingPyNum(),
+                meetingDtoReq.getMeetingPyTime()
         );
         // 구인 게시글 내용 생성 - 방 정보 테이블 저장
-        RoomInfo createdRoomInfo = roomInfoService.createRoomInfo(meetingDto);
+        RoomInfo createdRoomInfo = roomInfoService.createRoomInfo(meetingDtoReq);
         meeting.setRoomInfo(createdRoomInfo);
 
         return meetingRepository.save(meeting);
@@ -123,11 +120,11 @@ public class MeetingServiceImpl implements MeetingService {
     /**
      * 구인 게시글 수정 - 특정 코드 필요
      * @param meetingCode
-     * @param meetingForUpdate
+     * @param meetingReqForUpdate
      * @return
      */
     @Override
-    public MeetingDto updateMeeting(long meetingCode, MeetingDto meetingForUpdate) {
+    public MeetingDto updateMeeting(long meetingCode, MeetingDto.Req meetingReqForUpdate) {
         MeetingDto updatedMeeting = new MeetingDto();
 
         // 해당 코드가 있는지 찾는다
@@ -136,16 +133,16 @@ public class MeetingServiceImpl implements MeetingService {
         if (findMeeting != null) {
             Meeting meeting = findMeeting.get();
             // 해당 내용을 작성한 내용으로 수정한다.
-            meeting.updateMeeting(meetingForUpdate.getMeetingTitle(),
-                    meetingForUpdate.getMeetingAuthor(),
-                    meetingForUpdate.getMeetingContent(),
-                    meetingForUpdate.getMeetingPyNum(),
-                    meetingForUpdate.getMeetingPyTime(),
-                    meetingForUpdate.getMeetingGameIsStart());
+            meeting.updateMeeting(meetingReqForUpdate.getMeetingTitle(),
+                    meetingReqForUpdate.getMeetingAuthor(),
+                    meetingReqForUpdate.getMeetingContent(),
+                    meetingReqForUpdate.getMeetingPyNum(),
+                    meetingReqForUpdate.getMeetingPyTime(),
+                    false);
 
             long roomCode = meeting.getRoomInfo().getRoomCode();
 
-            RoomInfo roomInfo = roomInfoService.updateRoomInfo(roomCode, meetingForUpdate);
+            RoomInfo roomInfo = roomInfoService.updateRoomInfo(roomCode, meetingReqForUpdate);
 
             meeting.setRoomInfo(roomInfo);
 
@@ -162,7 +159,11 @@ public class MeetingServiceImpl implements MeetingService {
             updatedMeeting.setRoomInfoCode(meeting.getRoomInfo().getRoomCode());
 
             // 구인 게시글 마스터 코드
-            updatedMeeting.setGmUserRes(convertToUserRes(meeting.getRoomInfo().getGmUserCode()));
+            if (meeting.getRoomInfo().getGmUserCode() == 0) {
+                updatedMeeting.setGmUserRes(null);
+            } else {
+                updatedMeeting.setGmUserRes(convertToUserRes(meeting.getRoomInfo().getGmUserCode()));
+            }
             // 구인 게시글 플레이어 코드 리스트
             // 플레이어 코드 리스트
             List<UserRes> pyUserResList = new ArrayList<>();
@@ -269,7 +270,11 @@ public class MeetingServiceImpl implements MeetingService {
         meetingDto.setRoomInfoCode(meeting.getRoomInfo().getRoomCode());
         // 구인 게시글 마스터 코드
 
-        meetingDto.setGmUserRes(convertToUserRes(meeting.getRoomInfo().getGmUserCode()));
+        if (meeting.getRoomInfo().getGmUserCode() == 0) {
+            meetingDto.setGmUserRes(null);
+        } else {
+            meetingDto.setGmUserRes(convertToUserRes(meeting.getRoomInfo().getGmUserCode()));
+        }
         // 구인 게시글 플레이어 코드 리스트
         // 플레이어 코드 리스트
         List<UserRes> pyUserResList = new ArrayList<>();

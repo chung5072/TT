@@ -34,7 +34,7 @@ export default function MeetingDetail() {
       url: DOMAIN + 'api/meeting/gmEnroll',
       data: {
         meetingCode: roomCode,
-        usercode: userCode,
+        userCode: userCode,
       }
     })
     .then( (res) => {
@@ -60,7 +60,7 @@ export default function MeetingDetail() {
         url: DOMAIN + 'api/meeting/playerEnroll',
         data: {
           meetingCode: roomCode,
-          usercode: userCode,
+          userCode: userCode,
         }
       })
       .then( (res) => {
