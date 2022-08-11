@@ -28,7 +28,7 @@ export const roomSlice = createSlice({
   initialState,
   reducers: {
     getRoomInfo: (state:roomState, action) => {
-      console.log('실행중')
+      console.log('실행중' + action.payload.py1Code)
       state.gmUserCode = action.payload.gmUserCode
       state.py1Code = action.payload.py1Code
       state.py2Code = action.payload.py2Code
@@ -37,9 +37,8 @@ export const roomSlice = createSlice({
       state.py5Code = action.payload.py5Code
       
     },
-    setGmCondition: (state:roomState) => {
-      console.log('GM이다!')
-      state.isGm = true
+    setGmCondition: (state:roomState, action) => {
+      state.isGm = action.payload
     }
   }
 })

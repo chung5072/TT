@@ -160,6 +160,7 @@ export default function MeetingDetail() {
       meetingDeleteRequest('DELETE', `api/meeting/${articleId}`, data)}
   })
   const onClick = () => {
+    window.location.reload(); 
     navigate(`/game/${articleId}`,{
       state: {
         sessionId: articleId,
