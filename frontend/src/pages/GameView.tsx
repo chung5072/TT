@@ -7,7 +7,7 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../app/store"
-import { useAppDispatch } from "../app/hooks"
+import { useAppDispatch, useAppSelector } from "../app/hooks"
 import { setGameState } from "../features/Game/GameSlice"
 import { setMonster } from "../features/Game/MonsterSlice"
 import { setStatus } from "../features/Game/LeftSlice"
@@ -18,6 +18,8 @@ import "./GameView.css"
 //* 참고사이트 : http://jmesnil.net/stomp-websocket/doc/
 import SockJS from "sockjs-client";
 import webstomp from "webstomp-client";
+import axios from "axios"
+import { getRoomInfo, setGmCondition } from "../features/room/RoomSlice"
 
 const serverUrl = `http://localhost:8080/api/signal`;
 
@@ -34,9 +36,25 @@ export default function GameView() {
   //* 이벤트 로그 state
   const signalState = useSelector((state:RootState) => state.session).signal
   const dispatch = useAppDispatch()
+  const userCode = useAppSelector((state:RootState) => state.user.userCode)
+
 
   useEffect(() => {
-    dispatch(setGameState(gameId))
+    axios({
+      method:'GET',
+      url: `http://localhost:8080/api/roomInfo/${gameId}`
+    })
+    .then((res) => {
+      console.log(res.data)
+      console.log(userCode)
+      dispatch(getRoomInfo(res.data))
+      if (res.data.gmUserCode == userCode) {
+        console.log('hihi')
+        dispatch(setGmCondition())
+      }
+      
+
+    })
   }, [gameState])
 
   /**
