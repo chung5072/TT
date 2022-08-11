@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import axios from "axios"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import './LogIn.css'
+
 import { saveToken } from "../../features/user/loginSlice"
 import { fetchProfile } from '../../features/user/userSlice'
 
@@ -86,9 +87,9 @@ export default function Login() {
                 <hr />
               </div>
           </div>
-          <div id='login-with-btn'>
-            <button id='login-with-google'></button>
-            <button id='login-with-kakao'></button>  
+          <div className='login-with-btn'>
+            <div className='login-with-naver'></div>
+            <button className='login-with-kakao'></button>  
           </div>
 
           <div id='find-id-pwd'>
