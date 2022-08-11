@@ -90,7 +90,7 @@ public class Meeting {
      */
     private String currTime() {
         // 형식
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         // 현재 시간을 문자열로 변환
         String formattedDateTime = LocalDateTime.now().format(formatter);
 

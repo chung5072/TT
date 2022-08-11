@@ -7,12 +7,15 @@ import { RootState } from "../../app/store"
 import '../ArticleCreate.css'
 import { Link } from "react-router-dom"
 import * as Yup from 'yup'
+import { useAppSelector } from "../../app/hooks"
 
 export default function MeetingCreate() {
   const DOMAIN = "http://localhost:8080/"
   const navigate = useNavigate()
   let articleId = useParams().articleId
   let userId = useParams().userId
+  const userNickname = useAppSelector((state: RootState) => state.user.userNickname)
+
 
   const code = useSelector((state:RootState) => state.meeting.meetingCode)
   const meetingRegisterRequest: any = (method: string, url: string, data: object) => {
@@ -31,7 +34,7 @@ export default function MeetingCreate() {
   }
 
   const formik = useFormik({
-    initialValues: {meetingCode:'', meetingTitle: '', meetingContent: '', meetingAuthor: '', meetingPyNum:'', meetingPyTime:'', meetingPosition:''},
+    initialValues: {meetingCode:'', meetingTitle: '', meetingContent: '', meetingAuthor: '', meetingPyNum:'', meetingPyTime:'', meetingPosition: 0},
     validationSchema: Yup.object({
       meetingTitle: Yup.string()
         .required('제목을 입력해주세요.')
@@ -47,11 +50,13 @@ export default function MeetingCreate() {
       meetingPyTime: Yup.string()
         .required('게임 시작 시간을 입력해주세요.'),
 
-      meetingPosition: Yup.string()
-        .required('포지션을 선택해주세요.')
+      // meetingPosition: Yup.string()
+      //   .required('포지션을 선택해주세요.')
     }),
-    onSubmit: (data) => {meetingRegisterRequest('POST', 'api/meeting/register', data)},
-  })
+    onSubmit: (data) => {
+      formik.values.meetingAuthor = userNickname
+      {meetingRegisterRequest('POST', 'api/meeting/register', data)}
+  }})
 
     return (
         <div id="create">
@@ -89,10 +94,10 @@ export default function MeetingCreate() {
                 <label className="mini-title" htmlFor="meetingPosition">Position</label>
                 <div className="radio-group">
                   <div className="position-choice">
-                    <input id="gamePlayer" type="radio" name="position" /><label htmlFor="gameMaster" className="choice">GM</label>
+                    <input id="gamePlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={0}/><label htmlFor="gameMaster" className="choice">GM</label>
                   </div>
                   <div className="position-choice">
-                    <input id="gamePlayer" type="radio" name="position" /><label htmlFor="gamePlayer" className="choice">Player</label>
+                    <input id="gamePlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={1}/><label htmlFor="gamePlayer" className="choice">Player</label>
                   </div>
                   {/* {formik.touched.meetingPosition && formik.errors.meetingPosition ? (
                     <div className='error-message'>{formik.errors.meetingPosition}</div>

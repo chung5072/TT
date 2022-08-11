@@ -6,7 +6,6 @@ import * as Yup from 'yup'
 import axios from "axios"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import './LogIn.css'
-
 import { saveToken } from "../../features/user/loginSlice"
 import { fetchProfile } from '../../features/user/userSlice'
 
@@ -56,13 +55,13 @@ export default function Login() {
       userPw: Yup.string()
       .required('Required'),
     }),
-    onSubmit: (credentials) => {loginRequest('POST', 'api/user/login', credentials)} 
+    onSubmit: (credentials) => {loginRequest('POST', 'api/user/login', credentials)}
   
   })
 
   // HTML
     return (
-      <div id='container'>
+      <div className='login-background' id='container'>
         <div id='all-login'>
           <div id='login-form'>
             <h1 id='login-text'>Login</h1>
@@ -72,7 +71,7 @@ export default function Login() {
               <input id="id-input" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
 
               <label id='pwd-label' htmlFor="userPw">Password</label>
-              <input id="pwd-input" name="userPw" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
+              <input id="pwd-input" name="userPw" type="password" onChange={formik.handleChange} value={ formik.values.userPw }/>
               <button id='login-button' type="submit">LogIn</button>
             </form>
           </div>

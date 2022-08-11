@@ -66,19 +66,15 @@ const NoticeList = () => {
                         {notice.noticeCode}
                       </td>
                       <td><Link to={"/notice/" + `${notice.noticeCode}`}>{notice.noticeTitle}</Link></td>
+                      <td>
+                        {notice.noticeAuthor}
+                      </td>
                   </tr>
               )
            })}
            </tbody>
           </table>
         </div>
-        <div>
-          <button onClick={() => navigate('/notice/create')}>create</button>
-        </div>
-        <div>
-          <button onClick={() => navigate('/')}>back</button>
-        </div>
-        
       </div>     
     </div>
   )

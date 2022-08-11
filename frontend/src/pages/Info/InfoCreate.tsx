@@ -7,11 +7,14 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import '../ArticleCreate.css'
 import * as Yup from 'yup'
+import { useAppSelector } from '../../app/hooks';
+import { RootState } from '../../app/store';
 
 
 export default function InfoCreate() {
   const DOMAIN = "http://localhost:8080/"
   const navigate = useNavigate()
+  const userId = useAppSelector((state: RootState) => state.user.userNickname)
 
   const shareRegisterRequest: any = (method: string, url: string, data: object) => {
     return axios({
@@ -30,7 +33,7 @@ export default function InfoCreate() {
 
 
   const formik = useFormik({
-    initialValues: {shareTitle:'', shareContent: ''},
+    initialValues: {shareTitle:'', shareContent: '', shareAuthor: ''},
     validationSchema: Yup.object({
       shareTitle: Yup.string()
         .required('제목을 입력해주세요.')
@@ -40,7 +43,10 @@ export default function InfoCreate() {
         .required('내용을 입력해주세요.')
         .max(1000, '1000자를 초과할 수 없습니다.')
     }),
-    onSubmit: (data) => {shareRegisterRequest('POST', 'api/share/register', data)},
+    onSubmit: (data) => {
+      formik.values.shareAuthor = userId
+      console.log(data)
+      shareRegisterRequest('POST', 'api/share/register', data)},
     })
 
 

@@ -84,6 +84,9 @@ const InfoList = () => {
                         {share.shareCode}
                       </td>
                       <td><Link to={"/share/" + `${share.shareCode}`}>{share.shareTitle}</Link></td>
+                      <td>
+                        {share.shareAuthor}
+                      </td>
                   </tr>
               )
            })}

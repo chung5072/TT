@@ -16,6 +16,7 @@ export default function SetProfile() {
   const profileDone = useSelector((state:RootState) => state.game.profileDone)
   const jobInfo = useSelector((state:RootState) => state.profile.jobInfo)
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
+  const isGm = useAppSelector((state:RootState) => state.room.isGm)
   const selectJobInfo = (job:string) => {
     if (job === 'warrior') {
       dispatch(setJobInfo(warrior))
@@ -49,16 +50,16 @@ export default function SetProfile() {
       playerSup1: 0,
       playerSup2: 0,
       playerSup3: 0,
-      playerstat1: 0,
-      playerstat2: 0,
-      playerstat3: 0,
-      playerstat4: 0,
-      playerstat5: 0,
-      playerstat6: 0,
-      class_name: '',
-      skill1: '',
-      skill2: '',
-      skill3: '',
+      playerStat1: 0,
+      playerStat2: 0,
+      playerStat3: 0,
+      playerStat4: 0,
+      playerStat5: 0,
+      playerStat6: 0,
+      playerClassName: '',
+      playerSkill1: '',
+      playerSkill2: '',
+      playerSkill3: '',
     
     },
     validationSchema: Yup.object({
@@ -68,22 +69,22 @@ export default function SetProfile() {
       // .required('Required'),
       playerLook: Yup.string()
       .required('Required'),
-      playerstat1: Yup.number()
+      playerStat1: Yup.number()
       .required('Required')
       .min(3),
-      playerstat2: Yup.number()
+      playerStat2: Yup.number()
       .required('Required')
       .min(3),
-      playerstat3: Yup.number()
+      playerStat3: Yup.number()
       .required('Required')
       .min(3),
-      playerstat4: Yup.number()
+      playerStat4: Yup.number()
       .required('Required')
       .min(3),
-      playerstat5: Yup.number()
+      playerStat5: Yup.number()
       .required('Required')
       .min(3),
-      playerstat6: Yup.number()
+      playerStat6: Yup.number()
       .required('Required')
       .min(3),
       class_name: Yup.string()
@@ -91,50 +92,52 @@ export default function SetProfile() {
 
      
     }),
-    onSubmit: (profile) => {
+    onSubmit: async (profile) => {
       console.log('보내는중')
-      if (profile.class_name === 'warrior') {
+      console.log(profile)
+      if (profile.playerClassName === 'warrior') {
         formik.values.playerHP =10
-        formik.values.skill1 = "피의 향기"
-        formik.values.skill2 = "고유 병기의 종류"
-        formik.values.skill3 = "병기의 영"
+        formik.values.playerSkill1 = "피의 향기"
+        formik.values.playerSkill2 = "고유 병기의 종류"
+        formik.values.playerSkill3 = "병기의 영"
         formik.values.playerWeapon = "평범한 한손 대검"
       }
-      if (profile.class_name === 'wizard') {
+      if (profile.playerClassName === 'wizard') {
         formik.values.playerHP =4
-        formik.values.skill1 = "주문강화"
-        formik.values.skill2 = "화염탄"
-        formik.values.skill3 = "마력의 방패"
+        formik.values.playerSkill1 = "주문강화"
+        formik.values.playerSkill2 = "화염탄"
+        formik.values.playerSkill3 = "마력의 방패"
         formik.values.playerWeapon = "평범한 완드"
       }
-      if (profile.class_name === 'hunter') {
+      if (profile.playerClassName === 'hunter') {
         formik.values.playerHP =8
-        formik.values.skill1 = "암습"
-        formik.values.skill2 = "프로의 솜씨"
-        formik.values.skill3 = "덫 전문가"
+        formik.values.playerSkill1 = "암습"
+        formik.values.playerSkill2 = "프로의 솜씨"
+        formik.values.playerSkill3 = "덫 전문가"
         formik.values.playerWeapon = "평범한 활"
       }
-      if (profile.class_name === 'hunter') {
+      if (profile.playerClassName === 'hunter') {
         formik.values.playerHP =8
-        formik.values.skill1 = "정조준"
-        formik.values.skill2 = "야성의 교감"
-        formik.values.skill3 = "더블샷"
+        formik.values.playerSkill1 = "정조준"
+        formik.values.playerSkill2 = "야성의 교감"
+        formik.values.playerSkill3 = "더블샷"
         formik.values.playerWeapon = "평범한 활"
       }
-      if (profile.class_name === 'thief') {
+      if (profile.playerClassName === 'thief') {
         formik.values.playerHP =6
-        formik.values.skill1 = "암습"
-        formik.values.skill2 = "프로의 솜씨"
-        formik.values.skill3 = "덫 전문가"
+        formik.values.playerSkill1 = "암습"
+        formik.values.playerSkill2 = "프로의 솜씨"
+        formik.values.playerSkill3 = "덫 전문가"
         formik.values.playerWeapon = "평범한 단도"
       }
-      if (profile.class_name === 'priest') {
+      if (profile.playerClassName === 'priest') {
         formik.values.playerHP =8
-        formik.values.skill1 = "신 + 탄원"
-        formik.values.skill2 = "치유"
-        formik.values.skill3 = "천벌"
+        formik.values.playerSkill1 = "신 + 탄원"
+        formik.values.playerSkill2 = "치유"
+        formik.values.playerSkill3 = "천벌"
         formik.values.playerWeapon = "평범한 기도서"
       }
+      formik.values.playerStat1 = Number(formik.values.playerStat1)
       console.log(profile)
       axios({
         method: 'POST',
@@ -149,15 +152,16 @@ export default function SetProfile() {
       dispatch(setProfileDone())
       dispatch(setAudioStatus(true))
     }}
+    
   )
     return (
-        <div id="select-profile-modal" className={profileDone? "off-btn" : "on"}>
+        <div id="select-profile-modal" className={profileDone || isGm==true ? "off-btn" : "on"}>
           <div id="blank">{chooseLevel===-1? jobInfo.name: chooseLevel===0 ?"Select Class" : chooseLevel===1 ? "Input Profile" :"Roll Stats"}</div>
           <form action="" onSubmit={formik.handleSubmit}>
 
             {/* job */}
             <div id="job-form" className={chooseLevel===0 ?"on" : "off-btn"}>
-              <h1>{formik.values.class_name}</h1>
+              <h1>{formik.values.playerClassName}</h1>
               <div className="btn-box">
                 <button id="warrior" name="class_name" className="job-btn" type="button" onClick={formik.handleChange} value = "warrior">전사</button>
                 <button id="wizard" name="class_name" className="job-btn" type="button" onClick={formik.handleChange} value = "wizard">마법사</button>
@@ -198,55 +202,55 @@ export default function SetProfile() {
              {/* stat */}
             <div id="stat-form" className={chooseLevel===2 ?"on" : "off-btn"}>
               <div className="profile-stat-box">
-                <label htmlFor="playerstat1" className="profile-label">Stat1 :</label>
+                <label htmlFor="playerStat1" className="profile-label">Stat1 :</label>
                 <div className="stat-container">
-                  <span>{formik.values.playerstat1}</span>
-                  <button className="stat-btn" id="playerstat1" name="playerstat1" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                  <span>{formik.values.playerStat1}</span>
+                  <button className="stat-btn" id="playerStat1" name="playerStat1" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
                     Roll
                   </button>
                 </div> 
               </div>
               <div className="profile-stat-box">
-                <label htmlFor="playerstat2" className="profile-label">Stat2 :</label>
+                <label htmlFor="playerStat2" className="profile-label">Stat2 :</label>
                 <div className="stat-container">
-                  <span>{formik.values.playerstat2}</span>
-                  <button className="stat-btn" id="playerstat2" name="playerstat2" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                  <span>{formik.values.playerStat2}</span>
+                  <button className="stat-btn" id="playerStat2" name="playerStat2" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
                     Roll
                   </button>
                 </div> 
               </div>
               <div className="profile-stat-box">
-                <label htmlFor="playerstat3" className="profile-label">Stat3 :</label>
+                <label htmlFor="playerStat3" className="profile-label">Stat3 :</label>
                 <div className="stat-container">
-                  <span>{formik.values.playerstat3}</span>
-                  <button className="stat-btn" id="playerstat3" name="playerstat3" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                  <span>{formik.values.playerStat3}</span>
+                  <button className="stat-btn" id="playerStat3" name="playerStat3" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
                     Roll
                   </button>
                 </div> 
               </div>
               <div className="profile-stat-box">
-                <label htmlFor="playerstat4" className="profile-label">Stat4 :</label>
+                <label htmlFor="playerStat4" className="profile-label">Stat4 :</label>
                 <div className="stat-container">
-                  <span>{formik.values.playerstat4}</span>
-                  <button className="stat-btn" id="playerstat4" name="playerstat4" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                  <span>{formik.values.playerStat4}</span>
+                  <button className="stat-btn" id="playerStat4" name="playerStat4" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
                     Roll
                   </button>
                 </div> 
               </div>
               <div className="profile-stat-box">
-                <label htmlFor="playerstat5" className="profile-label">Stat5 :</label>
+                <label htmlFor="playerStat5" className="profile-label">Stat5 :</label>
                 <div className="stat-container">
-                  <span>{formik.values.playerstat5}</span>
-                  <button className="stat-btn" id="playerstat5" name="playerstat5" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                  <span>{formik.values.playerStat5}</span>
+                  <button className="stat-btn" id="playerStat5" name="playerStat5" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
                     Roll
                   </button>
                 </div> 
               </div>
               <div className="profile-stat-box">
-                <label htmlFor="playerstat6" className="profile-label">Stat6 :</label>
+                <label htmlFor="playerStat6" className="profile-label">Stat6 :</label>
                 <div className="stat-container">
-                  <span>{formik.values.playerstat6}</span>
-                  <button className="stat-btn" id="playerstat6" name="playerstat6" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
+                  <span>{formik.values.playerStat6}</span>
+                  <button className="stat-btn" id="playerStat6" name="playerStat6" type="button" onClick={formik.handleChange} value = {(Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1)) + (Math.floor(Math.random() * (6 - 1 + 1) + 1))}>
                     Roll
                   </button>
                 </div> 

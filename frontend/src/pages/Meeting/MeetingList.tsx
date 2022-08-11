@@ -71,6 +71,9 @@ const MeetingList = () => {
                         {meet.meetingCode}
                       </td>
                       <td><Link to={"/meeting/" + `${meet.meetingCode}`}>{meet.meetingTitle}</Link></td>
+                      <td>
+                        {meet.meetingAuthor}
+                      </td>
                   </tr>
               )
            })}

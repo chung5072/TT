@@ -91,11 +91,12 @@ export default function MonsterList() {
 
     
     return (
-        <div id="monster-theme">
+        <div id="monster">
+          <h1>MonsterList</h1>
           <Slider className="monster-carousel" {...settings}>
               <div className="monster1">
-                <div className="monster-name">이름: {mapStatus === 1 ? MonsterListOne.name[0] : mapStatus === 2 ? MonsterListTwo.name[0] : mapStatus === 3 ? MonsterListThree.name[0] : mapStatus === 4 ? MonsterListFour.name[0] : MonsterListFive.name[0] }</div>
-                <div className="monster-features">특성: {mapStatus === 1 ? MonsterListOne.features[0] : mapStatus === 2 ? MonsterListTwo.features[0] : mapStatus === 3 ? MonsterListThree.features[0] : mapStatus === 4 ? MonsterListFour.features[0] : MonsterListFive.features[0] }</div>
+                <div className="monster-name">{mapStatus === 1 ? MonsterListOne.name[0] : mapStatus === 2 ? MonsterListTwo.name[0] : mapStatus === 3 ? MonsterListThree.name[0] : mapStatus === 4 ? MonsterListFour.name[0] : MonsterListFive.name[0] }</div>
+                <div className="monster-features">{mapStatus === 1 ? MonsterListOne.features[0] : mapStatus === 2 ? MonsterListTwo.features[0] : mapStatus === 3 ? MonsterListThree.features[0] : mapStatus === 4 ? MonsterListFour.features[0] : MonsterListFive.features[0] }</div>
                 <div className="monster-attack">공격력: {mapStatus === 1 ? MonsterListOne.attack[0] : mapStatus === 2 ? MonsterListTwo.attack[0] : mapStatus === 3 ? MonsterListThree.attack[0] : mapStatus === 4 ? MonsterListFour.attack[0] : MonsterListFive.attack[0] }</div>
                 <div className="monster-hp">체력: {mapStatus === 1 ? MonsterListOne.hp[0] : mapStatus === 2 ? MonsterListTwo.hp[0] : mapStatus === 3 ? MonsterListThree.hp[0] : mapStatus === 4 ? MonsterListFour.hp[0] : MonsterListFive.hp[0] }</div>
                 <div className="monster-defense">방어력: {mapStatus === 1 ? MonsterListOne.defense[0] : mapStatus === 2 ? MonsterListTwo.defense[0] : mapStatus === 3 ? MonsterListThree.defense[0] : mapStatus === 4 ? MonsterListFour.defense[0] : MonsterListFive.defense[0] }</div>            
@@ -103,8 +104,8 @@ export default function MonsterList() {
                 <div className="monster-tag">태그: {mapStatus === 1 ? MonsterListOne.tag[0] : mapStatus === 2 ? MonsterListTwo.tag[0] : mapStatus === 3 ? MonsterListThree.tag[0] : mapStatus === 4 ? MonsterListFour.tag[0] : MonsterListFive.tag[0] }</div>            
               </div>
               <div className="monster2">
-                <div className="monster-name">이름: {mapStatus === 1 ? MonsterListOne.name[1] : mapStatus === 2 ? MonsterListTwo.name[1] : mapStatus === 3 ? MonsterListThree.name[1] : mapStatus === 4 ? MonsterListFour.name[1] : MonsterListFive.name[1] }</div>
-                <div className="monster-features">특성: {mapStatus === 1 ? MonsterListOne.features[1] : mapStatus === 2 ? MonsterListTwo.features[1] : mapStatus === 3 ? MonsterListThree.features[1] : mapStatus === 4 ? MonsterListFour.features[1] : MonsterListFive.features[1] }</div>
+                <div className="monster-name">{mapStatus === 1 ? MonsterListOne.name[1] : mapStatus === 2 ? MonsterListTwo.name[1] : mapStatus === 3 ? MonsterListThree.name[1] : mapStatus === 4 ? MonsterListFour.name[1] : MonsterListFive.name[1] }</div>
+                <div className="monster-features">{mapStatus === 1 ? MonsterListOne.features[1] : mapStatus === 2 ? MonsterListTwo.features[1] : mapStatus === 3 ? MonsterListThree.features[1] : mapStatus === 4 ? MonsterListFour.features[1] : MonsterListFive.features[1] }</div>
                 <div className="monster-attack">공격력: {mapStatus === 1 ? MonsterListOne.attack[1] : mapStatus === 2 ? MonsterListTwo.attack[1] : mapStatus === 3 ? MonsterListThree.attack[1] : mapStatus === 4 ? MonsterListFour.attack[1] : MonsterListFive.attack[1] }</div>
                 <div className="monster-hp">체력: {mapStatus === 1 ? MonsterListOne.hp[1] : mapStatus === 2 ? MonsterListTwo.hp[1] : mapStatus === 3 ? MonsterListThree.hp[1] : mapStatus === 4 ? MonsterListFour.hp[1] : MonsterListFive.hp[1] }</div>
                 <div className="monster-defense">방어력: {mapStatus === 1 ? MonsterListOne.defense[1] : mapStatus === 2 ? MonsterListTwo.defense[1] : mapStatus === 3 ? MonsterListThree.defense[1] : mapStatus === 4 ? MonsterListFour.defense[1] : MonsterListFive.defense[1] }</div>            
@@ -112,8 +113,8 @@ export default function MonsterList() {
                 <div className="monster-tag">태그: {mapStatus === 1 ? MonsterListOne.tag[1] : mapStatus === 2 ? MonsterListTwo.tag[1] : mapStatus === 3 ? MonsterListThree.tag[1] : mapStatus === 4 ? MonsterListFour.tag[1] : MonsterListFive.tag[1] }</div>            
               </div>
               <div className="monster3">
-                <div className="monster-name">이름: {mapStatus === 1 ? MonsterListOne.name[2] : mapStatus === 2 ? MonsterListTwo.name[2] : mapStatus === 3 ? MonsterListThree.name[2] : mapStatus === 4 ? MonsterListFour.name[2] : MonsterListFive.name[2] }</div>
-                <div className="monster-features">특성: {mapStatus === 1 ? MonsterListOne.features[2] : mapStatus === 2 ? MonsterListTwo.features[2] : mapStatus === 3 ? MonsterListThree.features[2] : mapStatus === 4 ? MonsterListFour.features[2] : MonsterListFive.features[2] }</div>
+                <div className="monster-name">{mapStatus === 1 ? MonsterListOne.name[2] : mapStatus === 2 ? MonsterListTwo.name[2] : mapStatus === 3 ? MonsterListThree.name[2] : mapStatus === 4 ? MonsterListFour.name[2] : MonsterListFive.name[2] }</div>
+                <div className="monster-features">{mapStatus === 1 ? MonsterListOne.features[2] : mapStatus === 2 ? MonsterListTwo.features[2] : mapStatus === 3 ? MonsterListThree.features[2] : mapStatus === 4 ? MonsterListFour.features[2] : MonsterListFive.features[2] }</div>
                 <div className="monster-attack">공격력: {mapStatus === 1 ? MonsterListOne.attack[2] : mapStatus === 2 ? MonsterListTwo.attack[2] : mapStatus === 3 ? MonsterListThree.attack[2] : mapStatus === 4 ? MonsterListFour.attack[2] : MonsterListFive.attack[2] }</div>
                 <div className="monster-hp">체력: {mapStatus === 1 ? MonsterListOne.hp[2] : mapStatus === 2 ? MonsterListTwo.hp[2] : mapStatus === 3 ? MonsterListThree.hp[2] : mapStatus === 4 ? MonsterListFour.hp[2] : MonsterListFive.hp[2] }</div>
                 <div className="monster-defense">방어력: {mapStatus === 1 ? MonsterListOne.defense[2] : mapStatus === 2 ? MonsterListTwo.defense[2] : mapStatus === 3 ? MonsterListThree.defense[2] : mapStatus === 4 ? MonsterListFour.defense[2] : MonsterListFive.defense[2] }</div>            
@@ -121,8 +122,8 @@ export default function MonsterList() {
                 <div className="monster-tag">태그: {mapStatus === 1 ? MonsterListOne.tag[2] : mapStatus === 2 ? MonsterListTwo.tag[2] : mapStatus === 3 ? MonsterListThree.tag[2] : mapStatus === 4 ? MonsterListFour.tag[2] : MonsterListFive.tag[2] }</div>            
               </div>
               <div className="monster4">
-                <div className="monster-name">이름: {mapStatus === 1 ? MonsterListOne.name[3] : mapStatus === 2 ? MonsterListTwo.name[3] : mapStatus === 3 ? MonsterListThree.name[3] : mapStatus === 4 ? MonsterListFour.name[3] : MonsterListFive.name[3] }</div>
-                <div className="monster-features">특성: {mapStatus === 1 ? MonsterListOne.features[3] : mapStatus === 2 ? MonsterListTwo.features[3] : mapStatus === 3 ? MonsterListThree.features[3] : mapStatus === 4 ? MonsterListFour.features[3] : MonsterListFive.features[3] }</div>
+                <div className="monster-name">{mapStatus === 1 ? MonsterListOne.name[3] : mapStatus === 2 ? MonsterListTwo.name[3] : mapStatus === 3 ? MonsterListThree.name[3] : mapStatus === 4 ? MonsterListFour.name[3] : MonsterListFive.name[3] }</div>
+                <div className="monster-features">{mapStatus === 1 ? MonsterListOne.features[3] : mapStatus === 2 ? MonsterListTwo.features[3] : mapStatus === 3 ? MonsterListThree.features[3] : mapStatus === 4 ? MonsterListFour.features[3] : MonsterListFive.features[3] }</div>
                 <div className="monster-attack">공격력: {mapStatus === 1 ? MonsterListOne.attack[3] : mapStatus === 2 ? MonsterListTwo.attack[3] : mapStatus === 3 ? MonsterListThree.attack[3] : mapStatus === 4 ? MonsterListFour.attack[3] : MonsterListFive.attack[3] }</div>
                 <div className="monster-hp">체력: {mapStatus === 1 ? MonsterListOne.hp[3] : mapStatus === 2 ? MonsterListTwo.hp[3] : mapStatus === 3 ? MonsterListThree.hp[3] : mapStatus === 4 ? MonsterListFour.hp[3] : MonsterListFive.hp[3] }</div>
                 <div className="monster-defense">방어력: {mapStatus === 1 ? MonsterListOne.defense[3] : mapStatus === 2 ? MonsterListTwo.defense[3] : mapStatus === 3 ? MonsterListThree.defense[3] : mapStatus === 4 ? MonsterListFour.defense[3] : MonsterListFive.defense[3] }</div>            

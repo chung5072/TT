@@ -5,6 +5,7 @@ import com.tt9ood.db.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,4 +22,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "select new com.tt9ood.api.dto.UserDto(u.userId) " +
             "from User as u where u.userEmail = :email")
     List<UserDto> findByEmail(@Param("email") String email);
+
+    Optional<User> findByUserCode(long userCode);
+
+    Optional<User> findByUserNickname(String userNickname);
 }
