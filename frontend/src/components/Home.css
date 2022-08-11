@@ -25,12 +25,16 @@
 }
 
 .menu {
-    margin: 0 3px;
+    margin: 0 2%;
     color:#D9AA52;
     text-decoration-line: none;
-    font-size: 20px;
+    font-size: 1em;
 }
 
 .logout {
-    font-size: 20px;
+    margin: 0 2.5%;
+    color:#D9AA52;
+    text-decoration-line: none;
+    font-size: 1.3em;
+    cursor: pointer;
 }
