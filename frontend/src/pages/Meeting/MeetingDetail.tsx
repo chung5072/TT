@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector} from '../../app/hooks';
 import { request } from '../../utils/axios'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom';
-import { getMeetingDetail }  from '../../features/meeting/meetingSlice';
+import { getMeetingDetail, setParticipated }  from '../../features/meeting/meetingSlice';
 import { fetchProfile } from '../../features/user/userSlice';
 import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
@@ -114,13 +114,22 @@ export default function MeetingDetail() {
       })
         .then((res) => {
           console.log(res.data)
+          if (currentUser == GmPlayer.userCode) {
+            dispatch((setParticipated()))
+          }
+          for (let player of res.data.pyUserResList) {
+            
+            if (player.userCode == currentUser) {
+              dispatch(setParticipated())
+            }
+          }
           dispatch(getMeetingDetail(res.data))
 
         })
         .catch(err => {
           console.error(err.response.data)
         })
-  })
+  },[])
   const meetingDeleteRequest: any = (method: string, url: string, data:object) => {
     return axios({
       method,
@@ -147,6 +156,10 @@ export default function MeetingDetail() {
   const code = useSelector((state:RootState) => state.meeting.meetingCode)
   const roomCode = useAppSelector((state:RootState) => state.meeting.roomCode)
   const userNickname = useAppSelector((state:RootState) => state.user.userNickname)
+  const playerList = useAppSelector((state:RootState) => state.meeting.playerList)
+  const GmPlayer = useAppSelector((state:RootState) => state.meeting.Gm)
+  const currentUser = useAppSelector((state:RootState) => state.user.userCode)
+  const participated = useAppSelector((state:RootState) => state.meeting.participated)
 
   //입장시간 나타내는 함수
   setTimeout(function() {
@@ -201,14 +214,19 @@ export default function MeetingDetail() {
               <div className='positiongroup'>
                 <div className='pygroup'>
                   <label className='pysubtitle' htmlFor="">GM</label>
-                  <div className='player'></div>
-                  <button className='enroll' onClick={(userId) => enrollGm()} type="button">enroll</button>
+                  <div className='player'>
+                    <span>{GmPlayer.userNickname}</span>
+                  </div>
+                  <button className='enroll' onClick={(userId) => enrollGm()} type="button" id={participated===true?"enroll-off":"enroll-on"}>enroll</button>
                 </div>
                 <div className='pygroup'>
                   <label className='pysubtitle' htmlFor="">Player</label>
                   <div className='player'>
+                    {playerList.map((player: any,idx : any) => {
+                      return <span>{player.userNickname}</span>
+                    })}
                   </div>
-                  <button className='enroll' onClick={(userId) => enrollPy()} type="button">enroll</button>
+                  <button className='enroll' onClick={(userId) => enrollPy()} type="button" id={participated===true?"enroll-off":"enroll-on"}>enroll</button>
                 </div>
               </div>
               <button className='enroll-game' onClick={onClick} type="button">입장</button>
