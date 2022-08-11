@@ -20,13 +20,12 @@ export default function Profile() {
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
   const dispatch = useAppDispatch()
   const DOMAIN = 'http://localhost:8080/'
-  
-  
+
+
   useEffect(() => {
     axios({
       method: "GET",
-      url: DOMAIN + `/api/user/userinfo/${localStorage.getItem('current_user')}`,
-      
+      url: DOMAIN + `api/user/userinfo/${localStorage.getItem('current_user')}`,
     })
       .then((res) => {
         dispatch(fetchProfile(res.data))
@@ -37,14 +36,11 @@ export default function Profile() {
   },[data])
 
 
-
-
     return (
         <div id="profile-page">
           <div className="profile-box">
             <div className="profile-nickname">{userNickname} 님, 안녕하세요!</div>
             <div className="profile-id">{userId}</div>
-            <div className="profile-code">{userCode}</div>
             <div className="profile-email">{userEmail}</div>
             <div className="profile-phone">{userPhone}</div>
             <div className="profile-gender">{userGender}</div>   

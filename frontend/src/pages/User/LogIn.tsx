@@ -55,7 +55,7 @@ export default function Login() {
       userPw: Yup.string()
       .required('Required'),
     }),
-    onSubmit: (credentials) => {loginRequest('POST', 'api/user/login', credentials)} 
+    onSubmit: (credentials) => {loginRequest('POST', 'api/user/login', credentials)}
   
   })
 
@@ -71,7 +71,7 @@ export default function Login() {
               <input id="id-input" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
 
               <label id='pwd-label' htmlFor="userPw">Password</label>
-              <input id="pwd-input" name="userPw" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
+              <input id="pwd-input" name="userPw" type="password" onChange={formik.handleChange} value={ formik.values.userPw }/>
               <button id='login-button' type="submit">LogIn</button>
             </form>
           </div>

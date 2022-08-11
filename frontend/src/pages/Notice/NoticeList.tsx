@@ -75,13 +75,6 @@ const NoticeList = () => {
            </tbody>
           </table>
         </div>
-        <div>
-          <button onClick={() => navigate('/notice/create')}>create</button>
-        </div>
-        <div>
-          <button onClick={() => navigate('/')}>back</button>
-        </div>
-        
       </div>     
     </div>
   )

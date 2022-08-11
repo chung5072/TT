@@ -61,7 +61,7 @@ export default function SignUp() {
             <input id="userId" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
 
             <label className="signup-label" htmlFor="userPw">Password</label>
-            <input id="userPw" name="userPw" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
+            <input id="userPw" name="userPw" type="password" onChange={formik.handleChange} value={ formik.values.userPw }/>
 
             <label className="signup-label" htmlFor="userNickname">Nickname</label>
             <input id="userNickname" name="userNickname" type="text" onChange={formik.handleChange} value={ formik.values.userNickname }/>
