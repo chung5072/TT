@@ -6,7 +6,6 @@ import * as Yup from 'yup'
 import axios from "axios"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import './LogIn.css'
-
 import { saveToken } from "../../features/user/loginSlice"
 import { fetchProfile } from '../../features/user/userSlice'
 
@@ -62,7 +61,7 @@ export default function Login() {
 
   // HTML
     return (
-      <div id='container'>
+      <div className='login-background' id='container'>
         <div id='all-login'>
           <div id='login-form'>
             <h1 id='login-text'>Login</h1>
