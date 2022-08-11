@@ -62,9 +62,9 @@ export default function Profile() {
               <label className="profile-subtitle" htmlFor="">GENDER</label>
               <div className="profile-els">{userGender}</div>
             </div>
-            <button onClick={editUserInfo}>
+            {/* <button onClick={editUserInfo}>
               내 정보 수정하기
-            </button>
+            </button> */}
           </div>                
         </div>
         
