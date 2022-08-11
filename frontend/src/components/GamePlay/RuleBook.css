@@ -1,0 +1,8 @@
+#rulebook {
+  color: white;
+  padding: 5%;
+}
+
+#rulebook > h1 {
+  margin: 0;
+}
