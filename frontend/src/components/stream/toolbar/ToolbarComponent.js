@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './ToolbarComponent.css';
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+// import AppBar from '@material-ui/core/AppBar';
+// import Toolbar from '@material-ui/core/Toolbar';
 
 import Mic from '@material-ui/icons/Mic';
 import MicOff from '@material-ui/icons/MicOff';
@@ -65,8 +65,8 @@ export default class ToolbarComponent extends Component {
         const mySessionId = this.props.sessionId;
         const localUser = this.props.user;
         return (
-            <AppBar className="toolbar" id="footer">
-                <Toolbar className="toolbar">
+            <div className="toolbar" id="footer">
+                <div className="toolbar">
                     <div id="navSessionInfo">
                         <h1>{'TT' + window.location.href.substr(27)}</h1>
 
@@ -112,8 +112,8 @@ export default class ToolbarComponent extends Component {
                             </Tooltip>
                         </IconButton>
                     </div>
-                </Toolbar>
-            </AppBar>
+                </div>
+            </div>
         );
     }
 }

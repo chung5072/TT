@@ -9,7 +9,7 @@ module.exports = (app ) => {
 	);
 	app.use(
 		createProxyMiddleware('/openvidu', {
-			target: 'https://i7a809.p.ssafy.io',
+			target: 'https://i7a809.p.ssafy.io:8443',
 			changeOrigin: true,
 			secure: false
 		})
