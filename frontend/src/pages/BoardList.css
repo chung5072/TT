@@ -13,8 +13,9 @@ table {
     margin-right:auto;
     margin-top: 50px;
     border-radius: 10px;
-    width: 514px;
+    width: 50%;
     border-collapse: separate;
+    border-spacing: 0px 15px;
 }
 
 th {
@@ -40,9 +41,11 @@ tr {
     background-color: #262626;
     color: #D9AA52;
     border : 1px solid #D9AA52;
-    border-radius: 10px;
+    border-radius: 20px;
     margin: 5px;
-    width: 100px;
+    width: 200px;
+    height: 40px;
+    font-size: large;
 }
 
 #search {
@@ -54,4 +57,7 @@ tr {
 
 #search-input {
     border-radius: 20px;
+    width: 300px;
+    height: 30px;
 }
+
