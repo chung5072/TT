@@ -87,8 +87,8 @@ export default function SetProfile() {
       playerStat6: Yup.number()
       .required('Required')
       .min(3),
-      class_name: Yup.string()
-      .required('Required'),
+      // class_name: Yup.string()
+      // .required('Required'),
 
      
     }),
@@ -163,15 +163,15 @@ export default function SetProfile() {
             <div id="job-form" className={chooseLevel===0 ?"on" : "off-btn"}>
               <h1>{formik.values.playerClassName}</h1>
               <div className="btn-box">
-                <button id="warrior" name="class_name" className="job-btn" type="button" onClick={formik.handleChange} value = "warrior">전사</button>
-                <button id="wizard" name="class_name" className="job-btn" type="button" onClick={formik.handleChange} value = "wizard">마법사</button>
+                <button id="warrior" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "warrior">전사</button>
+                <button id="wizard" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "wizard">마법사</button>
               </div>
               <div className="btn-box">
-                <button id="hunter" name="class_name" className="job-btn" type="button" onClick={formik.handleChange} value = "hunter">사냥꾼</button>
-                <button id="thief" name="class_name" className="job-btn" type="button" onClick={formik.handleChange} value = "thief">도적</button>
+                <button id="hunter" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "hunter">사냥꾼</button>
+                <button id="thief" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "thief">도적</button>
               </div>
               <div className="btn-box">
-                <button id="priest" name="class_name" className="job-btn" type="button" onClick={formik.handleChange} value = "priest">사제</button>
+                <button id="priest" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "priest">사제</button>
               </div>
             </div>
             <div id="profile-form" className={chooseLevel===1 ?"on" : "off-btn"}>
