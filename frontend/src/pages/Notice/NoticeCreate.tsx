@@ -29,13 +29,13 @@ export default function NoticeCreate() {
   }
 
   const formik = useFormik({
-    initialValues: {noticeTitle:'', noticeContent: '', noticeAuthor:''},
+    initialValues: {noticeTitle:'', noticeArticle: '', noticeAuthor:''},
     validationSchema: Yup.object({
       noticeTitle: Yup.string()
         .required('제목을 입력해주세요.')
         .max(30, '30자를 초과할 수 없습니다.'),
 
-      noticeContent: Yup.string()
+      noticeArticle: Yup.string()
         .required('내용을 입력해주세요.')
         .max(1000, '1000자를 초과할 수 없습니다.')
     }),
@@ -61,11 +61,11 @@ export default function NoticeCreate() {
             </div>           
           </div>
           <div className='rows'>
-            <label className='mini-title' htmlFor="noticeContent">Content</label>
+            <label className='mini-title' htmlFor="noticeArticle">Content</label>
             <div className='inp-group'>
-              <textarea className='txtarea-tags' name="noticeContent" onChange={formik.handleChange} value={ formik.values.noticeContent} />
-              {formik.touched.noticeContent && formik.errors.noticeContent ? (
-                <div className='error-message'>{formik.errors.noticeContent}</div>
+              <textarea className='txtarea-tags' name="noticeArticle" onChange={formik.handleChange} value={ formik.values.noticeArticle} />
+              {formik.touched.noticeArticle && formik.errors.noticeArticle ? (
+                <div className='error-message'>{formik.errors.noticeArticle}</div>
               ) : null}
             </div>
           </div>

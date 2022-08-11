@@ -6,7 +6,7 @@ import axios from "axios";
 export type userData = {
   userId: string;
   userPw: string;
-  userNickname: string;
+  userNickname: any;
   userEmail: string;
   userPhone: string;
   userGender: string;
@@ -16,7 +16,7 @@ export type userData = {
 export const initialState: userData = {
   userId: "",
   userPw: "",
-  userNickname: "",
+  userNickname: localStorage.getItem('user_nickname'),
   userEmail: "",
   userPhone: "",
   userGender: "",
@@ -38,6 +38,7 @@ const userSlice = createSlice({
       state.userNickname = action.payload.userNickname;
       state.userGender =action.payload.userGender;
       state.userCode = action.payload.userCode
+      localStorage.setItem('user_nickname', action.payload.userNickname)
     },
   },
 });
