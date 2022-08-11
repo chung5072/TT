@@ -35,6 +35,7 @@ const NoticeList = () => {
     <div>
       <div id='container'>
         <Navbar />
+        <h1>NOTICE</h1>
         <div id='articles'>
           <div id='search'>
             <div>
@@ -44,9 +45,6 @@ const NoticeList = () => {
             </div>
             <div>
               <button id='create-btn' onClick={() => navigate('/notice/create')}>create</button>
-            </div>
-            <div>
-              <button id='back-btn' onClick={() => navigate('/')}>back</button>
             </div>
           </div>
           
@@ -63,7 +61,7 @@ const NoticeList = () => {
               return (
                   <tr key={notice.noticeCode}>
                       <td>
-                        {notice.noticeCode}
+                        {idx + 1}
                       </td>
                       <td><Link to={"/notice/" + `${notice.noticeCode}`}>{notice.noticeTitle}</Link></td>
                       <td>

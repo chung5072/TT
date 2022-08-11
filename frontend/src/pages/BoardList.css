@@ -1,7 +1,11 @@
-
 #container {
     background-color: #262626;
     height: 1294px;
+    text-align: center;
+}
+
+#container > h1 {
+    color:#D9AA52
 }
 
 #articles {
@@ -13,14 +17,14 @@ table {
     margin-right:auto;
     margin-top: 50px;
     border-radius: 10px;
-    width: 50%;
+    width: 30%;
     border-collapse: separate;
     border-spacing: 0px 15px;
 }
 
 th {
     color: #D9AA52;
-    font-size: small;
+    font-size: 1em;
 }
 
 td {
@@ -37,22 +41,28 @@ tr {
     border-spacing: 0px 15px;
 }
 
-#search-btn, #create-btn, #back-btn {
+#search-btn, #create-btn {
     background-color: #262626;
     color: #D9AA52;
     border : 1px solid #D9AA52;
     border-radius: 20px;
     margin: 5px;
-    width: 200px;
+    width: 90px;
     height: 40px;
-    font-size: large;
+    font-size: 1em;
+}
+
+#create-btn:hover {
+    background-color: #a67841;
 }
 
 #search {
     margin-left:auto; 
     margin-right:auto;
+    width: 30%;
     display: flex;
     justify-content: center;
+    justify-content: space-between;
 }
 
 #search-input {

@@ -9,7 +9,7 @@ import '../ArticleCreate.css'
 import * as Yup from 'yup'
 import { useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
-
+import Navbar from '../../components/Navbar';
 
 export default function InfoCreate() {
   const DOMAIN = "http://localhost:8080/"
@@ -52,6 +52,7 @@ export default function InfoCreate() {
 
     return (
         <div id='create'>
+          <Navbar />
           <div className='create-container'>
               <h1>InfoCreate</h1>
             <form action="" onSubmit={ formik.handleSubmit }>

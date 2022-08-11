@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { Formik, useFormik } from 'formik';
 import { Root } from 'react-dom/client';
 import '../ArticleDetail.css'
+import Navbar from '../../components/Navbar';
 
 
 export default function InfoDetail() {
@@ -74,6 +75,7 @@ export default function InfoDetail() {
   
     return (
         <div id='detail'>
+          <Navbar />
           <div className='detail-container'>
             <h1 className='detail-title'>{title}</h1>
             <form action="" onSubmit={formik.handleSubmit}>

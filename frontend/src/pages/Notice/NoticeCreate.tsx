@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import '../ArticleCreate.css'
 import { useAppSelector } from '../../app/hooks'
 import { RootState } from '../../app/store'
+import Navbar from '../../components/Navbar';
 
 
 export default function NoticeCreate() {
@@ -48,6 +49,7 @@ export default function NoticeCreate() {
 
     return (
       <div id='create'>
+      <Navbar />
       <div className='create-container'>
           <h1>NoticeCreate</h1>
         <form action="" onSubmit={ formik.handleSubmit }>
