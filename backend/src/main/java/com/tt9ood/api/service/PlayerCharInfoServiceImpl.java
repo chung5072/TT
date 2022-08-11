@@ -49,7 +49,7 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
     @Override
     public PlayerCharInfoDto readPlayerInfo(long playerCode) {
         PlayerCharInfoDto playerInfoDto=new PlayerCharInfoDto();
-        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findById(playerCode);
+        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerUserCode(playerCode);
         if(byId!=null){
             PlayerCharInfo playerInfo=byId.get();
             playerInfoDto.setPlayerUserCode(playerInfo.getPlayerUserCode());
@@ -83,7 +83,7 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
     public PlayerCharInfoDto updatePlayerInfo(long playerCode, PlayerCharInfoDto playerInfoForUpdate) {
         PlayerCharInfoDto playerInfoDto=new PlayerCharInfoDto();
 
-        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findById(playerCode);
+        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerUserCode(playerCode);
         if(byId!=null){
             PlayerCharInfo playerInfo=byId.get();
 
