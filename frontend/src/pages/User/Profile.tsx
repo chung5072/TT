@@ -5,6 +5,9 @@ import { fetchProfile } from "../../features/user/userSlice"
 import { useAppSelector } from "../../app/hooks"
 import { RootState } from "../../app/store"
 import axios from "axios"
+import './Profile.css'
+
+
 export default function Profile() {
   const token = useAppSelector((state: RootState) => state.login.token)
   const data = useAppSelector((state:RootState) => state.login.currentUser)
@@ -16,10 +19,13 @@ export default function Profile() {
   const userNickname = useAppSelector((state:RootState) => state.user.userNickname)
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
   const dispatch = useAppDispatch()
+  const DOMAIN = 'http://localhost:8080/'
+  
+  
   useEffect(() => {
     axios({
       method: "GET",
-      url: `http://localhost:8080/api/user/userinfo/${localStorage.getItem('current_user')}`,
+      url: DOMAIN + `/api/user/userinfo/${localStorage.getItem('current_user')}`,
       
     })
       .then((res) => {
@@ -29,17 +35,20 @@ export default function Profile() {
         console.error(err.response.data);
       });
   },[data])
+
+
+
+
     return (
-        <div>
-          <h1>Profile</h1>
-          <h3>{userId}</h3>
-          <h3>{userCode}</h3>
-          <h3>{userPw}</h3>
-          <h3>{userEmail}</h3>
-          <h3>{userPhone}</h3>
-          <h3>{userGender}</h3>
-          <h3>{userNickname}</h3>
-          
+        <div id="profile-page">
+          <div className="profile-box">
+            <div className="profile-nickname">{userNickname} 님, 안녕하세요!</div>
+            <div className="profile-id">{userId}</div>
+            <div className="profile-code">{userCode}</div>
+            <div className="profile-email">{userEmail}</div>
+            <div className="profile-phone">{userPhone}</div>
+            <div className="profile-gender">{userGender}</div>   
+          </div>                
         </div>
         
     )
