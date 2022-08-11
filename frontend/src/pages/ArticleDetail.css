@@ -232,3 +232,7 @@
   color: #d9aa52;
   margin: 5px 2px;
 }
+
+#enroll-off {
+  display: none;
+}
