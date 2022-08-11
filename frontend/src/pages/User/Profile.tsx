@@ -5,6 +5,7 @@ import { fetchProfile } from "../../features/user/userSlice"
 import { useAppSelector } from "../../app/hooks"
 import { RootState } from "../../app/store"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 import './Profile.css'
 
 
@@ -19,6 +20,8 @@ export default function Profile() {
   const userNickname = useAppSelector((state:RootState) => state.user.userNickname)
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
   const DOMAIN = 'http://localhost:8080/'
 
 
@@ -36,14 +39,32 @@ export default function Profile() {
   },[data])
 
 
+
     return (
         <div id="profile-page">
           <div className="profile-box">
-            <div className="profile-nickname">{userNickname} 님, 안녕하세요!</div>
-            <div className="profile-id">{userId}</div>
-            <div className="profile-email">{userEmail}</div>
-            <div className="profile-phone">{userPhone}</div>
-            <div className="profile-gender">{userGender}</div>   
+            <div className="profile-nickname">              
+              <div>{userNickname} 님, 안녕하세요!</div>    
+            </div>
+            <div className="p-group">
+              <label className="profile-subtitle" htmlFor="">ID</label>
+              <div className="profile-els">{userId}</div>
+            </div>
+            <div className="p-group">
+              <label className="profile-subtitle" htmlFor="">E-MAIL</label>
+              <div className="profile-els">{userEmail}</div>
+            </div>
+            <div className="p-group">
+              <label className="profile-subtitle" htmlFor="">PHONE</label>
+              <div className="profile-els">{userPhone}</div>
+            </div>
+            <div className="p-group">
+              <label className="profile-subtitle" htmlFor="">GENDER</label>
+              <div className="profile-els">{userGender}</div>
+            </div>
+            <button onClick={editUserInfo}>
+              내 정보 수정하기
+            </button>
           </div>                
         </div>
         
