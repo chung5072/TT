@@ -72,7 +72,7 @@ const profileSlice = createSlice({
       setJobInfo: (state:profileData, action) => {
         state.jobInfo = action.payload
       },
-      playerProfile: (state:profileData, action) => {
+      getPlayerProfile: (state:profileData, action) => {
         state.playerUserCode = action.payload.playerUserCode
         state.playerSpecies = action.payload.playerSpecies
         state.playerName = action.payload.playerName
@@ -101,5 +101,5 @@ const profileSlice = createSlice({
 })
 
 const { reducer, actions } =profileSlice
-export const {addChooseLevel, subtractChooseLevel,setJobInfo} = actions
+export const {addChooseLevel, subtractChooseLevel,setJobInfo,getPlayerProfile} = actions
 export default profileSlice.reducer

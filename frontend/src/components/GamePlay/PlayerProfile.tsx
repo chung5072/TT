@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { RootState } from "../../app/store"
 import {warrior, wizard, hunter, thief, priest} from "../Game/ProfileInfoList"
-import ProfileSlice from "../../features/Game/ProfileSlice"
+import ProfileSlice, { getPlayerProfile } from "../../features/Game/ProfileSlice"
 import { useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
@@ -30,6 +30,7 @@ export default function PlayerProfile() {
       })
       .then((res) => {
         console.log(res.data)
+        // dispatch(getPlayerProfile(res.data))
       })
       .catch(err => {
         console.error(err.response.data)
