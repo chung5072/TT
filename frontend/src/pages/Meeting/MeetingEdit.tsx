@@ -55,15 +55,7 @@ export default function MeetingEdit() {
     return axios({
       method,
       url: DOMAIN + url,
-      data: {
-        meetingCode: articleId,
-        meetingTitle: title,
-        meetingContent: content,
-        meetingAuthor: author,
-        meetingPyNum: player,
-        meetingPyTime: time,
-        // meetingPosition: position
-      },
+      data: data
     })
       .then(res => {
         console.log(res)
@@ -102,7 +94,7 @@ export default function MeetingEdit() {
                 <div className='rows'>
                   <label className='mini-title' htmlFor="meetingTime">Play Time</label>
                   <div className='inp-group'>
-                    <input className='inp-tags' type="time" onChange={ formik.handleChange } id="meetingPyTime" defaultValue={time} />
+                    <input className='inp-tags' type="datetime-local" onChange={ formik.handleChange } id="meetingPyTime" defaultValue={time} />
                   </div>
                 </div>
                 <div className="rows">

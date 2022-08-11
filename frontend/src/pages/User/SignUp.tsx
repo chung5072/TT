@@ -26,26 +26,30 @@ export default function SignUp() {
 
   const formik = useFormik({
     initialValues: initialState,
-    validationSchema: Yup.object({
-      userId: Yup.string()
-      .max(15, 'Must be 15 characters or less')
-      .required('Required'),
-      userPw: Yup.string()
-      .max(20, 'Must be 20 characters or less')
-      .min(10, 'Must be 10 characters or more')
-      .required('Required'),
-      userNickname: Yup.string()
-      .max(10, 'Must be 10 characters or less')
-      .required('Required'),
-      userEmail: Yup.string()
-      .email('Invalid email address')
-      .required('Required'),
-      userPhone: Yup.string()
-      .required('Required'),
-      userGender: Yup.string()
-      .required('Required')
-    }),
-    onSubmit: (credentials) => {registerRequest('POST','api/user/register', credentials)}
+    // validationSchema: Yup.object({
+    //   userId: Yup.string()
+    //   .max(15, 'Must be 15 characters or less')
+    //   .required('Required'),
+    //   userPw: Yup.string()
+    //   .max(20, 'Must be 20 characters or less')
+    //   .min(10, 'Must be 10 characters or more')
+    //   .required('Required'),
+    //   userNickname: Yup.string()
+    //   .max(10, 'Must be 10 characters or less')
+    //   .required('Required'),
+    //   userEmail: Yup.string()
+    //   .email('Invalid email address')
+    //   .required('Required'),
+    //   userPhone: Yup.string()
+    //   .required('Required'),
+    //   userGender: Yup.string()
+    //   .required('Required')
+    // }),
+    onSubmit: (credentials) => {
+      console.log(credentials)
+      {registerRequest('POST','api/user/register', credentials)}
+    } 
+    
   })
   const test: any = () => {
     console.log('아아아아앙ㅜㅜ')
