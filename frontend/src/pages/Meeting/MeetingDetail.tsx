@@ -16,9 +16,8 @@ export default function MeetingDetail() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const userCode = useSelector((state: RootState) => state.user.userCode)
-  let articleId = useParams()
+  let articleId = useParams().articleId
   let startTime = useSelector((state:RootState) => state.meeting.meetingGameIsStart)
-  let userId = useParams().userId
 
   const playerUser = []
   
@@ -30,11 +29,55 @@ export default function MeetingDetail() {
   // 버튼 누르면 그 유저의 아이디를 배열에 저장
   
   const enrollGm = () => {
-    const playerGm = userId  
+    axios({
+      method:'PUT',
+      url: DOMAIN + 'api/meeting/gmEnroll',
+      data: {
+        meetingCode: roomCode,
+        usercode: userCode,
+      }
+    })
+    .then( (res) => {
+      console.log(res)
+      axios({ 
+        method: 'GET',
+        url: DOMAIN +`api/meeting/${articleId}`
+      })
+        .then((res) => {
+          console.log(res.data)
+          dispatch(getMeetingDetail(res.data))
+
+        })
+        .catch(err => {
+          console.error(err.response.data)
+        })
+    })
   }
 
     const enrollPy = () => {
-      playerUser.push(userId)
+      axios({
+        method:'PUT',
+        url: DOMAIN + 'api/meeting/playerEnroll',
+        data: {
+          meetingCode: roomCode,
+          usercode: userCode,
+        }
+      })
+      .then( (res) => {
+        console.log(res)
+        axios({ 
+          method: 'GET',
+          url: DOMAIN +`api/meeting/${articleId}`
+        })
+          .then((res) => {
+            console.log(res.data)
+            dispatch(getMeetingDetail(res.data))
+  
+          })
+          .catch(err => {
+            console.error(err.response.data)
+          })
+      })
     }
 
 
@@ -65,12 +108,12 @@ export default function MeetingDetail() {
   const DOMAIN = "http://localhost:8080/"
 
   useEffect(() => {
-    console.log(articleId)
       axios({ 
         method: 'GET',
         url: DOMAIN +`api/meeting/${articleId}`
       })
         .then((res) => {
+          console.log(res.data)
           dispatch(getMeetingDetail(res.data))
 
         })
@@ -102,7 +145,8 @@ export default function MeetingDetail() {
   const player = useSelector((state:RootState) => state.meeting.meetingPyNum)
   const time = useSelector((state:RootState) => state.meeting.meetingPyTime)
   const code = useSelector((state:RootState) => state.meeting.meetingCode)
-  // const userId = useSelector((state:RootState) => state.user.userId)
+  const roomCode = useAppSelector((state:RootState) => state.meeting.roomCode)
+  const userNickname = useAppSelector((state:RootState) => state.user.userNickname)
 
   //입장시간 나타내는 함수
   setTimeout(function() {
@@ -119,7 +163,7 @@ export default function MeetingDetail() {
     navigate(`/game/${articleId}`,{
       state: {
         sessionId: articleId,
-        username: userId
+        username: userNickname
       }
     })
   }
@@ -156,14 +200,12 @@ export default function MeetingDetail() {
               <div className='positiongroup'>
                 <div className='pygroup'>
                   <label className='pysubtitle' htmlFor="">GM</label>
-                  <div className='player'>GM</div>
+                  <div className='player'></div>
                   <button className='enroll' onClick={(userId) => enrollGm()} type="button">enroll</button>
                 </div>
                 <div className='pygroup'>
                   <label className='pysubtitle' htmlFor="">Player</label>
                   <div className='player'>
-                    <p>player1</p>
-                    <p>player2</p>
                   </div>
                   <button className='enroll' onClick={(userId) => enrollPy()} type="button">enroll</button>
                 </div>
