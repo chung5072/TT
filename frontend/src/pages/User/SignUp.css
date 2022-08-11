@@ -1,5 +1,5 @@
 .signup-background {
-    background: url(../../../../기획/화면설계서/assets/desert-4779167222.png);
+    background: url(../../assets/image/desert-4779167222.png);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -31,16 +31,21 @@
 }
 
 
-#signup-with-btn {
+.signup-with-btn {
     display: flex;
     justify-content: center;
 }
 
-#signup-with-google, #signup-with-kakao {
+.signup-with-naver, .signup-with-kakao {
     width: 100px;
     height: 100px;
     border-radius: 20px;
     margin: 20px;
+}
+
+.signup-with-naver{
+    background-image: url(../../assets/image/naver-icon.png);
+    background-size: cover;
 }
 
 #signup-with-text {

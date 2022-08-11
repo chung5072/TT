@@ -1,5 +1,5 @@
 .login-background {
-    background: url(../../../../기획/화면설계서/assets/desert-4779167222.png);
+    background: url(../../assets/image/desert-4779167222.png);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -59,16 +59,21 @@
     width: 15%;
 }
 
-#login-with-btn {
+.login-with-btn {
     display: flex;
     justify-content: center;
 }
 
-#login-with-google, #login-with-kakao {
+.login-with-naver, .login-with-kakao {
     width: 100px;
     height: 100px;
     border-radius: 20px;
     margin: 20px;
+}
+
+.login-with-naver {
+    background-image: url(../../assets/image/naver-icon.png);
+    background-size: cover;
 }
 
 #find-id-pwd {
