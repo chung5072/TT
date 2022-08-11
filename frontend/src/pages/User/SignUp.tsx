@@ -51,28 +51,28 @@ export default function SignUp() {
     console.log('아아아아앙ㅜㅜ')
   }
     return (
-      <div id='container'>
+      <div className='signup-background' id='container'>
         <div id='all-signup'>
           <div id='signup-form'>
             <h1 id='signup-text'>SignUp</h1>
             <form id='signup-form' action="" onSubmit={formik.handleSubmit}>
 
-            <label htmlFor="userId">Id</label>
+            <label className="signup-label" htmlFor="userId">Id</label>
             <input id="userId" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
 
-            <label htmlFor="userPw">Password</label>
+            <label className="signup-label" htmlFor="userPw">Password</label>
             <input id="userPw" name="userPw" type="text" onChange={formik.handleChange} value={ formik.values.userPw }/>
 
-            <label htmlFor="userNickname">Nickname</label>
+            <label className="signup-label" htmlFor="userNickname">Nickname</label>
             <input id="userNickname" name="userNickname" type="text" onChange={formik.handleChange} value={ formik.values.userNickname }/>
 
-            <label htmlFor="userEmail">e-mail</label>
+            <label className="signup-label" htmlFor="userEmail">e-mail</label>
             <input id="userEmail" name="userEmail" type="text" onChange={formik.handleChange} value={ formik.values.userEmail }/>
 
-            <label htmlFor="userPhone">Phone</label>
+            <label className="signup-label" htmlFor="userPhone">Phone</label>
             <input id="userPhone" name="userPhone" type="text" onChange={formik.handleChange} value={ formik.values.userPhone }/>
 
-            <label htmlFor="userGender">Gender</label>
+            <label className="signup-label" htmlFor="userGender">Gender</label>
             <input id="userGender" name="userGender" type="text" onChange={formik.handleChange} value={ formik.values.userGender } />
             {/* <select name="" id="">
               <option value="">Male</option>
