@@ -6,52 +6,36 @@ import { useEffect } from "react"
 import axios from "axios"
 import { useParams } from "react-router-dom"
 import { getRoomInfo } from "../../features/room/RoomSlice"
-import { useAppDispatch } from "../../app/hooks"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
 
 
 export default function PlayerProfile() {
     const playerNum = useSelector((state: RootState) => state.left.playerNum)
     const playerUserCode = useSelector((state:RootState)=>state.profile.playerUserCode)
-    let roomInfo = useParams().roomInfo
+    let roomInfo = useParams().gameId
+    const player1 = useAppSelector((state:RootState) => state.room.py1Code)
+    const player2 = useAppSelector((state:RootState) => state.room.py2Code)
+    const player3 = useAppSelector((state:RootState) => state.room.py3Code)
+    const player4 = useAppSelector((state:RootState) => state.room.py4Code)
+    const player5 = useAppSelector((state:RootState) => state.room.py5Code)
+    const thisPlayerCode = playerNum === 1? player1: playerNum === 2? player2 : playerNum === 3? player3: playerNum === 4? player4 : player5
     const dispatch = useAppDispatch()
-
-    const selectPyNum = () => {
-      if (playerUserCode === py1) {
-        return 1
-      }
-      if (playerUserCode === py2) {
-        return 2
-      }
-      if (playerUserCode === py3) {
-        return 3
-      }
-      if (playerUserCode === py4) {
-        return 4
-      }
-      if (playerUserCode === py5) {
-        return 5
-      }      
-    }
 
     const DOMAIN = "http://localhost:8080/"
     useEffect(() => {
+      console.log(player1)
       axios({
         method: 'GET',
-        url: DOMAIN + `api/game/${roomInfo}`
+        url: DOMAIN + `api/player/${thisPlayerCode}`
       })
       .then((res) => {
-        dispatch(getRoomInfo(res.data))
+        console.log(res.data)
       })
       .catch(err => {
         console.error(err.response.data)
       })
     })
 
-    const py1 = useSelector((state:RootState) => state.room.py1Code)
-    const py2 = useSelector((state:RootState) => state.room.py2Code)
-    const py3 = useSelector((state:RootState) => state.room.py3Code)
-    const py4 = useSelector((state:RootState) => state.room.py4Code)
-    const py5 = useSelector((state:RootState) => state.room.py5Code)
     
     
     const species = useSelector((state:RootState)=>state.profile.playerSpecies)

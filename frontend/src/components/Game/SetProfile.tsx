@@ -16,6 +16,7 @@ export default function SetProfile() {
   const profileDone = useSelector((state:RootState) => state.game.profileDone)
   const jobInfo = useSelector((state:RootState) => state.profile.jobInfo)
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
+  const isGm = useAppSelector((state:RootState) => state.room.isGm)
   const selectJobInfo = (job:string) => {
     if (job === 'warrior') {
       dispatch(setJobInfo(warrior))
@@ -91,8 +92,9 @@ export default function SetProfile() {
 
      
     }),
-    onSubmit: (profile) => {
+    onSubmit: async (profile) => {
       console.log('보내는중')
+      console.log(profile)
       if (profile.class_name === 'warrior') {
         formik.values.playerHP =10
         formik.values.skill1 = "피의 향기"
@@ -135,6 +137,7 @@ export default function SetProfile() {
         formik.values.skill3 = "천벌"
         formik.values.playerWeapon = "평범한 기도서"
       }
+      formik.values.playerstat1 = Number(formik.values.playerstat1)
       console.log(profile)
       axios({
         method: 'POST',
@@ -149,9 +152,10 @@ export default function SetProfile() {
       dispatch(setProfileDone())
       dispatch(setAudioStatus(true))
     }}
+    
   )
     return (
-        <div id="select-profile-modal" className={profileDone? "off-btn" : "on"}>
+        <div id="select-profile-modal" className={profileDone || isGm==true ? "off-btn" : "on"}>
           <div id="blank">{chooseLevel===-1? jobInfo.name: chooseLevel===0 ?"Select Class" : chooseLevel===1 ? "Input Profile" :"Roll Stats"}</div>
           <form action="" onSubmit={formik.handleSubmit}>
 

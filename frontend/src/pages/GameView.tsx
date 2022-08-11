@@ -50,7 +50,10 @@ export default function GameView() {
       dispatch(getRoomInfo(res.data))
       if (res.data.gmUserCode == userCode) {
         console.log('hihi')
-        dispatch(setGmCondition())
+        dispatch(setGmCondition(true))
+      }
+      else {
+        dispatch(setGmCondition(false))
       }
       
 
