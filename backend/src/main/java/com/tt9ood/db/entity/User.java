@@ -37,6 +37,9 @@ public class User {
     @Column(name = "user_gender")
     private String userGender;
 
+    @Column(name = "user_authority")
+    private String userAuthority;
+
     @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "user_pw")
