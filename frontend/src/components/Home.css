@@ -28,9 +28,10 @@
     margin: 0 3px;
     color:#D9AA52;
     text-decoration-line: none;
-    font-size: 20px;
+    font-size: 1em;
+    margin-right: 2%;
 }
 
 .logout {
-    font-size: 20px;
+    font-size: 1em;
 }

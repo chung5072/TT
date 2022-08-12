@@ -1,3 +1,43 @@
-/* #player-profile {
+#player-profile {
+  color: white;
+}
 
-} */
+
+#player-profile > h1 {
+  margin-left: 5%;
+}
+
+
+.pp-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pp-title {
+  margin-bottom: 2%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.gameprofile-subtitle {
+  font-weight: bold;
+  font-size: 1em;
+  margin-right: 3px;
+  color: #f2df72
+}
+
+.pp-userInfo {
+  font-size: 1.5em;
+  margin-left: 3%;
+}
+
+.stat-title  {
+  margin-bottom: 2%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

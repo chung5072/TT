@@ -16,9 +16,10 @@
 }
 
 #userId, #userPw, #userNickname, #userEmail, #userPhone, #userGender {
-    width: 45%;
-    height: 30px;
+    width: 30%;
+    height: 1vh;
     border-radius: 20px;
+    padding: 1.7%;
 }
 
 .signup-label {
@@ -41,12 +42,15 @@
     height: 100px;
     border-radius: 20px;
     margin: 20px;
+    border: none;
 }
+
 
 .signup-with-naver{
     background-image: url(../../assets/image/naver-icon.png);
     background-size: cover;
 }
+
 
 #signup-with-text {
     text-align: center;
@@ -56,15 +60,19 @@
     font-weight: bold;
 }
 
+
 #signup-with {
     display: flex;
     justify-content: center;
 }
+
+
 #signup-button {
-    width: 45%;
-    height: 50px;
+    width: 30%;
+    height: 6.5vh;
     border-radius: 20px;
     background-color: #FFC860;
+    border: none;
     margin-top: 3%;
     color: black;
     font-size: medium;
