@@ -11,8 +11,9 @@ interface meetingState  {
   meetingGameIsStart: any
   meetingList: Array<object>
   roomCode: number
-  playerList: Array<object>
-  Gm: object
+  playerList: any
+  Gm: any
+  participated: boolean
 }
 
 export const initialState: meetingState = {
@@ -28,6 +29,7 @@ export const initialState: meetingState = {
   roomCode: 0,
   playerList: [],
   Gm: {},
+  participated: false,
 }
 
 export const meetingSlice = createSlice({
@@ -42,6 +44,7 @@ export const meetingSlice = createSlice({
     },
 
     getMeetingDetail: (state:meetingState, action) => {
+      console.log(action.payload.pyUserResList)
       state.meetingCode = action.payload.meetingCode
       state.meetingTitle = action.payload.meetingTitle
       state.meetingContent = action.payload.meetingContent
@@ -50,8 +53,8 @@ export const meetingSlice = createSlice({
       state.meetingPyNum = action.payload.meetingPyNum
       state.meetingPyTime = action.payload.meetingPyTime
       state.roomCode = action.payload.roomInfoCode
-      state.Gm = action.payload.gmUserCode
-      state.playerList = action.payload.pyUserCodeList
+      state.Gm = action.payload.gmUserRes
+      state.playerList = action.payload.pyUserResList
     },
 
     editMeetingContent: (state:meetingState, action) => {
@@ -61,10 +64,13 @@ export const meetingSlice = createSlice({
       state.meetingAuthor = action.payload.meetingAuthor
       state.meetingPyNum = action.payload.meetingPyNum
       state.meetingPyTime = action.payload.meetingPyTime
+    },
+    setParticipated: (state:meetingState) => {
+      state.participated = true
     }
   }
 })
 
 const { actions } = meetingSlice
-export const { getMeetingList, getMeetingDetail } = actions
+export const { getMeetingList, getMeetingDetail, setParticipated } = actions
 export default meetingSlice.reducer

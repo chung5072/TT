@@ -26,25 +26,25 @@ export default function SignUp() {
 
   const formik = useFormik({
     initialValues: initialState,
-    // validationSchema: Yup.object({
-    //   userId: Yup.string()
-    //   .max(15, 'Must be 15 characters or less')
-    //   .required('Required'),
-    //   userPw: Yup.string()
-    //   .max(20, 'Must be 20 characters or less')
-    //   .min(10, 'Must be 10 characters or more')
-    //   .required('Required'),
-    //   userNickname: Yup.string()
-    //   .max(10, 'Must be 10 characters or less')
-    //   .required('Required'),
-    //   userEmail: Yup.string()
-    //   .email('Invalid email address')
-    //   .required('Required'),
-    //   userPhone: Yup.string()
-    //   .required('Required'),
-    //   userGender: Yup.string()
-    //   .required('Required')
-    // }),
+    validationSchema: Yup.object({
+      userId: Yup.string()
+      .max(15, 'Must be 15 characters or less')
+      .required('Required'),
+      userPw: Yup.string()
+      .max(20, 'Must be 20 characters or less')
+      .min(10, 'Must be 10 characters or more')
+      .required('Required'),
+      userNickname: Yup.string()
+      .max(10, 'Must be 10 characters or less')
+      .required('Required'),
+      userEmail: Yup.string()
+      .email('Invalid email address')
+      .required('Required'),
+      userPhone: Yup.string()
+      .required('Required'),
+      userGender: Yup.string() 
+      .required('Required')
+    }),
     onSubmit: (credentials) => {
       console.log(credentials)
       {registerRequest('POST','api/user/register', credentials)}
@@ -55,7 +55,7 @@ export default function SignUp() {
     console.log('아아아아앙ㅜㅜ')
   }
     return (
-      <div className='signup-background' id='container'>
+      <div className="signup-background" id='container'>
         <div id='all-signup'>
           <div id='signup-form'>
             <h1 id='signup-text'>SignUp</h1>
@@ -70,10 +70,10 @@ export default function SignUp() {
             <label className="signup-label" htmlFor="userNickname">Nickname</label>
             <input id="userNickname" name="userNickname" type="text" onChange={formik.handleChange} value={ formik.values.userNickname }/>
 
-            <label className="signup-label" htmlFor="userEmail">e-mail</label>
+            <label className="signup-label"  htmlFor="userEmail">e-mail</label>
             <input id="userEmail" name="userEmail" type="text" onChange={formik.handleChange} value={ formik.values.userEmail }/>
 
-            <label className="signup-label" htmlFor="userPhone">Phone</label>
+            <label className="signup-label"  htmlFor="userPhone">Phone</label>
             <input id="userPhone" name="userPhone" type="text" onChange={formik.handleChange} value={ formik.values.userPhone }/>
 
             <label className="signup-label" htmlFor="userGender">Gender</label>
@@ -97,9 +97,9 @@ export default function SignUp() {
                 <hr />
               </div>
           </div>
-          <div id='signup-with-btn'>
-            <button id='signup-with-google'></button>
-            <button id='signup-with-kakao'></button>  
+          <div className='signup-with-btn'>
+            <div className='signup-with-naver'></div>
+            <button className='signup-with-kakao'></button>  
           </div>
         </div>
     </div>

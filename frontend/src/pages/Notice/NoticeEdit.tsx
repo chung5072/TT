@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { getNoticeDetail } from '../../features/notice/noticeSlice'
 import '../ArticleCreate.css'
 import * as Yup from 'yup'
-
+import Navbar from '../../components/Navbar';
 
 export default function NoticeEdit() {
   const dispatch = useAppDispatch()
@@ -67,6 +67,7 @@ const formik = useFormik({
 
     return (
       <div id='edit'>
+      <Navbar />
       <div className='create-container'>
         <h1>NoticeEdit</h1>
         <form action="" onSubmit={formik.handleSubmit}>

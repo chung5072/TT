@@ -9,6 +9,7 @@ import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
 import { Formik, useFormik } from 'formik';
 import '../ArticleDetail.css'
+import Navbar from '../../components/Navbar';
 
 export default function NoticeDetail() {
   const dispatch = useAppDispatch()
@@ -66,6 +67,7 @@ const formik = useFormik({
   console.log(content)
     return (
 <div id='detail'>
+<Navbar />
           <div className='detail-container'>
             <h1 className='detail-title'>{title}</h1>
             <form action="" onSubmit={formik.handleSubmit}>
@@ -92,7 +94,6 @@ const formik = useFormik({
                 <button className='detail-btn' onClick={onClickUpdScrn} type="button">edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
               </div>
-              <hr className='comment-hr'/>
             </form>
           </div>
         </div>

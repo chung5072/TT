@@ -53,6 +53,7 @@ const InfoList = () => {
   return (
     <div id='container'>
         <Navbar />
+        <h1>INFORMATION</h1>
         <div id='articles'>
           <div id='search'>
             <div>
@@ -63,9 +64,7 @@ const InfoList = () => {
             <div>
               <button id='create-btn' onClick={() => navigate('/share/create')}>create</button>
             </div>
-            <div>
-              <button id='back-btn' onClick={() => navigate('/')}>back</button>
-            </div>
+
           </div>
           
           <table className='board-table'>
@@ -81,7 +80,7 @@ const InfoList = () => {
               return (
                   <tr key={share.shareCode}>
                       <td>
-                        {share.shareCode}
+                        {idx + 1}
                       </td>
                       <td><Link to={"/share/" + `${share.shareCode}`}>{share.shareTitle}</Link></td>
                       <td>
@@ -97,5 +96,6 @@ const InfoList = () => {
       
   )
 }
+
 
 export default InfoList;

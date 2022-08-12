@@ -27,6 +27,7 @@ export type profileData = {
   skill3: string
   chooseLevel: number
   jobInfo: object
+  playerClass: string
 
 } 
 
@@ -53,7 +54,8 @@ const initialState = {
   skill2: '',
   skill3: '',
   chooseLevel: 0,
-  jobInfo: warrior
+  jobInfo: warrior,
+  playerClass: 'warrior'
 
 }
 
@@ -72,7 +74,8 @@ const profileSlice = createSlice({
       setJobInfo: (state:profileData, action) => {
         state.jobInfo = action.payload
       },
-      playerProfile: (state:profileData, action) => {
+      getPlayerProfile: (state:profileData, action) => {
+        console.log('done')
         state.playerUserCode = action.payload.playerUserCode
         state.playerSpecies = action.payload.playerSpecies
         state.playerName = action.payload.playerName
@@ -84,22 +87,21 @@ const profileSlice = createSlice({
         state.playerSup1 = action.payload.playerSup1
         state.playerSup2 = action.payload.playerSup2
         state.playerSup3 = action.payload.playerSup3
-        state.playerstat1 = action.payload.playerstat1
-        state.playerstat2 = action.payload.playerstat2
-        state.playerstat3 = action.payload.playerstat3
-        state.playerstat4 = action.payload.playerstat4
-        state.playerstat5 = action.payload.playerstat5
-        state.playerstat6 = action.payload.playerstat6
-        state.skill1 = action.payload.skill1
-        state.skill2 = action.payload.skill2
-        state.skill3 = action.payload.skill3
-        state.chooseLevel = action.payload.chooseLevel
-        state.jobInfo = action.payload.jobInfo
+        state.playerstat1 = action.payload.playerStat1
+        state.playerstat2 = action.payload.playerStat2
+        state.playerstat3 = action.payload.playerStat3
+        state.playerstat4 = action.payload.playerStat4
+        state.playerstat5 = action.payload.playerStat5
+        state.playerstat6 = action.payload.playerStat6
+        state.skill1 = action.payload.playerSkill1
+        state.skill2 = action.payload.playerSkill2
+        state.skill3 = action.payload.playerSkill3
+        state.playerClass = action.payload.playerClassName
       }
         
     }
 })
 
 const { reducer, actions } =profileSlice
-export const {addChooseLevel, subtractChooseLevel,setJobInfo} = actions
+export const {addChooseLevel, subtractChooseLevel,setJobInfo,getPlayerProfile} = actions
 export default profileSlice.reducer
