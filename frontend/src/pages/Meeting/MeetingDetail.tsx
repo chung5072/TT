@@ -117,10 +117,10 @@ export default function MeetingDetail() {
         method: 'GET',
         url: DOMAIN +`api/meeting/${articleId}`
       })
-        .then(async (res) => {
+        .then((res) => {
           console.log(res.data)
-          await dispatch(setNotParticipated())
-          if (currentUser == res.data.gmUserRes.userCode) {
+          dispatch(setNotParticipated())
+          if (res.data.gmUserRes != null && currentUser == res.data.gmUserRes.userCode) {
             console.log('지앰등장')
             dispatch((setParticipated()))
           }
