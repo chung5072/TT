@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector} from '../../app/hooks';
 import { request } from '../../utils/axios'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom';
-import { getMeetingDetail, setParticipated }  from '../../features/meeting/meetingSlice';
+import { getMeetingDetail, setNotParticipated, setParticipated }  from '../../features/meeting/meetingSlice';
 import { fetchProfile } from '../../features/user/userSlice';
 import { RootState } from '../../app/store';
 import { useSelector } from 'react-redux';
@@ -47,6 +47,7 @@ export default function MeetingDetail() {
         .then((res) => {
           console.log(res.data)
           dispatch(getMeetingDetail(res.data))
+          dispatch(setParticipated())
 
         })
         .catch(err => {
@@ -56,6 +57,7 @@ export default function MeetingDetail() {
   }
 
     const enrollPy = () => {
+      console.log(roomCode)
       axios({
         method:'PUT',
         url: DOMAIN + 'api/meeting/playerEnroll',
@@ -73,6 +75,7 @@ export default function MeetingDetail() {
           .then((res) => {
             console.log(res.data)
             dispatch(getMeetingDetail(res.data))
+            dispatch(setParticipated())
   
           })
           .catch(err => {
@@ -109,18 +112,22 @@ export default function MeetingDetail() {
   const DOMAIN = "http://localhost:8080/"
 
   useEffect(() => {
+      
       axios({ 
         method: 'GET',
         url: DOMAIN +`api/meeting/${articleId}`
       })
         .then((res) => {
           console.log(res.data)
-          if (currentUser == GmPlayer.userCode) {
+          dispatch(setNotParticipated())
+          if (res.data.gmUserRes != null && currentUser == res.data.gmUserRes.userCode) {
+            console.log('지앰등장')
             dispatch((setParticipated()))
           }
           for (let player of res.data.pyUserResList) {
             
             if (player.userCode == currentUser) {
+              console.log('goTk')
               dispatch(setParticipated())
             }
           }
@@ -161,6 +168,9 @@ export default function MeetingDetail() {
   const GmPlayer = useAppSelector((state:RootState) => state.meeting.Gm)
   const currentUser = useAppSelector((state:RootState) => state.user.userCode)
   const participated = useAppSelector((state:RootState) => state.meeting.participated)
+  const playerNum = useAppSelector((state:RootState) => state.meeting.meetingPyNum)
+  const gameIsStart = useAppSelector((state:RootState) => state.meeting.gameIsStart)
+
 
   //입장시간 나타내는 함수
   setTimeout(function() {
@@ -219,7 +229,7 @@ export default function MeetingDetail() {
                   <div className='player'>
                     <span>{GmPlayer.userNickname}</span>
                   </div>
-                  <button className='enroll' onClick={(userId) => enrollGm()} type="button" id={participated===true?"enroll-off":"enroll-on"}>enroll</button>
+                  <button className='enroll' onClick={(userId) => enrollGm()} type="button" id={participated===true || GmPlayer?"enroll-off":"enroll-on"}>enroll</button>
                 </div>
                 <div className='pygroup'>
                   <label className='pysubtitle' htmlFor="">Player</label>
@@ -228,18 +238,18 @@ export default function MeetingDetail() {
                       return <span>{player.userNickname}</span>
                     })}
                   </div>
-                  <button className='enroll' onClick={(userId) => enrollPy()} type="button" id={participated===true?"enroll-off":"enroll-on"}>enroll</button>
+                  <button className='enroll' onClick={(userId) => enrollPy()} type="button" id={participated===true || playerList.length == (playerNum - 1) ?"enroll-off":"enroll-on"}>enroll</button>
                 </div>
               </div>             
               <div className='enroll-btn'>
-                <button className='enroll-game' onClick={onClick} type="button">입장</button>
+                <button className='enroll-game' onClick={onClick} type="button" id = {gameIsStart && participated===true? "enroll-on":"enroll-off"}>입장</button>
               </div>
               {/* {startTime &&
                 <div>
                   <button>입장하기</button>
                 </div>
               } */}
-              <div className='detail-btn-group'>
+              <div className='detail-btn-group' id={userNickname == author? "de-btn-on": "de-btn-off" }>
                 <button className='detail-btn' onClick={() => navigate(`/meeting/edit/${code}`)} type="button">edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
               </div>

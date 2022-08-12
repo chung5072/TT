@@ -4,6 +4,10 @@ import { resetMonster } from "../../features/Game/MonsterSlice";
 import { useNavigate } from 'react-router-dom'
 import map0 from "../../assets/music/map0.mp3"
 import map2 from "../../assets/music/map2.mp3"
+import map3 from "../../assets/music/map3.mp3"
+import map5 from "../../assets/music/map5.mp3"
+import map1 from "../../assets/music/map1.mp3"
+import map4 from "../../assets/music/map4.mp3"
 import playbtn from "../../assets/image/play-btn.png"
 import pausebtn from "../../assets/image/pause-btn.png"
 import { useFormik } from "formik";
@@ -79,8 +83,8 @@ if (audioRef.current != null && audioStatus === true) {
 
           </div>
           <div id="my-controller-bgm-box">
-            <audio id="my-controller-audio-control" ref={audioRef}>
-              {mapStatus === 0 ? <source src={map0} type="audio/mp3"/> : mapStatus === 1 ? <source src={map0} type="audio/mp3"/>:mapStatus===2 ? <source src={map2} type="audio/mp3"/>: mapStatus === 3? <source src={map2} type="audio/mp3"/>: <source src={map2} type="audio/mp3"/>}
+            <audio id="my-controller-audio-control" ref={audioRef} loop>
+              {mapStatus === 0 ? <source src={map0} type="audio/mp3"/> : mapStatus === 1 ? <source src={map1} type="audio/mp3"/>:mapStatus===2 ? <source src={map2} type="audio/mp3"/>: mapStatus === 3? <source src={map3} type="audio/mp3"/>: mapStatus === 4? <source src={map4} type="audio/mp3"/> :<source src={map5} type="audio/mp3"/> }
               
               
             </audio>

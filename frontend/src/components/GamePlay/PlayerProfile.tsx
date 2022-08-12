@@ -65,64 +65,64 @@ export default function PlayerProfile() {
     return (
       <div id="player-profile">
       {/* {playerNum === selectPyNum() ? */}
-      <div className="">
-        <h1>PlayerProfile {playerNum}</h1>
-          <div>
+      <h1>PlayerProfile {playerNum}</h1>
+      <div className="pp-group">
+          <div className="pp-title">
             <label className="gameprofile-subtitle" htmlFor="name">name</label>
-            {name}
+            <div className="pp-userInfo">{name}</div>
           </div>
-          <div>
+          <div className="pp-title">
             <label className="gameprofile-subtitle" htmlFor="job">job</label>
-            {job}
+            <div className="pp-userInfo">{job}</div>
           </div>
-          <div>
+          <div className="pp-title">
             <label className="gameprofile-subtitle" htmlFor="species">species</label>
-            {species}
+            <div className="pp-userInfo">{species}</div>
           </div>
-          <div>
+          <div className="pp-title">
             <label className="gameprofile-subtitle" htmlFor="look">look</label>
-            {look}
+            <div className="pp-userInfo">{look}</div>
           </div>            
-          <div>
+          <div className="pp-title">
             <label className="gameprofile-subtitle" htmlFor="value">value</label>
-            {value}
+            <div className="pp-userInfo">{value}</div>
           </div>
-          <div>
+          <div className="pp-title">
             <label className="gameprofile-subtitle" htmlFor="weapon">weapon</label>
-            {weapon}
+            <div className="pp-userInfo">{weapon}</div>
           </div>
-          <div>
+          <div className="pp-title">
             <label className="gameprofile-subtitle" htmlFor="armor">armor</label>
-            {armor}
+            <div className="pp-userInfo">{armor}</div>
           </div>
-          <div>
+          <div className="pp-title">
             <label className="gameprofile-subtitle" htmlFor="hp">hp</label>
-            {hp}
+            <div className="pp-userInfo">{hp}</div>
           </div>
-          <div>
+          <div className="pp-title">
             <label className="gameprofile-subtitle" htmlFor="level">level</label>
-            {level}
+            <div className="pp-userInfo">{level}</div>
           </div>
-          <div>
+          <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="sup">sup</label>
-            {sup1}
-            {sup2}
-            {sup3}
+            <li className="pp-userInfo">{sup1}</li>
+            <li className="pp-userInfo">{sup2}</li>
+            <li className="pp-userInfo">{sup3}</li>
           </div>
-          <div>
+          <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="stat">stat</label>
-            {stat1}
-            {stat2}
-            {stat3}
-            {stat4}
-            {stat5}
-            {stat6}
+            <li className="pp-userInfo">{stat1}</li>
+            <li className="pp-userInfo">{stat2}</li>
+            <li className="pp-userInfo">{stat3}</li>
+            <li className="pp-userInfo">{stat4}</li>
+            <li className="pp-userInfo">{stat5}</li>
+            <li className="pp-userInfo">{stat6}</li>
           </div>
-          <div>
+          <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="skill">skill</label>
-            {skill1}
-            {skill2}
-            {skill3}
+            <li className="pp-userInfo">{skill1}</li>
+            <li className="pp-userInfo">{skill2}</li>
+            <li className="pp-userInfo">{skill3}</li>
           </div>
       </div> 
       {/* : null} */}

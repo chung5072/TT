@@ -46,13 +46,7 @@ export default function InfoEdit() {
     return axios({
       method,
       url: DOMAIN + url,
-      data: {
-        shareCode: articleId,
-        shareTitle: title,
-        shareContent: content,
-        shareAuthor: author,
-
-      },
+      data: data,
     })
       .then(res => {
         console.log(res.data)
