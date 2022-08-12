@@ -247,5 +247,9 @@
 }
 
 #enroll-off {
+  visibility: hidden;
+}
+
+#de-btn-off {
   display: none;
 }
