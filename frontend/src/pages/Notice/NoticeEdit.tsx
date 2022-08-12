@@ -23,6 +23,7 @@ export default function NoticeEdit() {
       url: DOMAIN +`api/notice/${articleId}`
     })
       .then((res) => {
+        console.log(res.data)
         dispatch(getNoticeDetail(res.data))
       })
       .catch(err => {
@@ -41,13 +42,7 @@ const noticeEditRequest: any = (method: string, url: string, data:object) => {
   return axios({
     method,
     url: DOMAIN + url,
-    data: {
-      noticeCode: articleId,
-      noticeTitle: title,
-      noticeContent: content,
-      noticeAuthor: author,
-
-    },
+    data: data
   })
     .then(res => {
       console.log(res.data)
@@ -59,10 +54,12 @@ const noticeEditRequest: any = (method: string, url: string, data:object) => {
 }
 
 const formik = useFormik({
-  initialValues: {noticeCode:articleId, noticeTitle: title, noticeContent: content, noticeAuthor:author},
+  initialValues: {noticeCode:articleId, noticeTitle: title, noticeArticle: content, noticeAuthor:author},
   onSubmit: (data) => {
+    formik.values.noticeAuthor = author
     console.log(data)
-    noticeEditRequest('PUT', `api/notice/${articleId}`, data)}
+    noticeEditRequest('PUT', `api/notice/${articleId}`, data)
+  }
 })
 
     return (
@@ -74,16 +71,16 @@ const formik = useFormik({
           <div className='rows'>
             <label className='mini-title' htmlFor='noticeTitle'>Title</label>
             <div className='inp-group'>
-              <input className='inp-tags' type="text" onChange={formik.handleChange} id="noticeTitle" defaultValue={title} />
+              <input className='inp-tags' type="text" name="noticeTitle" onChange={formik.handleChange} id="noticeTitle" defaultValue={title} />
               {/* {formik.touched.noticeTitle && formik.errors.noticeTitle ? (
                 <div className='error-message'>{formik.errors.noticeTitle}</div>
               ) : null} */}
             </div>           
           </div>
           <div className='rows'>
-            <label className='mini-title' htmlFor="noticeContent">Content</label>
+            <label className='mini-title' htmlFor="noticeArticle">Content</label>
               <div className='inp-group'>
-                <textarea className='txtarea-tags' onChange={formik.handleChange} id="noticeContent" defaultValue={content} />
+                <textarea className='txtarea-tags' name="noticeArticle" onChange={formik.handleChange} id="noticeArticle" defaultValue={content} />
                 {/* {formik.touched.noticeContent && formik.errors.noticeContent ? (
                 <div className='error-message'>{formik.errors.noticeContent}</div>
               ) : null} */}

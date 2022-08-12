@@ -15,6 +15,15 @@ export default function Login() {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const DOMAIN = "http://localhost:8080/"
+  const naverLogin: any = () => {
+    axios({
+      method: 'GET',
+      url: DOMAIN + 'api/user/naver/connect'
+    })
+    .then( (res) => {
+      console.log(res.data)
+    })
+  }
   const loginRequest: any = (method: string, url: string, data: object) => {
     return axios({
       method,
@@ -88,7 +97,7 @@ export default function Login() {
               </div>
           </div>
           <div className='login-with-btn'>
-            <div className='login-with-naver'></div>
+            <div className='login-with-naver' onClick={() => naverLogin()}></div>
             <button className='login-with-kakao'></button>  
           </div>
 

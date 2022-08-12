@@ -68,10 +68,11 @@ export default function MeetingEdit() {
   }
 
   const formik = useFormik({
-    initialValues: {meetingCode:articleId, meetingTitle: title, meetingContent: content, meetingPyNum: player, meetingPyTime: time, meetingAuthor: author, },
+    initialValues: {meetingCode:articleId, meetingTitle: title, meetingContent: content, meetingPyNum: player, meetingPyTime: time, meetingAuthor: author,meetingPosition: 0 },
     onSubmit: (data) => {
       console.log(data)
-      meetingEditRequest('PUT', `api/meeting/${articleId}`, data)}
+      meetingEditRequest('PUT', `api/meeting/${articleId}`, data)
+    }
   })
 
 
@@ -103,11 +104,16 @@ export default function MeetingEdit() {
                 <label className="mini-title" htmlFor="meetingPosition">Position</label>
                 <div className="radio-group">
                   <div className="position-choice">
-                    <input id="gamePlayer" type="radio" name="position" /><label htmlFor="gameMaster" className="choice">GM</label>
+                    <input className="radio-btn" id="gmPlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={0}/>
+                    <label htmlFor="gmPlayer" className="choice">GM</label>
                   </div>
                   <div className="position-choice">
-                    <input id="gamePlayer" type="radio" name="position" /><label htmlFor="gamePlayer" className="choice">Player</label>
+                    <input className="radio-btn" id="justPlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={1}/>
+                    <label htmlFor="justPlayer" className="choice">Player</label>
                   </div>
+                  {/* {formik.touched.meetingPosition && formik.errors.meetingPosition ? (
+                    <div className='error-message'>{formik.errors.meetingPosition}</div>
+                  ) : null} */}
                 </div>
               </div>
                 <div className='rows'>
