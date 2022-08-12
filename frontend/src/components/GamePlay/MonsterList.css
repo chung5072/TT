@@ -4,7 +4,7 @@
 }
 
 #monster > h1 {
-  margin-bottom: 3%;
+  margin-bottom: 5%;
   margin-top: 0;
 }
 
@@ -14,5 +14,25 @@
 }
 
 .monster-features {
-  margin:1% 0;
+  margin:3% 0;
+}
+
+.monster-attack {
+  margin-bottom: 1%;
+}
+
+.monster-hp {
+  margin-bottom: 1%;
+}
+
+.monster-defense {
+  margin-bottom: 1%;
+}
+
+.monster-instinct {
+  margin-bottom: 1%;
+}
+
+.monster-tag {
+  margin-bottom: 1%;
 }

@@ -322,6 +322,6 @@ export default function SetProfile() {
           <div><button onClick={() => dispatch((subtractChooseLevel()))} className="ctrl-btn">Back</button></div>}
           
         </div>
-        
+    
     )
 }

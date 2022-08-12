@@ -111,12 +111,12 @@ export default function PlayerProfile() {
           </div>
           <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="stat">stat</label>
-            <li className="pp-userInfo">{stat1}</li>
-            <li className="pp-userInfo">{stat2}</li>
-            <li className="pp-userInfo">{stat3}</li>
-            <li className="pp-userInfo">{stat4}</li>
-            <li className="pp-userInfo">{stat5}</li>
-            <li className="pp-userInfo">{stat6}</li>
+            <li className="pp-userInfo">근력: {stat1}</li>
+            <li className="pp-userInfo">민첩: {stat2}</li>
+            <li className="pp-userInfo">체력: {stat3}</li>
+            <li className="pp-userInfo">지능: {stat4}</li>
+            <li className="pp-userInfo">지혜: {stat5}</li>
+            <li className="pp-userInfo">매력: {stat6}</li>
           </div>
           <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="skill">skill</label>
