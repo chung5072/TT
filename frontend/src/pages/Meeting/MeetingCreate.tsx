@@ -56,6 +56,7 @@ export default function MeetingCreate() {
     }),
     onSubmit: (data) => {
       formik.values.meetingAuthor = userNickname
+      console.log(data)
       {meetingRegisterRequest('POST', 'api/meeting/register', data)}
   }})
 
