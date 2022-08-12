@@ -25,8 +25,8 @@ public class CommentController {
             @ApiResponse(code = 404, message = "사용자 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity commentRegister(@PathVariable Long shareCode, @RequestBody CommentDto commentDto){
-        commentService.createComment(shareCode, commentDto);
+    public ResponseEntity commentRegister(@PathVariable Long shareCode, @RequestBody CommentDto.Register commentDtoForRegister){
+        commentService.createComment(shareCode, commentDtoForRegister);
         return ResponseEntity.ok(BaseResponseBody.of(200, "Success"));
     }
 
@@ -45,6 +45,29 @@ public class CommentController {
     }
 
     // 삭제
+    @DeleteMapping("{shareCode}/comment/{commentCode}")
+    @ApiOperation(value = "정보 공유 게시글 댓글 삭제", notes = "특정 공유 게시글의 달린 댓글을 삭제.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "댓글 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<?> commentDelete(@PathVariable Long shareCode, @PathVariable Long commentCode){
+        commentService.deleteComment(shareCode, commentCode);
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success"));
+    }
 
     // 수정
+    @PutMapping("{shareCode}/comment/{commentCode}")
+    @ApiOperation(value = "정보 공유 게시글 댓글 수정", notes = "특정 공유 게시글의 달린 댓글을 중 하나를 수정.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "댓글 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<?> commentUpdate(@PathVariable Long shareCode, @PathVariable Long commentCode,
+                                           @RequestBody CommentDto.Update commentDtoForUpdate){
+        commentService.updateComment(shareCode, commentCode, commentDtoForUpdate);
+        return ResponseEntity.ok(BaseResponseBody.of(200, "Success"));
+    }
 }
