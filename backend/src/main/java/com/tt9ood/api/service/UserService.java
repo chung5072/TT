@@ -10,5 +10,7 @@ public interface UserService {
 	User createUser(UserRegisterPostReq userRegisterInfo);
 	User getUserByUserId(String userId);
 
+	void update(String userId, UserRegisterPostReq userDto);
 
+	void delete(String userId);
 }
