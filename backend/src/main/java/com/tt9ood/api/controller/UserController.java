@@ -1,7 +1,12 @@
 package com.tt9ood.api.controller;
 
+import com.tt9ood.api.response.UserLoginPostRes;
+import com.tt9ood.common.util.JwtTokenUtil;
 import com.tt9ood.db.repository.UserRepository;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +20,12 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.web.reactive.function.client.WebClient;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.time.Instant;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -58,4 +68,98 @@ public class UserController {
 
 		return ResponseEntity.status(200).body(userService.getUserByUserId(userId));
 	}
+
+	@GetMapping("/naver/connect")
+	@ApiOperation(value = "네이버 인가코드 받기", notes = "네이버에서 인가코드를 받아온다")
+	@ApiResponses({
+			@ApiResponse(code = 200, message = "성공"),
+			@ApiResponse(code = 401, message = "인증 실패"),
+			@ApiResponse(code = 404, message = "사용자 없음"),
+			@ApiResponse(code = 500, message = "서버 오류")
+	})
+	public ResponseEntity<?> naverConnect(){
+		// state(위조방지를 위한 요청코드) 생성
+		SecureRandom random=new SecureRandom();
+		String state=new BigInteger(130,random).toString(32);
+
+		// redirect
+		StringBuffer url=new StringBuffer();
+		url.append("https://nid.naver.com/oauth2.0/authorize?");
+		url.append("client_id=jbcv39niumHGnhK8cBgn");
+		url.append("&response_type=code");
+		url.append("&redirect_uri=http://i7a809.p.ssafy.io/login/naver/login");
+		url.append("&state="+state);
+
+		return ResponseEntity.status(200).body("redirect:"+url);
+	}
+
+	@PostMapping("/naver/login")
+	@ApiOperation(value = "네이버에서 토큰받기", notes = "인가코드를 이용하여 네이버에서 토큰을 받아온다")
+	@ApiResponses({
+			@ApiResponse(code = 200, message = "성공"),
+			@ApiResponse(code = 401, message = "인증 실패"),
+			@ApiResponse(code = 404, message = "사용자 없음"),
+			@ApiResponse(code = 500, message = "서버 오류")
+	})
+	public ResponseEntity<? extends BaseResponseBody> naverLogin(@RequestParam(value="code") String code, @RequestParam(value="state") String state){
+
+		//네이버에 요청하기
+		WebClient webclient=WebClient.builder()
+				.baseUrl("https://nid.naver.com")
+				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+				.build();
+
+		JSONObject response=webclient.post()
+				.uri(uriBuilder->uriBuilder
+						.path("/oauth2.0/token")
+						.queryParam("client_id","jbcv39niumHGnhK8cBgn")
+						.queryParam("client_secret","yW8sibYPD6")
+						.queryParam("grant_type","authorization_code")
+						.queryParam("state",state)
+						.queryParam("code",code)
+						.build())
+				.retrieve().bodyToMono(JSONObject.class).block();
+
+		String token=response.getString("access_token");
+		String userId=getUserInfo(token);
+
+		// 로그인
+		Instant MAX_SECOND = Instant.now().plusSeconds(86400);
+		return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(userId), JwtTokenUtil.getToken(MAX_SECOND, userId), userId));
+
+	}
+
+	public String getUserInfo(String accessToken){
+		// 받아온 토큰을 이용하여 프로필정보 받아오기
+		WebClient webclient=WebClient.builder()
+				.baseUrl("https://openapi.naver.com")
+				.defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+				.build();
+
+		JSONObject response=webclient.get()
+				.uri(uriBuilder -> uriBuilder
+						.path("/v1/nid/me")
+						.build())
+				.header("Authorization","Bearer "+accessToken)
+				.retrieve()
+				.bodyToMono(JSONObject.class).block();
+
+		Map<String, Object> res=(Map<String, Object>) response.get("response");
+
+		UserRegisterPostReq registerInfo=new UserRegisterPostReq();
+		registerInfo.setUserId((String)res.get("id"));
+		registerInfo.setUserNickname((String)res.get("nickname"));
+		registerInfo.setUserEmail((String)res.get("email"));
+		registerInfo.setUserPhone((String)res.get("mobile"));
+		registerInfo.setUserGender((String)res.get("gender"));
+
+		// 해당 이메일 아이디가 없으면 회원가입
+		if(userService.emailExist((String)res.get("email"))){
+			User user = userService.createUser(registerInfo);
+		}
+
+		return (String)res.get("id");
+
+	}
+
 }

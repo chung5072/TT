@@ -1,5 +1,6 @@
 package com.tt9ood.api.service;
 
+import com.tt9ood.api.dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,8 @@ import com.tt9ood.api.request.UserRegisterPostReq;
 import com.tt9ood.db.entity.User;
 import com.tt9ood.db.repository.UserRepository;
 import com.tt9ood.db.repository.UserRepositorySupport;
+
+import java.util.List;
 
 /**
  *	유저 관련 비즈니스 로직 처리를 위한 서비스 구현 정의.
@@ -42,4 +45,16 @@ public class UserServiceImpl implements UserService {
 		User user = userRepositorySupport.findUserByUserId(userId).get();
 		return user;
 	}
+
+	@Override
+	public boolean emailExist(String email) {
+		List<UserDto> userList=userRepository.findByEmail(email);
+		if(userList.size()!=0)
+			return true;
+		else
+			return false;
+
+	}
+
+
 }
