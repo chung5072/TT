@@ -21,6 +21,13 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
 
     @Override
     public PlayerCharInfo createPlayerInfo(PlayerCharInfoDto playerInfoDto) {
+
+        // 기존 플레이어가 있으면 삭제
+        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerUserCode(playerInfoDto.getPlayerUserCode());
+        if(byId!=null){
+            deletePlayerInfo(byId.get().getPlayerCode());
+        }
+
         PlayerCharInfo playerCharInfo=new PlayerCharInfo(playerInfoDto.getPlayerCode(),
                 playerInfoDto.getPlayerUserCode(),
                 playerInfoDto.getPlayerSpecies(),
@@ -49,7 +56,7 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
     @Override
     public PlayerCharInfoDto readPlayerInfo(long playerCode) {
         PlayerCharInfoDto playerInfoDto=new PlayerCharInfoDto();
-        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerUserCode(playerCode);
+        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerCode(playerCode);
         if(byId!=null){
             PlayerCharInfo playerInfo=byId.get();
             playerInfoDto.setPlayerUserCode(playerInfo.getPlayerUserCode());
@@ -83,7 +90,7 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
     public PlayerCharInfoDto updatePlayerInfo(long playerCode, PlayerCharInfoDto playerInfoForUpdate) {
         PlayerCharInfoDto playerInfoDto=new PlayerCharInfoDto();
 
-        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerUserCode(playerCode);
+        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerCode(playerCode);
         if(byId!=null){
             PlayerCharInfo playerInfo=byId.get();
 
