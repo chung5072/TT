@@ -125,7 +125,7 @@ public class UserController {
 
 		// 로그인
 		Instant MAX_SECOND = Instant.now().plusSeconds(86400);
-		return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(userId), JwtTokenUtil.getToken(MAX_SECOND, userId), userId));
+		return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(userId), JwtTokenUtil.getToken(MAX_SECOND, userId), userId, ""));
 
 	}
 
