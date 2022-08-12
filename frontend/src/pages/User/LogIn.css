@@ -25,14 +25,15 @@
     margin-top: 20px;
 }
 #id-input, #pwd-input {
-    width: 45%;
-    height: 50px;
+    width: 35%;
+    height: 1.5vh;
     border-radius: 20px;
+    padding: 1.7%;
 }
 
 #login-button {
-    width: 45%;
-    height: 60px;
+    width: 35%;
+    height: 6.5vh;
     border-radius: 20px;
     background-color: #FFC860;
     margin-top: 3%;
@@ -66,8 +67,8 @@
 }
 
 .login-with-naver, .login-with-kakao {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 20px;
     margin: 20px;
     border: none;
