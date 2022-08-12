@@ -67,6 +67,7 @@ const MeetingList = () => {
     return (
       <div id='container'>
         <Navbar />
+        <h1>MEETING</h1>
         <div id='articles'>
           <div id='search'>
             <div>
@@ -74,15 +75,10 @@ const MeetingList = () => {
                 <button id='search-btn' type='submit'>search</button>
                 <input id='search-input' type="text" value={search} onChange={onChangeSearch} />
               </form>
-              {/* <button id='search-btn'>search</button>
-              <label htmlFor=""></label>
-              <input id='search-input' type="text" /> */}
+
             </div>
             <div>
               <button id='create-btn' onClick={() => navigate('/meeting/create')}>create</button>
-            </div>
-            <div>
-              <button id='back-btn' onClick={() => navigate('/')}>back</button>
             </div>
           </div>
           
@@ -99,7 +95,7 @@ const MeetingList = () => {
               return (
                   <tr className='article-tr' key={meet.meetingCode}>
                       <td>
-                        {meet.meetingCode}
+                        {idx + 1}
                       </td>
                       <td><Link to={"/meeting/" + `${meet.meetingCode}`}>{meet.meetingTitle}</Link></td>
                       <td>

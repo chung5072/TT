@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import '../ArticleDetail.css'
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/Navbar';
 
 
 export default function MeetingDetail() {
@@ -184,6 +185,7 @@ export default function MeetingDetail() {
 
     return (
         <div id='detail'>
+          <Navbar />
           <div  className='detail-container'>           
             <h1 className='detail-title'>{title}</h1>                  
             <form action="" onSubmit={formik.handleSubmit}>
@@ -192,11 +194,11 @@ export default function MeetingDetail() {
                 <div className='author-name'>
                   {author}
                 </div>
-              </div>
+              </div>              
               <div className='detail-rows'>
-                <label className='subtitle' htmlFor="meetingPyTime">PLAY TIME</label>
-                <div className='dinp'>
-                  {time}
+                <label className='subtitle' htmlFor="meetingContent">CONTENT</label>
+                <div className='content-part'>
+                  {content}
                 </div>
               </div>
               <div className='detail-rows'>
@@ -206,9 +208,9 @@ export default function MeetingDetail() {
                 </div>
               </div>
               <div className='detail-rows'>
-                <label className='subtitle' htmlFor="meetingContent">CONTENT</label>
-                <div className='content-part'>
-                  {content}
+                <label className='subtitle' htmlFor="meetingPyTime">PLAY TIME</label>
+                <div className='dinp'>
+                  {time}
                 </div>
               </div>
               <div className='positiongroup'>
@@ -228,8 +230,10 @@ export default function MeetingDetail() {
                   </div>
                   <button className='enroll' onClick={(userId) => enrollPy()} type="button" id={participated===true?"enroll-off":"enroll-on"}>enroll</button>
                 </div>
+              </div>             
+              <div className='enroll-btn'>
+                <button className='enroll-game' onClick={onClick} type="button">입장</button>
               </div>
-              <button className='enroll-game' onClick={onClick} type="button">입장</button>
               {/* {startTime &&
                 <div>
                   <button>입장하기</button>

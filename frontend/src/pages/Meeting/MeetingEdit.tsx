@@ -11,6 +11,7 @@ import { getMeetingDetail }  from '../../features/meeting/meetingSlice';
 import { Navigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import '../ArticleCreate.css'
+import Navbar from '../../components/Navbar';
 
 type meetingType = {
   meetingAuthor: string,
@@ -76,6 +77,7 @@ export default function MeetingEdit() {
 
   return (
         <div id='edit'>
+          <Navbar />
           <div className='create-container'>
             <h1>MeetingEdit</h1>
             <form action="" onSubmit={ formik.handleSubmit }>

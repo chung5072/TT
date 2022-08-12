@@ -8,6 +8,7 @@ import '../ArticleCreate.css'
 import { Link } from "react-router-dom"
 import * as Yup from 'yup'
 import { useAppSelector } from "../../app/hooks"
+import Navbar from '../../components/Navbar';
 
 export default function MeetingCreate() {
   const DOMAIN = "http://localhost:8080/"
@@ -60,6 +61,7 @@ export default function MeetingCreate() {
 
     return (
         <div id="create">
+          <Navbar />
           <div className="create-container">
             <h1>MeetingCreate</h1>
             <form action="" onSubmit={ formik.handleSubmit }>
@@ -82,7 +84,7 @@ export default function MeetingCreate() {
                 </div>
               </div>
               <div className="rows">
-                <label className="mini-title" htmlFor="meetingPyTime">Play Time</label>
+                <label className="mini-title" htmlFor="meetingPyTime">Enroll Time</label>
                 <div className="inp-group">
                   <input className="inp-tags" id="meetingPyTime" name="meetingPyTime" type="datetime-local" onChange={formik.handleChange} value={ formik.values.meetingPyTime} />
                   {formik.touched.meetingPyTime && formik.errors.meetingPyTime ? (
@@ -94,10 +96,12 @@ export default function MeetingCreate() {
                 <label className="mini-title" htmlFor="meetingPosition">Position</label>
                 <div className="radio-group">
                   <div className="position-choice">
-                    <input id="gamePlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={0}/><label htmlFor="gameMaster" className="choice">GM</label>
+                    <input className="radio-btn" id="gmPlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={0}/>
+                    <label htmlFor="gmPlayer" className="choice">GM</label>
                   </div>
                   <div className="position-choice">
-                    <input id="gamePlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={1}/><label htmlFor="gamePlayer" className="choice">Player</label>
+                    <input className="radio-btn" id="justPlayer" type="radio" name="meetingPosition" onChange={formik.handleChange} value={1}/>
+                    <label htmlFor="justPlayer" className="choice">Player</label>
                   </div>
                   {/* {formik.touched.meetingPosition && formik.errors.meetingPosition ? (
                     <div className='error-message'>{formik.errors.meetingPosition}</div>

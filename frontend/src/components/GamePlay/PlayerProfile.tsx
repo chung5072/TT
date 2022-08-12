@@ -7,6 +7,7 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 import { getRoomInfo } from "../../features/room/RoomSlice"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import './PlayerProfile.css'
 
 
 export default function PlayerProfile() {
@@ -62,54 +63,54 @@ export default function PlayerProfile() {
     const skill3 = useSelector((state:RootState)=>state.profile.skill3)
 
     return (
-      <div>
+      <div id="player-profile">
       {/* {playerNum === selectPyNum() ? */}
-      <div>
+      <div className="">
         <h1>PlayerProfile {playerNum}</h1>
           <div>
-            <label htmlFor="name">name</label>
+            <label className="gameprofile-subtitle" htmlFor="name">name</label>
             {name}
           </div>
           <div>
-            <label htmlFor="job">job</label>
+            <label className="gameprofile-subtitle" htmlFor="job">job</label>
             {job}
           </div>
           <div>
-            <label htmlFor="species">species</label>
+            <label className="gameprofile-subtitle" htmlFor="species">species</label>
             {species}
           </div>
           <div>
-            <label htmlFor="look">look</label>
+            <label className="gameprofile-subtitle" htmlFor="look">look</label>
             {look}
           </div>            
           <div>
-            <label htmlFor="value">value</label>
+            <label className="gameprofile-subtitle" htmlFor="value">value</label>
             {value}
           </div>
           <div>
-            <label htmlFor="weapon">weapon</label>
+            <label className="gameprofile-subtitle" htmlFor="weapon">weapon</label>
             {weapon}
           </div>
           <div>
-            <label htmlFor="armor">armor</label>
+            <label className="gameprofile-subtitle" htmlFor="armor">armor</label>
             {armor}
           </div>
           <div>
-            <label htmlFor="hp">hp</label>
+            <label className="gameprofile-subtitle" htmlFor="hp">hp</label>
             {hp}
           </div>
           <div>
-            <label htmlFor="level">level</label>
+            <label className="gameprofile-subtitle" htmlFor="level">level</label>
             {level}
           </div>
           <div>
-            <label htmlFor="sup">sup</label>
+            <label className="gameprofile-subtitle" htmlFor="sup">sup</label>
             {sup1}
             {sup2}
             {sup3}
           </div>
           <div>
-            <label htmlFor="stat">stat</label>
+            <label className="gameprofile-subtitle" htmlFor="stat">stat</label>
             {stat1}
             {stat2}
             {stat3}
@@ -118,7 +119,7 @@ export default function PlayerProfile() {
             {stat6}
           </div>
           <div>
-            <label htmlFor="skill">skill</label>
+            <label className="gameprofile-subtitle" htmlFor="skill">skill</label>
             {skill1}
             {skill2}
             {skill3}

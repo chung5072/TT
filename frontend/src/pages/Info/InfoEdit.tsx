@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { getArticleDetail }  from '../../features/article/articleSlice';
 import '../ArticleCreate.css'
 import * as Yup from 'yup'
+import Navbar from '../../components/Navbar';
 
 export default function InfoEdit() {
   const dispatch = useAppDispatch()
@@ -81,6 +82,7 @@ export default function InfoEdit() {
   
     return (
         <div id='edit'>
+          <Navbar />
           <div className='create-container'>
             <h1>InfoEdit</h1>
             <form action="" onSubmit={formik.handleSubmit}>
