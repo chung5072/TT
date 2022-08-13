@@ -56,15 +56,12 @@ if (audioRef.current != null && audioStatus === true) {
   }
 
   function clickHandlerForExit() {
-    // 테스트 출력 - state 비우기
-    // console.log("state를 비워보자");
-
     //* redux state를 초기값으로 바꾸고 sessionStoreage를 clear() 시킴
     dispatch(resetSignalHistory());
     dispatch(resetMonster());
 
     //? 아직 뭔지 모르겠음
-    // client.unsubscribe(roomId as string);
+    client.unsubscribe(gameId as string);
 
     //! 아래의 코드가 있어야 연결을 끊음으로 이후 같은 로그가 여러 줄 뜨는 것을 방지
     client.disconnect();

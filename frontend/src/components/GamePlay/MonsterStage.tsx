@@ -23,10 +23,15 @@ export default function MonsterStage({monsterState} : {monsterState : monsterSta
     <div>
       <h1>몬스터 정보</h1>
       <hr />
-      <p style={{"color" : "white"}}>몬스터 이름 : {monsterKind.get(monsterState.mapArea)[monsterState.monsterId]}</p>
-      <p style={{"color" : "white"}}>몬스터 숫자 : {monsterState.monsterNum}</p>
+      {
+        monsterState.mapArea !== 0 ?
+        <div>
+          <p style={{"color" : "white"}}>몬스터 이름 : {monsterKind.get(monsterState.mapArea)[monsterState.monsterId]}</p>
+          <p style={{"color" : "white"}}>몬스터 숫자 : {monsterState.monsterNum}</p>
+        </div>
+        :
+        null
+      }
     </div>
   )
-
-  
 }
