@@ -24,7 +24,7 @@ export default function InfoDetail() {
   }
 
   const onClickDeleteBtn = () => {
-    return axios.delete(`api/share/${articleId}`)
+    return axios.delete('/api' + `/share/${articleId}`)
   }
 
   const DOMAIN = "http://localhost:8080/"
@@ -32,7 +32,7 @@ export default function InfoDetail() {
   useEffect(() => {
       axios({ 
         method: 'GET',
-        url: DOMAIN +`api/share/${articleId}`
+        url: '/api' + `/share/${articleId}`
       })
         .then((res) => {
           dispatch(getArticleDetail(res.data))
@@ -70,7 +70,7 @@ export default function InfoDetail() {
     initialValues: {shareCode:articleId},
     onSubmit: (data) => {
       console.log(data)
-      shareDeleteRequest('DELETE', `api/share/${articleId}`, data)}
+      shareDeleteRequest('DELETE', '/api' + `/share/${articleId}`, data)}
   })
   
     return (

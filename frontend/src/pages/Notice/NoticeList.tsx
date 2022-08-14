@@ -22,7 +22,7 @@ const NoticeList = () => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: DOMAIN + 'api/notice'
+      url: '/api' + '/notice'
     })
     .then((res) => {
       setList(res.data)

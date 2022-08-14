@@ -24,7 +24,7 @@ export default function InfoEdit() {
   useEffect(() => {
       axios({ 
         method: 'GET',
-        url: DOMAIN +`api/share/${articleId}`
+        url: '/api' + `/share/${articleId}`
       })
         .then((res) => {
           dispatch(getArticleDetail(res.data))
@@ -45,7 +45,7 @@ export default function InfoEdit() {
   const shareEditRequest: any = (method: string, url: string, data:object) => {
     return axios({
       method,
-      url: DOMAIN + url,
+      url: url,
       data: data,
     })
       .then(res => {
@@ -70,7 +70,7 @@ export default function InfoEdit() {
     }),
     onSubmit: (data) => {
       console.log(data)
-      shareEditRequest('PUT', `api/share/${articleId}`, data)}
+      shareEditRequest('PUT', '/api' + `/share/${articleId}`, data)}
   })
 
   

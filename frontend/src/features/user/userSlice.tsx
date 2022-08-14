@@ -56,7 +56,7 @@ const userSlice = createSlice({
 export const sendRegisterRequest = createAsyncThunk(
   "sendRegisterRequest",
   async (data) => {
-    return request("POST", "api/user/register", data);
+    return request("POST", "/api" + "/user/register", data);
   },
 );
 
