@@ -12,6 +12,8 @@ import com.tt9ood.db.repository.UserRepositorySupport;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 /**
  *	유저 관련 비즈니스 로직 처리를 위한 서비스 구현 정의.
  */
@@ -59,4 +61,20 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+
+	@Transactional
+	@Override
+	public void update(String userId, UserRegisterPostReq userDto) {
+		User user = userRepository.findByUserId(userId).orElseThrow(()-> new IllegalArgumentException("해당하는 아이디 없음"));
+		String encPassword = passwordEncoder.encode(userDto.getUserPw());
+		user.update(userDto.getUserNickname(), userDto.getUserEmail(), userDto.getUserPhone(), encPassword);
+		userRepository.flush();
+	}
+
+	@Transactional
+	@Override
+	public void delete(String userId) {
+		User user = userRepository.findByUserId(userId).orElseThrow(()-> new IllegalArgumentException("해당하는 아이디 없음"));
+		userRepository.delete(user);
+	}
 }
