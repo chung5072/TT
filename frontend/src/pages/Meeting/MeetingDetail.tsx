@@ -12,7 +12,6 @@ import '../ArticleDetail.css'
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 
-
 export default function MeetingDetail() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -28,7 +27,6 @@ export default function MeetingDetail() {
 
 
   // 버튼 누르면 그 유저의 아이디를 배열에 저장
-  
   const enrollGm = () => {
     axios({
       method:'PUT',
@@ -171,7 +169,6 @@ export default function MeetingDetail() {
   const playerNum = useAppSelector((state:RootState) => state.meeting.meetingPyNum)
   const gameIsStart = useAppSelector((state:RootState) => state.meeting.gameIsStart)
 
-
   //입장시간 나타내는 함수
   setTimeout(function() {
     startTime = true;
@@ -184,13 +181,14 @@ export default function MeetingDetail() {
       meetingDeleteRequest('DELETE', `api/meeting/${articleId}`, data)}
   })
   const onClick = () => {
-    navigate(`/game/${articleId}`,{
+    // 방을 이동하고
+    navigate(`/game/${roomCode}`,{
       state: {
-        sessionId: articleId,
+        sessionId: roomCode,
         username: userNickname
       }
     })
-    window.location.reload(); 
+    window.location.reload();
   }
 
     return (

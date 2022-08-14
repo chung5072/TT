@@ -37,8 +37,18 @@ public class User {
     @Column(name = "user_gender")
     private String userGender;
 
+    @Column(name = "user_authority")
+    private String userAuthority;
+
     @JsonIgnore
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "user_pw")
     private String userPw;
+
+    public void update(String userNickname, String userPhone, String userEmail, String userPw){
+        this.userNickname = userNickname;
+        this.userPhone = userPhone;
+        this.userEmail = userEmail;
+        this.userPw = userPw;
+    }
 }

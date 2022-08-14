@@ -24,7 +24,8 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
 
         // 기존 플레이어가 있으면 삭제
         Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerUserCode(playerInfoDto.getPlayerUserCode());
-        if(byId!=null){
+        // 없는 경우 출력형태 : byId = Optional.empty
+        if(byId.isPresent()){
             deletePlayerInfo(byId.get().getPlayerCode());
         }
 
@@ -56,8 +57,8 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
     @Override
     public PlayerCharInfoDto readPlayerInfo(long playerCode) {
         PlayerCharInfoDto playerInfoDto=new PlayerCharInfoDto();
-        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerCode(playerCode);
-        if(byId!=null){
+        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerUserCode(playerCode);
+        if(byId.isPresent()){
             PlayerCharInfo playerInfo=byId.get();
             playerInfoDto.setPlayerUserCode(playerInfo.getPlayerUserCode());
             playerInfoDto.setPlayerSpecies(playerInfo.getPlayerSpecies());
@@ -91,7 +92,7 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
         PlayerCharInfoDto playerInfoDto=new PlayerCharInfoDto();
 
         Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerCode(playerCode);
-        if(byId!=null){
+        if(byId.isPresent()){
             PlayerCharInfo playerInfo=byId.get();
 
             playerInfo.updatePlayerCharInfo(playerInfoForUpdate.getPlayerCode(),
@@ -152,7 +153,7 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
         Optional<PlayerCharInfo> byId=playerCharInfoRepository.findById(playerCode);
         PlayerCharInfo playerInfo=null;
 
-        if(byId!=null)
+        if(byId.isPresent())
             playerInfo=byId.get();
 
         playerCharInfoRepository.delete(playerInfo);

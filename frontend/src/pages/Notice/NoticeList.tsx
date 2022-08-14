@@ -10,6 +10,7 @@ import Navbar from '../../components/Navbar';
 const NoticeList = () => {
   const DOMAIN = 'http://localhost:8080/'
   const navigate = useNavigate()
+  const user_authority = window.localStorage.getItem('user_authority');
 
   const [noticeList, setList] = useState([{
     noticeCode: '',
@@ -31,6 +32,12 @@ const NoticeList = () => {
     })
   }, [])
 
+  function checkAdmin() {
+    // const showCreateKey = bcrypt.hashSync('rule_admin', 12);
+    // return bcrypt.compareSync(showCreateKey, user_authority);
+    return user_authority === 'rule_admin';
+  }
+
   return (
     <div>
       <div id='container'>
@@ -44,7 +51,14 @@ const NoticeList = () => {
               <input id='search-input' type="text" />
             </div>
             <div>
-              <button id='create-btn' onClick={() => navigate('/notice/create')}>create</button>
+            {
+              checkAdmin() ?  
+              <div>
+                <button id='create-btn' onClick={() => navigate('/notice/create')}>create</button>
+              </div> 
+              :
+              null
+            }
             </div>
           </div>
           

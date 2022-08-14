@@ -11,5 +11,7 @@ public interface UserService {
 	User getUserByUserId(String userId);
 	boolean emailExist(String email);
 
+	void update(String userId, UserRegisterPostReq userDto);
 
+	void delete(String userId);
 }
