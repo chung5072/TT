@@ -20,7 +20,7 @@ export default function NoticeEdit() {
   useEffect(() => {
     axios({ 
       method: 'GET',
-      url: DOMAIN +`api/notice/${articleId}`
+      url: '/api' + `/notice/${articleId}`
     })
       .then((res) => {
         console.log(res.data)
@@ -41,7 +41,7 @@ const code = useSelector((state:RootState) => state.notice.noticeCode)
 const noticeEditRequest: any = (method: string, url: string, data:object) => {
   return axios({
     method,
-    url: DOMAIN + url,
+    url: url,
     data: data
   })
     .then(res => {
@@ -58,7 +58,7 @@ const formik = useFormik({
   onSubmit: (data) => {
     formik.values.noticeAuthor = author
     console.log(data)
-    noticeEditRequest('PUT', `api/notice/${articleId}`, data)
+    noticeEditRequest('PUT', '/api' + `/notice/${articleId}`, data)
   }
 })
 

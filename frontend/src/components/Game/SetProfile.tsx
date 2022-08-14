@@ -140,7 +140,7 @@ export default function SetProfile({client, gameId} : {client : any, gameId : an
       console.log(profile)
       axios({
         method: 'POST',
-        url: 'http://localhost:8080/api/player',
+        url: '/api' + '/player',
         data: profile
       })
       .then( (res) => {

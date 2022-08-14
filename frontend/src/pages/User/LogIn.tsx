@@ -18,7 +18,7 @@ export default function Login() {
   const naverLogin: any = () => {
     axios({
       method: 'GET',
-      url: DOMAIN + 'api/user/naver/connect'
+      url: '/api' + '/user/naver/connect'
     })
     .then( (res) => {
       console.log(res.data)
@@ -39,7 +39,7 @@ export default function Login() {
         await dispatch(saveToken(payload))
         axios({
           method: "GET",
-          url: `http://localhost:8080/api/user/userinfo/${localStorage.getItem('current_user')}`,
+          url: '/api' + `/user/userinfo/${localStorage.getItem('current_user')}`,
           
         })
           .then((res) => {
@@ -65,7 +65,7 @@ export default function Login() {
       userPw: Yup.string()
       .required('Required'),
     }),
-    onSubmit: (credentials) => {loginRequest('POST', 'api/user/login', credentials)}
+    onSubmit: (credentials) => {loginRequest('POST', '/api' + '/user/login', credentials)}
   
   })
 
