@@ -27,7 +27,7 @@ export default function Login() {
   const loginRequest: any = (method: string, url: string, data: object) => {
     return axios({
       method,
-      url: DOMAIN + url,
+      url: url,
       data: data
     })
       .then(async (res) => {
