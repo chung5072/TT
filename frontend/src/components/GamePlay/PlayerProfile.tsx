@@ -27,7 +27,7 @@ export default function PlayerProfile() {
       console.log(player1)
       axios({
         method: 'GET',
-        url: DOMAIN + `api/player/${thisPlayerCode}`
+        url: DOMAIN + '/api' + `/player/${thisPlayerCode}`
       })
       .then((res) => {
         console.log(res.data)

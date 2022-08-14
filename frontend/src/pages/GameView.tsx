@@ -50,7 +50,7 @@ export default function GameView() {
   useEffect(() => {
     axios({
       method:'GET',
-      url: `http://localhost:8080/api/roomInfo/${gameId}`
+      url: '/api' + `/roomInfo/${gameId}`
     })
     .then((res) => {
       console.log(res.data)

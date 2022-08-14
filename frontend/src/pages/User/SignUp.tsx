@@ -12,7 +12,7 @@ export default function SignUp() {
   const registerRequest: any = (method: string, url: string, data: object) => {
     return axios({
       method,
-      url: DOMAIN + url,
+      url: url,
       data: data
     })
       .then((res) =>{ 
@@ -47,7 +47,7 @@ export default function SignUp() {
     }),
     onSubmit: (credentials) => {
       console.log(credentials)
-      {registerRequest('POST','api/user/register', credentials)}
+      {registerRequest('POST','/api' + '/user/register', credentials)}
     } 
     
   })

@@ -19,7 +19,7 @@ export default function InfoCreate() {
   const shareRegisterRequest: any = (method: string, url: string, data: object) => {
     return axios({
       method,
-      url: DOMAIN + url,
+      url: url,
       data: data
     })
       .then(res => {
@@ -46,7 +46,7 @@ export default function InfoCreate() {
     onSubmit: (data) => {
       formik.values.shareAuthor = userId
       console.log(data)
-      shareRegisterRequest('POST', 'api/share/register', data)},
+      shareRegisterRequest('POST', '/api' + '/share/register', data)},
     })
 
 

@@ -32,7 +32,7 @@ export default function NoticeDetail() {
   useEffect(() => {
     axios({ 
       method: 'GET',
-      url: DOMAIN +`api/notice/${articleId}`
+      url: '/api' + `/notice/${articleId}`
     })
       .then((res) => {
         console.log(res.data)
@@ -68,7 +68,7 @@ const formik = useFormik({
   initialValues: {noticeCode:articleId},
   onSubmit: (data) => {
     console.log(data)
-    noticeDeleteRequest('DELETE', `api/notice/${articleId}`, data)}
+    noticeDeleteRequest('DELETE', '/api' + `/notice/${articleId}`, data)}
   })
   
   console.log(content)

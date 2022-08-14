@@ -30,7 +30,7 @@ export default function MeetingDetail() {
   const enrollGm = () => {
     axios({
       method:'PUT',
-      url: DOMAIN + 'api/meeting/gmEnroll',
+      url: '/api' + '/meeting/gmEnroll',
       data: {
         meetingCode: roomCode,
         userCode: userCode,
@@ -40,7 +40,7 @@ export default function MeetingDetail() {
       console.log(res)
       axios({ 
         method: 'GET',
-        url: DOMAIN +`api/meeting/${articleId}`
+        url: '/api' + `/meeting/${articleId}`
       })
         .then((res) => {
           console.log(res.data)
@@ -58,7 +58,7 @@ export default function MeetingDetail() {
       console.log(roomCode)
       axios({
         method:'PUT',
-        url: DOMAIN + 'api/meeting/playerEnroll',
+        url: '/api' + '/meeting/playerEnroll',
         data: {
           meetingCode: roomCode,
           userCode: userCode,
@@ -68,7 +68,7 @@ export default function MeetingDetail() {
         console.log(res)
         axios({ 
           method: 'GET',
-          url: DOMAIN +`api/meeting/${articleId}`
+          url: '/api' + `/meeting/${articleId}`
         })
           .then((res) => {
             console.log(res.data)
@@ -88,7 +88,7 @@ export default function MeetingDetail() {
     const roomInfoRequest: any= (method: string, url: string, data: object) => {
       return axios({
         method,
-        url: DOMAIN + url,
+        url: url,
         data: data
       })
       .then(res => {
@@ -113,7 +113,7 @@ export default function MeetingDetail() {
       
       axios({ 
         method: 'GET',
-        url: DOMAIN +`api/meeting/${articleId}`
+        url: '/api' + `/meeting/${articleId}`
       })
         .then((res) => {
           console.log(res.data)
@@ -139,7 +139,7 @@ export default function MeetingDetail() {
   const meetingDeleteRequest: any = (method: string, url: string, data:object) => {
     return axios({
       method,
-      url: DOMAIN + url
+      url: url
       // data: {
       //   shareCode: articleId,
       // },
@@ -178,7 +178,7 @@ export default function MeetingDetail() {
     initialValues: {meetingCode:articleId},
     onSubmit: (data) => {
       console.log(data)
-      meetingDeleteRequest('DELETE', `api/meeting/${articleId}`, data)}
+      meetingDeleteRequest('DELETE', '/api' + `/meeting/${articleId}`, data)}
   })
   const onClick = () => {
     // 방을 이동하고

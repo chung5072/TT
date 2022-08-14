@@ -17,7 +17,7 @@ export default function NoticeCreate() {
   const noticeRegisterRequest: any = (method: string, url: string, data: object) => {
     return axios({
       method,
-      url: DOMAIN + url,
+      url: url,
       data: data
     })
       .then(res => {
@@ -43,7 +43,7 @@ export default function NoticeCreate() {
     onSubmit: (data) => {
       formik.values.noticeAuthor = userNickname
       console.log(data)
-      {noticeRegisterRequest('POST', 'api/notice', data)}
+      {noticeRegisterRequest('POST', '/api' + '/notice', data)}
     }
   })
 

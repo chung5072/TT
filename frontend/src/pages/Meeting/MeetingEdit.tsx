@@ -32,7 +32,7 @@ export default function MeetingEdit() {
   useEffect(() => {
       axios({ 
         method: 'GET',
-        url: DOMAIN + `api/meeting/${articleId}`
+        url: '/api' + `/meeting/${articleId}`
       })
         .then((res) => {
           dispatch(getMeetingDetail(res.data))
@@ -55,7 +55,7 @@ export default function MeetingEdit() {
   const meetingEditRequest: any = (method: string, url: string, data:object) => {
     return axios({
       method,
-      url: DOMAIN + url,
+      url: url,
       data: data
     })
       .then(res => {
@@ -71,7 +71,7 @@ export default function MeetingEdit() {
     initialValues: {meetingCode:articleId, meetingTitle: title, meetingContent: content, meetingPyNum: player, meetingPyTime: time, meetingAuthor: author,meetingPosition: 0 },
     onSubmit: (data) => {
       console.log(data)
-      meetingEditRequest('PUT', `api/meeting/${articleId}`, data)
+      meetingEditRequest('PUT', '/api' + `/meeting/${articleId}`, data)
     }
   })
 
