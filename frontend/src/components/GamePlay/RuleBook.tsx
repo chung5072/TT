@@ -69,21 +69,21 @@ export default function RuleBook() {
           <Slider className="rulebook-carousel" {...settings}>
             <div className="rule-action">
               <p className="rule-subtitle">액션 가이드</p>
-              <div>
+              <div className="action-group">
                 <div className="action-basic">{basic.explain}</div>
                 <div><span className="dice-number">10+: </span>{basic.choice[0]}</div>
                 <div><span className="dice-number">7~9: </span>{basic.choice[1]}</div>
                 <div><span className="dice-number">6-: </span>{basic.choice[2]}</div>
               </div>
               <br />
-              <div>
+              <div className="action-group">
                 <div className="action-name">{jkj.name}</div>
                 <div className="action-explain">{jkj.explain}</div>
                 <div><span className="dice-number">10+: </span>{jkj.choice[0]}</div>
                 <div><span className="dice-number">7~9: </span>{jkj.choice[1]}</div>
               </div>
               <br />
-              <div>
+              <div className="action-group">
                 <div className="action-name">{sk.name}</div>
                 <div className="action-explain">{sk.explain}</div>
                 <div><span className="dice-number">10+: </span>{sk.choice[0]}</div>
@@ -92,14 +92,14 @@ export default function RuleBook() {
             </div>
             <div className="rule-action">
             <p className="rule-subtitle">액션 가이드</p>
-              <div>
+              <div className="action-group">
                 <div className="action-name">{dd.name}</div>
                 <div className="action-explain">{dd.explain}</div>
                 <div><span className="dice-number">10+: </span>{dd.choice[0]}</div>
                 <div><span className="dice-number">7~9: </span>{dd.choice[1]}</div>
               </div>
               <br />
-              <div>
+              <div className="action-group">
                 <div className="action-name">{jd.name}</div>
                 <div className="action-explain">{jd.explain}</div>
                 <div><span className="dice-number">10+: </span>{jd.choice[0]}</div>
@@ -108,14 +108,14 @@ export default function RuleBook() {
             </div>
             <div className="rule-action">
             <p className="rule-subtitle">액션 가이드</p>
-              <div>
+              <div className="action-group">
                 <div className="action-name">{sp.name}</div>
                 <div className="action-explain">{sp.explain}</div>
                 <div><span className="dice-number">10+: </span>{sp.choice[0]}</div>
                 <div><span className="dice-number">7~9: </span>{sp.choice[1]}</div>
               </div>
               <br />
-              <div>
+              <div className="action-group">
                 <div className="action-name">{hs.name}</div>
                 <div className="action-explain">{hs.explain}</div>
                 <div><span className="dice-number">10+: </span>{hs.choice[0]}</div>
@@ -164,7 +164,7 @@ export default function RuleBook() {
                 <div>{character.eight[1]}</div>
               </div>              
             </div>
-            <div>
+            <div className="action-group">
             <p className="rule-subtitle">GM 가이드</p>
               <p className="action-name">원칙</p>
               {gmGuide.rule.map(function (a:string) {
@@ -172,7 +172,7 @@ export default function RuleBook() {
                   <div key={a}>{a}</div>
                 )
               })}
-            <div>
+            <div className="action-group">
               <p className="action-name">액션</p>
               {gmGuide.action.map(function (a:string) {
                 return (
@@ -181,7 +181,7 @@ export default function RuleBook() {
               })}
             </div>
             </div>
-            <div>
+            <div className="action-group">
               <p className="rule-subtitle">GM 가이드</p>
                 <p className="action-name">던전 액션</p>
                 {gmGuide.dungeonaction.map(function (a:string) {
