@@ -22,4 +22,20 @@ public class CommentDto {
     @ApiModelProperty(name="공유 게시글 코드번호", example="0")
     private Long shareCode;
 
+    @Getter @Setter
+    @NoArgsConstructor
+    public static class Register {
+        @ApiModelProperty(name="댓글 작성자", example="댓글 작성자")
+        private String commentAuthor;
+        @ApiModelProperty(name="댓글 내용", example="댓글 내용")
+        private String commentContent;
+    }
+
+    @Getter @Setter
+    @NoArgsConstructor
+    public static class Update {
+        // 내용
+        private String commentContent;
+    }
+
 }

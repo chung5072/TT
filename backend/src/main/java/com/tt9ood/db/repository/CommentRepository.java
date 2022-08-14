@@ -14,4 +14,16 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
             ") from Comment as c " +
             "where c.share.shareCode = :shareCode")
     List<CommentDto> findAllByshareCode(@Param("shareCode") Long shareCode);
+
+    @Query(value = "select " +
+            "c.commentCode " +
+            "from Comment as c " +
+            "where c.share.shareCode = :shareCode")
+    List<Long> findCommentCodeAllByShare(@Param("shareCode") Long shareCode);
+
+    @Query(value = "select new com.tt9ood.api.dto.CommentDto(" +
+            "c.commentCode, c.commentAuthor, c.commentContent, c.createdDate, c.modifiedDate, c.share.shareCode" +
+            ") from Comment as c " +
+            "where c.commentCode = :commentCode")
+    CommentDto findCommentByCommentCode(@Param("commentCode") Long commentCode);
 }

@@ -21,6 +21,8 @@ public class ShareServiceImpl implements ShareService{
     ShareRepository shareRepository;
     @Autowired
     CommentRepository commentRepository;
+    @Autowired
+    CommentService commentService;
 
     @Transactional
     @Override
@@ -42,6 +44,8 @@ public class ShareServiceImpl implements ShareService{
     public void deleteShare(Long shareCode) {
         Share share = shareRepository.findById(shareCode).orElseThrow(() ->
                 new IllegalArgumentException("해당 게시글이 존재하지 않습니다."));
+        // 게시글에 딸린 댓글 먼저 삭제
+        commentService.deleteAllComment(shareCode);
         shareRepository.delete(share);
     }
 
