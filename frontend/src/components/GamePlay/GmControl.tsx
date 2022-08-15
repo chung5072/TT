@@ -177,8 +177,6 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
         <input type="text" name="playerWeapon" onChange={formikTwo.handleChange} value= {formikTwo.values.playerWeapon}/>
         <label id='monster-id-label' htmlFor="playerArmor">Armor</label>
         <input type="text" name="playerArmor" onChange={formikTwo.handleChange} value= {formikTwo.values.playerArmor}/>
-        <button type="submit">submit</button>
-        {}
         <label id='monster-id-label' htmlFor="playerSup1">Potion</label>
         <select name="playerSup1" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup1} id="playerSup1">
         <option value={99}>None</option>  
@@ -211,6 +209,7 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
           <option value={6}>Lv6</option>    
           
         </select>
+        <button type="submit">submit</button>
       </form>
       </div>
     </div>

@@ -28,3 +28,7 @@
 h1{
   color: white;
 }
+
+#gm-btn-off {
+  display: none;
+}

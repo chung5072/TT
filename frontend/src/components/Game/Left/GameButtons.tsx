@@ -8,6 +8,7 @@ export default function GameButtons() {
   const py2Code = useAppSelector((state:RootState) => state.room.py2Code)
   const py3Code = useAppSelector((state:RootState) => state.room.py3Code)
   const py4Code = useAppSelector((state:RootState) => state.room.py4Code)
+  const isGm = useAppSelector((state:RootState) => state.room.isGm)
   const py5Code = useAppSelector((state:RootState) => state.room.py5Code)
   const dispatch = useAppDispatch()
   const setPlayerNum: any = (num: number) => {
@@ -31,7 +32,7 @@ export default function GameButtons() {
         <button id="player-five" className="left-button" onClick={() => setDivStatus(5)}>Rule</button>
         {/* <button id="player-five" className="left-button" onClick={() => setDivStatus(6)}>확인용 버튼 - MonsterStage</button> */}
         <button id="player-five" className="left-button" onClick={() => setDivStatus(0)}>Home</button>
-        <button id="player-five" className="left-button" onClick={() => setDivStatus(99)}>GM</button>
+        <button className="left-button" id={isGm? "gm-btn-on":"gm-btn-off"} onClick={() => setDivStatus(99)}>GM</button>
       </div>
         
     )
