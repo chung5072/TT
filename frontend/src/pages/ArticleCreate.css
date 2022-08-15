@@ -1,10 +1,17 @@
+@font-face {
+  font-family: 'NOTO Sans';
+  src: url('../assets/fonts/NotoSansKR-Medium.otf');
+}
+
 #create {
+  font-family: 'NOTO Sans';
   background-color: #262626;
   width: 100vw;
   height: 200vh;
 }
 
 #edit {
+  font-family: 'NOTO Sans';
   background-color: #262626;
   width: 100vw;
   height: 200vh;

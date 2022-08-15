@@ -11,6 +11,9 @@ import { Formik, useFormik } from 'formik';
 import { Root } from 'react-dom/client';
 import '../ArticleDetail.css'
 import Navbar from '../../components/Navbar';
+import Modal from '../../components/Modal';
+import styled from "styled-components"
+import { useState, useCallback } from 'react';
 
 
 export default function InfoDetail() {
@@ -72,10 +75,44 @@ export default function InfoDetail() {
       console.log(data)
       shareDeleteRequest('DELETE', '/api' + `/share/${articleId}`, data)}
   })
+
+
+  const [isOpenModal, setOpenModal] = useState<boolean>(false);
+
+  const onClickToggleModal = useCallback(() => {
+    setOpenModal(!isOpenModal);
+  }, [isOpenModal]);
+
+    
+
+
+const DialogButton = styled.button`
+  width: 160px;
+  height: 48px;
+  background-color: blueviolet;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+`;
   
     return (
         <div id='detail'>
-          <Navbar />
+          <Navbar />          
+
+            {isOpenModal && (
+              <Modal onClickToggleModal={onClickToggleModal}>
+              이곳에 childeren이 들어갑니다.
+              </Modal>
+            )}
+            <DialogButton onClick={onClickToggleModal}>Open Modal</DialogButton>
+
           <div className='detail-container'>
             <h1 className='detail-title'>{title}</h1>
             <form action="" onSubmit={formik.handleSubmit}>
@@ -99,7 +136,7 @@ export default function InfoDetail() {
                   {content}
                 </div>
               </div>
-              <div className='detail-rows'>
+              {/* <div className='detail-rows'>
                 <div className='like-part'>
                   <div>
                       {like}
@@ -108,7 +145,7 @@ export default function InfoDetail() {
                     <button className='like-btn' type="button">like</button>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className='detail-btn-group'>
                 <button className='detail-btn' onClick={onClickUpdScrn} type="button">edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
