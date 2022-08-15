@@ -5,6 +5,7 @@ import com.tt9ood.api.service.PlayerCharInfoService;
 import com.tt9ood.common.model.response.BaseResponseBody;
 import com.tt9ood.db.entity.PlayerCharInfo;
 import io.swagger.annotations.*;
+import org.checkerframework.checker.guieffect.qual.PolyUIType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -61,9 +62,41 @@ public class PlayerCharInfoController {
     public ResponseEntity<?> updatePlayerCharInfo(@PathVariable int playerCode,
                                           @RequestBody @ApiParam(value="수정할 플레이어캐릭터 정보 내용", required = true) PlayerCharInfoDto playerInfoForUpdate) {
 
-        PlayerCharInfoDto updatedPlayerInfo=playerCharInfoService.updatePlayerInfo(playerCode,playerInfoForUpdate);
+        PlayerCharInfoDto.ReadProfile updatedPlayerInfo=playerCharInfoService.updatePlayerInfo(playerCode,playerInfoForUpdate);
 
         return ResponseEntity.status(200).body(updatedPlayerInfo);
+    }
+
+    // 회복약을 먹거나 데미지를 입거나
+    @PutMapping("{playerUserCode}/hpchange")
+    @ApiOperation(value = "플레이어캐릭터 HP 변화", notes = "해당 플레이어캐릭터 HP 변화_캐릭터의 해당 유저 코드번호 필요.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "플레이어 캐릭터 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<?> updatePlayerHp(@PathVariable Long playerUserCode,
+                                                  @RequestBody @ApiParam(value="수정할 플레이어캐릭터 정보 내용", required = true) PlayerCharInfoDto.HpInfo hpInfo) {
+
+        int updatePlayerHp = playerCharInfoService.updatePlayerHp(playerUserCode, hpInfo.getAmountOfChangeHp());
+
+        return ResponseEntity.status(200).body(updatePlayerHp);
+    }
+
+    // 스탯 변화
+    @PutMapping("{playerUserCode}/statchange")
+    @ApiOperation(value = "플레이어캐릭터 스탯 변화", notes = "해당 플레이어캐릭터 스탯 변화_캐릭터의 해당 유저 코드번호 필요.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "플레이어 캐릭터 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<?> updatePlayerStat(@PathVariable Long playerUserCode,
+                                            @RequestBody @ApiParam(value="수정할 플레이어캐릭터 스탯 내용", required = true) PlayerCharInfoDto.StatInfo statInfo) {
+
+        PlayerCharInfoDto.StatInfo changedStat = playerCharInfoService.updatePlayerStat(playerUserCode, statInfo);
+
+        return ResponseEntity.status(200).body(changedStat);
     }
 
     // 삭제 D
