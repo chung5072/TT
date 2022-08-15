@@ -10,6 +10,13 @@ import './LogIn.css'
 import { saveToken } from "../../features/user/loginSlice"
 import { fetchProfile } from '../../features/user/userSlice'
 
+//* 구글 로그인
+import { GoogleOAuthProvider, GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import GoogleLoginButton from '../../components/GoogleLoginButton'
+
+//* 구글 로그인
+const clientId = "842267246005-v7i0ucc1bog9gtuvk8fgur177ua8v8ol.apps.googleusercontent.com"
+
 // Login Dispatch
 export default function Login() {
   const navigate = useNavigate()
@@ -98,7 +105,18 @@ export default function Login() {
           </div>
           <div className='login-with-btn'>
             <div className='login-with-naver' onClick={() => naverLogin()}></div>
-            {/* <button className='login-with-kakao'></button>   */}
+            <GoogleOAuthProvider clientId={clientId} >
+              <GoogleLoginButton />
+              {/* <div className='login-with-google' onClick={() => login()}>
+                <GoogleLogin
+                  type="icon"
+                  theme="filled_blue"
+                  width='80px'
+                  onSuccess={googleLoginSuccess}
+                  onError={googleLoginError}
+                />
+              </div> */}
+            </GoogleOAuthProvider>;
           </div>
 
           <div id='find-id-pwd'>
