@@ -73,9 +73,9 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
       playerWeapon: '',
       playerArmor: '',
       playerHP: 0,
-      playerSup1: 0,
-      playerSup2: 0,
-      playerSup3: 0,
+      playerSup1: 99,
+      playerSup2: 99,
+      playerSup3: 99,
       playerStat1: 0,
       playerStat2: 0,
       playerStat3: 0,
@@ -167,7 +167,7 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
       <form action="" onSubmit={formikTwo.handleSubmit}>
         <label id='monster-id-label' htmlFor="playerUserCode">Monster Id</label>
         <select name="playerUserCode" onChange={formikTwo.handleChange} value = {formikTwo.values.playerUserCode} id="playerUserCode">
-          {py1Code != '' ? <option value="1">Player1</option>: null}
+          {py1Code != '' ? <option value={1}>Player1</option>: null}
           {py2Code != '' ? <option value={2}>Player2</option>: null}
           {py3Code != '' ? <option value={3}>Player3</option>: null}
           {py4Code != '' ? <option value={4}>Player4</option>: null}
@@ -181,32 +181,35 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
         {}
         <label id='monster-id-label' htmlFor="playerSup1">Potion</label>
         <select name="playerSup1" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup1} id="playerSup1">
+        <option value={99}>None</option>  
           <option value={1}>Lv1</option>
           <option value={2}>Lv2</option>
           <option value={3}>Lv3</option>
           <option value={4}>Lv4</option>
           <option value={5}>Lv5</option>
           <option value={6}>Lv6</option>    
-          <option value={99}>None</option>     
+             
         </select>
         <label id='monster-id-label' htmlFor="playerSup2">Antidote</label>
         <select name="playerSup2" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup2} id="playerSup2">
+        <option value={99}>None</option> 
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
           <option value={4}>4</option>
           <option value={5}>5</option>
           <option value={6}>6</option>    
-          <option value={99}>None</option>     
+              
         </select>
         <select name="playerSup3" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup3} id="playerSup3">
+          <option value={99}>None</option>     
           <option value={1}>Lv1</option>
           <option value={2}>Lv2</option>
           <option value={3}>Lv3</option>
           <option value={4}>Lv4</option>
           <option value={5}>Lv5</option>
           <option value={6}>Lv6</option>    
-          <option value={99}>None</option>     
+          
         </select>
       </form>
       </div>

@@ -1,7 +1,14 @@
 import { useAppDispatch } from "../../../app/hooks"
 import { setPlayerProfile, setStatus } from "../../../features/Game/LeftSlice"
 import "./GameButtons.css"
+import { useAppSelector } from "../../../app/hooks"
+import { RootState } from "../../../app/store"
 export default function GameButtons() {
+  const py1Code = useAppSelector((state:RootState) => state.room.py1Code)
+  const py2Code = useAppSelector((state:RootState) => state.room.py2Code)
+  const py3Code = useAppSelector((state:RootState) => state.room.py3Code)
+  const py4Code = useAppSelector((state:RootState) => state.room.py4Code)
+  const py5Code = useAppSelector((state:RootState) => state.room.py5Code)
   const dispatch = useAppDispatch()
   const setPlayerNum: any = (num: number) => {
       dispatch(setPlayerProfile(num))
@@ -13,11 +20,11 @@ export default function GameButtons() {
   }
   return (
       <div id="button-box">
-        <button id="player-one" className="left-button" onClick={() => setPlayerNum(1)}>1</button>
-        <button id="player-two" className="left-button" onClick={() => setPlayerNum(2)}>2</button>
-        <button id="player-three" className="left-button" onClick={() => setPlayerNum(3)}>3</button>
-        <button id="player-four" className="left-button" onClick={() => setPlayerNum(4)}>4</button>
-        <button id="player-five" className="left-button" onClick={() => setPlayerNum(5)}>5</button>
+        {py1Code != ''?<button id="player-one" className="left-button" onClick={() => setPlayerNum(1)}>1</button>:null}
+        {py2Code != ''?<button id="player-two" className="left-button" onClick={() => setPlayerNum(2)}>2</button>:null}
+        {py3Code != ''?<button id="player-three" className="left-button" onClick={() => setPlayerNum(1)}>3</button>:null}
+        {py4Code != ''?<button id="player-four" className="left-button" onClick={() => setPlayerNum(1)}>4</button>:null}
+        {py5Code != ''?<button id="player-five" className="left-button" onClick={() => setPlayerNum(1)}>5</button>:null}
         <button id="player-five" className="left-button" onClick={() => setDivStatus(2)}>Map</button>
         <button id="player-five" className="left-button" onClick={() => setDivStatus(3)}>Item</button>
         <button id="player-five" className="left-button" onClick={() => setDivStatus(4)}>Mon</button>
