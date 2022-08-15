@@ -95,7 +95,7 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
         if(byId.isPresent()){
             PlayerCharInfo playerInfo=byId.get();
 
-            playerInfo.updatePlayerCharInfo(playerInfoForUpdate.getPlayerCode(),
+            playerInfo.updatePlayerCharInfo(
                     playerInfoForUpdate.getPlayerUserCode(),
                     playerInfoForUpdate.getPlayerSpecies(),
                     playerInfoForUpdate.getPlayerName(),
