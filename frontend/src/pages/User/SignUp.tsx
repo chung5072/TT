@@ -6,9 +6,11 @@ import * as Yup from 'yup'
 import './SignUp.css'
 import axios from "axios"
 import {Select} from "@chakra-ui/select"
+import { useNavigate } from "react-router-dom"
 
 export default function SignUp() {
   // const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const DOMAIN = "http://localhost:8080/"
   const registerRequest: any = (method: string, url: string, data: object) => {
     return axios({
@@ -19,6 +21,7 @@ export default function SignUp() {
       .then((res) =>{ 
       
       console.log(res.data)
+      navigate('/')
     })
       .catch(err => {
         console.error(err.response.data)
