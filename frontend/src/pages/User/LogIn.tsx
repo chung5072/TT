@@ -98,7 +98,7 @@ export default function Login() {
           </div>
           <div className='login-with-btn'>
             <div className='login-with-naver' onClick={() => naverLogin()}></div>
-            <button className='login-with-kakao'></button>  
+            {/* <button className='login-with-kakao'></button>   */}
           </div>
 
           <div id='find-id-pwd'>

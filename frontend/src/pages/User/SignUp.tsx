@@ -5,6 +5,7 @@ import { request } from "../../utils/axios"
 import * as Yup from 'yup'
 import './SignUp.css'
 import axios from "axios"
+import {Select} from "@chakra-ui/select"
 
 export default function SignUp() {
   // const dispatch = useAppDispatch()
@@ -77,12 +78,11 @@ export default function SignUp() {
             <input id="userPhone" name="userPhone" type="text" onChange={formik.handleChange} value={ formik.values.userPhone }/>
 
             <label className="signup-label" htmlFor="userGender">Gender</label>
-            <input id="userGender" name="userGender" type="text" onChange={formik.handleChange} value={ formik.values.userGender } />
-            {/* <select name="" id="">
-              <option value="">Male</option>
-              <option value="">Female</option>
-              <option value="">None</option>
-            </select> */}
+            <select id="userGender" name="userGender" onChange={formik.handleChange} value={ formik.values.userGender }>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+              <option value="3">None</option>
+            </select>
             <button id="signup-button" type="submit">Sign up</button>
           </form>
           </div>
@@ -99,7 +99,7 @@ export default function SignUp() {
           </div>
           <div className='signup-with-btn'>
             <div className='signup-with-naver'></div>
-            <button className='signup-with-kakao'></button>  
+            {/* <button className='signup-with-kakao'></button>   */}
           </div>
         </div>
     </div>

@@ -1,4 +1,10 @@
+@font-face {
+  font-family: 'NOTO Sans';
+  src: url('../assets/fonts/NotoSansKR-Medium.otf');
+}
+
 #detail {
+  font-family: 'NOTO Sans';
   background-color: #262626;
   width: 100vw;
   height: 200vh;
@@ -60,6 +66,8 @@
 .views .view-tag {
   font-weight: bold;
   margin-right: 2%;
+  color:#d9aa52;
+  font-size: 1.2em;
 }
 
 .views .view-cnt {
