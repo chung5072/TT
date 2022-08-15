@@ -37,7 +37,8 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
                 playerInfoDto.getPlayerValue(),
                 playerInfoDto.getPlayerWeapon(),
                 playerInfoDto.getPlayerArmor(),
-                playerInfoDto.getPlayerHP(),
+                playerInfoDto.getPlayerHP(), // 최대 hp
+                playerInfoDto.getPlayerHP(), // 현재 hp
                 playerInfoDto.getPlayerSup1(),
                 playerInfoDto.getPlayerSup2(),
                 playerInfoDto.getPlayerSup3(),
@@ -55,41 +56,42 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
     }
 
     @Override
-    public PlayerCharInfoDto readPlayerInfo(long playerCode) {
-        PlayerCharInfoDto playerInfoDto=new PlayerCharInfoDto();
+    public PlayerCharInfoDto.ReadProfile readPlayerInfo(long playerCode) {
+        PlayerCharInfoDto.ReadProfile playerInfoDtoReadProfile = new PlayerCharInfoDto.ReadProfile();
         Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerUserCode(playerCode);
         if(byId.isPresent()){
             PlayerCharInfo playerInfo=byId.get();
-            playerInfoDto.setPlayerUserCode(playerInfo.getPlayerUserCode());
-            playerInfoDto.setPlayerSpecies(playerInfo.getPlayerSpecies());
-            playerInfoDto.setPlayerName(playerInfo.getPlayerName());
-            playerInfoDto.setPlayerLook(playerInfo.getPlayerLook());
-            playerInfoDto.setPlayerValue(playerInfo.getPlayerValue());
-            playerInfoDto.setPlayerWeapon(playerInfo.getPlayerWeapon());
-            playerInfoDto.setPlayerArmor(playerInfo.getPlayerArmor());
-            playerInfoDto.setPlayerHP(playerInfo.getPlayerHP());
-            playerInfoDto.setPlayerSup1(playerInfo.getPlayerSup1());
-            playerInfoDto.setPlayerSup2(playerInfo.getPlayerSup2());
-            playerInfoDto.setPlayerSup3(playerInfo.getPlayerSup3());
-            playerInfoDto.setPlayerStat1(playerInfo.getPlayerStat1());
-            playerInfoDto.setPlayerStat2(playerInfo.getPlayerStat2());
-            playerInfoDto.setPlayerStat3(playerInfo.getPlayerStat3());
-            playerInfoDto.setPlayerStat4(playerInfo.getPlayerStat4());
-            playerInfoDto.setPlayerStat5(playerInfo.getPlayerStat5());
-            playerInfoDto.setPlayerStat6(playerInfo.getPlayerStat6());
-            playerInfoDto.setPlayerClassName(playerInfo.getPlayerClassName());
-            playerInfoDto.setPlayerSkill1(playerInfo.getPlayerSkill1());
-            playerInfoDto.setPlayerSkill2(playerInfo.getPlayerSkill2());
-            playerInfoDto.setPlayerSkill3(playerInfo.getPlayerSkill3());
+            playerInfoDtoReadProfile.setPlayerUserCode(playerInfo.getPlayerUserCode());
+            playerInfoDtoReadProfile.setPlayerSpecies(playerInfo.getPlayerSpecies());
+            playerInfoDtoReadProfile.setPlayerName(playerInfo.getPlayerName());
+            playerInfoDtoReadProfile.setPlayerLook(playerInfo.getPlayerLook());
+            playerInfoDtoReadProfile.setPlayerValue(playerInfo.getPlayerValue());
+            playerInfoDtoReadProfile.setPlayerWeapon(playerInfo.getPlayerWeapon());
+            playerInfoDtoReadProfile.setPlayerArmor(playerInfo.getPlayerArmor());
+            playerInfoDtoReadProfile.setPlayerMaxHP(playerInfo.getPlayerMaxHP());
+            playerInfoDtoReadProfile.setPlayerHP(playerInfo.getPlayerHP());
+            playerInfoDtoReadProfile.setPlayerSup1(playerInfo.getPlayerSup1());
+            playerInfoDtoReadProfile.setPlayerSup2(playerInfo.getPlayerSup2());
+            playerInfoDtoReadProfile.setPlayerSup3(playerInfo.getPlayerSup3());
+            playerInfoDtoReadProfile.setPlayerStat1(playerInfo.getPlayerStat1());
+            playerInfoDtoReadProfile.setPlayerStat2(playerInfo.getPlayerStat2());
+            playerInfoDtoReadProfile.setPlayerStat3(playerInfo.getPlayerStat3());
+            playerInfoDtoReadProfile.setPlayerStat4(playerInfo.getPlayerStat4());
+            playerInfoDtoReadProfile.setPlayerStat5(playerInfo.getPlayerStat5());
+            playerInfoDtoReadProfile.setPlayerStat6(playerInfo.getPlayerStat6());
+            playerInfoDtoReadProfile.setPlayerClassName(playerInfo.getPlayerClassName());
+            playerInfoDtoReadProfile.setPlayerSkill1(playerInfo.getPlayerSkill1());
+            playerInfoDtoReadProfile.setPlayerSkill2(playerInfo.getPlayerSkill2());
+            playerInfoDtoReadProfile.setPlayerSkill3(playerInfo.getPlayerSkill3());
 
-            return playerInfoDto;
+            return playerInfoDtoReadProfile;
         }
         return null;
     }
 
     @Override
-    public PlayerCharInfoDto updatePlayerInfo(long playerCode, PlayerCharInfoDto playerInfoForUpdate) {
-        PlayerCharInfoDto playerInfoDto=new PlayerCharInfoDto();
+    public PlayerCharInfoDto.ReadProfile updatePlayerInfo(long playerCode, PlayerCharInfoDto playerInfoForUpdate) {
+        PlayerCharInfoDto.ReadProfile playerInfoDtoReadProfile = new PlayerCharInfoDto.ReadProfile();
 
         Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerCode(playerCode);
         if(byId.isPresent()){
@@ -121,31 +123,97 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
             playerCharInfoRepository.flush();
             entityManager.clear();
 
-            playerInfoDto.setPlayerUserCode(playerInfo.getPlayerUserCode());
-            playerInfoDto.setPlayerName(playerInfo.getPlayerName());
-            playerInfoDto.setPlayerLook(playerInfo.getPlayerLook());
-            playerInfoDto.setPlayerValue(playerInfo.getPlayerValue());
-            playerInfoDto.setPlayerWeapon(playerInfo.getPlayerWeapon());
-            playerInfoDto.setPlayerArmor(playerInfo.getPlayerArmor());
-            playerInfoDto.setPlayerHP(playerInfo.getPlayerHP());
-            playerInfoDto.setPlayerSup1(playerInfo.getPlayerSup1());
-            playerInfoDto.setPlayerSup2(playerInfo.getPlayerSup2());
-            playerInfoDto.setPlayerSup3(playerInfo.getPlayerSup3());
-            playerInfoDto.setPlayerStat1(playerInfo.getPlayerStat1());
-            playerInfoDto.setPlayerStat2(playerInfo.getPlayerStat2());
-            playerInfoDto.setPlayerStat3(playerInfo.getPlayerStat3());
-            playerInfoDto.setPlayerStat4(playerInfo.getPlayerStat4());
-            playerInfoDto.setPlayerStat5(playerInfo.getPlayerStat5());
-            playerInfoDto.setPlayerStat6(playerInfo.getPlayerStat6());
-            playerInfoDto.setPlayerClassName(playerInfo.getPlayerClassName());
-            playerInfoDto.setPlayerSkill1(playerInfo.getPlayerSkill1());
-            playerInfoDto.setPlayerSkill2(playerInfo.getPlayerSkill2());
-            playerInfoDto.setPlayerSkill3(playerInfo.getPlayerSkill3());
+            playerInfoDtoReadProfile.setPlayerUserCode(playerInfo.getPlayerUserCode());
+            playerInfoDtoReadProfile.setPlayerName(playerInfo.getPlayerName());
+            playerInfoDtoReadProfile.setPlayerLook(playerInfo.getPlayerLook());
+            playerInfoDtoReadProfile.setPlayerValue(playerInfo.getPlayerValue());
+            playerInfoDtoReadProfile.setPlayerWeapon(playerInfo.getPlayerWeapon());
+            playerInfoDtoReadProfile.setPlayerArmor(playerInfo.getPlayerArmor());
+            playerInfoDtoReadProfile.setPlayerMaxHP(playerInfo.getPlayerMaxHP());
+            playerInfoDtoReadProfile.setPlayerHP(playerInfo.getPlayerHP());
+            playerInfoDtoReadProfile.setPlayerSup1(playerInfo.getPlayerSup1());
+            playerInfoDtoReadProfile.setPlayerSup2(playerInfo.getPlayerSup2());
+            playerInfoDtoReadProfile.setPlayerSup3(playerInfo.getPlayerSup3());
+            playerInfoDtoReadProfile.setPlayerStat1(playerInfo.getPlayerStat1());
+            playerInfoDtoReadProfile.setPlayerStat2(playerInfo.getPlayerStat2());
+            playerInfoDtoReadProfile.setPlayerStat3(playerInfo.getPlayerStat3());
+            playerInfoDtoReadProfile.setPlayerStat4(playerInfo.getPlayerStat4());
+            playerInfoDtoReadProfile.setPlayerStat5(playerInfo.getPlayerStat5());
+            playerInfoDtoReadProfile.setPlayerStat6(playerInfo.getPlayerStat6());
+            playerInfoDtoReadProfile.setPlayerClassName(playerInfo.getPlayerClassName());
+            playerInfoDtoReadProfile.setPlayerSkill1(playerInfo.getPlayerSkill1());
+            playerInfoDtoReadProfile.setPlayerSkill2(playerInfo.getPlayerSkill2());
+            playerInfoDtoReadProfile.setPlayerSkill3(playerInfo.getPlayerSkill3());
 
-            return playerInfoDto;
+            return playerInfoDtoReadProfile;
 
         }
         return null;
+    }
+
+    // 회복 혹은 데미지
+    @Override
+    public int updatePlayerHp(long playerUserCode, int cureOrDamage) {
+        // 유저 코드를 기반으로 플레이어 정보 호출
+        PlayerCharInfo findPlayerInfo = playerCharInfoRepository.findByPlayerUserCode(playerUserCode).get();
+        int playerHP = findPlayerInfo.getPlayerHP();// 현재 hp
+        int playerMaxHP = findPlayerInfo.getPlayerMaxHP();// 최대 hp
+        // 현재 hp에서 변화량을 더한 결과
+        int changedCurrHp = playerHP + cureOrDamage;
+        // 최대보다 크면 최대로 지정
+        if (changedCurrHp > playerMaxHP) {
+            changedCurrHp = playerMaxHP;
+        }
+        // 0보다 작으면 0으로 지정
+        else if (changedCurrHp < 0) {
+            changedCurrHp = 0;
+        }
+
+        findPlayerInfo.updatePlayerHp(changedCurrHp);
+        playerCharInfoRepository.flush();
+
+        return changedCurrHp;
+    }
+
+    @Override
+    public PlayerCharInfoDto.StatInfo updatePlayerStat(long playerUserCode, PlayerCharInfoDto.StatInfo statInfo) {
+        // 유저 코드를 기반으로 플레이어 정보 호출
+        PlayerCharInfo findPlayerInfo = playerCharInfoRepository.findByPlayerUserCode(playerUserCode).get();
+        switch (statInfo.getStatIndex()) {
+            case 1:
+                int playerStat1 = findPlayerInfo.getPlayerStat1() + statInfo.getAmountOfChangeStat();
+                findPlayerInfo.setPlayerStat1(Math.min(playerStat1, 18));
+                statInfo.setAmountOfChangeStat(Math.min(playerStat1, 18));
+                break;
+            case 2:
+                int playerStat2 = findPlayerInfo.getPlayerStat2() + statInfo.getAmountOfChangeStat();
+                findPlayerInfo.setPlayerStat2(Math.min(playerStat2, 18));
+                statInfo.setAmountOfChangeStat(Math.min(playerStat2, 18));
+                break;
+            case 3:
+                int playerStat3 = findPlayerInfo.getPlayerStat3() + statInfo.getAmountOfChangeStat();
+                findPlayerInfo.setPlayerStat3(Math.min(playerStat3, 18));
+                statInfo.setAmountOfChangeStat(Math.min(playerStat3, 18));
+                break;
+            case 4:
+                int playerStat4 = findPlayerInfo.getPlayerStat4() + statInfo.getAmountOfChangeStat();
+                findPlayerInfo.setPlayerStat4(Math.min(playerStat4, 18));
+                statInfo.setAmountOfChangeStat(Math.min(playerStat4, 18));
+                break;
+            case 5:
+                int playerStat5 = findPlayerInfo.getPlayerStat5() + statInfo.getAmountOfChangeStat();
+                findPlayerInfo.setPlayerStat5(Math.min(playerStat5, 18));
+                statInfo.setAmountOfChangeStat(Math.min(playerStat5, 18));
+                break;
+            case 6:
+                int playerStat6 = findPlayerInfo.getPlayerStat6() + statInfo.getAmountOfChangeStat();
+                findPlayerInfo.setPlayerStat6(Math.min(playerStat6, 18));
+                statInfo.setAmountOfChangeStat(Math.min(playerStat6, 18));
+                break;
+        }
+        playerCharInfoRepository.flush();
+
+        return statInfo;
     }
 
     @Override

@@ -12,10 +12,12 @@ public interface PlayerCharInfoService {
     PlayerCharInfo createPlayerInfo(PlayerCharInfoDto playerInfoDto);
     // 조회
     // 플레이어캐릭터 정보 조회 (유저코드 기준으로 검색)
-    PlayerCharInfoDto readPlayerInfo(long playerCode);
+    PlayerCharInfoDto.ReadProfile readPlayerInfo(long playerCode);
 
     // 수정
-    PlayerCharInfoDto updatePlayerInfo(long playerCode, PlayerCharInfoDto playerInfoForUpdate);
+    PlayerCharInfoDto.ReadProfile updatePlayerInfo(long playerCode, PlayerCharInfoDto playerInfoForUpdate);
+    int updatePlayerHp(long playerUserCode, int cureOrDamage);
+    PlayerCharInfoDto.StatInfo updatePlayerStat(long playerUserCode, PlayerCharInfoDto.StatInfo statInfo);
 
     // 삭제
     void deletePlayerInfo(long playerCode);
