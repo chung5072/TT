@@ -105,8 +105,7 @@ public class PlayerCharInfo {
     /**
      * 플레이어캐릭터 정보 수정
      */
-    public void updatePlayerCharInfo(Long playerCode, Long playerUserCode, String playerSpecies, String playerName, String playerLook, String playerValue, String playerWeapon, String playerArmor, Long playerHP, Long playerSup1, Long playerSup2, Long playerSup3, Long playerStat1, Long playerStat2, Long playerStat3, Long playerStat4, Long playerStat5, Long playerStat6, String playerClassName, String playerSkill1, String playerSkill2, String playerSkill3) {
-        this.playerCode = playerCode;
+    public void updatePlayerCharInfo(Long playerUserCode, String playerSpecies, String playerName, String playerLook, String playerValue, String playerWeapon, String playerArmor, Long playerHP, Long playerSup1, Long playerSup2, Long playerSup3, Long playerStat1, Long playerStat2, Long playerStat3, Long playerStat4, Long playerStat5, Long playerStat6, String playerClassName, String playerSkill1, String playerSkill2, String playerSkill3) {
         this.playerUserCode = playerUserCode;
         this.playerSpecies = playerSpecies;
         this.playerName = playerName;
