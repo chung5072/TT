@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @Api(value = "구글 소셜로그인 API", tags = {"google."})
+@CrossOrigin(origins = "https://accounts.google.com")
 @RestController
 @RequestMapping("/api/OAuth")
 public class GoogleOauthController {
@@ -19,8 +20,8 @@ public class GoogleOauthController {
     private OAuthService oAuthService;
 
     @GetMapping("google")
-    public void socialLoginRedirect() throws IOException{
-        oAuthService.request();
+    public String socialLoginRedirect() throws IOException{
+        return oAuthService.request();
     }
 
     @ResponseBody

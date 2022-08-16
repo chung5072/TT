@@ -25,10 +25,10 @@ export default function Login() {
   const naverLogin: any = () => {
     axios({
       method: 'GET',
-      url: '/api' + '/user/naver/connect'
+      url: '/api/OAuth/google'
     })
     .then( (res) => {
-      console.log(res.data)
+       window.open(res.data)
     })
   }
   const loginRequest: any = (method: string, url: string, data: object) => {

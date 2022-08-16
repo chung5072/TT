@@ -30,12 +30,13 @@ public class OAuthService {
     private final GoogleOauth googleOauth;
     private final HttpServletResponse response;
 
-    public void request() throws IOException {
+    public String request() throws IOException {
         String redirectURL;
 
         // 소셜로그인을 요청하면 소셜로그인 페이지로 리다이렉트 해주는 프로세스이다.
         redirectURL=googleOauth.getOauthRedirectURL();
-        response.sendRedirect(redirectURL);
+        return redirectURL;
+//        response.sendRedirect(redirectURL);
     }
 
     public ResponseEntity<UserLoginPostRes> oAuthLogin(String code) throws IOException{
@@ -63,14 +64,14 @@ public class OAuthService {
         // user가 존재하지 않는다면 회원가입
         List<UserDto> userList=userRepository.findByEmail(googleUser.getEmail());
         if(userList.size()==0){
-            User user=userService.createUser(registerInfo);
+            userService.createUser(registerInfo);
         }
 
         // 로그인
         String userId = googleUser.getId();
         Instant MAX_SECOND = Instant.now().plusSeconds(86400);
 
-        return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(userId), JwtTokenUtil.getToken(MAX_SECOND, userId), userId));
+        return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(userId), JwtTokenUtil.getToken(MAX_SECOND, userId), userId,""));
 
     }
 

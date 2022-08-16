@@ -6,7 +6,13 @@ module.exports = (app ) => {
 			target: 'http://localhost:8080', 
 			changeOrigin: true,
 		})
-	);
+   );
+   app.use(
+		createProxyMiddleware('/api/OAuth/google', {
+			target: 'https://accounts.google.com', 
+			changeOrigin: true,
+		})
+   );
 	app.use(
 		createProxyMiddleware('/openvidu', {
 			target: 'https://i7a809.p.ssafy.io:8443',
