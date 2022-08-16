@@ -23,6 +23,10 @@ import InfoCreate from './pages/Info/InfoCreate';
 import InfoEdit from './pages/Info/InfoEdit';
 import InfoDetail from './pages/Info/InfoDetail';
 import About from './pages/About'
+import Home from './components/Home';
+
+// 렌더링시 스크롤의 위치를 맨 위로 옮겨주는 컴포넌트
+import ScrollToTop from './components/ScrollRestoration';
 
 //* 새로고침해도 로그가 유지되기 위해서 persist 도입
 import { PersistGate } from 'redux-persist/integration/react';
@@ -38,8 +42,10 @@ root.render(
       <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
+        <ScrollToTop />
           <Routes>
-            <Route path="/" element={<App />}></Route>
+            <Route path="/" element={<SignUp />}></Route>
+            <Route path='/home' element={<Home />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
             <Route path="/login" element={<LogIn />}></Route>
             <Route path="/game/:gameId" element={<GameView />}></Route>

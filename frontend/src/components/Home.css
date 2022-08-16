@@ -4,7 +4,18 @@
     
 }
 
+#home-1 {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+
+.imglogo {
+    text-align: center;
+}
 
 .logo {
     width: 35%;
@@ -13,9 +24,14 @@
     margin-bottom: 5%;
 }
 
+.menus {
+    display: flex;
+    flex-direction: row;
+}
 
 .container {
     display: flex;
+    width: 60%;
     flex-direction: row;
     color:#D9AA52;
     text-decoration-line:none;
@@ -28,12 +44,14 @@
     margin: 0 3px;
     color:#D9AA52;
     text-decoration-line: none;
-    font-size: 0.9em;
+    font-size: 1.3em;
     margin-right: 2%;
+    font-weight: bold;
 }
 
 .logout {
-    font-size: 0.9em;
+    font-size: 1.3em;
     margin-right: 2%;
     cursor: pointer;
+    font-weight: bold;
 }

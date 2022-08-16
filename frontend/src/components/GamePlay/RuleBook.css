@@ -1,6 +1,13 @@
+@font-face {
+  font-family: 'light';
+  src: url('../../assets/fonts/HeirofLightRegular.ttf');
+}
+
+
 #rulebook {
   color: white;
   padding: 5%;
+  font-family: 'light';
 }
 
 #rulebook > h1 {

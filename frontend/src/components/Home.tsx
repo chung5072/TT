@@ -18,10 +18,12 @@ export default function Home() {
         <div id="home"  className="container">
           <div id="home-1" className="home1">
             <Link className="imglogo" to="/about"><img className="logo" src="/dice.png" alt="dice" /></Link>
+            <div className="menus">
               {token === '' ? <span><Link className="menu" to="/login">Login</Link><Link className="menu" to="/signup">SignUp</Link></span> : <span><span className="logout" onClick={logoutRequest}>Logout</span><Link className="menu" to={`/profile/${currentUser}`}>Profile</Link></span>}
               <Link className="menu" to="/notice">Notice</Link>
               <Link className="menu" to="/meeting">Meeting</Link>
               <Link className="menu" to="/share">Information</Link>
+            </div>            
           </div>
         </div>
   );
