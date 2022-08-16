@@ -3,6 +3,13 @@
   src: url('../assets/fonts/KOTRA LEAP.ttf');
 }
 
+@font-face {
+  font-family: 'NotoSerifKR';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NotoSerifKR.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -16,34 +23,22 @@
 }
 
 
-@keyframes imgFade {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
 
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-
-#about {
+#About {
   background-color: #262626;
   width: 100vw;
   height: 250vh;
 }
 
-.about-container {
-  font-family: 'kotra';
+.Content {
   display: flex;
   flex-direction: column;
   width: 60%;
   margin: auto;
 }
 
-.about-title {
+.Title {
+  font-family: 'kotra';
   color: #d9aa52;
   font-size: 5em;
   font-weight: bold;
@@ -53,21 +48,22 @@
   text-align: center;
 }
 
-.about-one {
+.One {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 10%;
+  font-family: 'NotoSerifKR';
   /* opacity: 0;
   transition: all .5s ease;
   transform: translate(0, 100px); */
 }
-
+/* 
 .about-one .show {
     opacity: 1;
     transform: none;
-}
+} */
 
 .TTabout {
 
@@ -76,32 +72,33 @@
 }
 
 
-.about-explain-one {
+.Explainone {
   color: #d9aa52;
   margin-left: 5%;
   font-size: 1.2em;
 }
 
-.about-explain-two {
+.Explaintwo {
   color: #d9aa52;
   margin-right: 5%;
   font-size: 1.2em;
 }
 
-.about-footer {
+.Aboutfooter {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: 'NotoSerifKR';
 }
 
-.about-explain-foot {
+.Explainfoot {
   color: #d9aa52;
   font-size: 2em;
   font-weight: bold;
   margin-bottom: 3%;
 }
 
-.about-btn {
+.Btn {
   width: 30%;
   height: 5vh;
   border-radius: 20px;
@@ -111,12 +108,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-
-/* btn 효과 */
-
-.button--moema {
+  font-family: 'NotoSerifKR';
   padding: 1.5em 3em;
   border-radius: 50px;
   background: white;
@@ -127,7 +119,7 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.button--moema::before {
+.Btn::before {
   content: '';
   position: absolute;
   top: -20px;
@@ -142,7 +134,7 @@
   transform: scale3d(0.8, 0.5, 1);
 }
 
-.button--moema:hover {
+.Btn:hover {
   -webkit-transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
   transition: background-color 0.1s 0.3s, color 0.1s 0.3s;
   color: #ECEFF1;
@@ -180,3 +172,8 @@
     transform: scale3d(1, 1, 1);
   }
 }
+
+/* 
+.Animation {
+  animation: fadeIn 1s ease-in-out;
+} */

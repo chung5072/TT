@@ -15,11 +15,19 @@
     padding-left: 40%;
 }
 
-#userId, #userPw, #userNickname, #userEmail, #userPhone, #userGender {
+#userId, #userPw, #userNickname, #userEmail, #userPhone {
     width: 30%;
     height: 1vh;
     border-radius: 20px;
     padding: 1.7%;
+}
+
+#userGender {
+	width: 30%;
+	height: 40px;
+	padding: 0.5%;
+	border-radius: 20px;
+	color: black;
 }
 
 .signup-label {
@@ -31,7 +39,7 @@
     color: #FFC860;
 }
 
-
+/* 
 .signup-with-btn {
     display: flex;
     justify-content: center;
@@ -43,7 +51,7 @@
     border-radius: 20px;
     margin: 20px;
     border: none;
-}
+} */
 
 
 .signup-with-naver{
@@ -77,6 +85,20 @@
     color: black;
     font-size: medium;
     font-weight: bold;
+		cursor: pointer;
+}
+
+#signup-login {
+	width: 30%;
+	height: 6.5vh;
+	border-radius: 20px;
+	background-color: #FFC860;
+	border: none;
+	margin-top: 3%;
+	color: black;
+	font-size: medium;
+	font-weight: bold;
+	cursor: pointer;
 }
 
 
