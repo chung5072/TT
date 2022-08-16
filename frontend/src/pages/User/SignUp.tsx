@@ -21,7 +21,11 @@ export default function SignUp() {
       .then((res) =>{ 
       
       console.log(res.data)
-      navigate('/')
+      if (res.data.message === 'true') {
+        navigate('/')  
+      } else {
+        alert('이미 가입되어 있는 유저입니다!')
+      }
     })
       .catch(err => {
         console.error(err.response.data)
@@ -82,9 +86,9 @@ export default function SignUp() {
 
             <label className="signup-label" htmlFor="userGender">Gender</label>
             <select id="userGender" name="userGender" onChange={formik.handleChange} value={ formik.values.userGender }>
-              <option value="1">Male</option>
-              <option value="2">Female</option>
-              <option value="3">None</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="none">None</option>
             </select>
             <button id="signup-button" type="submit">Sign up</button>
           </form>
