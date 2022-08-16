@@ -106,10 +106,10 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
           formikTwo.values.playerSup1 = res.data.playerSup1
         }
         if (item.playerSup2 == 99) {
-          formikTwo.values.playerSup1 = res.data.playerSup2
+          formikTwo.values.playerSup2 = res.data.playerSup2
         }
         if (item.playerSup3 == 99) {
-          formikTwo.values.playerSup1 = res.data.playerSup3
+          formikTwo.values.playerSup3 = res.data.playerSup3
         }
         formikTwo.values.playerUserCode = res.data.playerUserCode
         formikTwo.values.playerSpecies = res.data.playerSpecies
