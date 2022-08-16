@@ -26,7 +26,7 @@ export default function GameButtons() {
         {py4Code != ''?<button id="player-four" className="left-button" onClick={() => setPlayerNum(1)}>4</button>:null}
         {py5Code != ''?<button id="player-five" className="left-button" onClick={() => setPlayerNum(1)}>5</button>:null}
         <button id="player-five" className="left-button" onClick={() => setDivStatus(2)}>Map</button>
-        <button id="player-five" className="left-button" onClick={() => setDivStatus(3)}>Item</button>
+        {/* <button id="player-five" className="left-button" onClick={() => setDivStatus(3)}>Item</button> */}
         <button id="player-five" className="left-button" onClick={() => setDivStatus(4)}>Mon</button>
         <button id="player-five" className="left-button" onClick={() => setDivStatus(5)}>Rule</button>
         {/* <button id="player-five" className="left-button" onClick={() => setDivStatus(6)}>확인용 버튼 - MonsterStage</button> */}
