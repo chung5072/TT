@@ -93,7 +93,7 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
     public PlayerCharInfoDto.ReadProfile updatePlayerInfo(long playerCode, PlayerCharInfoDto playerInfoForUpdate) {
         PlayerCharInfoDto.ReadProfile playerInfoDtoReadProfile = new PlayerCharInfoDto.ReadProfile();
 
-        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerCode(playerCode);
+        Optional<PlayerCharInfo> byId=playerCharInfoRepository.findByPlayerUserCode(playerCode);
         if(byId.isPresent()){
             PlayerCharInfo playerInfo=byId.get();
 
