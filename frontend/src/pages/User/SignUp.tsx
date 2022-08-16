@@ -50,8 +50,8 @@ export default function SignUp() {
       .required('Required'),
       userPhone: Yup.string()
       .required('Required'),
-      userGender: Yup.string() 
-      .required('Required')
+      // userGender: Yup.string() 
+      // .required('Required')
     }),
     onSubmit: (credentials) => {
       console.log(credentials)
