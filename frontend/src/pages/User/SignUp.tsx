@@ -21,7 +21,11 @@ export default function SignUp() {
       .then((res) =>{ 
       
       console.log(res.data)
-      navigate('/')
+      if (res.data === 'true') {
+        navigate('/')  
+      } else {
+        alert('이미 가입되어 있는 유저입니다!')
+      }
     })
       .catch(err => {
         console.error(err.response.data)
