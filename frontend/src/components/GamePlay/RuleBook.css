@@ -7,6 +7,11 @@
   margin: 0;
 }
 
+.action-group {
+  margin-bottom: 5%;
+}
+
+
 .rule-action {
   white-space:pre-wrap
 }
@@ -14,7 +19,7 @@
 .rule-subtitle {
   font-size:1.5em;
   font-weight: bold;
-  margin: 3% 0 2% 0;
+  margin: 5% 0 3% 0;
 }
 
 .action-name {

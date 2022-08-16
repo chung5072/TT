@@ -1,4 +1,10 @@
+@font-face {
+    font-family: 'NOTO Sans';
+    src: url('../assets/fonts/NotoSansKR-Medium.otf');
+}
+
 #container {
+    font-family: 'NOTO Sans';
     background-color: #262626;
     height: 1294px;
     text-align: center;
@@ -9,6 +15,7 @@
 }
 
 #articles {
+    font-family: 'NOTO Sans';
     height: 823px;
 }
 

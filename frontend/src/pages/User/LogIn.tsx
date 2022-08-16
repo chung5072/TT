@@ -10,6 +10,13 @@ import './LogIn.css'
 import { saveToken } from "../../features/user/loginSlice"
 import { fetchProfile } from '../../features/user/userSlice'
 
+//* 구글 로그인
+import { GoogleOAuthProvider, GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import GoogleLoginButton from '../../components/GoogleLoginButton'
+
+//* 구글 로그인
+const clientId = "842267246005-v7i0ucc1bog9gtuvk8fgur177ua8v8ol.apps.googleusercontent.com"
+
 // Login Dispatch
 export default function Login() {
   const navigate = useNavigate()
@@ -18,7 +25,7 @@ export default function Login() {
   const naverLogin: any = () => {
     axios({
       method: 'GET',
-      url: DOMAIN + 'api/user/naver/connect'
+      url: '/api' + '/user/naver/connect'
     })
     .then( (res) => {
       console.log(res.data)
@@ -27,7 +34,7 @@ export default function Login() {
   const loginRequest: any = (method: string, url: string, data: object) => {
     return axios({
       method,
-      url: DOMAIN + url,
+      url: url,
       data: data
     })
       .then(async (res) => {
@@ -39,7 +46,7 @@ export default function Login() {
         await dispatch(saveToken(payload))
         axios({
           method: "GET",
-          url: `http://localhost:8080/api/user/userinfo/${localStorage.getItem('current_user')}`,
+          url: '/api' + `/user/userinfo/${localStorage.getItem('current_user')}`,
           
         })
           .then((res) => {
@@ -65,7 +72,7 @@ export default function Login() {
       userPw: Yup.string()
       .required('Required'),
     }),
-    onSubmit: (credentials) => {loginRequest('POST', 'api/user/login', credentials)}
+    onSubmit: (credentials) => {loginRequest('POST', '/api' + '/user/login', credentials)}
   
   })
 
@@ -98,7 +105,18 @@ export default function Login() {
           </div>
           <div className='login-with-btn'>
             <div className='login-with-naver' onClick={() => naverLogin()}></div>
-            <button className='login-with-kakao'></button>  
+            <GoogleOAuthProvider clientId={clientId} >
+              <GoogleLoginButton />
+              {/* <div className='login-with-google' onClick={() => login()}>
+                <GoogleLogin
+                  type="icon"
+                  theme="filled_blue"
+                  width='80px'
+                  onSuccess={googleLoginSuccess}
+                  onError={googleLoginError}
+                />
+              </div> */}
+            </GoogleOAuthProvider>;
           </div>
 
           <div id='find-id-pwd'>

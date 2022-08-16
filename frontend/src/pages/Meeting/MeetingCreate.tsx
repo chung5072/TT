@@ -22,7 +22,7 @@ export default function MeetingCreate() {
   const meetingRegisterRequest: any = (method: string, url: string, data: object) => {
     return axios({
       method,
-      url: DOMAIN + url,
+      url: url,
       data: data
     })
     .then(res => {
@@ -57,7 +57,7 @@ export default function MeetingCreate() {
     onSubmit: (data) => {
       formik.values.meetingAuthor = userNickname
       console.log(data)
-      {meetingRegisterRequest('POST', 'api/meeting/register', data)}
+      {meetingRegisterRequest('POST', '/api' + '/meeting/register', data)}
   }})
 
     return (

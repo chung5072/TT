@@ -10,12 +10,13 @@ import "./SetProfile.css"
 import { hunter, priest, thief, warrior,wizard } from "./ProfileInfoList"
 import axios from "axios"
 
-export default function SetProfile() {
+export default function SetProfile({client, gameId} : {client : any, gameId : any}) {
   const dispatch = useAppDispatch()
   const chooseLevel = useSelector((state: RootState) => state.profile.chooseLevel)
   const profileDone = useSelector((state:RootState) => state.game.profileDone)
   const jobInfo = useSelector((state:RootState) => state.profile.jobInfo)
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
+  const userNickname = useAppSelector((state:RootState) => state.user.userNickname)
   const isGm = useAppSelector((state:RootState) => state.room.isGm)
   const selectJobInfo = (job:string) => {
     if (job === 'warrior') {
@@ -33,8 +34,6 @@ export default function SetProfile() {
     if (job === 'priest') {
       dispatch(setJobInfo(priest))
     }
-
-    
   }
   
   const formik = useFormik({
@@ -141,14 +140,21 @@ export default function SetProfile() {
       console.log(profile)
       axios({
         method: 'POST',
-        url: 'http://localhost:8080/api/player',
+        url: '/api' + '/player',
         data: profile
       })
       .then( (res) => {
         console.log(res)
-      }
-
+        }
       )
+      const completedPlayer = {
+        userNickname : userNickname,
+        playerValue: profile.playerValue,
+        playerClassName : profile.playerClassName,
+        playerName : profile.playerName        
+      }
+      
+      client.send(`/ttrpg/event/${gameId}/sendSignal`, JSON.stringify(completedPlayer), {id : gameId});
       dispatch(setProfileDone())
       dispatch(setAudioStatus(true))
     }}
@@ -322,6 +328,6 @@ export default function SetProfile() {
           <div><button onClick={() => dispatch((subtractChooseLevel()))} className="ctrl-btn">Back</button></div>}
           
         </div>
-        
+    
     )
 }

@@ -12,7 +12,6 @@ import '../ArticleDetail.css'
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/Navbar';
 
-
 export default function MeetingDetail() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -28,11 +27,10 @@ export default function MeetingDetail() {
 
 
   // 버튼 누르면 그 유저의 아이디를 배열에 저장
-  
   const enrollGm = () => {
     axios({
       method:'PUT',
-      url: DOMAIN + 'api/meeting/gmEnroll',
+      url: '/api' + '/meeting/gmEnroll',
       data: {
         meetingCode: roomCode,
         userCode: userCode,
@@ -42,7 +40,7 @@ export default function MeetingDetail() {
       console.log(res)
       axios({ 
         method: 'GET',
-        url: DOMAIN +`api/meeting/${articleId}`
+        url: '/api' + `/meeting/${articleId}`
       })
         .then((res) => {
           console.log(res.data)
@@ -60,7 +58,7 @@ export default function MeetingDetail() {
       console.log(roomCode)
       axios({
         method:'PUT',
-        url: DOMAIN + 'api/meeting/playerEnroll',
+        url: '/api' + '/meeting/playerEnroll',
         data: {
           meetingCode: roomCode,
           userCode: userCode,
@@ -70,7 +68,7 @@ export default function MeetingDetail() {
         console.log(res)
         axios({ 
           method: 'GET',
-          url: DOMAIN +`api/meeting/${articleId}`
+          url: '/api' + `/meeting/${articleId}`
         })
           .then((res) => {
             console.log(res.data)
@@ -90,7 +88,7 @@ export default function MeetingDetail() {
     const roomInfoRequest: any= (method: string, url: string, data: object) => {
       return axios({
         method,
-        url: DOMAIN + url,
+        url: url,
         data: data
       })
       .then(res => {
@@ -115,7 +113,7 @@ export default function MeetingDetail() {
       
       axios({ 
         method: 'GET',
-        url: DOMAIN +`api/meeting/${articleId}`
+        url: '/api' + `/meeting/${articleId}`
       })
         .then((res) => {
           console.log(res.data)
@@ -141,7 +139,7 @@ export default function MeetingDetail() {
   const meetingDeleteRequest: any = (method: string, url: string, data:object) => {
     return axios({
       method,
-      url: DOMAIN + url
+      url: url
       // data: {
       //   shareCode: articleId,
       // },
@@ -171,7 +169,6 @@ export default function MeetingDetail() {
   const playerNum = useAppSelector((state:RootState) => state.meeting.meetingPyNum)
   const gameIsStart = useAppSelector((state:RootState) => state.meeting.gameIsStart)
 
-
   //입장시간 나타내는 함수
   setTimeout(function() {
     startTime = true;
@@ -181,16 +178,17 @@ export default function MeetingDetail() {
     initialValues: {meetingCode:articleId},
     onSubmit: (data) => {
       console.log(data)
-      meetingDeleteRequest('DELETE', `api/meeting/${articleId}`, data)}
+      meetingDeleteRequest('DELETE', '/api' + `/meeting/${articleId}`, data)}
   })
   const onClick = () => {
-    navigate(`/game/${articleId}`,{
+    // 방을 이동하고
+    navigate(`/game/${roomCode}`,{
       state: {
-        sessionId: articleId,
+        sessionId: roomCode,
         username: userNickname
       }
     })
-    window.location.reload(); 
+    window.location.reload();
   }
 
     return (

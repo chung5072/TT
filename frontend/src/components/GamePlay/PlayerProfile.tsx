@@ -22,12 +22,12 @@ export default function PlayerProfile() {
     const thisPlayerCode = playerNum === 1? player1: playerNum === 2? player2 : playerNum === 3? player3: playerNum === 4? player4 : player5
     const dispatch = useAppDispatch()
 
-    const DOMAIN = "http://localhost:8080/"
+    const DOMAIN = "http://localhost:8080"
     useEffect(() => {
       console.log(player1)
       axios({
         method: 'GET',
-        url: DOMAIN + `api/player/${thisPlayerCode}`
+        url:  '/api' + `/player/${thisPlayerCode}`
       })
       .then((res) => {
         console.log(res.data)
@@ -111,12 +111,12 @@ export default function PlayerProfile() {
           </div>
           <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="stat">stat</label>
-            <li className="pp-userInfo">{stat1}</li>
-            <li className="pp-userInfo">{stat2}</li>
-            <li className="pp-userInfo">{stat3}</li>
-            <li className="pp-userInfo">{stat4}</li>
-            <li className="pp-userInfo">{stat5}</li>
-            <li className="pp-userInfo">{stat6}</li>
+            <li className="pp-userInfo">근력: {stat1}</li>
+            <li className="pp-userInfo">민첩: {stat2}</li>
+            <li className="pp-userInfo">체력: {stat3}</li>
+            <li className="pp-userInfo">지능: {stat4}</li>
+            <li className="pp-userInfo">지혜: {stat5}</li>
+            <li className="pp-userInfo">매력: {stat6}</li>
           </div>
           <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="skill">skill</label>

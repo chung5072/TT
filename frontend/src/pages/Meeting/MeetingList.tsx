@@ -36,7 +36,7 @@ const MeetingList = () => {
     if (search === null || search === '') {
       axios({
         method: 'GET',
-        url: DOMAIN + 'api/meeting'
+        url: '/api' + '/meeting'
       })
       .then((res) => {
         console.log(1, res)
@@ -53,10 +53,10 @@ const MeetingList = () => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: DOMAIN + 'api/meeting'
+      url: '/api' + '/meeting'
     })
       .then((res) => {
-        console.log(1, res)
+        console.log(res)
         setMeetList(res.data)
       })
       .catch(err => {

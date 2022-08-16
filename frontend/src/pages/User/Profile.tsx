@@ -28,7 +28,7 @@ export default function Profile() {
   useEffect(() => {
     axios({
       method: "GET",
-      url: DOMAIN + `api/user/userinfo/${localStorage.getItem('current_user')}`,
+      url: '/api' + `/user/userinfo/${localStorage.getItem('current_user')}`,
     })
       .then((res) => {
         dispatch(fetchProfile(res.data))

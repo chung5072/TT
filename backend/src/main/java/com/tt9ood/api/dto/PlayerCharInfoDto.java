@@ -1,6 +1,7 @@
 package com.tt9ood.api.dto;
 
 import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,23 +22,23 @@ public class PlayerCharInfoDto {
     private String playerValue;
     private String playerWeapon;
     private String playerArmor;
-    private Long playerHP;
-    private Long playerSup1;
-    private Long playerSup2;
-    private Long playerSup3;
+    private int playerHP;
+    private int playerSup1;
+    private int playerSup2;
+    private int playerSup3;
     private Long playerUserCode;
-    private Long playerStat1;
-    private Long playerStat2;
-    private Long playerStat3;
-    private Long playerStat4;
-    private Long playerStat5;
-    private Long playerStat6;
+    private int playerStat1;
+    private int playerStat2;
+    private int playerStat3;
+    private int playerStat4;
+    private int playerStat5;
+    private int playerStat6;
     private String playerClassName;
     private String playerSkill1;
     private String playerSkill2;
     private String playerSkill3;
 
-    public PlayerCharInfoDto(Long playerCode, Long playerUserCode, String playerSpecies, String playerName, String playerLook, String playerValue, String playerWeapon, String playerArmor, Long playerHP, Long playerSup1, Long playerSup2, Long playerSup3, Long playerStat1, Long playerStat2, Long playerStat3, Long playerStat4, Long playerStat5, Long playerStat6, String playerClassName, String playerSkill1, String playerSkill2, String playerSkill3) {
+    public PlayerCharInfoDto(Long playerCode, Long playerUserCode, String playerSpecies, String playerName, String playerLook, String playerValue, String playerWeapon, String playerArmor, int playerHP, int playerSup1, int playerSup2, int playerSup3, int playerStat1, int playerStat2, int playerStat3, int playerStat4, int playerStat5, int playerStat6, String playerClassName, String playerSkill1, String playerSkill2, String playerSkill3) {
         this.playerCode = playerCode;
         this.playerUserCode = playerUserCode;
         this.playerSpecies = playerSpecies;
@@ -60,5 +61,48 @@ public class PlayerCharInfoDto {
         this.playerSkill1 = playerSkill1;
         this.playerSkill2 = playerSkill2;
         this.playerSkill3 = playerSkill3;
+    }
+
+
+    @Setter @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReadProfile {
+        private Long playerCode;
+        private String playerSpecies;
+        private String playerName;
+        private String playerLook;
+        private String playerValue;
+        private String playerWeapon;
+        private String playerArmor;
+        private int playerMaxHP;
+        private int playerHP;
+        private int playerSup1;
+        private int playerSup2;
+        private int playerSup3;
+        private Long playerUserCode;
+        private int playerStat1;
+        private int playerStat2;
+        private int playerStat3;
+        private int playerStat4;
+        private int playerStat5;
+        private int playerStat6;
+        private String playerClassName;
+        private String playerSkill1;
+        private String playerSkill2;
+        private String playerSkill3;
+    }
+
+    @Setter @Getter
+    public static class HpInfo {
+        private int amountOfChangeHp;
+    }
+
+    @Setter @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class StatInfo {
+        private int statIndex;
+        private int amountOfChangeStat;
     }
 }

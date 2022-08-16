@@ -11,6 +11,8 @@ export type userData = {
   userPhone: string;
   userGender: string;
   userCode: any;
+  //* notice 권한 확인을 위한 값
+  userAuthority: any;
 };
 
 export const initialState: userData = {
@@ -21,6 +23,8 @@ export const initialState: userData = {
   userPhone: "",
   userGender: "",
   userCode: localStorage.getItem('userCode'),
+  //* notice 권한 확인을 위한 값
+  userAuthority: localStorage.getItem('user_authority')
 };
 
 
@@ -37,8 +41,10 @@ const userSlice = createSlice({
       state.userPw = action.payload.userPw;
       state.userNickname = action.payload.userNickname;
       state.userGender =action.payload.userGender;
-      state.userCode = action.payload.userCode
-      localStorage.setItem('user_nickname', action.payload.userNickname)
+      state.userCode = action.payload.userCode;
+      localStorage.setItem('user_nickname', action.payload.userNickname);
+      //* notice 권한 확인을 위한 값
+      localStorage.setItem('user_authority', action.payload.userAuthority);
     },
   },
 });
@@ -50,7 +56,7 @@ const userSlice = createSlice({
 export const sendRegisterRequest = createAsyncThunk(
   "sendRegisterRequest",
   async (data) => {
-    return request("POST", "api/user/register", data);
+    return request("POST", "/api" + "/user/register", data);
   },
 );
 

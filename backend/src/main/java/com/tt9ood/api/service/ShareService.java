@@ -17,4 +17,5 @@ public interface ShareService {
 
     int updateView(Long shareCode);
 
+
 }

@@ -42,6 +42,7 @@ const loginSlice = createSlice({
         localStorage.setItem('token', '')
         localStorage.setItem('current_user', '')
         localStorage.setItem('userCode', '')
+        localStorage.setItem('user_nickname', '')
         cookies.remove('refresh_token')
 
       },

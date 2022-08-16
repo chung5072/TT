@@ -15,6 +15,13 @@ export default function NoticeDetail() {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   let articleId = useParams().articleId
+  const user_authority = window.localStorage.getItem('user_authority');
+
+  function checkAdmin() {
+    // const showCreateKey = bcrypt.hashSync('rule_admin', 12);
+    // return bcrypt.compareSync(showCreateKey, user_authority);
+    return user_authority === 'rule_admin';
+  }
 
   function onClickUpdScrn() {
     window.location.replace("edit/" + `${articleId}`)
@@ -25,7 +32,7 @@ export default function NoticeDetail() {
   useEffect(() => {
     axios({ 
       method: 'GET',
-      url: DOMAIN +`api/notice/${articleId}`
+      url: '/api' + `/notice/${articleId}`
     })
       .then((res) => {
         console.log(res.data)
@@ -61,7 +68,7 @@ const formik = useFormik({
   initialValues: {noticeCode:articleId},
   onSubmit: (data) => {
     console.log(data)
-    noticeDeleteRequest('DELETE', `api/notice/${articleId}`, data)}
+    noticeDeleteRequest('DELETE', '/api' + `/notice/${articleId}`, data)}
   })
   
   console.log(content)
@@ -90,10 +97,15 @@ const formik = useFormik({
                   {content}
                 </div>
               </div>
+              {
+              checkAdmin() ?  
               <div className='detail-btn-group'>
                 <button className='detail-btn' onClick={onClickUpdScrn} type="button">edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
               </div>
+              :
+              null
+            }
             </form>
           </div>
         </div>

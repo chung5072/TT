@@ -51,9 +51,15 @@ public class UserController {
 			@RequestBody @ApiParam(value="회원가입 정보", required = true) UserRegisterPostReq registerInfo) {
 		
 		//임의로 리턴된 User 인스턴스. 현재 코드는 회원 가입 성공 여부만 판단하기 때문에 굳이 Insert 된 유저 정보를 응답하지 않음.
-		User user = userService.createUser(registerInfo);
+		Boolean isCreated = userService.createUser(registerInfo);
+		String message = "";
+		if (isCreated) {
+			message = "true";
+		} else {
+			message = "false";
+		}
 		
-		return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success"));
+		return ResponseEntity.status(200).body(BaseResponseBody.of(200, message));
 	}
 	
 	@GetMapping("/userinfo/{userId}")
@@ -67,6 +73,32 @@ public class UserController {
 	public ResponseEntity<?> userInfo(@PathVariable String userId) {
 
 		return ResponseEntity.status(200).body(userService.getUserByUserId(userId));
+	}
+
+	@PutMapping("/userinfo/{userId}")
+	@ApiOperation(value = "회원 본인 정보 수정", notes = "로그인한 회원 본인의 정보를 응답한다.")
+	@ApiResponses({
+			@ApiResponse(code = 200, message = "성공"),
+			@ApiResponse(code = 401, message = "인증 실패"),
+			@ApiResponse(code = 404, message = "사용자 없음"),
+			@ApiResponse(code = 500, message = "서버 오류")
+	})
+	public ResponseEntity<?> userUpdate(@PathVariable String userId, @RequestBody UserRegisterPostReq userDto) {
+		userService.update(userId, userDto);
+		return ResponseEntity.status(200).body(userId);
+	}
+
+	@DeleteMapping("/userinfo/{userId}")
+	@ApiOperation(value = "회원 본인 정보 삭제", notes = "로그인한 회원 본인의 정보를 응답한다.")
+	@ApiResponses({
+			@ApiResponse(code = 200, message = "성공"),
+			@ApiResponse(code = 401, message = "인증 실패"),
+			@ApiResponse(code = 404, message = "사용자 없음"),
+			@ApiResponse(code = 500, message = "서버 오류")
+	})
+	public ResponseEntity<?> userDelete(@PathVariable String userId) {
+		userService.delete(userId);
+		return ResponseEntity.status(200).body(userId);
 	}
 
 	@GetMapping("/naver/connect")
@@ -125,7 +157,7 @@ public class UserController {
 
 		// 로그인
 		Instant MAX_SECOND = Instant.now().plusSeconds(86400);
-		return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(userId), JwtTokenUtil.getToken(MAX_SECOND, userId), userId));
+		return ResponseEntity.ok(UserLoginPostRes.of(200, "Success", JwtTokenUtil.getToken(userId), JwtTokenUtil.getToken(MAX_SECOND, userId), userId, ""));
 
 	}
 
@@ -155,7 +187,7 @@ public class UserController {
 
 		// 해당 이메일 아이디가 없으면 회원가입
 		if(userService.emailExist((String)res.get("email"))){
-			User user = userService.createUser(registerInfo);
+			userService.createUser(registerInfo);
 		}
 
 		return (String)res.get("id");

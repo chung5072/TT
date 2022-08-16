@@ -17,14 +17,17 @@ public class UserLoginPostRes extends BaseResponseBody{
 	String accessToken;
 	String refreshToken;
 	String userId;
+	String userAuthority;
 	
-	public static UserLoginPostRes of(Integer statusCode, String message, String accessToken,String refreshToken, String userId) {
+	public static UserLoginPostRes of(Integer statusCode, String message, String accessToken, String refreshToken,
+									  String userId, String userAuthority) {
 		UserLoginPostRes res = new UserLoginPostRes();
 		res.setStatusCode(statusCode);
 		res.setMessage(message);
 		res.setAccessToken(accessToken);
 		res.setRefreshToken(refreshToken);
 		res.setUserId(userId);
+		res.setUserAuthority(userAuthority);
 		return res;
 	}
 }

@@ -1,5 +1,6 @@
 package com.tt9ood.api.controller;
 
+import com.tt9ood.api.dto.InGameProfileDto;
 import com.tt9ood.api.dto.MonSignalDto;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ public class SignalController {
         // 입력받은 메세지에 coords 값이 들어있다면
         // 해당 내용은 지역 이름과 관련된 로그
         if (signalMessage.contains("coords")) {
+            System.out.println("지역[coords] = " + signalMessage);
             // 문자열을 json 객체로 변환
             JSONObject jObject = new JSONObject(signalMessage);
             // 해당 키값에 있는 내용을 불러옴
@@ -50,9 +52,10 @@ public class SignalController {
             // System.out.println("반환할 지역 이름 = " + areaName);
             simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , areaName);
         }
-        // 입력받은 메세지에 coords 값이 들어있지 않다면
+        // 입력받은 메세지에 monsterId 값이 들어있다면
         // 해당 내용은 현재로서는 몬스터 정보에 관련된 로그
-        else {
+        else if (signalMessage.contains("monsterId")) {
+            System.out.println("몬스터 정보[monsterId] = " + signalMessage);
             JSONObject jsonObject = new JSONObject(signalMessage);
             int mapArea = jsonObject.getInt("mapArea");
             int monsterId = jsonObject.getInt("monsterId");
@@ -67,6 +70,31 @@ public class SignalController {
             // System.out.println("해당 지역의 몬스터 아이디 = " + monSignalDto.getMonsterId());
             // System.out.println("해당 몬스터의 숫자 = " + monSignalDto.getMonsterNum());
             simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , monSignalDto);
+        }
+        else if (signalMessage.contains("playerClassName")) {
+            System.out.println("캐릭터 직업[playerClassName] = " + signalMessage);
+
+            JSONObject jsonObject = new JSONObject(signalMessage);
+
+            String userNickname = jsonObject.getString("userNickname");
+            String playerValue = jsonObject.getString("playerValue");
+            String playerClassName = jsonObject.getString("playerClassName");
+            String playerName = jsonObject.getString("playerName");
+
+            InGameProfileDto inGameProfileDto = new InGameProfileDto();
+            inGameProfileDto.setUserNickname(userNickname);
+            inGameProfileDto.setPlayerValue(playerValue);
+            inGameProfileDto.setPlayerClassName(playerClassName);
+            inGameProfileDto.setPlayerName(playerName);
+            System.out.println("inGameProfileDto = " + inGameProfileDto.getUserNickname());
+
+            simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , inGameProfileDto);
+        }
+        // 입력받은 메세지에 coords / monsterId / playerClassName 값이 들어있지 않다면
+        else {
+            System.out.println("입장한 유저 정보[usernickname] = " + signalMessage);
+            System.out.println("signalMessage = " + signalMessage);
+            simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , signalMessage);
         }
     }
 }
