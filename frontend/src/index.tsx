@@ -22,6 +22,7 @@ import InfoList from './pages/Info/InfoList';
 import InfoCreate from './pages/Info/InfoCreate';
 import InfoEdit from './pages/Info/InfoEdit';
 import InfoDetail from './pages/Info/InfoDetail';
+import About from './pages/About'
 
 //* 새로고침해도 로그가 유지되기 위해서 persist 도입
 import { PersistGate } from 'redux-persist/integration/react';
@@ -55,6 +56,7 @@ root.render(
             <Route path="/share/create" element={<InfoCreate />}></Route>
             <Route path="/share/edit/:articleId/" element={<InfoEdit />}></Route>
             <Route path="/share/:articleId" element={<InfoDetail />}></Route>
+            <Route path='/about' element={<About />}></Route>
           </Routes> 
         </BrowserRouter>
       </PersistGate>
