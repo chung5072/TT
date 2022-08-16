@@ -92,7 +92,7 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
       console.log('폼 유저코드: '+item.playerUserCode)
       axios({
         method: 'GET',
-        url: '/api' + `/player/${item.playerUserCode === 1 ? py1Code: item.playerUserCode === 2? py2Code: item.playerUserCode === 3? py3Code: item.playerUserCode === 4? py4Code: py5Code }`
+        url: '/api' + `/player/${item.playerUserCode == 1 ? py1Code: item.playerUserCode == 2? py2Code: item.playerUserCode == 3? py3Code: item.playerUserCode == 4? py4Code: py5Code }`
       })
       .then((res) => {
         console.log(res.data)
@@ -153,7 +153,7 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
     onSubmit: (data) => {
       axios({
         method: 'PUT',
-        url: '/api' + `/player/${data.userNum === 1 ? py1Code: data.userNum === 2? py2Code: data.userNum === 3? py3Code: data.userNum === 4? py4Code: py5Code }`,
+        url: '/api' + `/player/${data.userNum == 1 ? py1Code: data.userNum == 2? py2Code: data.userNum == 3? py3Code: data.userNum == 4? py4Code: py5Code }` +'/hpchange',
         data: {amountOfChangeHp: data.userHpChange}
       })
       .then(res => {
