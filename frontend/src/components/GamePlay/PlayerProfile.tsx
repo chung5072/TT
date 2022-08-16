@@ -9,7 +9,7 @@ import { getRoomInfo } from "../../features/room/RoomSlice"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import './PlayerProfile.css'
 import { setStatPoint } from "../../features/Game/GameSlice"
-
+import statArrow from "../../assets/image/statUp.png"
 
 export default function PlayerProfile() {
     const playerNum = useSelector((state: RootState) => state.left.playerNum)
@@ -44,7 +44,7 @@ export default function PlayerProfile() {
       dispatch(setStatPoint(-1))
       axios({
         method: 'PUT',
-        url: '/api' +`player/${thisPlayerCode}/statchange`,
+        url: '/api' +`/player/${thisPlayerCode}/statchange`,
         data: {statIndex: statType, amoungOfStatChange: 1}
       })
       .then(res =>{
@@ -126,17 +126,17 @@ export default function PlayerProfile() {
           <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="stat">stat</label>
             <li className="pp-userInfo">근력: {stat1} 
-            {statPoint > 0? <button onClick={() => statUp(1)}>stat up</button>:null}</li>
+            {statPoint < 0? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
             <li className="pp-userInfo">민첩: {stat2}
-            {statPoint > 0? <button onClick={() => statUp(1)}>stat up</button>:null}</li>
+            {statPoint > 0? <button onClick={() => statUp(1)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
             <li className="pp-userInfo">체력: {stat3}
-            {statPoint > 0? <button onClick={() => statUp(1)}>stat up</button>:null}</li>
+            {statPoint > 0? <button onClick={() => statUp(1)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
             <li className="pp-userInfo">지능: {stat4}
-            {statPoint > 0? <button onClick={() => statUp(1)}>stat up</button>:null}</li>
+            {statPoint > 0? <button onClick={() => statUp(1)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
             <li className="pp-userInfo">지혜: {stat5}
-            {statPoint > 0? <button onClick={() => statUp(1)}>stat up</button>:null}</li>
+            {statPoint > 0? <button onClick={() => statUp(1)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
             <li className="pp-userInfo">매력: {stat6}
-            {statPoint > 0? <button onClick={() => statUp(1)}>stat up</button>:null}</li>
+            {statPoint > 0? <button onClick={() => statUp(1)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
           </div>
           <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="skill">skill</label>

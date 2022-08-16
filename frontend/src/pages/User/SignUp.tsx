@@ -50,8 +50,8 @@ export default function SignUp() {
       .required('Required'),
       userPhone: Yup.string()
       .required('Required'),
-      userGender: Yup.string() 
-      .required('Required')
+      // userGender: Yup.string() 
+      // .required('Required')
     }),
     onSubmit: (credentials) => {
       console.log(credentials)
@@ -85,7 +85,7 @@ export default function SignUp() {
             <input id="userPhone" name="userPhone" type="text" onChange={formik.handleChange} value={ formik.values.userPhone }/>
 
             <label className="signup-label" htmlFor="userGender">Gender</label>
-            <select id="userGender" name="userGender" onChange={formik.handleChange} value={ formik.values.userGender }>
+            <select id="userGender" name="userGender" onChange={formik.handleChange} defaultValue="male">
               <option value="male">Male</option>
               <option value="female">Female</option>
               <option value="none">None</option>
