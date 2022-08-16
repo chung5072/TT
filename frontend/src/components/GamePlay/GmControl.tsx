@@ -89,7 +89,7 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
     
     },
     onSubmit: (item) => {
-      console.log(item.playerUserCode)
+      console.log('폼 유저코드: '+item.playerUserCode)
       axios({
         method: 'GET',
         url: '/api' + `/player/${item.playerUserCode === 1 ? py1Code: item.playerUserCode === 2? py2Code: item.playerUserCode === 3? py3Code: item.playerUserCode === 4? py4Code: py5Code }`
@@ -134,7 +134,7 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
           data: item
         })
         .then( res => {
-          console.log(res)
+          console.log('수정끝')
         })
         .catch(err => {
           console.error(err.response.data)
@@ -144,13 +144,27 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
         console.error(err.response.data)
       })
     }
-   
-
-
+  })
+  const formikThree = useFormik({
+    initialValues : {
+      userNum: 0,
+      userHpChange: 0
+    },
+    onSubmit: (data) => {
+      axios({
+        method: 'PUT',
+        url: '/api' + `/player/${data.userNum === 1 ? py1Code: data.userNum === 2? py2Code: data.userNum === 3? py3Code: data.userNum === 4? py4Code: py5Code }`,
+        data: {amountOfChangeHp: data.userHpChange}
+      })
+      .then(res => {
+        console.log(res)
+      })
+    }
   })
   return (
     <div>
       <h1>GmControl</h1>
+      {/* 몬스터 출연시키기 */}
       <div id="gm-control-box">
         <form action="" onSubmit={ formik.handleSubmit }>
           <label id='monster-id-label' htmlFor="monsterId">Monster Id</label>
@@ -163,9 +177,10 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
           <button type="submit">Start Fight</button>
         </form>
       </div>
+      {/* 아이템주기 */}
       <div id="gm-control-box">
       <form action="" onSubmit={formikTwo.handleSubmit}>
-        <label id='monster-id-label' htmlFor="playerUserCode">Monster Id</label>
+        <label id='monster-id-label' htmlFor="playerUserCode">Player</label>
         <select name="playerUserCode" onChange={formikTwo.handleChange} value = {formikTwo.values.playerUserCode} id="playerUserCode">
           {py1Code != '' ? <option value={1}>Player1</option>: null}
           {py2Code != '' ? <option value={2}>Player2</option>: null}
@@ -209,6 +224,22 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
           <option value={6}>Lv6</option>    
           
         </select>
+        <button type="submit">submit</button>
+      </form>
+      </div>
+
+      {/* hp 관리 */}
+      <div id="gm-control-box">
+      <form action="" onSubmit={formikThree.handleSubmit}>
+      <label id='monster-id-label' htmlFor="playerUserCode">Player</label>
+        <select name="userNum" onChange={formikThree.handleChange} value = {formikThree.values.userNum} id="userNum">
+          {py1Code != '' ? <option value={1}>Player1</option>: null}
+          {py2Code != '' ? <option value={2}>Player2</option>: null}
+          {py3Code != '' ? <option value={3}>Player3</option>: null}
+          {py4Code != '' ? <option value={4}>Player4</option>: null}
+          {py5Code != '' ? <option value={5}>Player5</option>: null}
+        </select>
+        <input type="number" name="userHpChange" onChange={formikThree.handleChange} value= {formikThree.values.userHpChange}/>
         <button type="submit">submit</button>
       </form>
       </div>

@@ -22,12 +22,12 @@ export default function PlayerProfile() {
     const thisPlayerCode = playerNum === 1? player1: playerNum === 2? player2 : playerNum === 3? player3: playerNum === 4? player4 : player5
     const dispatch = useAppDispatch()
 
-    const DOMAIN = "http://localhost:8080/"
+    const DOMAIN = "http://localhost:8080"
     useEffect(() => {
       console.log(player1)
       axios({
         method: 'GET',
-        url: DOMAIN + '/api' + `/player/${thisPlayerCode}`
+        url:  '/api' + `/player/${thisPlayerCode}`
       })
       .then((res) => {
         console.log(res.data)
