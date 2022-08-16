@@ -37,8 +37,8 @@ public class PlayerCharInfoServiceImpl implements PlayerCharInfoService {
                 playerInfoDto.getPlayerValue(),
                 playerInfoDto.getPlayerWeapon(),
                 playerInfoDto.getPlayerArmor(),
-                playerInfoDto.getPlayerHP(), // 최대 hp
-                playerInfoDto.getPlayerHP(), // 현재 hp
+                playerInfoDto.getPlayerHP()+playerInfoDto.getPlayerStat3(), // 최대 hp = 캐릭터 고유 hp + 스탯의 체력
+                playerInfoDto.getPlayerHP()+playerInfoDto.getPlayerStat3(), // 초기 생성시 현재 hp = 최대 hp = 캐릭터 고유 hp + 스탯의 체력
                 playerInfoDto.getPlayerSup1(),
                 playerInfoDto.getPlayerSup2(),
                 playerInfoDto.getPlayerSup3(),
