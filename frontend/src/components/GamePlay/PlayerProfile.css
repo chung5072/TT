@@ -1,4 +1,10 @@
+@font-face {
+  font-family: 'light';
+  src: url('../../assets/fonts/HeirofLightRegular.ttf');
+}
+
 #player-profile {
+  font-family: 'light';
   color: white;
 }
 
@@ -7,20 +13,64 @@
   margin-left: 5%;
 }
 
+.pp-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 
 .pp-group {
-  display: grid;
+  width: 50%;
+  display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10%;
 }
 
 .pp-title {
+  width: 50%;
   margin-bottom: 2%;
   list-style: none;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
+
+.pp-title-item {
+  width: 100%;
+  margin-bottom: 2%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.pp-title-look {
+  width: 50%;
+  height: 4vh;
+  margin-bottom: 2%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+
+.pp-container-two {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
 
 .gameprofile-subtitle {
   font-weight: bold;
@@ -29,9 +79,10 @@
   color: #f2df72
 }
 
-.pp-userInfo {
+.pp-userinfo {
   font-size: 1em;
   margin-left: 3%;
+  word-wrap: break-word;
 }
 
 .stat-title  {
@@ -40,12 +91,54 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 30%;
+  flex-wrap: wrap;
 }
 
 .stat-arrow {
-  width: 5%;
+  width: 20px;
+  height: 20px;
+  margin-top: 2%;
 }
+
+
 .stat-arrow:hover {
   cursor: pointer;
   opacity: 60%;
+}
+
+.jobimg {
+  width: 200px;
+  height: 200px;
+}
+
+.stat-skill {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.item-part {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+.weapon-armor {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.stat-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
 }
