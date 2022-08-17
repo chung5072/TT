@@ -251,14 +251,6 @@ export default function MeetingDetail() {
                 <button className='detail-btn' onClick={() => navigate(`/meeting/edit/${code}`)} type="button">edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
               </div>
-              <hr className='comment-hr'/>
-                <div className='mini-comment-title'>
-                  comment
-                </div>
-              <hr className='comment-hr'/>
-              <div className='comment-part'>
-                댓글이 없습니다.
-              </div>
             </form>
           </div>
         </div>
