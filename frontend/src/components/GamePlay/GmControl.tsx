@@ -13,8 +13,13 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
   const py4Code = useAppSelector((state:RootState) => state.room.py4Code)
   const py5Code = useAppSelector((state:RootState) => state.room.py5Code)
 
+  //* 스탯 포인트 부여
   const setStatPoint = () => {
-    
+    //* 한번 부여할 때마다 2점씩 준다
+    const statData = {
+      statPoint : 2
+    }
+    client.send(`/ttrpg/event/${gameId}/sendSignal`, JSON.stringify(statData), {id : gameId}); //* 이벤트 로그
   }
 
   const formik = useFormik({
