@@ -27,8 +27,31 @@ export default function Login() {
       method: 'GET',
       url: '/api/OAuth/google'
     })
-    .then( (res) => {
+    .then( async (res) => {
        window.open(res.data)
+       console.log(res.data)
+        const token = res.data.accessToken
+        const currentUser = res.data.userId
+        const refreshToken = res.data.refreshToken
+        const payload = {accessToken : token, currentUser: currentUser, refreshToken: refreshToken}
+        await dispatch(saveToken(payload))
+        axios({
+          method: "GET",
+          url: '/api' + `/user/userinfo/${localStorage.getItem('current_user')}`,
+          
+        })
+          .then((res) => {
+            dispatch(fetchProfile(res.data))
+            localStorage.setItem('userCode', res.data.userCode)
+          })
+          .catch((err) => {
+            console.error(err.response.data);
+          });
+        navigate('/about')
+       
+    })
+    .catch(err => {
+      console.error(err.response.data)
     })
   }
   const loginRequest: any = (method: string, url: string, data: object) => {
