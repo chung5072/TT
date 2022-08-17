@@ -111,7 +111,7 @@ export default function Login() {
 
               <label id='pwd-label' htmlFor="userPw">Password</label>
               <input id="pwd-input" name="userPw" type="password" onChange={formik.handleChange} value={ formik.values.userPw }/>
-              <button id='login-button' type="submit">LogIn</button>
+              <button id='login-button' className="button button--moema button--inverted button--text-thick button--size-s" type="submit">LogIn</button>
             </form>
           </div>
             <div id='login-with'>
@@ -126,25 +126,21 @@ export default function Login() {
               </div>
           </div>
           <div className='login-with-btn'>
-            <div className='login-with-naver' onClick={() => naverLogin()}></div>
-            <GoogleOAuthProvider clientId={clientId} >
-              <GoogleLoginButton />
-              {/* <div className='login-with-google' onClick={() => login()}>
-                <GoogleLogin
-                  type="icon"
-                  theme="filled_blue"
-                  width='80px'
-                  onSuccess={googleLoginSuccess}
-                  onError={googleLoginError}
-                />
-              </div> */}
-            </GoogleOAuthProvider>;
+            <div className='login-with-google'>
+              <GoogleOAuthProvider clientId={clientId} >
+                <GoogleLoginButton />
+                {/* <div className='login-with-google' onClick={() => login()}>
+                  <GoogleLogin
+                    type="icon"
+                    theme="filled_blue"
+                    width='80px'
+                    onSuccess={googleLoginSuccess}
+                    onError={googleLoginError}
+                  />
+                </div> */}
+              </GoogleOAuthProvider>
+            </div>
           </div>
-
-          <div id='find-id-pwd'>
-            <p>Forgot Id or Password</p>
-          </div>
-
         </div>
       </div>
         

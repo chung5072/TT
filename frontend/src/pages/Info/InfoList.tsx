@@ -15,6 +15,7 @@ import Navbar from '../../components/Navbar';
 
 // const DOMAIN = "http://localhost:8080/"
 const InfoList = () => {
+  const token = useSelector((state:RootState) => state.login.token)
   
   const dispatch = useAppDispatch()
   const [shareList, setList] = useState([{
@@ -61,9 +62,10 @@ const InfoList = () => {
               <label htmlFor=""></label>
               <input id='search-input' type="text" />
             </div>
+            {token === '' ? null :
             <div>
               <button id='create-btn' onClick={() => navigate('/share/create')}>create</button>
-            </div>
+            </div>}
 
           </div>
           
@@ -82,7 +84,7 @@ const InfoList = () => {
                       <td>
                         {idx + 1}
                       </td>
-                      <td><Link to={"/share/" + `${share.shareCode}`}>{share.shareTitle}</Link></td>
+                      <td><Link to={"/share/" + `${share.shareCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{share.shareTitle}</Link></td>
                       <td>
                         {share.shareAuthor}
                       </td>
