@@ -22,7 +22,7 @@ export default function SignUp() {
       
       console.log(res.data)
       if (res.data.message === 'true') {
-        navigate('/about')  
+        navigate('/login')  
       } else {
         alert('이미 가입되어 있는 유저입니다!')
       }

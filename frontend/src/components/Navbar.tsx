@@ -5,7 +5,7 @@ export default function Navbar() {
     return (
         <div className='navbar'>
             <div className='nav-logobox'>
-            <Link to="/">
+            <Link to="/about">
                 <img className="nav-logo" src="/dice.png" alt="dice" />
             </Link>
             </div>
