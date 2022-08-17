@@ -36,20 +36,20 @@ export default function SignUp() {
     initialValues: initialState,
     validationSchema: Yup.object({
       userId: Yup.string()
-      .max(15, 'Must be 15 characters or less')
-      .required('Required'),
+      .max(15, '15자를 초과할 수 없습니다.')
+      .required('ID를 입력해주세요'),
       userPw: Yup.string()
-      .max(20, 'Must be 20 characters or less')
-      .min(10, 'Must be 10 characters or more')
-      .required('Required'),
+      .max(20, '20자를 초과할 수 없습니다.')
+      .min(10, '비밀번호는 10자 이상이어야 합니다.')
+      .required('PW를 입력해주세요.'),
       userNickname: Yup.string()
-      .max(10, 'Must be 10 characters or less')
-      .required('Required'),
+      .max(10, '10자를 초과할 수 없습니다.')
+      .required('닉네임을 입력해주세요.'),
       userEmail: Yup.string()
-      .email('Invalid email address')
-      .required('Required'),
+      .email('email 형식이 아닙니다.')
+      .required('email을 입력해주세요.'),
       userPhone: Yup.string()
-      .required('Required'),
+      .required('전화번호를 입력해주세요.'),
       // userGender: Yup.string() 
       // .required('Required')
     }),
@@ -71,18 +71,33 @@ export default function SignUp() {
 
             <label className="signup-label" htmlFor="userId">Id</label>
             <input id="userId" name="userId" type="text" onChange={formik.handleChange} value={ formik.values.userId }/>
+            {formik.touched.userId && formik.errors.userId ? (
+              <div className='error-message'>{formik.errors.userId}</div>
+            ) : null}
 
             <label className="signup-label" htmlFor="userPw">Password</label>
             <input id="userPw" name="userPw" type="password" onChange={formik.handleChange} value={ formik.values.userPw }/>
+            {formik.touched.userPw && formik.errors.userPw ? (
+              <div className='error-message'>{formik.errors.userPw}</div>
+            ) : null}
 
             <label className="signup-label" htmlFor="userNickname">Nickname</label>
             <input id="userNickname" name="userNickname" type="text" onChange={formik.handleChange} value={ formik.values.userNickname }/>
+            {formik.touched.userNickname && formik.errors.userNickname ? (
+              <div className='error-message'>{formik.errors.userNickname}</div>
+            ) : null}
 
             <label className="signup-label"  htmlFor="userEmail">e-mail</label>
             <input id="userEmail" name="userEmail" type="text" onChange={formik.handleChange} value={ formik.values.userEmail }/>
+            {formik.touched.userEmail && formik.errors.userEmail ? (
+              <div className='error-message'>{formik.errors.userEmail}</div>
+            ) : null}
 
             <label className="signup-label"  htmlFor="userPhone">Phone</label>
             <input id="userPhone" name="userPhone" type="text" onChange={formik.handleChange} value={ formik.values.userPhone }/>
+            {formik.touched.userPhone && formik.errors.userPhone ? (
+              <div className='error-message'>{formik.errors.userPhone}</div>
+            ) : null}
 
             <label className="signup-label" htmlFor="userGender">Gender</label>
             <select id="userGender" name="userGender" onChange={formik.handleChange} value={ formik.values.userGender }>

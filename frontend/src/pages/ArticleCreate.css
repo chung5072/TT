@@ -90,6 +90,7 @@
   border-radius: 20px;
   border: none;
   color:#d9aa52;
+  cursor:pointer;
 }
 
 .btn-tags:hover {
@@ -103,6 +104,7 @@
   border-radius: 20px;
   border: none;
   color:#d9aa52;
+  cursor:pointer;
 }
 
 /* --------------meeting--------------- */

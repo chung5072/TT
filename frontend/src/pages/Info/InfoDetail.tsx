@@ -73,6 +73,7 @@ export default function InfoDetail() {
     initialValues: {shareCode:articleId},
     onSubmit: (data) => {
       console.log(data)
+      alert('정말 삭제하시겠습니까?')
       shareDeleteRequest('DELETE', '/api' + `/share/${articleId}`, data)}
   })
 
@@ -89,12 +90,12 @@ export default function InfoDetail() {
 const DialogButton = styled.button`
   width: 160px;
   height: 48px;
-  background-color: blueviolet;
-  color: white;
+  background-color: #262626;
+  color: #d9aa52;
   font-size: 1.2rem;
   font-weight: 400;
   border-radius: 4px;
-  border: none;
+  border: 2px solid #d9aa52;
   cursor: pointer;
 
   &:hover {
@@ -105,14 +106,6 @@ const DialogButton = styled.button`
     return (
         <div id='detail'>
           <Navbar />          
-
-            {isOpenModal && (
-              <Modal onClickToggleModal={onClickToggleModal}>
-              이곳에 childeren이 들어갑니다.
-              </Modal>
-            )}
-            <DialogButton onClick={onClickToggleModal}>Open Modal</DialogButton>
-
           <div className='detail-container'>
             <h1 className='detail-title'>{title}</h1>
             <form action="" onSubmit={formik.handleSubmit}>
@@ -136,28 +129,12 @@ const DialogButton = styled.button`
                   {content}
                 </div>
               </div>
-              {/* <div className='detail-rows'>
-                <div className='like-part'>
-                  <div>
-                      {like}
-                  </div>
-                  <div>
-                    <button className='like-btn' type="button">like</button>
-                  </div>
-                </div>
-              </div> */}
+              {author === localStorage.getItem('user_nickname') ? 
               <div className='detail-btn-group'>
                 <button className='detail-btn' onClick={onClickUpdScrn} type="button">edit</button>
                 <button className='detail-btn' type='submit'>delete</button>
               </div>
-              <hr className='comment-hr'/>
-                <div className='mini-comment-title'>
-                  comment
-                </div>
-              <hr className='comment-hr'/>
-              <div className='comment-part'>
-                댓글이 없습니다.
-              </div>
+              :null}
             </form>
           </div>
         </div>

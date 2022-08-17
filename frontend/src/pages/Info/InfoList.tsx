@@ -57,7 +57,7 @@ const InfoList = () => {
         <h1>INFORMATION</h1>
         <div id='articles'>
           <div id='search'>
-            <div>
+            <div className='search-group'>
               <button id='search-btn'>search</button>
               <label htmlFor=""></label>
               <input id='search-input' type="text" />
@@ -78,7 +78,7 @@ const InfoList = () => {
               </tr>
             </thead>
             <tbody>
-          {shareList.map((share, idx) => {
+          {shareList.slice(0).reverse().map((share, idx) => {
               return (
                   <tr key={share.shareCode}>
                       <td>

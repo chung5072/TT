@@ -6,7 +6,7 @@ import axios from "axios";
 export type userData = {
   userId: string;
   userPw: string;
-  userNickname: any;
+  userNickname: string;
   userEmail: string;
   userPhone: string;
   userGender: string;
@@ -18,7 +18,8 @@ export type userData = {
 export const initialState: userData = {
   userId: "",
   userPw: "",
-  userNickname: localStorage.getItem('user_nickname'),
+  // userNickname: localStorage.getItem('user_nickname'),
+  userNickname:"",
   userEmail: "",
   userPhone: "",
   userGender: "",
