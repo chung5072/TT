@@ -11,6 +11,7 @@ import './PlayerProfile.css'
 import { setStatPoint } from "../../features/Game/GameSlice"
 import statArrow from "../../assets/image/statUp.png"
 
+
 export default function PlayerProfile() {
     const playerNum = useSelector((state: RootState) => state.left.playerNum)
     const playerUserCode = useSelector((state:RootState)=>state.profile.playerUserCode)

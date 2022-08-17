@@ -6,7 +6,8 @@
 }
 
 .navbar {
-    margin: 0px;
+    width: 70%;
+    margin: 0 auto;
     background-color: #262626;
     height: 150px;
     display: flex;
