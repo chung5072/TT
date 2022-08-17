@@ -28,6 +28,7 @@ export type profileData = {
   chooseLevel: number
   jobInfo: object
   playerClass: string
+  playerMaxHp: number
 
 } 
 
@@ -55,7 +56,8 @@ const initialState = {
   skill3: '',
   chooseLevel: 0,
   jobInfo: warrior,
-  playerClass: 'warrior'
+  playerClass: 'warrior',
+  playerMaxHp: 0
 
 }
 
@@ -76,6 +78,7 @@ const profileSlice = createSlice({
       },
       getPlayerProfile: (state:profileData, action) => {
         console.log('done')
+        console.log(action.payload)
         state.playerUserCode = action.payload.playerUserCode
         state.playerSpecies = action.payload.playerSpecies
         state.playerName = action.payload.playerName
@@ -97,6 +100,7 @@ const profileSlice = createSlice({
         state.skill2 = action.payload.playerSkill2
         state.skill3 = action.payload.playerSkill3
         state.playerClass = action.payload.playerClassName
+        state.playerMaxHp = action.payload.playerMaxHP
       }
         
     }

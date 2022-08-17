@@ -93,6 +93,7 @@ export default function PlayerProfile() {
     const skill1 = useSelector((state:RootState)=>state.profile.skill1)
     const skill2 = useSelector((state:RootState)=>state.profile.skill2)
     const skill3 = useSelector((state:RootState)=>state.profile.skill3)
+    const playerMaxHp = useSelector((state:RootState) => state.profile.playerMaxHp)
 
     return (
       <div id="player-profile">
@@ -117,6 +118,7 @@ export default function PlayerProfile() {
             <div className="pp-title">
               <label className="gameprofile-subtitle" htmlFor="hp">체력</label>
               <div className="pp-userInfo">{hp}</div>
+              <progress max={playerMaxHp} value={hp}></progress>
             </div>
             <div className="pp-title-look">
               <label className="gameprofile-subtitle" htmlFor="look">외형</label>
