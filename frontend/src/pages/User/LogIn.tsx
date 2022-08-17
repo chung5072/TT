@@ -28,7 +28,6 @@ export default function Login() {
       url: '/api/OAuth/google'
     })
     .then( async (res) => {
-       window.open(res.data)
        console.log(res.data)
         const token = res.data.accessToken
         const currentUser = res.data.userId
