@@ -77,7 +77,7 @@ const NoticeList = () => {
                       <td>
                         {idx + 1}
                       </td>
-                      <td><Link to={"/notice/" + `${notice.noticeCode}`}>{notice.noticeTitle}</Link></td>
+                      <td><Link to={"/notice/" + `${notice.noticeCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{notice.noticeTitle}</Link></td>
                       <td>
                         {notice.noticeAuthor}
                       </td>

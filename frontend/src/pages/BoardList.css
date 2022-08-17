@@ -49,6 +49,7 @@ tr {
 }
 
 #search-btn, #create-btn {
+    font-family: 'NOTO Sans';
     background-color: #262626;
     color: #D9AA52;
     border : 1px solid #D9AA52;
@@ -57,6 +58,7 @@ tr {
     width: 90px;
     height: 40px;
     font-size: 1em;
+    cursor: pointer;
 }
 
 #create-btn:hover {
@@ -74,7 +76,11 @@ tr {
 
 #search-input {
     border-radius: 20px;
-    width: 300px;
-    height: 30px;
+    width: 70%;
+    height: 20px;
+    padding: 1.5%;
 }
 
+.search-group {
+    width: 70%;
+}
