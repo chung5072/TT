@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../app/store"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
-import { setGameState } from "../features/Game/GameSlice"
+import { setGameState, setStatPoint } from "../features/Game/GameSlice"
 import { setMonster } from "../features/Game/MonsterSlice"
 import { setStatus } from "../features/Game/LeftSlice"
 import { setSignalHistory } from "../features/Game/SignalSlice"
@@ -28,6 +28,10 @@ type playerProfileType = {
   playerValue : string,
   playerClassName : string,
   playerName : string
+}
+
+type statData = {
+  statPoint : number
 }
 
 export default function GameView() {
@@ -182,6 +186,7 @@ export default function GameView() {
       //   setDivStatus(6);
       // }
     }
+    //* 프로필 작성 완료 후 로그값 
     else if(data.body.includes("playerClassName")) 
     {
       const playerProfileInfo : playerProfileType = JSON.parse(data.body);
@@ -207,6 +212,16 @@ export default function GameView() {
 
       dispatch(setSignalHistory(playerProfileLog));
     }
+    //* GM이 플레이어들에게 스탯 포인트를 부여했다는 로그값
+    else if (data.body.includes("statPoint")) {
+      const statData : statData = JSON.parse(data.body);
+
+      dispatch(setStatPoint(statData.statPoint))
+
+      const statLogMessage = `보상으로 스탯 포인트 ${statData.statPoint} 점이 부여되었습니다!`;
+      dispatch(setSignalHistory(statLogMessage));
+    }
+    //* 유저가 방에 입장한 로그 값
     else 
     {
       alert(data.body);
