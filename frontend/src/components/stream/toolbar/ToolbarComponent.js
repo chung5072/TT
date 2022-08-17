@@ -8,10 +8,6 @@ import Mic from '@material-ui/icons/Mic';
 import MicOff from '@material-ui/icons/MicOff';
 import Videocam from '@material-ui/icons/Videocam';
 import VideocamOff from '@material-ui/icons/VideocamOff';
-import SwitchVideoIcon from '@material-ui/icons/SwitchVideo';
-import PictureInPicture from '@material-ui/icons/PictureInPicture';
-import ScreenShare from '@material-ui/icons/ScreenShare';
-import StopScreenShare from '@material-ui/icons/StopScreenShare';
 import Tooltip from '@material-ui/core/Tooltip';
 import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew';
 import QuestionAnswer from '@material-ui/icons/QuestionAnswer';
@@ -66,6 +62,7 @@ export default class ToolbarComponent extends Component {
         const localUser = this.props.user;
         return (
             <div className="toolbar" id="footer">
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet"></link>
                 <div className="toolbar">
                     <div id="navSessionInfo">
                         {this.props.sessionId && <div id="titleContent">
@@ -75,19 +72,19 @@ export default class ToolbarComponent extends Component {
 
                     <div className="buttonsContent">
                         <IconButton color="inherit" className="navButton" id="navMicButton" onClick={this.micStatusChanged}>
-                            {localUser !== undefined && localUser.isAudioActive() ? <Mic /> : <MicOff color="secondary" />}
+                            {localUser !== undefined && localUser.isAudioActive() ? <Mic /> : <span class="material-icons">mic_off</span>}
                         </IconButton>
 
                         <IconButton color="inherit" className="navButton" id="navCamButton" onClick={this.camStatusChanged}>
                             {localUser !== undefined && localUser.isVideoActive() ? (
                                 <Videocam />
                             ) : (
-                                <VideocamOff color="secondary" />
+                                <span class="material-icons">videocam_off</span>
                             )}
                         </IconButton>
-
-                        <IconButton color="secondary" className="navButton" onClick={this.leaveSession} id="navLeaveButton">
-                            <PowerSettingsNew />
+                        
+                        <IconButton className="navButton" onClick={this.leaveSession} id="navLeaveButton">
+                            <span className="material-icons">power_settings_new</span>
                         </IconButton>
                          <IconButton color="inherit" onClick={this.toggleChat} id="navChatButton">
                             {this.props.showNotification && <div id="point" className="" />}
