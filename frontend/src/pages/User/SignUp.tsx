@@ -91,7 +91,7 @@ export default function SignUp() {
               <option value="female">Female</option>
               <option value="none">None</option>
             </select>
-            <button id="signup-button" type="submit">Sign up</button>
+            <button id="signup-button" className="button button--moema button--inverted button--text-thick button--size-s" type="submit">Sign up</button>
           </form>
           </div>
           <div id='signup-with'>
@@ -106,7 +106,7 @@ export default function SignUp() {
               </div>
           </div>
           <div className='signup-with-btn'>
-            <button id="signup-login" onClick={() => {navigate('/login')}}>Login</button>
+            <button id="signup-login"  className="button button--moema button--inverted button--text-thick button--size-s" onClick={() => {navigate('/login')}}>Login</button>
           </div>
         </div>
     </div>

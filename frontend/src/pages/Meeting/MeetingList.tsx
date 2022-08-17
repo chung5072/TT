@@ -7,10 +7,12 @@ import { RootState } from '../../app/store';
 import { getMeetingList } from '../../features/meeting/meetingSlice'
 import '../BoardList.css'
 import Navbar from '../../components/Navbar';
+import { useSelector } from "react-redux"
 
 
 const MeetingList = () => {
   const navigate = useNavigate()
+  const token = useSelector((state:RootState) => state.login.token)
   const DOMAIN = "http://localhost:8080/" 
   
   const [meetList, setMeetList] = useState([{
@@ -64,22 +66,27 @@ const MeetingList = () => {
       })
   }, [])
 
+
+    // datetime format
+
+
     return (
       <div id='container'>
         <Navbar />
         <h1>MEETING</h1>
         <div id='articles'>
           <div id='search'>
-            <div>
+            <div className='search-group'>
               <form className='search-form' onSubmit={e => onSearch(e)}>
                 <button id='search-btn' type='submit'>search</button>
                 <input id='search-input' type="text" value={search} onChange={onChangeSearch} />
               </form>
 
             </div>
+            {token === '' ? null :
             <div>
               <button id='create-btn' onClick={() => navigate('/meeting/create')}>create</button>
-            </div>
+            </div>}
           </div>
           
           <table className='board-table'>
@@ -97,7 +104,7 @@ const MeetingList = () => {
                       <td>
                         {idx + 1}
                       </td>
-                      <td><Link to={"/meeting/" + `${meet.meetingCode}`}>{meet.meetingTitle}</Link></td>
+                      <td><Link to={"/meeting/" + `${meet.meetingCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{meet.meetingTitle}</Link></td>
                       <td>
                         {meet.meetingAuthor}
                       </td>

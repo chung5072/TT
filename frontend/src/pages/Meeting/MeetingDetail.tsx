@@ -18,8 +18,9 @@ export default function MeetingDetail() {
   const userCode = useSelector((state: RootState) => state.user.userCode)
   let articleId = useParams().articleId
   let startTime = useSelector((state:RootState) => state.meeting.meetingGameIsStart)
+  const user_authority = window.localStorage.getItem('user_authority');
 
-  const playerUser = []
+
   
 
   // 1. userId 찾는법
@@ -247,10 +248,11 @@ export default function MeetingDetail() {
                   <button>입장하기</button>
                 </div>
               } */}
-              <div className='detail-btn-group' id={userNickname == author? "de-btn-on": "de-btn-off" }>
-                <button className='detail-btn' onClick={() => navigate(`/meeting/edit/${code}`)} type="button">edit</button>
-                <button className='detail-btn' type='submit'>delete</button>
-              </div>
+              {user_authority === author ? 
+                <div className='detail-btn-group' id={userNickname == author? "de-btn-on": "de-btn-off" }>
+                  <button className='detail-btn' onClick={() => navigate(`/meeting/edit/${code}`)} type="button">edit</button>
+                  <button className='detail-btn' type='submit'>delete</button>
+                </div> : null }
             </form>
           </div>
         </div>
