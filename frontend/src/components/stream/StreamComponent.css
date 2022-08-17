@@ -94,3 +94,7 @@ video {
 #label {
     color: white;
 }
+
+.nickname {
+    border-radius: 10px;
+}
