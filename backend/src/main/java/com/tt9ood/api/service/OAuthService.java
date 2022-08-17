@@ -60,11 +60,6 @@ public class OAuthService {
         registerInfo.setUserGender("");
         registerInfo.setUserPw("");
 
-        System.out.println("==============================================");
-        System.out.println(googleUser.getGivenName());
-        System.out.println(googleUser.getName());
-        System.out.println(registerInfo.getUserNickname());
-        System.out.println("==============================================");
 
         // user가 존재하지 않는다면 회원가입
         List<UserDto> userList=userRepository.findByEmail(googleUser.getEmail());
