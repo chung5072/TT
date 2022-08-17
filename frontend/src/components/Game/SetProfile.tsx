@@ -198,9 +198,9 @@ export default function SetProfile({client, gameId} : {client : any, gameId : an
               <div className="profile-input-box">
                 <label htmlFor="playerValue" className="profile-label">Value</label>
                 <select name="playerValue" id="playerValue" onChange={formik.handleChange} value={ formik.values.playerValue} className="profile-input">
-                  <option value="good">Good</option>
-                  <option value="evil">Evil</option>
-                  <option value="neutral">Neutral</option>
+                  <option value="good">선</option>
+                  <option value="evil">악</option>
+                  <option value="neutral">중립</option>
                 </select>
               </div>
             </div>

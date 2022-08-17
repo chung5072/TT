@@ -1,4 +1,10 @@
+@font-face {
+  font-family: 'Heiro';
+  src: url('../../assets/fonts/HeirofLightRegular.ttf');
+}
+
 #select-profile-modal {
+  font-family: 'Heiro';
   position: absolute;
   top: 20%;
   left: 40%;
@@ -111,7 +117,7 @@ form {
   border-color: #A6A6A6;
   background-color: rgba(0,0,0,0);
   color: #A6A6A6;
-
+  font-family: 'Heiro';
 }
 
 .btn-box {
@@ -130,6 +136,7 @@ form {
   border-color: #A6A6A6;
   background-color: rgba(0,0,0,0);
   color: #A6A6A6;
+  font-family: 'Heiro';
 }
 
 .last-ctrl-btn {
@@ -149,21 +156,25 @@ form {
   border-radius: 10px;
   border-color: #A6A6A6;
   margin-left: 5%;
-  font-size: 1.2em;
+  font-size: 2em;
+  padding: 1%;
   color:#A6A6A6;
   background-color: rgba(0,0,0,0);
+  font-family: 'Heiro';
 
 }
+
 .profile-text {
   width: 70%;
   height: 50%;
   border-radius: 10px;
   border-color: #A6A6A6;
   margin-left: 5%;
-  font-size: 1em;
+  font-size: 2em;
+  padding: 1%;
   color:#A6A6A6;
   background-color: rgba(0,0,0,0);
-
+  font-family: 'Heiro';
 }
 
 .profile-input-box {
@@ -248,4 +259,8 @@ form {
 
 .job-info-value {
   font-size: 0.5em;
+}
+
+#playerValue {
+  height: 35%;
 }

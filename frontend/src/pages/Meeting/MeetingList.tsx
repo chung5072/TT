@@ -98,11 +98,11 @@ const MeetingList = () => {
               </tr>
             </thead>
             <tbody>
-          {meetList.map((meet, idx) => {
+          {meetList.slice(0).reverse().map((meet : any, idx : number) => {
               return (
-                  <tr className='article-tr' key={meet.meetingCode}>
+                  <tr key={idx}>
                       <td>
-                        {idx + 1}
+                        {meetList.length - idx}
                       </td>
                       <td><Link to={"/meeting/" + `${meet.meetingCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{meet.meetingTitle}</Link></td>
                       <td>

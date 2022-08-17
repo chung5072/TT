@@ -66,7 +66,6 @@ const InfoList = () => {
             <div>
               <button id='create-btn' onClick={() => navigate('/share/create')}>create</button>
             </div>}
-
           </div>
           
           <table className='board-table'>
@@ -78,11 +77,11 @@ const InfoList = () => {
               </tr>
             </thead>
             <tbody>
-          {shareList.slice(0).reverse().map((share, idx) => {
+          {shareList.map((share : any, idx: number) => {
               return (
-                  <tr key={share.shareCode}>
+                  <tr key={idx}>
                       <td>
-                        {idx + 1}
+                        {shareList.length - idx}
                       </td>
                       <td><Link to={"/share/" + `${share.shareCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{share.shareTitle}</Link></td>
                       <td>
