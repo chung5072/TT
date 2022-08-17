@@ -373,7 +373,7 @@ class VideoRoomComponent extends Component {
      */
 
     getToken() {
-        return this.createSession("TT" + window.location.href.substr(30)).then((sessionId) => this.createToken(sessionId));
+        return this.createSession("TT" + window.location.href.substr(31)).then((sessionId) => this.createToken(sessionId));
     }
 
     createSession(sessionId) {
