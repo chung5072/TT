@@ -23,9 +23,9 @@ export default function GameButtons() {
       <div id="button-box">
         {py1Code != ''?<button id="player-one" className="left-button" onClick={() => setPlayerNum(1)}>1</button>:null}
         {py2Code != ''?<button id="player-two" className="left-button" onClick={() => setPlayerNum(2)}>2</button>:null}
-        {py3Code != ''?<button id="player-three" className="left-button" onClick={() => setPlayerNum(1)}>3</button>:null}
-        {py4Code != ''?<button id="player-four" className="left-button" onClick={() => setPlayerNum(1)}>4</button>:null}
-        {py5Code != ''?<button id="player-five" className="left-button" onClick={() => setPlayerNum(1)}>5</button>:null}
+        {py3Code != ''?<button id="player-three" className="left-button" onClick={() => setPlayerNum(3)}>3</button>:null}
+        {py4Code != ''?<button id="player-four" className="left-button" onClick={() => setPlayerNum(4)}>4</button>:null}
+        {py5Code != ''?<button id="player-five" className="left-button" onClick={() => setPlayerNum(5)}>5</button>:null}
         <button id="player-five" className="left-button" onClick={() => setDivStatus(2)}>Map</button>
         {/* <button id="player-five" className="left-button" onClick={() => setDivStatus(3)}>Item</button> */}
         <button id="player-five" className="left-button" onClick={() => setDivStatus(4)}>Mon</button>
