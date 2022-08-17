@@ -10,6 +10,11 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import './PlayerProfile.css'
 import { setStatPoint } from "../../features/Game/GameSlice"
 import statArrow from "../../assets/image/statUp.png"
+import hunterimg from '../../assets/image/jobs/hunter.png'
+import priestimg from '../../assets/image/jobs/priest.png'
+import thiefimg from '../../assets/image/jobs/thief.png'
+import warriorimg from '../../assets/image/jobs/warrior.png'
+import wizardimg from '../../assets/image/jobs/wizard.png'
 
 
 export default function PlayerProfile() {
@@ -91,74 +96,92 @@ export default function PlayerProfile() {
 
     return (
       <div id="player-profile">
-      {/* {playerNum === selectPyNum() ? */}
-      <h1>PlayerProfile {playerNum}</h1>
-      <div className="pp-group">
-          <div className="pp-title">
-            <label className="gameprofile-subtitle" htmlFor="name">name</label>
-            <div className="pp-userInfo">{name}</div>
+      <h1>{name}님의 프로필</h1>
+        <div className="pp-container">
+          <div>
+            {job === 'warrior' ? <img className="jobimg" src={warriorimg} alt="warrior" /> : job === 'hunter' ? <img className="jobimg" src={hunterimg} alt="hunter" /> : job === 'priest' ? <img className="jobimg" src={priestimg} alt="priest" /> : job === 'wizard' ? <img className="jobimg" src={wizardimg} alt="wizard" /> : <img className="jobimg" src={thiefimg} alt="thief" /> }
           </div>
-          <div className="pp-title">
-            <label className="gameprofile-subtitle" htmlFor="job">job</label>
-            <div className="pp-userInfo">{job}</div>
+          <div className="pp-group">
+            <div className="pp-title">
+              <label className="gameprofile-subtitle" htmlFor="job">직업</label>
+              <div className="pp-userInfo">{job}</div>
+            </div>
+            <div className="pp-title">
+              <label className="gameprofile-subtitle" htmlFor="species">종족</label>
+              <div className="pp-userInfo">{species}</div>
+            </div>
+            <div className="pp-title">
+              <label className="gameprofile-subtitle" htmlFor="value">가치관</label>
+              <div className="pp-userInfo">{value}</div>
+            </div>
+            <div className="pp-title">
+              <label className="gameprofile-subtitle" htmlFor="hp">체력</label>
+              <div className="pp-userInfo">{hp}</div>
+            </div>
+            <div className="pp-title-look">
+              <label className="gameprofile-subtitle" htmlFor="look">외형</label>
+              <div className="pp-userInfo">{look}</div>
+            </div>   
+            
+          </div> 
+        </div>
+          <div className="pp-container-two">
+            <div className="item-part">
+              <div className="weapon-armor">
+                <div className="pp-title-item">
+                  <label className="gameprofile-subtitle" htmlFor="weapon">무기</label>
+                  <div className="pp-userinfo">{weapon}</div>
+                </div>
+                <div className="pp-title-item">
+                  <label className="gameprofile-subtitle" htmlFor="armor">방어구</label>
+                  <div className="pp-userinfo">{armor}</div>
+                </div>
+              </div>
+              <div className="stat-title">
+                <label className="gameprofile-subtitle" htmlFor="sup">소지품</label>
+                <li className="pp-userinfo">회복약: lv.{sup1}</li>
+                <li className="pp-userinfo">해독제: {sup2}개</li>
+                <li className="pp-userinfo">식량: lv.{sup3}</li>
+              </div>
+            </div>
+            <div className="stat-skill">
+              <div className="stat-title">
+                <label className="gameprofile-subtitle" htmlFor="stat">stat</label>
+                <div className="stat-group">
+                  <li className="pp-userinfo">근력: {stat1} 
+                  {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
+                </div>
+                <div className="stat-group">
+                  <li className="pp-userinfo">민첩: {stat2}
+                  {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
+                </div>
+                <div className="stat-group">
+                  <li className="pp-userinfo">체력: {stat3}
+                  {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
+                </div>
+                <div className="stat-group">
+                  <li className="pp-userinfo">지능: {stat4}
+                  {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
+                </div>
+                <div className="stat-group">
+                  <li className="pp-userinfo">지혜: {stat5}
+                  {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
+                </div>
+                <div className="stat-group">
+                  <li className="pp-userinfo">매력: {stat6}
+                  {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(6)} className="stat-arrow"></img>:null}</li>
+                </div>
+              </div>
+              <div className="stat-title">
+                <label className="gameprofile-subtitle" htmlFor="skill">skill</label>
+                <li className="pp-userinfo">{skill1}</li>
+                <li className="pp-userinfo">{skill2}</li>
+                <li className="pp-userinfo">{skill3}</li>
+              </div>
+            </div>
           </div>
-          <div className="pp-title">
-            <label className="gameprofile-subtitle" htmlFor="species">species</label>
-            <div className="pp-userInfo">{species}</div>
-          </div>
-          <div className="pp-title">
-            <label className="gameprofile-subtitle" htmlFor="look">look</label>
-            <div className="pp-userInfo">{look}</div>
-          </div>            
-          <div className="pp-title">
-            <label className="gameprofile-subtitle" htmlFor="value">value</label>
-            <div className="pp-userInfo">{value}</div>
-          </div>
-          <div className="pp-title">
-            <label className="gameprofile-subtitle" htmlFor="weapon">weapon</label>
-            <div className="pp-userInfo">{weapon}</div>
-          </div>
-          <div className="pp-title">
-            <label className="gameprofile-subtitle" htmlFor="armor">armor</label>
-            <div className="pp-userInfo">{armor}</div>
-          </div>
-          <div className="pp-title">
-            <label className="gameprofile-subtitle" htmlFor="hp">hp</label>
-            <div className="pp-userInfo">{hp}</div>
-          </div>
-          <div className="pp-title">
-            <label className="gameprofile-subtitle" htmlFor="level">level</label>
-            <div className="pp-userInfo">{level}</div>
-          </div>
-          <div className="stat-title">
-            <label className="gameprofile-subtitle" htmlFor="sup">sup</label>
-            <li className="pp-userInfo">{sup1}</li>
-            <li className="pp-userInfo">{sup2}</li>
-            <li className="pp-userInfo">{sup3}</li>
-          </div>
-          <div className="stat-title">
-            <label className="gameprofile-subtitle" htmlFor="stat">stat</label>
-            <li className="pp-userInfo">근력: {stat1} 
-            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
-            <li className="pp-userInfo">민첩: {stat2}
-            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
-            <li className="pp-userInfo">체력: {stat3}
-            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
-            <li className="pp-userInfo">지능: {stat4}
-            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
-            <li className="pp-userInfo">지혜: {stat5}
-            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
-            <li className="pp-userInfo">매력: {stat6}
-            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <button onClick={() => statUp(6)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
-          </div>
-          <div className="stat-title">
-            <label className="gameprofile-subtitle" htmlFor="skill">skill</label>
-            <li className="pp-userInfo">{skill1}</li>
-            <li className="pp-userInfo">{skill2}</li>
-            <li className="pp-userInfo">{skill3}</li>
-          </div>
-      </div> 
-      {/* : null} */}
+
+
       </div>
     )
 }
