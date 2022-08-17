@@ -28,3 +28,7 @@
     padding-top: 10%;
 }
 
+.nav-menu:hover {
+    cursor: pointer;
+}
+
