@@ -5,6 +5,7 @@
   margin-top: 0.3vw;
   margin-bottom: 0.3vw;
   margin-right:0.3vw;
+  padding: 5%;
    /** 로그를 밑에서 위로 올라가게 보이도록 flex를 사용함 */
    display: flex;
    flex-direction: column-reverse;

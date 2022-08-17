@@ -72,8 +72,8 @@ if (audioRef.current != null && audioStatus === true) {
     return (
         <div className="my-controller">
           <div id="my-controller-exit-box">
-            <button onClick={clickHandlerForExit}>
-              나가는 버튼
+            <button className="exit-btn btn-11" onClick={clickHandlerForExit}>
+              Game Exit
             </button>
           </div>
           <div id="my-controller-control-box">

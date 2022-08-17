@@ -30,7 +30,7 @@
 }
 
 .pp-title {
-  width: 50%;
+  width: 60%;
   margin-bottom: 2%;
   list-style: none;
   display: flex;
@@ -60,6 +60,10 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+
+.hp-bar {
+  width: 50%;
 }
 
 

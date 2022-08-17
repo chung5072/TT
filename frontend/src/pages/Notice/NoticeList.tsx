@@ -71,11 +71,11 @@ const NoticeList = () => {
               </tr>
             </thead>
             <tbody>
-          {noticeList.map((notice, idx) => {
+          {noticeList.map((notice : any, idx : number) => {
               return (
-                  <tr key={notice.noticeCode}>
+                  <tr key={idx}>
                       <td>
-                        {idx + 1}
+                        {noticeList.length - idx}
                       </td>
                       <td><Link to={"/notice/" + `${notice.noticeCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{notice.noticeTitle}</Link></td>
                       <td>
