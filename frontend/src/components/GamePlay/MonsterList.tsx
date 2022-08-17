@@ -8,6 +8,26 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import kobolt from '../../assets/image/monster/kobolt.png'
+import kokatris from '../../assets/image/monster/kokatris.png'
+import dwarf from '../../assets/image/monster/dwarf.png'
+import bugman from '../../assets/image/monster/bugman.png'
+import minotauros from '../../assets/image/monster/minotauros.png'
+import domabaemman from '../../assets/image/monster/domabaemman.png'
+import griffin from '../../assets/image/monster/griffin.png'
+import jihain from '../../assets/image/monster/jihain.png'
+import chaindevil from '../../assets/image/monster/chaindevil.png'
+import fish from '../../assets/image/monster/fish.png'
+import crocodile from '../../assets/image/monster/crocodile.png'
+import ogre from '../../assets/image/monster/ogre.png'
+import spiderking from '../../assets/image/monster/spiderking.png'
+import devil from '../../assets/image/monster/devil.png'
+import dragon from '../../assets/image/monster/dragon.png'
+import koatle from '../../assets/image/monster/koatle.png'
+import chaos from '../../assets/image/monster/chaos.png'
+import otuge from '../../assets/image/monster/otuge.png'
+import angel from '../../assets/image/monster/angel.png'
+import enddragon from '../../assets/image/monster/enddragon.png'
 
 
 export default function MonsterList() {
@@ -95,6 +115,7 @@ export default function MonsterList() {
           <h1>MonsterList</h1>
           <Slider className="monster-carousel" {...settings}>
               <div className="monster1">
+                {mapStatus === 1 ? <img className="monster-img" src={kobolt} alt="코볼트" /> : mapStatus === 2 ? <img className="monster-img" src={kokatris} alt="코카트리스"/> : mapStatus === 3 ? <img className="monster-img" src={dwarf} alt="드워프전사" /> : mapStatus === 4 ? <img className="monster-img" src={bugman} alt="인면충" /> : <img className="monster-img" src={minotauros} alt="미노타우르스" /> }
                 <div className="monster-name">{mapStatus === 1 ? MonsterListOne.name[0] : mapStatus === 2 ? MonsterListTwo.name[0] : mapStatus === 3 ? MonsterListThree.name[0] : mapStatus === 4 ? MonsterListFour.name[0] : MonsterListFive.name[0] }</div>
                 <div className="monster-features">{mapStatus === 1 ? MonsterListOne.features[0] : mapStatus === 2 ? MonsterListTwo.features[0] : mapStatus === 3 ? MonsterListThree.features[0] : mapStatus === 4 ? MonsterListFour.features[0] : MonsterListFive.features[0] }</div>
                 <div className="monster-attack">공격력: {mapStatus === 1 ? MonsterListOne.attack[0] : mapStatus === 2 ? MonsterListTwo.attack[0] : mapStatus === 3 ? MonsterListThree.attack[0] : mapStatus === 4 ? MonsterListFour.attack[0] : MonsterListFive.attack[0] }</div>
@@ -104,6 +125,7 @@ export default function MonsterList() {
                 <div className="monster-tag">태그: {mapStatus === 1 ? MonsterListOne.tag[0] : mapStatus === 2 ? MonsterListTwo.tag[0] : mapStatus === 3 ? MonsterListThree.tag[0] : mapStatus === 4 ? MonsterListFour.tag[0] : MonsterListFive.tag[0] }</div>            
               </div>
               <div className="monster2">
+                {mapStatus === 1 ? <img className="monster-img" src={domabaemman} alt="도마뱀인간" /> : mapStatus === 2 ? <img className="monster-img" src={griffin} alt="그리폰"/> : mapStatus === 3 ? <img className="monster-img" src={jihain} alt="지하인" /> : mapStatus === 4 ? <img className="monster-img" src={chaindevil} alt="사슬악마" /> : <img className="monster-img" src={fish} alt="아볼레스" /> }
                 <div className="monster-name">{mapStatus === 1 ? MonsterListOne.name[1] : mapStatus === 2 ? MonsterListTwo.name[1] : mapStatus === 3 ? MonsterListThree.name[1] : mapStatus === 4 ? MonsterListFour.name[1] : MonsterListFive.name[1] }</div>
                 <div className="monster-features">{mapStatus === 1 ? MonsterListOne.features[1] : mapStatus === 2 ? MonsterListTwo.features[1] : mapStatus === 3 ? MonsterListThree.features[1] : mapStatus === 4 ? MonsterListFour.features[1] : MonsterListFive.features[1] }</div>
                 <div className="monster-attack">공격력: {mapStatus === 1 ? MonsterListOne.attack[1] : mapStatus === 2 ? MonsterListTwo.attack[1] : mapStatus === 3 ? MonsterListThree.attack[1] : mapStatus === 4 ? MonsterListFour.attack[1] : MonsterListFive.attack[1] }</div>
@@ -113,6 +135,7 @@ export default function MonsterList() {
                 <div className="monster-tag">태그: {mapStatus === 1 ? MonsterListOne.tag[1] : mapStatus === 2 ? MonsterListTwo.tag[1] : mapStatus === 3 ? MonsterListThree.tag[1] : mapStatus === 4 ? MonsterListFour.tag[1] : MonsterListFive.tag[1] }</div>            
               </div>
               <div className="monster3">
+                {mapStatus === 1 ? <img className="monster-img" src={crocodile} alt="거대악어" /> : mapStatus === 2 ? <img className="monster-img" src={ogre} alt="오거"/> : mapStatus === 3 ? <img className="monster-img" src={spiderking} alt="거미왕" /> : mapStatus === 4 ? <img className="monster-img" src={devil} alt="가시악마" /> : <img className="monster-img" src={dragon} alt="용" /> }
                 <div className="monster-name">{mapStatus === 1 ? MonsterListOne.name[2] : mapStatus === 2 ? MonsterListTwo.name[2] : mapStatus === 3 ? MonsterListThree.name[2] : mapStatus === 4 ? MonsterListFour.name[2] : MonsterListFive.name[2] }</div>
                 <div className="monster-features">{mapStatus === 1 ? MonsterListOne.features[2] : mapStatus === 2 ? MonsterListTwo.features[2] : mapStatus === 3 ? MonsterListThree.features[2] : mapStatus === 4 ? MonsterListFour.features[2] : MonsterListFive.features[2] }</div>
                 <div className="monster-attack">공격력: {mapStatus === 1 ? MonsterListOne.attack[2] : mapStatus === 2 ? MonsterListTwo.attack[2] : mapStatus === 3 ? MonsterListThree.attack[2] : mapStatus === 4 ? MonsterListFour.attack[2] : MonsterListFive.attack[2] }</div>
@@ -122,6 +145,7 @@ export default function MonsterList() {
                 <div className="monster-tag">태그: {mapStatus === 1 ? MonsterListOne.tag[2] : mapStatus === 2 ? MonsterListTwo.tag[2] : mapStatus === 3 ? MonsterListThree.tag[2] : mapStatus === 4 ? MonsterListFour.tag[2] : MonsterListFive.tag[2] }</div>            
               </div>
               <div className="monster4">
+                {mapStatus === 1 ? <img className="monster-img" src={koatle} alt="코아틀" /> : mapStatus === 2 ? <img className="monster-img" src={chaos} alt="혼돈의즙"/> : mapStatus === 3 ? <img className="monster-img" src={otuge} alt="오튜그" /> : mapStatus === 4 ? <img className="monster-img" src={angel} alt="천사" /> : <img className="monster-img" src={enddragon} alt="종말의용" /> }
                 <div className="monster-name">{mapStatus === 1 ? MonsterListOne.name[3] : mapStatus === 2 ? MonsterListTwo.name[3] : mapStatus === 3 ? MonsterListThree.name[3] : mapStatus === 4 ? MonsterListFour.name[3] : MonsterListFive.name[3] }</div>
                 <div className="monster-features">{mapStatus === 1 ? MonsterListOne.features[3] : mapStatus === 2 ? MonsterListTwo.features[3] : mapStatus === 3 ? MonsterListThree.features[3] : mapStatus === 4 ? MonsterListFour.features[3] : MonsterListFive.features[3] }</div>
                 <div className="monster-attack">공격력: {mapStatus === 1 ? MonsterListOne.attack[3] : mapStatus === 2 ? MonsterListTwo.attack[3] : mapStatus === 3 ? MonsterListThree.attack[3] : mapStatus === 4 ? MonsterListFour.attack[3] : MonsterListFive.attack[3] }</div>

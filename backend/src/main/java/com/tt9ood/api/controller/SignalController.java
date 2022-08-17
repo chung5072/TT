@@ -90,6 +90,11 @@ public class SignalController {
 
             simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , inGameProfileDto);
         }
+        else if (signalMessage.contains("statPoint")) {
+            System.out.println("스탯 포인트[statPoint] = " + signalMessage);
+
+            simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , signalMessage);
+        }
         // 입력받은 메세지에 coords / monsterId / playerClassName 값이 들어있지 않다면
         else {
             System.out.println("입장한 유저 정보[usernickname] = " + signalMessage);

@@ -8,8 +8,9 @@ export type gameData = {
   mapStatus: number
   windowSize: number
   playerNum: number
-  profileDone: boolean;
-  audioStatus: boolean;
+  profileDone: boolean
+  audioStatus: boolean
+  statPoint: number
 
 } 
 
@@ -22,6 +23,7 @@ const initialState = {
     playerNum: 0,
     profileDone: false,
     audioStatus: false,
+    statPoint:0,
 
 }
 
@@ -62,11 +64,14 @@ const gameSlice = createSlice({
         },
         setAudioStatus: (state:gameData,action) => {
             state.audioStatus = action.payload
+        },
+        setStatPoint: (state:gameData,action) => {
+            state.statPoint += action.payload
         }
 
     }
 })
 
 const { reducer, actions } =gameSlice
-export const {setGameState, setMapState, setWindowSize, setProfileDone, setAudioStatus} = actions
+export const {setGameState, setMapState, setWindowSize, setProfileDone, setAudioStatus, setStatPoint} = actions
 export default gameSlice.reducer

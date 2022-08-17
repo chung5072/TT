@@ -227,7 +227,7 @@ export default function MeetingDetail() {
                   <div className='player'>
                     <span>{GmPlayer.userNickname}</span>
                   </div>
-                  <button className='enroll' onClick={(userId) => enrollGm()} type="button" id={participated===true || GmPlayer?"enroll-off":"enroll-on"}>enroll</button>
+                  <button className='enroll' onClick={(userId) => enrollGm()} type="button" id={participated===true || GmPlayer.userCode != 0?"enroll-off":"enroll-on"}>enroll</button>
                 </div>
                 <div className='pygroup'>
                   <label className='pysubtitle' htmlFor="">Player</label>

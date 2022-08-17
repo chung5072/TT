@@ -67,7 +67,7 @@ if (audioRef.current != null && audioStatus === true) {
     client.disconnect();
 
     // 페이지 이동
-    navigate("/");
+    navigate("/about");
   }
     return (
         <div className="my-controller">

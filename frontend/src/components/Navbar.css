@@ -6,7 +6,8 @@
 }
 
 .navbar {
-    margin: 0px;
+    width: 70%;
+    margin: 0 auto;
     background-color: #262626;
     height: 150px;
     display: flex;
@@ -26,5 +27,9 @@
     text-decoration: none;
     padding-left: 5%;
     padding-top: 10%;
+}
+
+.nav-menu:hover {
+    cursor: pointer;
 }
 
