@@ -156,10 +156,11 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
   })
   const formikThree = useFormik({
     initialValues : {
-      userNum: 0,
+      userNum: 1,
       userHpChange: 0
     },
     onSubmit: (data) => {
+      console.log(data.userNum)
       axios({
         method: 'PUT',
         url: '/api' + `/player/${data.userNum == 1 ? py1Code: data.userNum == 2? py2Code: data.userNum == 3? py3Code: data.userNum == 4? py4Code: py5Code }` +'/hpchange',
@@ -242,7 +243,7 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
       <div className="gm-control-box">
       <form action="" onSubmit={formikThree.handleSubmit}>
       <label id='monster-id-label' htmlFor="playerUserCode">Player</label>
-        <select name="userNum" onChange={formikThree.handleChange} value = {formikThree.values.userNum} id="userNum">
+        <select name="userNum" onChange={formikThree.handleChange} value = {1} id="userNum">
           {py1Code != '' ? <option value={1}>Player1</option>: null}
           {py2Code != '' ? <option value={2}>Player2</option>: null}
           {py3Code != '' ? <option value={3}>Player3</option>: null}
