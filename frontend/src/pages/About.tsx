@@ -6,6 +6,7 @@ import Party from "../assets/image/aboutparty.jpg"
 import Play from "../assets/image/aboutplay.jpg"
 import { useNavigate } from "react-router-dom";
 import { useIntersectionObserver } from "../components/useIntersectionObserver";
+import Navbar from "../components/Navbar";
 
 export default function About() {
   const navigate = useNavigate()
@@ -17,6 +18,7 @@ export default function About() {
 
   return (
     <div id={styles.About}>
+      <Navbar />
       <div className={styles.Content}>
         <div className={styles.Title}>ABOUT TRPG</div>
         <div className={styles.One} ref={target}>

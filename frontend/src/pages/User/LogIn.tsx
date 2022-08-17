@@ -56,7 +56,7 @@ export default function Login() {
           .catch((err) => {
             console.error(err.response.data);
           });
-        navigate('/home')
+        navigate('/about')
       })
       .catch(err => {
         console.error(err.response.data)
