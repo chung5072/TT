@@ -26,6 +26,7 @@ export default class ChatComponent extends Component {
     componentDidMount() {
         this.props.user.getStreamManager().stream.session.on('signal:chat', (event) => {
             const data = JSON.parse(event.data);
+            console.log('디드 마운트!!!')
             let messageList = this.state.messageList;
             messageList.push({ connectionId: event.from.connectionId, nickname: data.nickname, message: data.message });
             const document = window.document;
@@ -55,6 +56,7 @@ export default class ChatComponent extends Component {
         console.log(this.state.message);
         if (this.props.user && this.state.message) {
             let message = this.state.message.replace(/ +(?= )/g, '');
+            console.log('메시지 저장되나 태ㅔ스ㅜㅅ수', message)
             if (message !== '' && message !== ' ') {
                 const data = { message: message, nickname: this.props.user.getNickname(), streamId: this.props.user.getStreamManager().stream.streamId };
                 this.props.user.getStreamManager().stream.session.signal({
@@ -88,6 +90,8 @@ export default class ChatComponent extends Component {
                         <IconButton id="closeButton" onClick={this.close}>
                             <HighlightOff color="secondary" />
                         </IconButton>
+                    </div>
+                    <div>
                     </div>
                     <div className="message-wrap" ref={this.chatScroll}>
                         {this.state.messageList.map((data, i) => (

@@ -24,6 +24,7 @@ export default function PlayerProfile() {
     const thisPlayerCode = playerNum === 1? player1: playerNum === 2? player2 : playerNum === 3? player3: playerNum === 4? player4 : player5
     const statPoint = useAppSelector((state:RootState) => state.game.statPoint)
     const dispatch = useAppDispatch()
+    const currentUserCode = localStorage.getItem('userCode')
 
     const DOMAIN = "http://localhost:8080"
     useEffect(() => {
@@ -50,6 +51,17 @@ export default function PlayerProfile() {
       })
       .then(res =>{
         console.log(res)
+        axios({
+          method: 'GET',
+          url:  '/api' + `/player/${thisPlayerCode}`
+        })
+        .then((res) => {
+          console.log(res.data)
+          dispatch(getPlayerProfile(res.data))
+        })
+        .catch(err => {
+          console.error(err.response.data)
+        })
       })
     }
 
@@ -127,17 +139,17 @@ export default function PlayerProfile() {
           <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="stat">stat</label>
             <li className="pp-userInfo">근력: {stat1} 
-            {statPoint > 0? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
+            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
             <li className="pp-userInfo">민첩: {stat2}
-            {statPoint > 0? <button onClick={() => statUp(2)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
+            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
             <li className="pp-userInfo">체력: {stat3}
-            {statPoint > 0? <button onClick={() => statUp(3)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
+            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
             <li className="pp-userInfo">지능: {stat4}
-            {statPoint > 0? <button onClick={() => statUp(4)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
+            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
             <li className="pp-userInfo">지혜: {stat5}
-            {statPoint > 0? <button onClick={() => statUp(5)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
+            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <img src={statArrow} onClick={() => statUp(1)} className="stat-arrow"></img>:null}</li>
             <li className="pp-userInfo">매력: {stat6}
-            {statPoint > 0? <button onClick={() => statUp(6)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
+            {statPoint > 0 && ((playerNum == 1 && player1 == currentUserCode)|| (playerNum == 2 && player2 == currentUserCode) ||(playerNum == 3 && player3 == currentUserCode)|| (playerNum == 4 && player4 == currentUserCode)|| (playerNum == 5 && player5 == currentUserCode))? <button onClick={() => statUp(6)}><img src={statArrow} className="stat-arrow"></img></button>:null}</li>
           </div>
           <div className="stat-title">
             <label className="gameprofile-subtitle" htmlFor="skill">skill</label>
