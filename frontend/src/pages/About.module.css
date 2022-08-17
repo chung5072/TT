@@ -33,7 +33,7 @@
 .Content {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 50%;
   margin: auto;
 }
 
@@ -67,8 +67,8 @@
 
 .TTabout {
 
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  height: 300px;
 }
 
 
@@ -173,7 +173,7 @@
   }
 }
 
-/* 
+
 .Animation {
-  animation: fadeIn 1s ease-in-out;
-} */
+  animation: fadeIn;
+}

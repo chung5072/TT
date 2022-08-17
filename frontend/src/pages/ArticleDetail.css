@@ -135,6 +135,7 @@
   flex-shrink: 0; */
   flex: 0 50px;
   margin: 5% 2% 0 0;
+  cursor: pointer;
 }
 
 .detail-btn:hover {

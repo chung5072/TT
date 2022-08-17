@@ -45,7 +45,7 @@ const NoticeList = () => {
         <h1>NOTICE</h1>
         <div id='articles'>
           <div id='search'>
-            <div>
+            <div className='search-group'>
               <button id='search-btn'>search</button>
               <label htmlFor=""></label>
               <input id='search-input' type="text" />

@@ -243,16 +243,12 @@ export default function MeetingDetail() {
               <div className='enroll-btn'>
                 <button className='enroll-game' onClick={onClick} type="button" id = {gameIsStart && participated===true? "enroll-on":"enroll-off"}>입장</button>
               </div>
-              {/* {startTime &&
-                <div>
-                  <button>입장하기</button>
-                </div>
-              } */}
-              {user_authority === author ? 
+              {author === localStorage.getItem('user_nickname') ? 
                 <div className='detail-btn-group' id={userNickname == author? "de-btn-on": "de-btn-off" }>
                   <button className='detail-btn' onClick={() => navigate(`/meeting/edit/${code}`)} type="button">edit</button>
                   <button className='detail-btn' type='submit'>delete</button>
-                </div> : null }
+                </div>
+              :null}
             </form>
           </div>
         </div>
