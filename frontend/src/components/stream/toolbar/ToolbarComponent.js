@@ -68,8 +68,6 @@ export default class ToolbarComponent extends Component {
             <div className="toolbar" id="footer">
                 <div className="toolbar">
                     <div id="navSessionInfo">
-                        <h1>{'TT' + window.location.href.substr(27)}</h1>
-
                         {this.props.sessionId && <div id="titleContent">
                             <span id="session-title">{mySessionId}</span>
                         </div>}
@@ -88,20 +86,6 @@ export default class ToolbarComponent extends Component {
                             )}
                         </IconButton>
 
-                        <IconButton color="inherit" className="navButton" onClick={this.screenShare}>
-                            {localUser !== undefined && localUser.isScreenShareActive() ? <PictureInPicture /> : <ScreenShare />}
-                        </IconButton>
-
-                        {localUser !== undefined &&
-                            localUser.isScreenShareActive() && (
-                                <IconButton onClick={this.stopScreenShare} id="navScreenButton">
-                                    <StopScreenShare color="secondary" />
-                                </IconButton>
-                            )}
-
-                        <IconButton color="inherit" className="navButton" onClick={this.switchCamera}>
-                            <SwitchVideoIcon />
-                        </IconButton>
                         <IconButton color="secondary" className="navButton" onClick={this.leaveSession} id="navLeaveButton">
                             <PowerSettingsNew />
                         </IconButton>
