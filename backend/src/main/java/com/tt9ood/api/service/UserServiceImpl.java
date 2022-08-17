@@ -47,6 +47,10 @@ public class UserServiceImpl implements UserService {
 			// notice 권한을 위해서 추가
 			user.setUserAuthority("");
 
+			System.out.println("==============================================");
+			System.out.println(userRegisterInfo.getUserNickname());
+			System.out.println("==============================================");
+
 			userRepository.save(user);
 
 			return true;

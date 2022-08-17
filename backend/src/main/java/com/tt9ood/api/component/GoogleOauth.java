@@ -44,6 +44,7 @@ public class GoogleOauth {
     public String getOauthRedirectURL(){
         Map<String,Object> params=new HashMap<>();
         params.put("scope","https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile");
+//        params.put("scope","https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/user.gender.read https://www.googleapis.com/auth/user.phonenumbers.read");
         params.put("response_type","code");
         params.put("client_id","367297667567-5m40hvbqlq98ckb545jacgqbk6uetern.apps.googleusercontent.com");
         params.put("redirect_uri","http://localhost:8080/api/OAuth/google/callback");
