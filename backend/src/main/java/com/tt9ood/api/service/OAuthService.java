@@ -7,7 +7,6 @@ import com.tt9ood.api.dto.UserDto;
 import com.tt9ood.api.request.UserRegisterPostReq;
 import com.tt9ood.api.response.UserLoginPostRes;
 import com.tt9ood.common.util.JwtTokenUtil;
-import com.tt9ood.db.entity.User;
 import com.tt9ood.db.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +34,8 @@ public class OAuthService {
 
         // 소셜로그인을 요청하면 소셜로그인 페이지로 리다이렉트 해주는 프로세스이다.
         redirectURL=googleOauth.getOauthRedirectURL();
-        return redirectURL;
 //        response.sendRedirect(redirectURL);
+        return redirectURL;
     }
 
     public ResponseEntity<UserLoginPostRes> oAuthLogin(String code) throws IOException{
@@ -55,11 +54,12 @@ public class OAuthService {
         // 우리 서버의 db와 대조하여 해당 user가 존재하는지 확인
         UserRegisterPostReq registerInfo=new UserRegisterPostReq();
         registerInfo.setUserId(googleUser.getId());
-        registerInfo.setUserNickname(googleUser.getGivenName());
+        registerInfo.setUserNickname(googleUser.getName());
         registerInfo.setUserEmail(googleUser.getEmail());
         registerInfo.setUserPhone("");
         registerInfo.setUserGender("");
         registerInfo.setUserPw("");
+
 
         // user가 존재하지 않는다면 회원가입
         List<UserDto> userList=userRepository.findByEmail(googleUser.getEmail());
