@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../app/store"
 import { useAppDispatch, useAppSelector } from "../app/hooks"
-import { setGameState, setStatPoint } from "../features/Game/GameSlice"
+import { setGameState, setStatPoint, setMapState } from "../features/Game/GameSlice"
 import { setMonster } from "../features/Game/MonsterSlice"
 import { setStatus } from "../features/Game/LeftSlice"
 import { setSignalHistory } from "../features/Game/SignalSlice"
@@ -111,7 +111,21 @@ export default function GameView() {
     ) 
     {
       let areaName = data.body;
+
+      const areaStatMap = new Map();
+      areaStatMap.set("Start", 0);
+      areaStatMap.set("Swamp", 1);
+      areaStatMap.set("Forest", 2);
+      areaStatMap.set("Cavern", 3);
+      areaStatMap.set("Devil", 4);
+      areaStatMap.set("Mountain", 5);
+
+      //* 지역 번호 세팅
+      console.log("지역 번호", areaStatMap.get(areaName));
+
+      dispatch(setMapState(areaStatMap.get(areaName)))
       
+      //* gm이 선택한 지역의 전체 이름
       // Map - 지역 이름
       const areaMap = new Map();
       areaMap.set("Start", "Myrian");
@@ -140,6 +154,7 @@ export default function GameView() {
       //? state를 적용했을 때 사용했던 코드
       // addSignal(areaName);
 
+      
       //* 새로고침해도 로그를 남기기 위해서 redux를 도입
       dispatch(setSignalHistory(areaName));
     }
