@@ -4,6 +4,7 @@ import * as Yup from "yup"
 import { useAppSelector, useAppDispatch } from "../../app/hooks"
 import { RootState } from "../../app/store"
 import { getPlayerProfile } from "../../features/Game/ProfileSlice"
+import "./GmControl.css"
 export default function GmControl({client, gameId} : {client : any, gameId : any}) {
   const dispatch = useAppDispatch()
   const mapStatus = useAppSelector((state:RootState) => state.game.mapStatus)
@@ -12,6 +13,8 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
   const py3Code = useAppSelector((state:RootState) => state.room.py3Code)
   const py4Code = useAppSelector((state:RootState) => state.room.py4Code)
   const py5Code = useAppSelector((state:RootState) => state.room.py5Code)
+  //* 현재 전투 중인 몬스터 정보
+  const monsterInfo = useAppSelector((state) => state.session.monster)
 
   //* 스탯 포인트 부여
   const setStatPoint = () => {
@@ -168,64 +171,107 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
       })
       .then(res => {
         console.log(res)
+
+        axios({
+          method:'GET',
+          url: '/api' + `/player/${data.userNum == 1 ? py1Code: data.userNum == 2? py2Code: data.userNum == 3? py3Code: data.userNum == 4? py4Code: py5Code }`
+        })
+        .then((res) => {
+          // 테스트 출력
+          // console.log(res.data);
+          // console.log(res.data.playerName);
+          // console.log("axios이후",monsterInfo.monsterId);
+          
+          //* 회복하거나 데미지를 받으면 생기는 로그
+          let changeCharHp = {
+            charName : res.data.playerName,
+            mapCode : mapStatus,
+            monsterCode : monsterInfo.monsterId,
+            userHpChange : data.userHpChange
+          }
+
+          client.send(`/ttrpg/event/${gameId}/sendSignal`, JSON.stringify(changeCharHp), {id : gameId});
+        })
       })
     }
   })
   return (
-    <div>
+    <div id="gm-control-container">
+      <div id="gm-control-title-box">
       <h1>GmControl</h1>
+      </div>
+      
       {/* 몬스터 출연시키기 */}
       <div className="gm-control-box">
-        <form action="" onSubmit={ formik.handleSubmit }>
-          <label id='monster-id-label' htmlFor="monsterId">Monster Id</label>
-          <select id="monsterId" name="monsterId" onChange={formik.handleChange} value={ formik.values.monsterId }>
-            <option value="1">{mapStatus===1 ? "코볼트": mapStatus===2 ? "코카트리스": mapStatus===3? "드워프전사": mapStatus=== 4?"인면충": "미노타우르스"}</option>
-            <option value="2">{mapStatus===1 ? "도마뱀인간": mapStatus===2 ? "그리폰": mapStatus===3? "지하인": mapStatus=== 4?"사슬악마": "아볼레스"}</option>
-            <option value="3">{mapStatus===1 ? "거대악어": mapStatus===2 ? "오거    ": mapStatus===3? "거미왕": mapStatus=== 4?"가시악마": "용"}</option>
-            <option value="4">{mapStatus===1 ? "코아틀": mapStatus===2 ? "혼돈의 즙": mapStatus===3? "오튜그": mapStatus=== 4?"천사": "종말의 용"}</option>
-          </select>
-          <button type="submit">Start Fight</button>
+        <p>몬스터 생성</p>
+        <form action="" onSubmit={ formik.handleSubmit } className="gm-control-form" >
+          <div className="gm-control-label-box my-1">
+            <label id='monster-id-label' htmlFor="monsterId">몬스터</label>
+            <select id="monsterId" name="monsterId" onChange={formik.handleChange} value={ formik.values.monsterId } className="gm-control-form-child">
+              <option value="1">{mapStatus===1 ? "코볼트": mapStatus===2 ? "코카트리스": mapStatus===3? "드워프전사": mapStatus=== 4?"인면충": "미노타우르스"}</option>
+              <option value="2">{mapStatus===1 ? "도마뱀인간": mapStatus===2 ? "그리폰": mapStatus===3? "지하인": mapStatus=== 4?"사슬악마": "아볼레스"}</option>
+              <option value="3">{mapStatus===1 ? "거대악어": mapStatus===2 ? "오거    ": mapStatus===3? "거미왕": mapStatus=== 4?"가시악마": "용"}</option>
+              <option value="4">{mapStatus===1 ? "코아틀": mapStatus===2 ? "혼돈의 즙": mapStatus===3? "오튜그": mapStatus=== 4?"천사": "종말의 용"}</option>
+            </select>
+          </div>
+          
+          <button type="submit" className="gm-control-btn my-1">Start Fight</button>
         </form>
       </div>
       {/* 아이템주기 */}
       <div className="gm-control-box">
-      <form action="" onSubmit={formikTwo.handleSubmit}>
-        <label id='playerUserCode-label' htmlFor="playerUserCode">Player</label>
-        <select name="playerUserCode" onChange={formikTwo.handleChange} value = {formikTwo.values.playerUserCode} id="playerUserCode">
-          {py1Code != '' ? <option value={1}>Player1</option>: null}
-          {py2Code != '' ? <option value={2}>Player2</option>: null}
-          {py3Code != '' ? <option value={3}>Player3</option>: null}
-          {py4Code != '' ? <option value={4}>Player4</option>: null}
-          {py5Code != '' ? <option value={5}>Player5</option>: null}
-        </select>
-        <label id='playerWeapon-label' htmlFor="playerWeapon">Weapon</label>
-        <input type="text" name="playerWeapon" onChange={formikTwo.handleChange} value= {formikTwo.values.playerWeapon}/>
-        <label id='playerArmor-label' htmlFor="playerArmor">Armor</label>
-        <input type="text" name="playerArmor" onChange={formikTwo.handleChange} value= {formikTwo.values.playerArmor}/>
-        <label id='playerSup1-label' htmlFor="playerSup1">Potion</label>
-        <select name="playerSup1" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup1} id="playerSup1">
-        <option value={99}>None</option>  
-          <option value={1}>Lv1</option>
-          <option value={2}>Lv2</option>
-          <option value={3}>Lv3</option>
-          <option value={4}>Lv4</option>
-          <option value={5}>Lv5</option>
-          <option value={6}>Lv6</option>    
-             
-        </select>
-        <label id='playerSup2-label' htmlFor="playerSup2">Antidote</label>
-        <select name="playerSup2" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup2} id="playerSup2">
-        <option value={99}>None</option> 
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option>
-          <option value={6}>6</option>    
+      <p>아이템 주기</p>
+      <form action="" onSubmit={formikTwo.handleSubmit} className="gm-control-form">
+        <div className="gm-control-label-box my-1">
+          <label id='playerUserCode-label' htmlFor="playerUserCode">Player</label>
+          <select name="playerUserCode" onChange={formikTwo.handleChange} value = {formikTwo.values.playerUserCode} id="playerUserCode">
+            {py1Code != '' ? <option value={1}>Player1</option>: null}
+            {py2Code != '' ? <option value={2}>Player2</option>: null}
+            {py3Code != '' ? <option value={3}>Player3</option>: null}
+            {py4Code != '' ? <option value={4}>Player4</option>: null}
+            {py5Code != '' ? <option value={5}>Player5</option>: null}
+          </select>
+        </div>
+        <div className="gm-control-label-box my-1">
+          <label id='playerWeapon-label' htmlFor="playerWeapon">Weapon</label>
+          <input type="text" name="playerWeapon" onChange={formikTwo.handleChange} value= {formikTwo.values.playerWeapon} className="gm-control-form-child"/>
+        </div>
+        <div className="gm-control-label-box my-1">
+          <label id='playerArmor-label' htmlFor="playerArmor">Armor</label>
+          <input type="text" name="playerArmor" onChange={formikTwo.handleChange} value= {formikTwo.values.playerArmor} className="gm-control-form-child"/>
+        </div>
+        
+        <div className="gm-control-label-box my-1">
+          <label id='playerSup1-label' htmlFor="playerSup1">Potion</label>
+          <select name="playerSup1" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup1} id="playerSup1" className="gm-control-form-child">
+          <option value={99}>None</option>  
+            <option value={1}>Lv1</option>
+            <option value={2}>Lv2</option>
+            <option value={3}>Lv3</option>
+            <option value={4}>Lv4</option>
+            <option value={5}>Lv5</option>
+            <option value={6}>Lv6</option>    
               
-        </select>
+          </select>
+        </div>
+        
+        <div className="gm-control-label-box my-1">
+          <label id='playerSup2-label' htmlFor="playerSup2">Antidote</label>
+          <select name="playerSup2" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup2} id="playerSup2" className="gm-control-form-child">
+          <option value={99}>None</option> 
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+            <option value={6}>6</option>    
+                
+          </select>
+        </div>
+        
+        <div className="gm-control-label-box my-1">
         <label id='playerSup3-label' htmlFor="playerSup3">Food</label>
-        <select name="playerSup3" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup3} id="playerSup3">
+        <select name="playerSup3" onChange={formikTwo.handleChange} value = {formikTwo.values.playerSup3} id="playerSup3" className="gm-control-form-child">
           <option value={99}>None</option>     
           <option value={1}>Lv1</option>
           <option value={2}>Lv2</option>
@@ -233,16 +279,19 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
           <option value={4}>Lv4</option>
           <option value={5}>Lv5</option>
           <option value={6}>Lv6</option>    
-          
         </select>
-        <button type="submit">submit</button>
+        </div>
+        
+        <button type="submit" className="gm-control-btn my-1">submit</button>
       </form>
       </div>
 
       {/* hp 관리 */}
       <div className="gm-control-box">
-      <form action="" onSubmit={formikThree.handleSubmit}>
-      <label id='monster-id-label' htmlFor="playerUserCode">Player</label>
+        <p>HP 관리</p>
+      <form action="" onSubmit={formikThree.handleSubmit} className="gm-control-form">
+      <div className="gm-control-label-box my-1">
+      <label id='monster-id-label' htmlFor="userNum">Player</label>
         <select name="userNum" onChange={formikThree.handleChange} value = {1} id="userNum">
           {py1Code != '' ? <option value={1}>Player1</option>: null}
           {py2Code != '' ? <option value={2}>Player2</option>: null}
@@ -250,17 +299,23 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
           {py4Code != '' ? <option value={4}>Player4</option>: null}
           {py5Code != '' ? <option value={5}>Player5</option>: null}
         </select>
-        <input type="number" name="userHpChange" onChange={formikThree.handleChange} value= {formikThree.values.userHpChange}/>
-        <button type="submit">submit</button>
+      </div>
+      <div className="gm-control-label-box my-1">
+        <label htmlFor="userHpChange">HP 회복 / 감소량</label>
+        <input id="userHpChange" type="number" className="gm-control-form-child" name="userHpChange" onChange={formikThree.handleChange} value= {formikThree.values.userHpChange}/>
+      </div>
+        
+        <button type="submit" className="my-1 gm-control-btn">submit</button>
       </form>
       </div>
 
       {/* 스탯 주기 실행 */}
-      <div className="gm-control-box">
-        <div className="stat-point-btn" onClick={() => setStatPoint()}>
+      <div className="gm-control-box" id="stat-point-btn" onClick={() => setStatPoint()}>
+        <div className="stat-point-btn" >
           <span>스탯 포인트 부여</span>
         </div>
       </div>
+      <div className="empty-5"></div>
     </div>
   )
 }
