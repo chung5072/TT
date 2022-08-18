@@ -15,6 +15,7 @@ interface meetingState  {
   Gm: any
   participated: boolean
   gameIsStart:boolean
+  totalPage:number
 }
 
 export const initialState: meetingState = {
@@ -37,6 +38,7 @@ export const initialState: meetingState = {
     userPhone: "",},
   participated: false,
   gameIsStart: false,
+  totalPage: 0,
 }
 
 export const meetingSlice = createSlice({
@@ -51,17 +53,17 @@ export const meetingSlice = createSlice({
     },
 
     getMeetingDetail: (state:meetingState, action) => {
-      console.log(action.payload.pyUserResList)
-      state.meetingCode = action.payload.meetingCode
-      state.meetingTitle = action.payload.meetingTitle
-      state.meetingContent = action.payload.meetingContent
-      state.meetingAuthor = action.payload.meetingAuthor
-      state.meetingDate = action.payload.meetingView
-      state.meetingPyNum = action.payload.meetingPyNum
-      state.meetingPyTime = action.payload.meetingPyTime
-      state.roomCode = action.payload.roomInfoCode
-      if (action.payload.gmUserRes != null) {
-        state.Gm = action.payload.gmUserRes
+      console.log(action.payload.content.pyUserResList)
+      state.meetingCode = action.payload.content.meetingCode
+      state.meetingTitle = action.payload.content.meetingTitle
+      state.meetingContent = action.payload.content.meetingContent
+      state.meetingAuthor = action.payload.content.meetingAuthor
+      state.meetingDate = action.payload.content.meetingView
+      state.meetingPyNum = action.payload.content.meetingPyNum
+      state.meetingPyTime = action.payload.content.meetingPyTime
+      state.roomCode = action.payload.content.roomInfoCode
+      if (action.payload.content.gmUserRes != null) {
+        state.Gm = action.payload.content.gmUserRes
       }
       else {
         state.Gm = {userCode: 0,
@@ -72,8 +74,9 @@ export const meetingSlice = createSlice({
           userPhone: "",}
       }
       
-      state.playerList = action.payload.pyUserResList
-      state.gameIsStart = action.payload.meetingGameIsStart
+      state.playerList = action.payload.content.pyUserResList
+      state.gameIsStart = action.payload.content.meetingGameIsStart
+      state.totalPage = action.payload.totalPages
     },
 
     editMeetingContent: (state:meetingState, action) => {
@@ -89,10 +92,13 @@ export const meetingSlice = createSlice({
     },
     setNotParticipated: (state:meetingState) => {
       state.participated = false
+    },
+    setTotalPages: (state:meetingState, action) => {
+      state.totalPage = action.payload.totalPages
     }
   }
 })
 
 const { actions } = meetingSlice
-export const { getMeetingList, getMeetingDetail, setParticipated,setNotParticipated } = actions
+export const { getMeetingList, getMeetingDetail, setParticipated,setNotParticipated, setTotalPages} = actions
 export default meetingSlice.reducer
