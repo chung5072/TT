@@ -197,7 +197,7 @@ export default function MeetingDetail() {
           <Navbar />
           <div  className='detail-container'>           
             <h1 className='detail-title'>{title}</h1>                  
-            <form action="" onSubmit={formik.handleSubmit}>
+            <form action="" onSubmit={formik.handleSubmit} className="detail-form">
               <div className='postedby'>
                 <label className='author-tag' htmlFor="meetingAuthor">POSTED BY | </label>
                 <div className='author-name'>
