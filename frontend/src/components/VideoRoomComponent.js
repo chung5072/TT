@@ -19,7 +19,7 @@ class VideoRoomComponent extends Component {
             // : 'https://' + window.location.hostname + ':4443';
         this.OPENVIDU_SERVER_SECRET = this.props.openviduSecret ? this.props.openviduSecret : 'MY_SECRET';
         this.hasBeenUpdated = false;
-        let userName = ''
+        let userName = '닉네임'
         this.remotes = [];
         this.localUserAccessAllowed = false;
         this.state = {
@@ -319,7 +319,7 @@ class VideoRoomComponent extends Component {
             <div className="video-container">
                  {this.state.session === undefined ? (
                     <div className='join-btnbox'>
-                        <button className='join-btn' onClick={this.joinSession}>카메라 연결</button>
+                        <button className='join-btn' onClick={this.joinSession}>Connect</button>
                     </div>
                  ) :
                 <div id="session">

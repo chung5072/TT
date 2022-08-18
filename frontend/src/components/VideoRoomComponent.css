@@ -70,16 +70,37 @@
   height: 100%;
 }
 .join-btn {
-  position: relative;
-  background-color: #262626;
-  color: white;
-  border-radius: 20px;
+  /* position: relative;
+  background-color: #262626; */
+  /* color: white; */
+  /* border-radius: 20px; */
   margin: 5px;
   width: 20%;
   height: 10%;
   left: 40%;
   top: 40%;
+  position: relative;
+  border: none;
+  min-width: 200px;
+  min-height: 50px;
+  background: linear-gradient(
+      90deg,
+      rgb(116, 136, 133) 0%,
+      rgb(19, 24, 23) 100%
+  );
+  border-radius: 1000px;
+  color: rgb(203, 216, 216);
+  cursor: pointer;
+  box-shadow: 12px 12px 24px rgba(43, 56, 55, 0.64);
+  font-weight: 700;
+  transition: 0.3s;
 }
+
+.join-btn:hover {
+  transform: scale(1.2);
+}
+
+
 
 #footer {
   background: none;
