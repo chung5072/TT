@@ -2,6 +2,7 @@ package com.tt9ood.api.service;
 
 import com.tt9ood.api.dto.MeetingDto;
 import com.tt9ood.db.entity.Meeting;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -12,7 +13,8 @@ public interface MeetingService {
     // 조회
     // 전체 구인 게시글 조회
     List<MeetingDto> readAllMeeting();
-    List<MeetingDto> readAllMeetingListWithIndex(int index);
+    // 전체 게시글 페이징 조회
+    Page<Meeting> readAllMeetingWithPaging(int page, int size);
 
     // 특정 구인 게시글 조회
     // 특정 코드 구인 게시글 조회
