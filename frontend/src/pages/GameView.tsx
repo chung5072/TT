@@ -3,7 +3,7 @@ import GamePlay from "../components/Game/GamePlay"
 import CameraView from "../components/Game/CameraView"
 import MyController from "../components/Game/MyController"
 import SetProfile from "../components/Game/SetProfile"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../app/store"
@@ -13,6 +13,8 @@ import { setMonster } from "../features/Game/MonsterSlice"
 import { setStatus } from "../features/Game/LeftSlice"
 import { setSignalHistory } from "../features/Game/SignalSlice"
 import "./GameView.css"
+//* 누군가 죽었을 때 뜨는 모달창
+import "../components/GamePlay/SomeoneDead.css"
 
 //* 서버와 메세지 통신을 위해 SOCK JS 및 STOMP JS 도입
 //* 참고사이트 : http://jmesnil.net/stomp-websocket/doc/
@@ -20,6 +22,7 @@ import SockJS from "sockjs-client";
 import webstomp from "webstomp-client";
 import axios from "axios"
 import { getRoomInfo, setGmCondition } from "../features/room/RoomSlice"
+import SomeoneDead from "../components/GamePlay/SomeoneDead"
 
 //! 배포 서버용
 // const serverUrl = '/api' + '/signal'; 
@@ -46,8 +49,16 @@ type diceResult = {
   diceCnt : number
 }
 
-export default function GameView() {
-  
+//* 캐릭터의 체력에 변화가 있을 때 로그에 쓰이는 타입
+type changeCharHp = {
+  playerUserCode : number,
+  charName : string,
+  mapCode : number,
+  monsterCode : number,
+  userHpChange : number
+}
+
+export default function GameView() {  
   //* 서버에 메세지 통신을 위한 sock js 및 stomp js
   let sockJS = new SockJS(`${serverUrl}/webSocket`); //! /webSocket : 클라이언트에서 서버로 접속하는 엔드포인트
   let client = webstomp.over(sockJS);
@@ -62,6 +73,10 @@ export default function GameView() {
   const dispatch = useAppDispatch()
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
   const userNickname = localStorage.getItem('user_nickname') as string;
+
+  //* 누군가 죽었을 때 뜨는 모달창
+  const [modalOpen, setModalOpen] = useState(false);
+  let [additionalLog, setAdditionalLog] = useState('');
 
   useEffect(() => {
     axios({
@@ -111,19 +126,25 @@ export default function GameView() {
     ) 
     {
       let areaName = data.body;
+      const areaObj = {
+        name : areaName
+      };
+      console.log("지역 이름:",areaName);      
+      console.log(typeof areaName);
+      
 
-      const areaStatMap = new Map();
-      areaStatMap.set("Start", 0);
-      areaStatMap.set("Swamp", 1);
-      areaStatMap.set("Forest", 2);
-      areaStatMap.set("Cavern", 3);
-      areaStatMap.set("Devil", 4);
-      areaStatMap.set("Mountain", 5);
+      // const areaStatMap = new Map();
+      // areaStatMap.set('0', "Start");
+      // areaStatMap.set('1', "Swamp");
+      // areaStatMap.set('2', "Forest");
+      // areaStatMap.set('3', "Cavern");
+      // areaStatMap.set('4', "Devil");
+      // areaStatMap.set('5', "Mountain");
 
-      //* 지역 번호 세팅
-      console.log("지역 번호", areaStatMap.get(areaName));
+      // // //* 지역 번호 세팅
+      // console.log("지역 번호", areaStatMap.get(areaName));
 
-      dispatch(setMapState(areaStatMap.get(areaName)))
+      dispatch(setMapState(areaObj));
       
       //* gm이 선택한 지역의 전체 이름
       // Map - 지역 이름
@@ -256,6 +277,56 @@ export default function GameView() {
 
       dispatch(setSignalHistory(diceLogMessage));
     }
+    //* 캐릭터의 체력과 관련된 변화에 대한 로그값
+    else if (data.body.includes("userHpChange")) {
+      const changeCharHp : changeCharHp = JSON.parse(data.body);
+
+      const monsterKind = new Map();
+      monsterKind.set(1, ["","코볼트", "도마뱀인간", "거대악어", "코아틀"]);
+      monsterKind.set(2, ["","코카트리스", "그리폰", "오거", "혼돈의 즙"]);
+      monsterKind.set(3, ["","드워프 전사", "지하인", "거미왕", "오튜그"]);
+      monsterKind.set(4, ["","인면충", "사슬악마", "가시악마", "천사"]);
+      monsterKind.set(5, ["","미노타우르스", "아볼레스", "용", "종말의 용"]);
+
+      let charHpLog = ``;
+
+      if (changeCharHp.userHpChange > 0) {
+        // 회복
+        charHpLog = `${changeCharHp.charName} 유저가 ${changeCharHp.userHpChange}만큼 회복했습니다.`;
+        
+      } else {
+        // 데미지
+        console.log("지역위치:", changeCharHp.mapCode);
+        
+        const monsterCode = typeof changeCharHp.monsterCode == 'string' ? parseInt(changeCharHp.monsterCode) : changeCharHp.monsterCode;
+        console.log("몬스터 코드:",monsterCode);        
+        
+        charHpLog = `${changeCharHp.charName} 유저가 ${(monsterKind.get(changeCharHp.mapCode))[monsterCode]}에게 ${Math.abs(changeCharHp.userHpChange)}만큼 데미지를 받았습니다.`;
+      }
+
+      dispatch(setSignalHistory(charHpLog));
+
+      axios({
+        method: 'get',
+        url: '/api' + `/player/${changeCharHp.playerUserCode}`,
+      })
+      .then( res => {
+        //* 15% 이하의 체력이 남아있을 때
+        if (res.data.playerHP === 0) {
+          setAdditionalLog(`${changeCharHp.charName} 유저가 루미콘 강을 건넜습니다.`);
+          setModalOpen(true);
+        }
+        //* 15% 이하의 체력이 남아있을 때
+        if ((((res.data.playerHP)/(res.data.playerMaxHP)) * 100 < 15) && (res.data.playerHP > 0)) {
+          additionalLog = `${changeCharHp.charName} 유저에게 죽음의 그림자가 드리워집니다.`;
+        }
+
+        dispatch(setSignalHistory(additionalLog));
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
+    }
     //* 유저가 방에 입장한 로그 값
     else 
     {
@@ -265,6 +336,14 @@ export default function GameView() {
       dispatch(setSignalHistory(playerEnter));
     }
   }
+
+  //* 누군자 죽었을 때 뜨는 모달창
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className="game-view">
@@ -287,6 +366,7 @@ export default function GameView() {
         client = {client}
         gameId = {gameId}
       />
+      <SomeoneDead open={modalOpen} close={closeModal} result={additionalLog} header="X를 눌러 조의를 표하십시오." />
     </div>
   )
 }

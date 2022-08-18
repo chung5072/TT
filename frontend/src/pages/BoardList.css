@@ -39,6 +39,7 @@ td {
     text-align: center;
     font-size: small;
 }
+
 tr {
     height: 43px;
     border-radius: 20px;
@@ -47,6 +48,23 @@ tr {
     box-shadow: 0 0 0 1px #D9AA52;
     border-spacing: 0px 15px;
 }
+
+
+.list-names {
+    height: 43px;
+    border-radius: 20px;
+    margin: 3px;
+    border-style: hidden;
+    box-shadow: 0 0 0 1px #D9AA52;
+    border-spacing: 0px 15px;
+    cursor: pointer;
+}
+
+
+.list-names:hover {
+    opacity: 60%;
+}
+
 
 #search-btn, #create-btn {
     font-family: 'NOTO Sans';
@@ -76,7 +94,7 @@ tr {
 
 #search-input {
     border-radius: 20px;
-    width: 70%;
+    width: 60%;
     height: 20px;
     padding: 1.5%;
 }
@@ -84,3 +102,4 @@ tr {
 .search-group {
     width: 70%;
 }
+

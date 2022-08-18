@@ -7,6 +7,13 @@
     background: url(../../assets/image/desert-4779167222.png);
     background-size: cover;
     background-attachment: fixed;
+	height: 100vh;
+}
+
+#signup-container {
+	background-color: #262626;
+	text-align: center;
+	height: 100vh;
 }
 
 #signup-form {
@@ -18,7 +25,7 @@
 }
 
 #all-signup {
-    padding-top: 5%;
+	padding-top: 3%;
     padding-left: 40%;
 }
 

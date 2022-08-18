@@ -108,11 +108,11 @@ const InfoList = () => {
             <tbody>
           {shareList.map((share : any, idx: number) => {
               return (
-                  <tr key={idx}>
+                  <tr className='list-names' key={idx} onClick={() => navigate('/share/'+`${share.shareCode}`)}>
                       <td>
                         {shareList.length - idx}
                       </td>
-                      <td><Link to={"/share/" + `${share.shareCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{share.shareTitle}</Link></td>
+                      <td>{share.shareTitle}</td>
                       <td>
                         {share.shareAuthor}
                       </td>

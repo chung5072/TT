@@ -293,27 +293,18 @@ export default function SetProfile({client, gameId} : {client : any, gameId : an
               </div>
               <div className="job-info-skill-box">
                 <div className="job-info-skill">
-                  <span>{jobInfo.skill[0][0]} : {jobInfo.skill[0][1]}</span>
-                  <span>{jobInfo.skill[0][2]}</span>
-                </div>
-                <div className="job-info-skill">
-                  <span>{jobInfo.skill[1][0]} : {jobInfo.skill[1][1]}</span>
-                  <span>{jobInfo.skill[1][2]}</span>
-                </div>
-                <div className="job-info-skill">
-                  <span>{jobInfo.skill[2][0]} : {jobInfo.skill[2][1]}</span>
-                  <span>{jobInfo.skill[2][2]}</span>
+                  <span>{jobInfo.skill[0]}</span>
                 </div>
               </div>
               <div className="job-info-value-box">
                 <div className="job-info-value">
-                  <span>Good : {jobInfo.value.good}</span>
+                  <span>선 : {jobInfo.value.good}</span>
                 </div>
                 <div className="job-info-value">
-                  <span>Evil : {jobInfo.value.evil}</span>
+                  <span>악 : {jobInfo.value.evil}</span>
                 </div>
                 <div className="job-info-value">
-                  <span>Neutral : {jobInfo.value.neutral}</span>
+                  <span>중립 : {jobInfo.value.neutral}</span>
                 </div>
               </div>
             </div>

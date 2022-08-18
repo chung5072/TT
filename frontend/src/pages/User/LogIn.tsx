@@ -100,7 +100,7 @@ export default function Login() {
 
   // HTML
     return (
-      <div className='login-background' id='container'>
+      <div className='login-background' id='login-container'>
         <div id='all-login'>
           <div id='login-box'>
             <h1 id='login-text'>Login</h1>

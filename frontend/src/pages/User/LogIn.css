@@ -12,6 +12,14 @@
     height: 70%;
 }
 
+
+#login-container {
+  background-color: #262626;
+  text-align: center;
+	height: 100vh;
+}
+
+
 #all-login {
     padding-top: 7%;
     padding-left: 40%;

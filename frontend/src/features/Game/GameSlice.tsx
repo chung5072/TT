@@ -36,6 +36,8 @@ const gameSlice = createSlice({
         },
         setMapState: (state:gameData, action) => {
             const map = action.payload.name
+            console.log("받은값:",map);
+            
             if (map ==='Swamp') {
                 state.mapStatus = 1
             }
@@ -54,6 +56,9 @@ const gameSlice = createSlice({
             if (map ==='Devil') {
                 state.mapStatus = 4
             }
+
+            console.log("slice에서 지역 번호",state.mapStatus);
+            
             
         },
         setWindowSize: (state:gameData, action) => {

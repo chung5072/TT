@@ -9,13 +9,13 @@ import com.tt9ood.db.repository.MeetingRepository;
 import com.tt9ood.db.repository.RoomInfoRepository;
 import com.tt9ood.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service("meetService")
 public class MeetingServiceImpl implements MeetingService {
@@ -71,6 +71,18 @@ public class MeetingServiceImpl implements MeetingService {
             meetingDtoList.add(meetingDto);
         }
         return meetingDtoList;
+    }
+
+    /**
+     * 페이징 조회
+     * @param page 페이지
+     * @param size 크기 - 10고정
+     * @return
+     */
+    @Override
+    public Page<Meeting> readAllMeetingWithPaging(int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return meetingRepository.findAllWithSort(pageRequest);
     }
 
     /**

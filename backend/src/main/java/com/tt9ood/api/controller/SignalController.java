@@ -103,6 +103,12 @@ public class SignalController {
 
             simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , signalMessage);
         }
+        // 체력의 변화가 생긴 로그
+        else if (signalMessage.contains("userHpChange")) {
+            System.out.println("체력의 변화값[userHpChange] = " + signalMessage);
+
+            simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , signalMessage);
+        }
         // 입력받은 메세지에 coords / monsterId / playerClassName 값이 들어있지 않다면
         else {
             System.out.println("입장한 유저 정보[usernickname] = " + signalMessage);
