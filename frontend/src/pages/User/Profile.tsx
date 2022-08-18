@@ -7,6 +7,7 @@ import { RootState } from "../../app/store"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import './Profile.css'
+import Navbar from "../../components/Navbar";
 
 
 export default function Profile() {
@@ -42,6 +43,7 @@ export default function Profile() {
 
     return (
         <div id="profile-page">
+          <Navbar />
           <div className="profile-box">
             <div className="profile-nickname">              
               <div>{userNickname} 님, 안녕하세요!</div>    

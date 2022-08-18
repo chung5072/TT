@@ -1,20 +1,19 @@
 #profile-page {
   background-color: #262626;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 }
 
 .profile-box {
   margin:0 auto;
   width: 30%;
-  height: 80vh;
+  height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10%;
+  padding: 5%;
   color: #d9aa52;
 }
-
 
 .profile-nickname {
   color: #d9aa52;
