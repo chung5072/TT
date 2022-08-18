@@ -254,13 +254,14 @@
 }
 
 .job-info-skill {
-  font-size: 0.5em;
+  font-size: 1em;
 }
 
 .job-info-value {
-  font-size: 0.5em;
+  font-size: 1em;
 }
 
 #playerValue {
   height: 35%;
+  font-size: 1.5em;
 }
