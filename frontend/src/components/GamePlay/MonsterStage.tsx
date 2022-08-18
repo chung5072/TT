@@ -1,3 +1,26 @@
+import './MonsterStage.css'
+import kobolt from '../../assets/image/monster/kobolt.png'
+import kokatris from '../../assets/image/monster/kokatris.png'
+import dwarf from '../../assets/image/monster/dwarf.png'
+import bugman from '../../assets/image/monster/bugman.png'
+import minotauros from '../../assets/image/monster/minotauros.png'
+import domabaemman from '../../assets/image/monster/domabaemman.png'
+import griffin from '../../assets/image/monster/griffin.png'
+import jihain from '../../assets/image/monster/jihain.png'
+import chaindevil from '../../assets/image/monster/chaindevil.png'
+import fish from '../../assets/image/monster/fish.png'
+import crocodile from '../../assets/image/monster/crocodile.png'
+import ogre from '../../assets/image/monster/ogre.png'
+import spiderking from '../../assets/image/monster/spiderking.png'
+import devil from '../../assets/image/monster/devil.png'
+import dragon from '../../assets/image/monster/dragon.png'
+import koatle from '../../assets/image/monster/koatle.png'
+import chaos from '../../assets/image/monster/chaos.png'
+import otuge from '../../assets/image/monster/otuge.png'
+import angel from '../../assets/image/monster/angel.png'
+import enddragon from '../../assets/image/monster/enddragon.png'
+
+
 type monsterStateType =  {
   mapArea: number;
   monsterId: number;
@@ -20,14 +43,23 @@ export default function MonsterStage({monsterState} : {monsterState : monsterSta
   
   return (
     // html
-    <div>
-      <h1>몬스터 정보</h1>
-      <hr />
+    <div id="monster-stage-box">
+      <div id="moster-stage-info-box">
+        <h1>몬스터 정보</h1>
+        <hr />
+      </div>
+      
       {
         monsterState.mapArea !== 0 ?
-        <div>
-          <p style={{"color" : "white"}}>몬스터 이름 : {monsterKind.get(monsterState.mapArea)[monsterState.monsterId]}</p>
-          <p style={{"color" : "white"}}>몬스터 숫자 : {monsterState.monsterNum}</p>
+        <div id="monster-stage-inner-box">
+          <div id="monster-stage-inner-info-box">
+            <p style={{"color" : "white"}}>몬스터 이름 : {monsterKind.get(monsterState.mapArea)[monsterState.monsterId]}</p>
+            <p style={{"color" : "white"}}>몬스터 숫자 : {monsterState.monsterNum}</p>
+          </div>
+          <div id="monster-stage-pic-box">
+            {monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="코볼트"? <img className='stage-pic' src={kobolt}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="도마뱀인간"? <img className='stage-pic' src={domabaemman}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="거대악어"? <img className='stage-pic' src={crocodile}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="코아틀"? <img className='stage-pic' src={koatle}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="코카트리스"? <img className='stage-pic' src={kokatris}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="그리폰"? <img className='stage-pic' src={griffin}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="오거"? <img className='stage-pic' src={ogre}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="혼돈의 즙"? <img className='stage-pic' src={chaos}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="드워프 전사"? <img className='stage-pic' src={dwarf}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="지하인"? <img className='stage-pic' src={jihain}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="거미왕"? <img className='stage-pic' src={spiderking}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="오튜그"? <img className='stage-pic' src={otuge}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="인면충"? <img className='stage-pic' src={bugman}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="사슬악마"? <img className='stage-pic' src={chaindevil}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="가시악마"? <img className='stage-pic' src={devil}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="천사"? <img className='stage-pic' src={angel}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="미노타우르스"? <img className='stage-pic' src={minotauros}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="아볼레스"? <img className='stage-pic' src={fish}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="용"? <img className='stage-pic' src={dragon}></img>: <img className='stage-pic' src={enddragon}></img>}
+          </div>
+          
         </div>
         :
         null

@@ -97,12 +97,13 @@
 }
  */
 
-.btn-11 {
-    border: none;
-    background: rgb(255,27,0);
-      background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
-      color: #fff;
-      overflow: hidden;
+.btn-11#my-controller-exit-btn {
+    border-radius: 10px;
+    background: rgba(255,27,0,0);
+      color: #d9aa52;
+    border-color: #d9aa52;
+    border: solid;
+    font-size: 1.2em;
   }
   .btn-11:hover {
       text-decoration: none;
