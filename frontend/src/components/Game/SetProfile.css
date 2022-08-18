@@ -263,5 +263,9 @@
 
 #playerValue {
   height: 35%;
-  font-size: 1.5em;
+}
+
+#warrior-img, #wizard-img, #hunter-img, #thief-img, #priest-img {
+  width: 40px;
+  height: 40px;
 }
