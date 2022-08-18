@@ -18,14 +18,14 @@
 }
 
 #monster-stage-info-box {
-    height: 20%;
+    height: 40%;
 }
 
 #monster-stage-pic-box {
     display:flex;
     justify-content: center;
     align-items: center;
-    height: 80%;
+    height: 60%;
 }
 
 #monster-stage-inner-info-box {
@@ -33,4 +33,8 @@
 }
 .stage-pic {
     width: 60%;
+}
+
+#human-face {
+    height: 95%;
 }

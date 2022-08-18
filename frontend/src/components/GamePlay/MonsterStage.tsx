@@ -36,6 +36,28 @@ export default function MonsterStage({monsterState} : {monsterState : monsterSta
   monsterKind.set(3, ["","드워프 전사", "지하인", "거미왕", "오튜그"]);
   monsterKind.set(4, ["","인면충", "사슬악마", "가시악마", "천사"]);
   monsterKind.set(5, ["","미노타우르스", "아볼레스", "용", "종말의 용"]);
+
+  const monsterHp = new Map();
+  monsterHp.set(1, ["",3, 5, 9, 12]);
+  monsterHp.set(2, ["",5, 10, 10, 18]);
+  monsterHp.set(3, ["",7, 10, 15, 20]);
+  monsterHp.set(4, ["",12, 12, 16, 18]);
+  monsterHp.set(5, ["",13, 15, 16, 21]);
+
+  const monsterAttack = new Map();
+  monsterAttack.set(1, ["","D6", "D6", "D6 + 2", "D6 방어력무시"]);
+  monsterAttack.set(2, ["","D6", "D6 + 3", "D6 + 4", "D6 + 2 방어력무시"]);
+  monsterAttack.set(3, ["","D6", "D6", "D6 + 4 ", "D6 + 3"]);
+  monsterAttack.set(4, ["","D6 * 2 중 낮은 수치", "D6 +1 방어력무시", "D6 + 3", "D6 * 2중 높은 수치 + 4 방어력무시"]);
+  monsterAttack.set(5, ["","D6 + 1", "D6 + 3", "D6 * 2중 높은 수치 + 5", "D6 * 2중 높은 수치 + &"]);
+
+  const monsterArmor = new Map();
+  monsterArmor.set(1, ["",1, 2, 2, 2]);
+  monsterArmor.set(2, ["",1, 1, 1, 1]);
+  monsterArmor.set(3, ["",2, 1, 3, 1]);
+  monsterArmor.set(4, ["",0, 3, 3, 4]);
+  monsterArmor.set(5, ["",1, 0, 5, 5]);
+
   // 테스트 출력
   // console.log("선택한 지역:",monsterState.mapArea);
   // console.log("해당 지역에 등장한 몬스터 아이디",monsterState.monsterId);
@@ -55,9 +77,12 @@ export default function MonsterStage({monsterState} : {monsterState : monsterSta
           <div id="monster-stage-inner-info-box">
             <p style={{"color" : "white"}}>몬스터 이름 : {monsterKind.get(monsterState.mapArea)[monsterState.monsterId]}</p>
             <p style={{"color" : "white"}}>몬스터 숫자 : {monsterState.monsterNum}</p>
+            <p style={{"color" : "white"}}>몬스터 HP : {monsterHp.get(monsterState.mapArea)[monsterState.monsterId]}</p>
+            <p style={{"color" : "white"}}>몬스터 방어력 : {monsterArmor.get(monsterState.mapArea)[monsterState.monsterId]}</p>
+            <p style={{"color" : "white"}}>몬스터 공격력 : {monsterAttack.get(monsterState.mapArea)[monsterState.monsterId]}</p>
           </div>
           <div id="monster-stage-pic-box">
-            {monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="코볼트"? <img className='stage-pic' src={kobolt}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="도마뱀인간"? <img className='stage-pic' src={domabaemman}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="거대악어"? <img className='stage-pic' src={crocodile}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="코아틀"? <img className='stage-pic' src={koatle}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="코카트리스"? <img className='stage-pic' src={kokatris}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="그리폰"? <img className='stage-pic' src={griffin}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="오거"? <img className='stage-pic' src={ogre}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="혼돈의 즙"? <img className='stage-pic' src={chaos}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="드워프 전사"? <img className='stage-pic' src={dwarf}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="지하인"? <img className='stage-pic' src={jihain}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="거미왕"? <img className='stage-pic' src={spiderking}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="오튜그"? <img className='stage-pic' src={otuge}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="인면충"? <img className='stage-pic' src={bugman}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="사슬악마"? <img className='stage-pic' src={chaindevil}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="가시악마"? <img className='stage-pic' src={devil}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="천사"? <img className='stage-pic' src={angel}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="미노타우르스"? <img className='stage-pic' src={minotauros}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="아볼레스"? <img className='stage-pic' src={fish}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="용"? <img className='stage-pic' src={dragon}></img>: <img className='stage-pic' src={enddragon}></img>}
+            {monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="코볼트"? <img className='stage-pic' src={kobolt}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="도마뱀인간"? <img className='stage-pic' src={domabaemman}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="거대악어"? <img className='stage-pic' src={crocodile}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="코아틀"? <img className='stage-pic' src={koatle}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="코카트리스"? <img className='stage-pic' src={kokatris}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="그리폰"? <img className='stage-pic' src={griffin}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="오거"? <img className='stage-pic' src={ogre}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="혼돈의 즙"? <img className='stage-pic' src={chaos}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="드워프 전사"? <img className='stage-pic' src={dwarf}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="지하인"? <img className='stage-pic' src={jihain}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="거미왕"? <img className='stage-pic' src={spiderking}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="오튜그"? <img className='stage-pic' src={otuge}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="인면충"? <img className='stage-pic' id="human-face" src={bugman}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="사슬악마"? <img className='stage-pic' src={chaindevil}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="가시악마"? <img className='stage-pic' src={devil}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="천사"? <img className='stage-pic' src={angel}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="미노타우르스"? <img className='stage-pic' src={minotauros}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="아볼레스"? <img className='stage-pic' src={fish}></img>: monsterKind.get(monsterState.mapArea)[monsterState.monsterId] ==="용"? <img className='stage-pic' src={dragon}></img>: <img className='stage-pic' src={enddragon}></img>}
           </div>
           
         </div>
