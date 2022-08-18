@@ -27,7 +27,7 @@
 #About {
   background-color: #262626;
   width: 100vw;
-  height: 250vh;
+  height: 270vh;
 }
 
 .Content {
@@ -43,7 +43,7 @@
   font-size: 5em;
   font-weight: bold;
   animation: fadeIn 1s ease-in-out;
-  margin-top: 10%;
+  margin-top: 5%;
   margin-bottom: 10%;
   text-align: center;
 }
