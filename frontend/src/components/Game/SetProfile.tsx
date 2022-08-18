@@ -10,6 +10,7 @@ import "./SetProfile.css"
 import { hunter, priest, thief, warrior,wizard } from "./ProfileInfoList"
 import axios from "axios"
 
+
 export default function SetProfile({client, gameId} : {client : any, gameId : any}) {
   const dispatch = useAppDispatch()
   const chooseLevel = useSelector((state: RootState) => state.profile.chooseLevel)
