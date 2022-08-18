@@ -15,6 +15,7 @@ import hunterimg from '../../assets/image/jobs/hunter.png'
 import priestimg from '../../assets/image/jobs/priest.png'
 import thiefimg from '../../assets/image/jobs/thief.png'
 
+
 export default function SetProfile({client, gameId} : {client : any, gameId : any}) {
   const dispatch = useAppDispatch()
   const chooseLevel = useSelector((state: RootState) => state.profile.chooseLevel)
