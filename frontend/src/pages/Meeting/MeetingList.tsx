@@ -100,11 +100,12 @@ const MeetingList = () => {
             <tbody>
           {meetList.slice(0).reverse().map((meet : any, idx : number) => {
               return (
-                  <tr key={idx}>
+                  <tr className='list-names' key={idx} onClick={() => navigate('/meeting/'+`${meet.meetingCode}`)}>
                       <td>
                         {meetList.length - idx}
                       </td>
-                      <td><Link to={"/meeting/" + `${meet.meetingCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{meet.meetingTitle}</Link></td>
+                      {/* <td><Link to={"/meeting/" + `${meet.meetingCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{meet.meetingTitle}</Link></td> */}
+                      <td>{meet.meetingTitle}</td>
                       <td>
                         {meet.meetingAuthor}
                       </td>

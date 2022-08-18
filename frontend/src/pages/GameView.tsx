@@ -126,19 +126,25 @@ export default function GameView() {
     ) 
     {
       let areaName = data.body;
+      const areaObj = {
+        name : areaName
+      };
+      console.log("지역 이름:",areaName);      
+      console.log(typeof areaName);
+      
 
-      const areaStatMap = new Map();
-      areaStatMap.set("Start", 0);
-      areaStatMap.set("Swamp", 1);
-      areaStatMap.set("Forest", 2);
-      areaStatMap.set("Cavern", 3);
-      areaStatMap.set("Devil", 4);
-      areaStatMap.set("Mountain", 5);
+      // const areaStatMap = new Map();
+      // areaStatMap.set('0', "Start");
+      // areaStatMap.set('1', "Swamp");
+      // areaStatMap.set('2', "Forest");
+      // areaStatMap.set('3', "Cavern");
+      // areaStatMap.set('4', "Devil");
+      // areaStatMap.set('5', "Mountain");
 
-      //* 지역 번호 세팅
-      console.log("지역 번호", areaStatMap.get(areaName));
+      // // //* 지역 번호 세팅
+      // console.log("지역 번호", areaStatMap.get(areaName));
 
-      dispatch(setMapState(areaStatMap.get(areaName)))
+      dispatch(setMapState(areaObj));
       
       //* gm이 선택한 지역의 전체 이름
       // Map - 지역 이름

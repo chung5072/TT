@@ -63,7 +63,7 @@ export default function SignUp() {
     console.log('아아아아앙ㅜㅜ')
   }
     return (
-      <div className="signup-background" id='container'>
+      <div className="signup-background" id='signup-container'>
         <div id='all-signup'>
           <div id='signup-form'>
             <h1 id='signup-text'>SignUp</h1>

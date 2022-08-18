@@ -102,11 +102,11 @@ const NoticeList = () => {
             <tbody>
           {noticeList.map((notice : any, idx : number) => {
               return (
-                  <tr key={idx}>
+                  <tr className='list-names' key={idx} onClick={() => navigate('/notice/'+`${notice.noticeCode}`)}>
                       <td>
                         {noticeList.length - idx}
                       </td>
-                      <td><Link to={"/notice/" + `${notice.noticeCode}`} style={{ textDecoration: 'none', color: '#d9aa52' }}>{notice.noticeTitle}</Link></td>
+                      <td>{notice.noticeTitle}</td>
                       <td>
                         {notice.noticeAuthor}
                       </td>
