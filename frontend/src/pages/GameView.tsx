@@ -46,6 +46,14 @@ type diceResult = {
   diceCnt : number
 }
 
+//* 캐릭터의 체력에 변화가 있을 때 로그에 쓰이는 타입
+type changeCharHp = {
+  charName : string,
+  mapCode : number,
+  monsterCode : number,
+  userHpChange : number
+}
+
 export default function GameView() {
   
   //* 서버에 메세지 통신을 위한 sock js 및 stomp js
@@ -255,6 +263,35 @@ export default function GameView() {
       const diceLogMessage = `${diceResult.charName} 유저가 ${diceResult.diceCnt} 개의 주사위를 굴려서 ${diceResult.diceResult}의 결과값이 나왔습니다.`;
 
       dispatch(setSignalHistory(diceLogMessage));
+    }
+    //* 캐릭터의 체력과 관련된 변화에 대한 로그값
+    else if (data.body.includes("userHpChange")) {
+      const changeCharHp : changeCharHp = JSON.parse(data.body);
+
+      const monsterKind = new Map();
+      monsterKind.set(1, ["","코볼트", "도마뱀인간", "거대악어", "코아틀"]);
+      monsterKind.set(2, ["","코카트리스", "그리폰", "오거", "혼돈의 즙"]);
+      monsterKind.set(3, ["","드워프 전사", "지하인", "거미왕", "오튜그"]);
+      monsterKind.set(4, ["","인면충", "사슬악마", "가시악마", "천사"]);
+      monsterKind.set(5, ["","미노타우르스", "아볼레스", "용", "종말의 용"]);
+
+      let charHpLog = ``;
+
+      if (changeCharHp.userHpChange > 0) {
+        // 회복
+        charHpLog = `${changeCharHp.charName} 유저가 ${changeCharHp.userHpChange}만큼 회복했습니다.`;
+        
+      } else {
+        // 데미지
+        console.log("지역위치:", changeCharHp.mapCode);
+        
+        const monsterCode = typeof changeCharHp.monsterCode == 'string' ? parseInt(changeCharHp.monsterCode) : changeCharHp.monsterCode;
+        console.log("몬스터 코드:",monsterCode);        
+        
+        charHpLog = `${changeCharHp.charName} 유저가 ${(monsterKind.get(changeCharHp.mapCode))[monsterCode]}에게 ${Math.abs(changeCharHp.userHpChange)}만큼 데미지를 받았습니다.`;
+      }
+
+      dispatch(setSignalHistory(charHpLog));
     }
     //* 유저가 방에 입장한 로그 값
     else 

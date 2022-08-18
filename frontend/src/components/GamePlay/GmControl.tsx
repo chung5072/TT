@@ -13,6 +13,8 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
   const py3Code = useAppSelector((state:RootState) => state.room.py3Code)
   const py4Code = useAppSelector((state:RootState) => state.room.py4Code)
   const py5Code = useAppSelector((state:RootState) => state.room.py5Code)
+  //* 현재 전투 중인 몬스터 정보
+  const monsterInfo = useAppSelector((state) => state.session.monster)
 
   //* 스탯 포인트 부여
   const setStatPoint = () => {
@@ -169,6 +171,27 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
       })
       .then(res => {
         console.log(res)
+
+        axios({
+          method:'GET',
+          url: '/api' + `/player/${data.userNum == 1 ? py1Code: data.userNum == 2? py2Code: data.userNum == 3? py3Code: data.userNum == 4? py4Code: py5Code }`
+        })
+        .then((res) => {
+          // 테스트 출력
+          // console.log(res.data);
+          // console.log(res.data.playerName);
+          // console.log("axios이후",monsterInfo.monsterId);
+          
+          //* 회복하거나 데미지를 받으면 생기는 로그
+          let changeCharHp = {
+            charName : res.data.playerName,
+            mapCode : mapStatus,
+            monsterCode : monsterInfo.monsterId,
+            userHpChange : data.userHpChange
+          }
+
+          client.send(`/ttrpg/event/${gameId}/sendSignal`, JSON.stringify(changeCharHp), {id : gameId});
+        })
       })
     }
   })
