@@ -21,7 +21,7 @@ import webstomp from "webstomp-client";
 import axios from "axios"
 import { getRoomInfo, setGmCondition } from "../features/room/RoomSlice"
 
-const serverUrl = '/api' + '/signal';
+const serverUrl ="http://localhost:8080" + '/api' + '/signal';
 
 type playerProfileType = {
   userNickname : string,

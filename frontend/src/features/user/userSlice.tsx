@@ -18,8 +18,8 @@ export type userData = {
 export const initialState: userData = {
   userId: "",
   userPw: "",
-  // userNickname: localStorage.getItem('user_nickname'),
-  userNickname:"",
+  userNickname: localStorage.getItem('user_nickname') || '',
+  // userNickname:"",
   userEmail: "",
   userPhone: "",
   userGender: "",
