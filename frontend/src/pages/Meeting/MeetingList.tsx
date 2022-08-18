@@ -94,7 +94,7 @@ const MeetingList = () => {
               <tr>
                 <th scope="col" id='number'>NUMBER</th>
                 <th scope="col" id='title'>TITLE</th>
-                <th scope="col" id='name'>NAME</th>z
+                <th scope="col" id='name'>NAME</th>
               </tr>
             </thead>
             <tbody>
