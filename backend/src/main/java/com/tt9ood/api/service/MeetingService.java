@@ -12,6 +12,7 @@ public interface MeetingService {
     // 조회
     // 전체 구인 게시글 조회
     List<MeetingDto> readAllMeeting();
+    List<MeetingDto> readAllMeetingListWithIndex(int index);
 
     // 특정 구인 게시글 조회
     // 특정 코드 구인 게시글 조회

@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service("meetService")
 public class MeetingServiceImpl implements MeetingService {
@@ -71,6 +69,31 @@ public class MeetingServiceImpl implements MeetingService {
             meetingDtoList.add(meetingDto);
         }
         return meetingDtoList;
+    }
+
+    @Override
+    public List<MeetingDto> readAllMeetingListWithIndex(int index) {
+        List<MeetingDto> meetingDtoList = new ArrayList<>();
+
+        List<Meeting> meetingList = meetingRepository.findAll();
+
+        for (Meeting meeting : meetingList) {
+            LocalDateTime now = LocalDateTime.now();
+
+            if (now.isAfter(stringToLocal(meeting.getMeetingPyTime()))) {
+                meetingRepository.updateGameIsStart(true, meeting.getMeetingCode());
+            }
+            MeetingDto meetingDto = getMeetingInfo(meeting);
+
+            meetingDtoList.add(meetingDto);
+        }
+        // 게시글을 역순으로 뒤집
+        Collections.reverse(meetingDtoList);
+        // 1: 0 ~ 9, 2 : 10 ~ 19, 3 : 20 ~ 29
+        int start = ((index-1))*10;
+        int end = ((index-1)*10)+10;
+        List<MeetingDto> partialList = meetingDtoList.subList(start, end);
+        return partialList;
     }
 
     /**

@@ -60,6 +60,23 @@ public class MeetingController {
         return ResponseEntity.status(200).body(meetingService.readAllMeeting());
     }
 
+    // 부분 조회
+    /**
+     * 전체 게시글에 대해서 부분 불러오기
+     * @return ResponseEntity 조회 이후 응답 상태 및 전체 구인 글
+     */
+    @GetMapping("partial/{index}")
+    @ApiOperation(value = "구인 게시글 부분 조회", notes = "구인 게시글 부분 조회.")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "성공"),
+            @ApiResponse(code = 404, message = "구인 글 없음"),
+            @ApiResponse(code = 500, message = "서버 오류")
+    })
+    public ResponseEntity<?> readAllMeetingListWithIndex(@PathVariable int index) {
+
+        return ResponseEntity.status(200).body(meetingService.readAllMeetingListWithIndex(index));
+    }
+
     /**
      * 각 번호에 맞는 게시글 불러오기
      * @param meetingCode 구인 글 코드
