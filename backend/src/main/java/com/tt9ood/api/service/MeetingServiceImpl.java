@@ -9,6 +9,8 @@ import com.tt9ood.db.repository.MeetingRepository;
 import com.tt9ood.db.repository.RoomInfoRepository;
 import com.tt9ood.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -71,29 +73,16 @@ public class MeetingServiceImpl implements MeetingService {
         return meetingDtoList;
     }
 
+    /**
+     * 페이징 조회
+     * @param page 페이지
+     * @param size 크기 - 10고정
+     * @return
+     */
     @Override
-    public List<MeetingDto> readAllMeetingListWithIndex(int index) {
-        List<MeetingDto> meetingDtoList = new ArrayList<>();
-
-        List<Meeting> meetingList = meetingRepository.findAll();
-
-        for (Meeting meeting : meetingList) {
-            LocalDateTime now = LocalDateTime.now();
-
-            if (now.isAfter(stringToLocal(meeting.getMeetingPyTime()))) {
-                meetingRepository.updateGameIsStart(true, meeting.getMeetingCode());
-            }
-            MeetingDto meetingDto = getMeetingInfo(meeting);
-
-            meetingDtoList.add(meetingDto);
-        }
-        // 게시글을 역순으로 뒤집
-        Collections.reverse(meetingDtoList);
-        // 1: 0 ~ 9, 2 : 10 ~ 19, 3 : 20 ~ 29
-        int start = ((index-1))*10;
-        int end = ((index-1)*10)+10;
-        List<MeetingDto> partialList = meetingDtoList.subList(start, end);
-        return partialList;
+    public Page<Meeting> readAllMeetingWithPaging(int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        return meetingRepository.findAllWithSort(pageRequest);
     }
 
     /**

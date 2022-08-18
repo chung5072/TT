@@ -8,6 +8,7 @@ import com.tt9ood.common.model.response.BaseResponseBody;
 import com.tt9ood.db.entity.Meeting;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -60,22 +61,24 @@ public class MeetingController {
         return ResponseEntity.status(200).body(meetingService.readAllMeeting());
     }
 
-    // 부분 조회
+    // 페이징 조회
     /**
-     * 전체 게시글에 대해서 부분 불러오기
+     * 전체 리스트 불러오기
      * @return ResponseEntity 조회 이후 응답 상태 및 전체 구인 글
      */
-    @GetMapping("partial/{index}")
-    @ApiOperation(value = "구인 게시글 부분 조회", notes = "구인 게시글 부분 조회.")
+    @GetMapping("/paging/{page}")
+    @ApiOperation(value = "구인 게시글 전체 페이징 조회", notes = "구인 게시글 전체 페이징 조회.")
     @ApiResponses({
             @ApiResponse(code = 200, message = "성공"),
             @ApiResponse(code = 404, message = "구인 글 없음"),
             @ApiResponse(code = 500, message = "서버 오류")
     })
-    public ResponseEntity<?> readAllMeetingListWithIndex(@PathVariable int index) {
-
-        return ResponseEntity.status(200).body(meetingService.readAllMeetingListWithIndex(index));
+    public ResponseEntity<?> readAllMeetingWithPaging(@PathVariable int page) {
+        Page<Meeting> meetings = meetingService.readAllMeetingWithPaging(page, 10);
+        System.out.println("meetings = " + meetings);
+        return ResponseEntity.status(200).body(meetings);
     }
+
 
     /**
      * 각 번호에 맞는 게시글 불러오기
