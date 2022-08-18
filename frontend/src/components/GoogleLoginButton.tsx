@@ -55,7 +55,7 @@ function GoogleLoginButton() {
                 .catch((err) => {
                   console.error(err.response.data);
                 });
-              navigate('/')
+              navigate('/about')
             })
           }
         },
