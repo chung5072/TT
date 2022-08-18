@@ -114,14 +114,16 @@ function RollADice({client, gameId}) {
   };
 
   return (
-    <>
-      <h1>dice demo</h1>
+    <div id='dice-component'>
+      <h1 id='dice-title'>Dice Of Fate</h1>
       <div id="dice-box"></div>
       <hr />
+      <div id='click-box'>
       <input type="text" id="dice-num" onChange={handleInputAboutDiceNum} />
-      <button onClick={() => rollDice(diceNum)}> 주사위 굴리기 </button>
+      <button className="dice-btn" onClick={() => rollDice(diceNum)}>Rolling!</button>
+      </div>
       <DiceResultModal open={modalOpen} close={closeModal} result={result} header="Modal heading" />
-    </>
+    </div>
   )
 }
 
