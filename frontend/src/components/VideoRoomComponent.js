@@ -19,7 +19,7 @@ class VideoRoomComponent extends Component {
             // : 'https://' + window.location.hostname + ':4443';
         this.OPENVIDU_SERVER_SECRET = this.props.openviduSecret ? this.props.openviduSecret : 'MY_SECRET';
         this.hasBeenUpdated = false;
-        let userName = ''
+        let userName = '닉네임'
         this.remotes = [];
         this.localUserAccessAllowed = false;
         this.state = {
