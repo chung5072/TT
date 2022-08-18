@@ -22,15 +22,22 @@
 
 
 .pp-group {
-  width: 50%;
+  width: 40%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10%;
+  border: 2px solid #a6a6a6;
+  border-radius: 5px;
+  margin-left: 5%;
+  margin-top: 10%;
+  justify-content: space-between;
+  padding:1%;
 }
 
 .pp-title {
-  width: 60%;
+  width: 80%;
   margin-bottom: 2%;
   list-style: none;
   display: flex;
@@ -44,22 +51,21 @@
   margin-bottom: 2%;
   list-style: none;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
 
 .pp-title-look {
-  width: 50%;
-  height: 4vh;
-  margin-bottom: 2%;
+  width: 65%;
+  height: 10vh;
   list-style: none;
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   flex-wrap: wrap;
+  border: 2px solid #a6a6a6;
+  border-radius: 5px;
+  padding:2%;
 }
 
 .hp-bar {
@@ -80,7 +86,7 @@
   font-weight: bold;
   font-size: 1em;
   margin-right: 3px;
-  color: #f2df72
+  color: #f2df7e;
 }
 
 .pp-userinfo {
@@ -90,6 +96,8 @@
 }
 
 .stat-title  {
+  width: 80%;
+  height: 100%;
   margin-bottom: 2%;
   list-style: none;
   display: flex;
@@ -97,6 +105,9 @@
   align-items: center;
   width: 30%;
   flex-wrap: wrap;
+  border: 2px solid #a6a6a6;
+  border-radius: 5px;
+  padding:2%;
 }
 
 .stat-arrow {
@@ -117,6 +128,7 @@
 }
 
 .stat-skill {
+  height: 20vh;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -125,6 +137,7 @@
 
 .item-part {
   width: 100%;
+  height: 10vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -136,6 +149,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  border: 2px solid #a6a6a6;
+  border-radius: 5px;
+  height: 100%;
+  padding: 2%;
 }
 
 .stat-group {

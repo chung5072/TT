@@ -119,15 +119,14 @@ export default function PlayerProfile() {
               <label className="gameprofile-subtitle" htmlFor="hp">체력</label>
               <progress className="hp-bar" max={playerMaxHp} value={hp}></progress>
               <div className="pp-userInfo">{hp}</div>
-            </div>
+            </div>            
+          </div> 
+        </div>
+          <div className="pp-container-two">
             <div className="pp-title-look">
               <label className="gameprofile-subtitle" htmlFor="look">외형</label>
               <div className="pp-userInfo">{look}</div>
             </div>   
-            
-          </div> 
-        </div>
-          <div className="pp-container-two">
             <div className="item-part">
               <div className="weapon-armor">
                 <div className="pp-title-item">
