@@ -279,7 +279,7 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
       </div>
       <div className="gm-control-label-box my-1">
         <label htmlFor="userHpChange">HP 회복 / 감소량</label>
-        <input id="userHpChange" type="number" name="userHpChange" onChange={formikThree.handleChange} value= {formikThree.values.userHpChange}/>
+        <input id="userHpChange" type="number" className="gm-control-form-child" name="userHpChange" onChange={formikThree.handleChange} value= {formikThree.values.userHpChange}/>
       </div>
         
         <button type="submit" className="my-1 gm-control-btn">submit</button>
