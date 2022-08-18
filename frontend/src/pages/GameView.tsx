@@ -3,7 +3,7 @@ import GamePlay from "../components/Game/GamePlay"
 import CameraView from "../components/Game/CameraView"
 import MyController from "../components/Game/MyController"
 import SetProfile from "../components/Game/SetProfile"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../app/store"
@@ -13,6 +13,8 @@ import { setMonster } from "../features/Game/MonsterSlice"
 import { setStatus } from "../features/Game/LeftSlice"
 import { setSignalHistory } from "../features/Game/SignalSlice"
 import "./GameView.css"
+//* 누군가 죽었을 때 뜨는 모달창
+import "../components/GamePlay/SomeoneDead.css"
 
 //* 서버와 메세지 통신을 위해 SOCK JS 및 STOMP JS 도입
 //* 참고사이트 : http://jmesnil.net/stomp-websocket/doc/
@@ -20,6 +22,7 @@ import SockJS from "sockjs-client";
 import webstomp from "webstomp-client";
 import axios from "axios"
 import { getRoomInfo, setGmCondition } from "../features/room/RoomSlice"
+import SomeoneDead from "../components/GamePlay/SomeoneDead"
 
 //! 배포 서버용
 // const serverUrl = '/api' + '/signal'; 
@@ -48,14 +51,14 @@ type diceResult = {
 
 //* 캐릭터의 체력에 변화가 있을 때 로그에 쓰이는 타입
 type changeCharHp = {
+  playerUserCode : number,
   charName : string,
   mapCode : number,
   monsterCode : number,
   userHpChange : number
 }
 
-export default function GameView() {
-  
+export default function GameView() {  
   //* 서버에 메세지 통신을 위한 sock js 및 stomp js
   let sockJS = new SockJS(`${serverUrl}/webSocket`); //! /webSocket : 클라이언트에서 서버로 접속하는 엔드포인트
   let client = webstomp.over(sockJS);
@@ -70,6 +73,10 @@ export default function GameView() {
   const dispatch = useAppDispatch()
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
   const userNickname = localStorage.getItem('user_nickname') as string;
+
+  //* 누군가 죽었을 때 뜨는 모달창
+  const [modalOpen, setModalOpen] = useState(false);
+  let [additionalLog, setAdditionalLog] = useState('');
 
   useEffect(() => {
     axios({
@@ -292,6 +299,27 @@ export default function GameView() {
       }
 
       dispatch(setSignalHistory(charHpLog));
+
+      axios({
+        method: 'get',
+        url: '/api' + `/player/${changeCharHp.playerUserCode}`,
+      })
+      .then( res => {
+        //* 15% 이하의 체력이 남아있을 때
+        if (res.data.playerHP === 0) {
+          setAdditionalLog(`${changeCharHp.charName} 유저가 루미콘 강을 건넜습니다.`);
+          setModalOpen(true);
+        }
+        //* 15% 이하의 체력이 남아있을 때
+        if ((((res.data.playerHP)/(res.data.playerMaxHP)) * 100 < 15) && (res.data.playerHP > 0)) {
+          additionalLog = `${changeCharHp.charName} 유저에게 죽음의 그림자가 드리워집니다.`;
+        }
+
+        dispatch(setSignalHistory(additionalLog));
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
     }
     //* 유저가 방에 입장한 로그 값
     else 
@@ -302,6 +330,14 @@ export default function GameView() {
       dispatch(setSignalHistory(playerEnter));
     }
   }
+
+  //* 누군자 죽었을 때 뜨는 모달창
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className="game-view">
@@ -324,6 +360,7 @@ export default function GameView() {
         client = {client}
         gameId = {gameId}
       />
+      <SomeoneDead open={modalOpen} close={closeModal} result={additionalLog} header="X를 눌러 조의를 표하십시오." />
     </div>
   )
 }

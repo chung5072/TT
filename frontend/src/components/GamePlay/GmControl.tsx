@@ -184,6 +184,7 @@ export default function GmControl({client, gameId} : {client : any, gameId : any
           
           //* 회복하거나 데미지를 받으면 생기는 로그
           let changeCharHp = {
+            playerUserCode : data.userNum == 1 ? py1Code: data.userNum == 2? py2Code: data.userNum == 3? py3Code: data.userNum == 4? py4Code: py5Code,
             charName : res.data.playerName,
             mapCode : mapStatus,
             monsterCode : monsterInfo.monsterId,
