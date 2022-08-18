@@ -9,6 +9,11 @@ import { addChooseLevel, setJobInfo, subtractChooseLevel } from "../../features/
 import "./SetProfile.css"
 import { hunter, priest, thief, warrior,wizard } from "./ProfileInfoList"
 import axios from "axios"
+import warriorimg from '../../assets/image/jobs/warrior.png'
+import wizardimg from '../../assets/image/jobs/wizard.png'
+import hunterimg from '../../assets/image/jobs/hunter.png'
+import priestimg from '../../assets/image/jobs/priest.png'
+import thiefimg from '../../assets/image/jobs/thief.png'
 
 export default function SetProfile({client, gameId} : {client : any, gameId : any}) {
   const dispatch = useAppDispatch()
@@ -169,15 +174,25 @@ export default function SetProfile({client, gameId} : {client : any, gameId : an
             <div id="job-form" className={chooseLevel===0 ?"on" : "off-btn"}>
               <h1>{formik.values.playerClassName}</h1>
               <div className="btn-box">
-                <button id="warrior" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "warrior">전사</button>
-                <button id="wizard" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "wizard">마법사</button>
+                <button id="warrior" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "warrior">
+                  <img id='warrior-img'src={warriorimg} alt="" />
+                </button>
+                <button id="wizard" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "wizard">
+                  <img id='warrior-img'src={wizardimg} alt="" />
+                </button>
               </div>
               <div className="btn-box">
-                <button id="hunter" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "hunter">사냥꾼</button>
-                <button id="thief" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "thief">도적</button>
+                <button id="hunter" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "hunter">
+                <img id='warrior-img'src={hunterimg} alt="" />
+                </button>
+                <button id="thief" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "thief">
+                <img id='warrior-img'src={thiefimg} alt="" />
+                </button>
               </div>
               <div className="btn-box">
-                <button id="priest" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "priest">사제</button>
+                <button id="priest" name="playerClassName" className="job-btn" type="button" onClick={formik.handleChange} value = "priest">
+                <img id='warrior-img'src={priestimg} alt="" />
+                </button>
               </div>
             </div>
             <div id="profile-form" className={chooseLevel===1 ?"on" : "off-btn"}>

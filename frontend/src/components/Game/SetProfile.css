@@ -264,3 +264,8 @@
 #playerValue {
   height: 35%;
 }
+
+#warrior-img, #wizard-img, #hunter-img, #thief-img, #priest-img {
+  width: 40px;
+  height: 40px;
+}
