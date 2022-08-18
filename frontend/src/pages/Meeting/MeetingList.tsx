@@ -2,18 +2,36 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { RootState } from '../../app/store';
-import { getMeetingList } from '../../features/meeting/meetingSlice'
+import { getMeetingList, setTotalPages } from '../../features/meeting/meetingSlice'
 import '../BoardList.css'
 import Navbar from '../../components/Navbar';
 import { useSelector } from "react-redux"
+import Pagination from '@mui/material/Pagination';
+
 
 
 const MeetingList = () => {
   const navigate = useNavigate()
   const token = useSelector((state:RootState) => state.login.token)
   const DOMAIN = "http://localhost:8080/" 
+  const dispatch = useAppDispatch()
+  const totalPages = useAppSelector((state:RootState) => state.meeting.totalPage)
+
+  const doPagination = (e:any, p:any) => {
+    axios({
+      method: 'GET',
+      url: '/api' + '/meeting/paging/' +`${p - 1}`
+    })
+      .then((res) => {
+        console.log(res.data)
+        setMeetList(res.data.content)
+      })
+      .catch(err => {
+        console.error(err.response.data)
+      })
+  }
   
   const [meetList, setMeetList] = useState([{
     meetingCode: '',
@@ -55,11 +73,12 @@ const MeetingList = () => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: '/api' + '/meeting'
+      url: '/api' + '/meeting/paging/0'
     })
       .then((res) => {
-        console.log(res)
-        setMeetList(res.data)
+        console.log(res.data)
+        setMeetList(res.data.content)
+        dispatch(setTotalPages(res.data))
       })
       .catch(err => {
         console.error(err.response.data)
@@ -98,7 +117,7 @@ const MeetingList = () => {
               </tr>
             </thead>
             <tbody>
-          {meetList.slice(0).reverse().map((meet : any, idx : number) => {
+          {meetList.slice(0).map((meet : any, idx : number) => {
               return (
                   <tr className='list-names' key={idx} onClick={() => navigate('/meeting/'+`${meet.meetingCode}`)}>
                       <td>
@@ -115,6 +134,8 @@ const MeetingList = () => {
            </tbody>
           </table>
         </div>
+        <Pagination count={totalPages} variant="outlined" color="primary" onChange={(e,p) => doPagination(e,p)} id="meeting-pag"/>
+
         </div>
         
     )

@@ -103,3 +103,13 @@ tr {
     width: 70%;
 }
 
+#meeting-pag {
+    display: flex;
+    justify-content:center;
+    
+}
+
+#meeting-pag button {
+    color: #D9AA52;
+}
+
