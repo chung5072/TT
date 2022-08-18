@@ -38,36 +38,34 @@ const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-      <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-        <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<SignUp />}></Route>
-            <Route path='/home' element={<Home />}></Route>
-            <Route path="/signup" element={<SignUp />}></Route>
-            <Route path="/login" element={<LogIn />}></Route>
-            <Route path="/game/:gameId" element={<GameView />}></Route>
-            <Route path="/profile/:userId" element={<Profile />}></Route>
-            <Route path="/meeting" element={<MeetingList />}></Route>
-            <Route path="/meeting/create" element={<MeetingCreate />}></Route>
-            <Route path="/meeting/edit/:articleId" element={<MeetingEdit />}></Route>
-            <Route path="/meeting/:articleId" element={<MeetingDetail />}></Route>
-            <Route path="/notice" element={<NoticeList />}></Route>
-            <Route path="/notice/create" element={<NoticeCreate />}></Route>
-            <Route path="/notice/edit/:articleId" element={<NoticeEdit />}></Route>
-            <Route path="/notice/:articleId" element={<NoticeDetail />}></Route>
-            <Route path="/share" element={<InfoList />}></Route>
-            <Route path="/share/create" element={<InfoCreate />}></Route>
-            <Route path="/share/edit/:articleId/" element={<InfoEdit />}></Route>
-            <Route path="/share/:articleId" element={<InfoDetail />}></Route>
-            <Route path='/about' element={<About />}></Route>
-          </Routes> 
-        </BrowserRouter>
-      </PersistGate>
-      </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+      <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<SignUp />}></Route>
+          <Route path='/home' element={<Home />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/login" element={<LogIn />}></Route>
+          <Route path="/game/:gameId" element={<GameView />}></Route>
+          <Route path="/profile/:userId" element={<Profile />}></Route>
+          <Route path="/meeting" element={<MeetingList />}></Route>
+          <Route path="/meeting/create" element={<MeetingCreate />}></Route>
+          <Route path="/meeting/edit/:articleId" element={<MeetingEdit />}></Route>
+          <Route path="/meeting/:articleId" element={<MeetingDetail />}></Route>
+          <Route path="/notice" element={<NoticeList />}></Route>
+          <Route path="/notice/create" element={<NoticeCreate />}></Route>
+          <Route path="/notice/edit/:articleId" element={<NoticeEdit />}></Route>
+          <Route path="/notice/:articleId" element={<NoticeDetail />}></Route>
+          <Route path="/share" element={<InfoList />}></Route>
+          <Route path="/share/create" element={<InfoCreate />}></Route>
+          <Route path="/share/edit/:articleId/" element={<InfoEdit />}></Route>
+          <Route path="/share/:articleId" element={<InfoDetail />}></Route>
+          <Route path='/about' element={<About />}></Route>
+        </Routes> 
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
