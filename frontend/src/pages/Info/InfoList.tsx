@@ -26,6 +26,33 @@ const InfoList = () => {
     shareLike:'',
     shareView:''
   }])
+
+  // 검색 기능
+  const [search, setSearch] = useState('')
+
+  const onChangeSearch = (e : any) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  }
+
+  const onSearch = (e : any) => {
+    e.preventDefault();
+    if (search === null || search === '') {
+      axios({
+        method: 'GET',
+        url: '/api' + '/share'
+      })
+      .then((res) => {
+        console.log(1, res)
+        setList(res.data)
+      })
+    }
+    else {
+      const filterData = shareList.filter((row) => row.shareTitle.includes(search))
+      setList(filterData)
+    }
+    setSearch('')
+  }
   useEffect(() => {
       axios({ 
         method: 'GET',
@@ -58,9 +85,11 @@ const InfoList = () => {
         <div id='articles'>
           <div id='search'>
             <div className='search-group'>
-              <button id='search-btn'>search</button>
+            <form className='search-form' onSubmit={e => onSearch(e)}>
+              <button id='search-btn' >search</button>
               <label htmlFor=""></label>
-              <input id='search-input' type="text" />
+              <input id='search-input' type="text" value={search} onChange={onChangeSearch}/>
+            </form>
             </div>
             {token === '' ? null :
             <div>
