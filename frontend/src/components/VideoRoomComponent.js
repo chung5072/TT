@@ -319,7 +319,7 @@ class VideoRoomComponent extends Component {
             <div className="video-container">
                  {this.state.session === undefined ? (
                     <div className='join-btnbox'>
-                        <button className='join-btn' onClick={this.joinSession}>카메라 연결</button>
+                        <button className='join-btn' onClick={this.joinSession}>Connect</button>
                     </div>
                  ) :
                 <div id="session">

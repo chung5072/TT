@@ -102,7 +102,7 @@ export default function Login() {
     return (
       <div className='login-background' id='login-container'>
         <div id='all-login'>
-          <div id='login-form'>
+          <div id='login-box'>
             <h1 id='login-text'>Login</h1>
             <form id='login-form' action="" onSubmit={ formik.handleSubmit }>
               
