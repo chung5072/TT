@@ -163,7 +163,7 @@ export default function SetProfile({client, gameId} : {client : any, gameId : an
     return (
         <div id="select-profile-modal" className={profileDone || isGm==true ? "off-btn" : "on"}>
           <div id="blank">{chooseLevel===-1? jobInfo.name: chooseLevel===0 ?"Select Class" : chooseLevel===1 ? "Input Profile" :"Roll Stats"}</div>
-          <form action="" onSubmit={formik.handleSubmit}>
+          <form action="" id="set-profile-form" onSubmit={formik.handleSubmit}>
 
             {/* job */}
             <div id="job-form" className={chooseLevel===0 ?"on" : "off-btn"}>
