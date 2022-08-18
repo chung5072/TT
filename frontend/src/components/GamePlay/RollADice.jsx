@@ -5,6 +5,7 @@ import DiceResultModal from './DiceResultModal';
 
 import "./RollADice.css";
 import "./DiceResultModal.css";
+import axios from "axios"
 
 
 function RollADice({client, gameId}) {
@@ -17,7 +18,21 @@ function RollADice({client, gameId}) {
   //* 모달창에 전달할 결과값
   const [result, setResult] = useState('');
   //* 주사위 던지는 캐릭터 이름
-  const charName = useAppSelector((state) => state.profile.playerName);
+  const [currCharName, setCurrCharName] = useState('');
+  //* 현재 플레이어의 유저 코드
+  const currentUserCode = localStorage.getItem('userCode')
+
+  useEffect(() => {
+    axios({
+      method:'GET',
+      url: '/api' + `/player/${currentUserCode}`
+    })
+    .then((res) => {
+      console.log(res.data);
+      console.log(res.data.playerName);
+      setCurrCharName(res.data.playerName);
+    })
+  }, [])
 
   //* 주사위 굴리는 위치 랜더링
   useEffect(() => {
@@ -67,9 +82,10 @@ function RollADice({client, gameId}) {
       }
       // 테스트 출력  
       console.log("굴린 결과값", diceResult);
+      console.log(currCharName);
 
       const diceSum = {
-        charName : charName,
+        charName : currCharName,
         diceResult : diceResult,
         diceCnt : diceArray.length
       }

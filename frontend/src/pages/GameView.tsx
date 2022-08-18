@@ -61,7 +61,7 @@ export default function GameView() {
   const signalState = useSelector((state:RootState) => state.session).signal
   const dispatch = useAppDispatch()
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
-  const userNickname = useAppSelector((state:RootState) => state.user.userNickname);
+  const userNickname = localStorage.getItem('user_nickname') as string;
 
   useEffect(() => {
     axios({

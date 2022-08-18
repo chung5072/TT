@@ -16,7 +16,7 @@ export default function SetProfile({client, gameId} : {client : any, gameId : an
   const profileDone = useSelector((state:RootState) => state.game.profileDone)
   const jobInfo = useSelector((state:RootState) => state.profile.jobInfo)
   const userCode = useAppSelector((state:RootState) => state.user.userCode)
-  const userNickname = useAppSelector((state:RootState) => state.user.userNickname)
+  const userNickname = localStorage.getItem('user_nickname');
   const isGm = useAppSelector((state:RootState) => state.room.isGm)
   const selectJobInfo = (job:string) => {
     if (job === 'warrior') {
