@@ -21,8 +21,12 @@ import webstomp from "webstomp-client";
 import axios from "axios"
 import { getRoomInfo, setGmCondition } from "../features/room/RoomSlice"
 
-const serverUrl = '/api' + '/signal';
+//! 배포 서버용
+// const serverUrl = '/api' + '/signal'; 
+//! 로컬 테스트 용
+const serverUrl = 'http://localhost:8080/api' + '/signal';
 
+//* 캐릭터 프로필 완성할 때 로그에 쓰이는 타입
 type playerProfileType = {
   userNickname : string,
   playerValue : string,
@@ -30,8 +34,16 @@ type playerProfileType = {
   playerName : string
 }
 
+//* 보상으로 스탯을 부여할 때 로그에 쓰이는 타입
 type statData = {
   statPoint : number
+}
+
+//* 캐릭터가 주사위를 굴릴 때 로그에 쓰이는 타입
+type diceResult = {
+  charName : string,
+  diceResult : number,
+  diceCnt : number
 }
 
 export default function GameView() {
@@ -123,7 +135,7 @@ export default function GameView() {
       // console.log(areaName);
 
       //* 방에 있는 사람들에게 alert로 신호를 줌
-      alert(areaName);
+      // alert(areaName);
       
       //? state를 적용했을 때 사용했던 코드
       // addSignal(areaName);
@@ -173,7 +185,7 @@ export default function GameView() {
       }
 
       //* 방에 있는 사람들에게 alert로 신호를 줌
-      alert(monsterLog);
+      // alert(monsterLog);
 
       //* 새로고침해도 로그를 남기기 위해서 redux를 도입 
       dispatch(setSignalHistory(monsterLog));
@@ -221,10 +233,17 @@ export default function GameView() {
       const statLogMessage = `보상으로 스탯 포인트 ${statData.statPoint} 점이 부여되었습니다!`;
       dispatch(setSignalHistory(statLogMessage));
     }
+    //* 주사위를 굴린 로그값
+    else if (data.body.includes("diceResult")) {
+      const diceResult : diceResult = JSON.parse(data.body);
+
+      const diceLogMessage = `${diceResult.charName} 유저가 ${diceResult.diceCnt} 개의 주사위를 굴려서 ${diceResult.diceResult}의 결과값이 나왔습니다.`;
+
+      dispatch(setSignalHistory(diceLogMessage));
+    }
     //* 유저가 방에 입장한 로그 값
     else 
     {
-      alert(data.body);
       const playerEnter = `${data.body}님이 입장하셨습니다.`;
 
       //* 새로고침해도 로그를 남기기 위해서 redux를 도입 

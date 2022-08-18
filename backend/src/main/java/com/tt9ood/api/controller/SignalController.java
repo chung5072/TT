@@ -71,6 +71,7 @@ public class SignalController {
             // System.out.println("해당 몬스터의 숫자 = " + monSignalDto.getMonsterNum());
             simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , monSignalDto);
         }
+        // 프로필 완성 후 보여줄 로그
         else if (signalMessage.contains("playerClassName")) {
             System.out.println("캐릭터 직업[playerClassName] = " + signalMessage);
 
@@ -90,8 +91,15 @@ public class SignalController {
 
             simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , inGameProfileDto);
         }
+        // 보상으로 스탯을 받을 시 보여줄 로그
         else if (signalMessage.contains("statPoint")) {
             System.out.println("스탯 포인트[statPoint] = " + signalMessage);
+
+            simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , signalMessage);
+        }
+        // 주사위를 굴린 뒤 보여줄 로그
+        else if (signalMessage.contains("diceResult")) {
+            System.out.println("주사위 결과값[diceResult] = " + signalMessage);
 
             simpMessagingTemplate.convertAndSend(format("/topic/%s/eventLog", gameId) , signalMessage);
         }
