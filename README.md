@@ -1,7 +1,7 @@
 <!-- ABOUT THE PROJECT -->
 ## TT - For TableTalkRolePlayingGame with Online!
 <!--사진-->
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Homepage][Homepage](https://i7a809.p.ssafy.io/)
 
 TableTalk
 온라인에서도 TRPG를 즐길 수 있는 서비스입니다!
@@ -37,3 +37,4 @@ TableTalk
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[Homepage]: ![06 about 화면](https://user-images.githubusercontent.com/40424414/185549536-c7840946-7b3b-4174-bf82-a2d307e4a308.png)
