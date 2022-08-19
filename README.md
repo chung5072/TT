@@ -38,7 +38,7 @@ TableTalk
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[SpringBoot]: ![springboot](https://user-images.githubusercontent.com/40424414/185561575-01219f38-725f-42e6-ab8c-ca6273192042.svg)
+[SpringBoot]: <img src="https://img.shields.io/badge/Spring Boot-#6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [JPA]: https://img.shields.io/badge/back-JPA-green
 [JPA-url]: https://spring.io/projects/spring-data-jpa
