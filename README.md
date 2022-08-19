@@ -14,8 +14,7 @@ TableTalk
 ### 기술 스택 
 
 - FRONTEND: [![React][React.js]][React-url], [![REDUX][REDUX]][REDUX-url], [![TYPESCRIPT][TYPESCRIPT]][TYPESCRIPT-url], [![JAVASCRIPT][JAVASCRIPT]][JAVASCRIPT-url], 
-- BACKEND: [![SpringBoot][SpringBoot-img]][SpringBoot-url], [![JPA][JPA-img]][JPA-url], [![JWT][JWT-img]][JWT-url]
-
+- BACKEND: [![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]
 
 ### 사용 IDE
 - VSCode, IntelliJ IDEA, MySql Workbench 8.0, MobaXterm
