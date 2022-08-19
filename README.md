@@ -15,8 +15,9 @@ TableTalk
 
 - FRONTEND: React, Redux, TypeScript, JavaScript
 - BACKEND: Spring, JPA, JWT
+* [![SpringBoot][SpringBoot][SpringBoot-url]
 * [![React][React.js]][React-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+
 
 ### 사용 IDE
 - VSCode, IntelliJ IDEA, MySql Workbench 8.0, MobaXterm
@@ -38,4 +39,5 @@ TableTalk
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Homepage]: 
+[SpringBoot]: https://img.shields.io/badge/java-springboot-green 
+[SpringBoot-url]: https://spring.io/projects/spring-boot
