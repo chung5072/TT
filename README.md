@@ -2,10 +2,9 @@
 ### 프로젝트 소개
 ## TT - For TRPG with Online!
 <!--사진-->
-[Homepage](https://i7a809.p.ssafy.io/)
 ![06 about 화면](https://user-images.githubusercontent.com/40424414/185549536-c7840946-7b3b-4174-bf82-a2d307e4a308.png)
 
-TableTalk   
+[TT](https://i7a809.p.ssafy.io/)
 온라인에서도 TRPG를 즐길 수 있는 서비스입니다!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
