@@ -25,9 +25,9 @@ import { getRoomInfo, setGmCondition } from "../features/room/RoomSlice"
 import SomeoneDead from "../components/GamePlay/SomeoneDead"
 
 //! 배포 서버용
-// const serverUrl = '/api' + '/signal'; 
+const serverUrl = '/api' + '/signal'; 
 //! 로컬 테스트 용
-const serverUrl = 'http://localhost:8080/api' + '/signal';
+//const serverUrl = 'http://localhost:8080/api' + '/signal';
 
 //* 캐릭터 프로필 완성할 때 로그에 쓰이는 타입
 type playerProfileType = {
