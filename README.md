@@ -39,7 +39,7 @@ TableTalk
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [SpringBoot-img]: https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white
 [SpringBoot-url]: https://spring.io/projects/spring-boot
-[JPA-img]: https://img.shields.io/badge/Spring Data JPA-6DB33F?style=for-the-badge&logo=SpringDataJPA&logoColor=white
+[JPA-img]: https://img.shields.io/badge/SpringDataJPA-6DB33F?style=for-the-badge&logo=SpringDataJPA&logoColor=white
 [JPA-url]: https://spring.io/projects/spring-data-jpa
 [JWT-img]: https://img.shields.io/badge/JWT-512BD4?style=for-the-badge&logo=JWT&logoColor=white
 [JWT-url]: https://jwt.io/
