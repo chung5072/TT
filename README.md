@@ -16,7 +16,12 @@ TableTalk
 - FRONTEND: React, Redux, TypeScript, JavaScript
 - BACKEND: Spring, JPA, JWT
 * [![SpringBoot][SpringBoot]][SpringBoot-url]
+* [![JPA][JPA]][JPA-url]
+* [![JWT][JWT]][JWT-url]
 * [![React][React.js]][React-url]
+* [![REDUX][REDUX]][REDUX-url]
+* [![TYPESCRIPT][TYPESCRIPT]][TYPESCRIPT-url]
+* [![JAVASCRIPT][JAVASCRIPT]][JAVASCRIPT-url]
 
 
 ### 사용 IDE
@@ -37,7 +42,18 @@ TableTalk
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[SpringBoot]: https://img.shields.io/badge/java-springboot-green 
+[SpringBoot]: https://img.shields.io/badge/back-springboot-green 
 [SpringBoot-url]: https://spring.io/projects/spring-boot
+[JPA]: https://img.shields.io/badge/back-JPA-green
+[JPA-url]: https://spring.io/projects/spring-data-jpa
+[JWT]: https://img.shields.io/badge/back-JWT-orange
+[JWT-url]: https://jwt.io/
+[React.js]: https://img.shields.io/badge/front-REACT-blue
+[React-url]: https://reactjs.org/
+[REDUX]: https://img.shields.io/badge/front-REDUX-blue
+[RUDUX-url]: https://redux.js.org/
+[TYPESCRIPT]: https://img.shields.io/badge/front-TYPESCRIPT-blue
+[TYPESCRIPT-url]: https://www.typescriptlang.org/
+[JAVASCRIPT]: https://img.shields.io/badge/front-JAVASCRIPT-yellow
+[JAVASCRIPT-url]: https://www.javascript.com/
+
