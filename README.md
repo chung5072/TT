@@ -14,7 +14,7 @@ TableTalk
 ### 기술 스택 
 
 - FRONTEND: [![React][React.js]][React-url], [![REDUX][REDUX]][REDUX-url], [![TYPESCRIPT][TYPESCRIPT]][TYPESCRIPT-url], [![JAVASCRIPT][JAVASCRIPT]][JAVASCRIPT-url], 
-- BACKEND: <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">, [![JPA][JPA]][JPA-url], [![JWT][JWT]][JWT-url]
+- BACKEND: [SpringBoot][SpringBoot-url], [![JPA][JPA]][JPA-url], [![JWT][JWT]][JWT-url]
 
 
 ### 사용 IDE
