@@ -103,9 +103,12 @@
 [![JAVASCRIPT][JAVASCRIPT-img]][JAVASCRIPT-url] [![TYPESCRIPT][TYPESCRIPT-img]][TYPESCRIPT-url]      
 [![React][React-img]][React-url] ![ReactRouter][ReactRouter-img] ![REDUX][REDUX-img]       
 ![Axios][Axios-img] ![SockJS][SockJS-img] ![StompJS][StompJS-img]    
-- BACKEND:    
+- **BACKEND**:    
 [![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]   
 ![MYSQL][MYSQL-img]
+- **CI/CD**
+
+ <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white"> <img src="https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=NGINX&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
 
 ### 사용 IDE
 - FRONTEND:     
@@ -128,28 +131,34 @@
 
 <p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
-
 ## 배포 환경
 
-<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
+Ubuntu 20.04.4 LTS
 
+Node.js 16.16.0
+
+NGINX 1.18.0 (Ubuntu)
+
+Docker version 20.10.17
+
+JAVA openjdk version 1.8.0_342
+
+### 배포 아키텍쳐
+
+
+
+<img src="images/화면 캡처 2022-08-19 200133.png" alt="화면 캡처 2022-08-19 200133" style="zoom:67%;" />
+
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
 ## 팀 멤버
-|**이름**|역할|담당|
-|:---:|:---:|:---:|
-|⭐이창현⭐|팀장|BACKEND|
-|⭐연승용⭐|팀원|BACKEND|
-|⭐이임충⭐|팀원|BACKEND|
-|⭐이지수⭐|팀원|FRONTEND|
-|⭐임완택⭐|팀원|FRONTEND|
-|⭐원민석⭐|팀원|FRONTEND|
 
-<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
-
+![화면 캡처 2022-08-19 200854](images/화면 캡처 2022-08-19 200854.png)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 <!--backend-->
+
 [SpringBoot-img]: https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [JPA-img]: https://img.shields.io/badge/SpringDataJPA-6DB33F?style=for-the-badge&logo=Spring&logoColor=white
