@@ -7,6 +7,77 @@
 [TT](https://i7a809.p.ssafy.io/)
 온라인에서도 TRPG를 즐길 수 있는 서비스입니다!
 
+아래 홈페이지의 주요 사진들입니다.
+<details>
+<summary>첫 화면</summary>
+<div markdown="1">       
+![01 첫화면](https://user-images.githubusercontent.com/40424414/185575228-57aee800-b0ce-43ef-8177-b7d973018e25.png)
+</div>
+</details>
+
+<details>
+<summary>파티 모집 게시판 - 작성</summary>
+<div markdown="1">       
+![15 파티 모집 게시판 작성](https://user-images.githubusercontent.com/40424414/185575440-0e6ab967-ae25-413d-bcb2-26c758cd1892.png)
+</div>
+</details>
+
+<details>
+<summary>파티 모집 게시판 - 플레이어 등록</summary>
+<div markdown="1">       
+![Table Talk - Chrome 2022-08-19 오전 10_04_05](https://user-images.githubusercontent.com/40424414/185575586-93d4c5f7-5fc8-4055-8d6c-ead14d770a7c.png)
+</div>
+</details>
+
+<details>
+<summary>파티 모집 게시판 - 방 입장</summary>
+<div markdown="1">       
+![Table Talk - Chrome 2022-08-19 오전 10_09_52](https://user-images.githubusercontent.com/40424414/185575683-56bfd208-2831-4aa1-9064-5562b6f6fc77.png)
+</div>
+</details>
+
+<details>
+<summary>플레이어 첫 화면</summary>
+<div markdown="1">       
+![24 캐릭터 프로필 생성](https://user-images.githubusercontent.com/40424414/185575998-e958851f-d4bc-4dde-aed5-c2ebea3c3b01.png)
+</div>
+</details>
+
+<details>
+<summary>플레이어 캐릭터 프로필</summary>
+<div markdown="1">       
+![23 플레이어 캐픽터 프로필](https://user-images.githubusercontent.com/40424414/185576188-1acb8346-2721-4392-ae2c-a2e0587e0969.png)
+</div>
+</details>
+
+<details>
+<summary>GM 첫 화면</summary>
+<div markdown="1">       
+![16 GM 입장](https://user-images.githubusercontent.com/40424414/185575827-87d630d8-9e54-44e3-aaaa-42e629b7900a.png)
+</div>
+</details>
+
+<details>
+<summary>GM 게임 운영 메뉴</summary>
+<div markdown="1">       
+![19 운영 전투 시스템](https://user-images.githubusercontent.com/40424414/185575918-e3bef179-73d5-4f3e-acbb-a65798567613.png)
+</div>
+</details>
+
+<details>
+<summary>지도</summary>
+<div markdown="1">       
+![17 GM 지도](https://user-images.githubusercontent.com/40424414/185576270-33ad317d-24d6-4167-a8b4-70bb63ceea0a.png)
+</div>
+</details>
+
+<details>
+<summary>주사위</summary>
+<div markdown="1">       
+![20 주사위 굴리기](https://user-images.githubusercontent.com/40424414/185576323-3d5445a7-7b05-444a-8a03-040608ce3aa0.png)
+</div>
+</details>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
