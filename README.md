@@ -14,7 +14,7 @@ TableTalk
 ### 기술 스택 
 
 - FRONTEND: [![React][React.js]][React-url], [![REDUX][REDUX]][REDUX-url], [![TYPESCRIPT][TYPESCRIPT]][TYPESCRIPT-url], [![JAVASCRIPT][JAVASCRIPT]][JAVASCRIPT-url], 
-- BACKEND: [SpringBoot][SpringBoot-url], [![JPA][JPA]][JPA-url], [![JWT][JWT]][JWT-url]
+- BACKEND: [![SpringBoot]][SpringBoot-url], [![JPA][JPA]][JPA-url], [![JWT][JWT]][JWT-url]
 
 
 ### 사용 IDE
