@@ -12,8 +12,12 @@
 
 ### 기술 스택 
 
-- FRONTEND: [![React][React-img]][React-url] ![REDUX][REDUX-img] [![TYPESCRIPT][TYPESCRIPT-img]][TYPESCRIPT-url] [![JAVASCRIPT][JAVASCRIPT-img]][JAVASCRIPT-url] ![SockJS][SockJS-img] ![StompJS][StompJS-img] ![Axios][Axios-img]
-- BACKEND: [![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]
+- FRONTEND:       
+[![JAVASCRIPT][JAVASCRIPT-img]][JAVASCRIPT-url] [![TYPESCRIPT][TYPESCRIPT-img]][TYPESCRIPT-url]      
+[![React][React-img]][React-url] ![ReactRouter][ReactRouter-img] ![REDUX][REDUX-img]       
+![Axios][Axios-img] ![SockJS][SockJS-img] ![StompJS][StompJS-img]    
+- BACKEND:    
+[![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]
 
 ### 사용 IDE
 - VSCode, IntelliJ IDEA, MySql Workbench 8.0, MobaXterm
@@ -56,4 +60,5 @@
 [SockJS-img]: https://img.shields.io/badge/SockJS-010101?style=for-the-badge&logo=SockJS&logoColor=white
 [StompJS-img]: https://img.shields.io/badge/StompJS-010101?style=for-the-badge&logo=StompJS&logoColor=white
 [Axios-img]: https://img.shields.io/badge/AXIOS-6236FF?style=for-the-badge&logo=AXIOS&logoColor=white
+[ReactRouter-img]: https://img.shields.io/badge/ReactRouter-CA4245?style=for-the-badge&logo=ReactRouter&logoColor=white
 
