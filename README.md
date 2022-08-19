@@ -15,7 +15,7 @@ TableTalk
 
 - FRONTEND: React, Redux, TypeScript, JavaScript
 - BACKEND: Spring, JPA, JWT
-* [![SpringBoot][SpringBoot][SpringBoot-url]
+* [![SpringBoot][SpringBoot]][SpringBoot-url]
 * [![React][React.js]][React-url]
 
 
