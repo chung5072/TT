@@ -12,7 +12,7 @@
 <summary>첫 화면</summary>
 <div markdown="1">       
 ![01 첫화면](https://user-images.githubusercontent.com/40424414/185575228-57aee800-b0ce-43ef-8177-b7d973018e25.png)
-###### 홈페이지에 들어갔을 나타나는 첫 화면입니다.   
+<h6>홈페이지에 들어갔을 나타나는 첫 화면입니다.</h6>
 ###### 회원가입을 진행하신 다음, 로그인을 하면 서비스를 이용할 수 있습니다.
 </div>
 </details>
