@@ -115,7 +115,7 @@ IntelliJ IDEA, MySql Workbench 8.0
 - 추가:   
 MobaXterm
 
-<p align="right">(<a href="#readme-top">맨 위로p</a>)</p>
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
 
 ## 플로우 차트
@@ -130,6 +130,8 @@ MobaXterm
 
 
 ## 배포 환경
+
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
 
 ## 팀 멤버
