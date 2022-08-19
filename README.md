@@ -43,7 +43,7 @@
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [JPA-img]: https://img.shields.io/badge/SpringDataJPA-6DB33F?style=for-the-badge&logo=SpringDataJPA&logoColor=white
 [JPA-url]: https://spring.io/projects/spring-data-jpa
-[JWT-img]: https://img.shields.io/badge/JWT-512BD4?style=for-the-badge&logo=JWT&logoColor=white
+[JWT-img]: https://img.shields.io/badge/JSONWebTokens-000000?style=for-the-badge&logo=JSONWebTokens&logoColor=white
 [JWT-url]: https://jwt.io/
 [React-img]: https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white
 [React-url]: https://reactjs.org/
