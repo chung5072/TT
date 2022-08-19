@@ -1,4 +1,5 @@
 <!-- ABOUT THE PROJECT -->
+### 프로젝트 소개
 ## TT - For TRPG with Online!
 <!--사진-->
 [Homepage](https://i7a809.p.ssafy.io/)
@@ -10,18 +11,10 @@ TableTalk
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 ### 기술 스택 
 
-- FRONTEND: React, Redux, TypeScript, JavaScript
-- BACKEND: Spring, JPA, JWT
-* [![SpringBoot][SpringBoot]][SpringBoot-url]
-* [![JPA][JPA]][JPA-url]
-* [![JWT][JWT]][JWT-url]
-* [![React][React.js]][React-url]
-* [![REDUX][REDUX]][REDUX-url]
-* [![TYPESCRIPT][TYPESCRIPT]][TYPESCRIPT-url]
-* [![JAVASCRIPT][JAVASCRIPT]][JAVASCRIPT-url]
+- FRONTEND: [![React][React.js]][React-url], [![REDUX][REDUX]][REDUX-url], [![TYPESCRIPT][TYPESCRIPT]][TYPESCRIPT-url], [![JAVASCRIPT][JAVASCRIPT]][JAVASCRIPT-url], 
+- BACKEND: [![SpringBoot][SpringBoot]][SpringBoot-url], [![JPA][JPA]][JPA-url], [![JWT][JWT]][JWT-url]
 
 
 ### 사용 IDE
@@ -32,20 +25,20 @@ TableTalk
 
 
 <!-- GETTING STARTED -->
-## 플로우 차트
+### 플로우 차트
 1. 프론트엔드
 * ![untitled - Chrome 2022-08-19 오후 3_47_07](https://user-images.githubusercontent.com/40424414/185560235-b2af36ba-41c5-4605-b05b-8d5d632bf3f5.png)
 * ![untitled - Chrome 2022-08-19 오후 3_48_08](https://user-images.githubusercontent.com/40424414/185560369-10754daa-868e-4c91-87e6-d04f4b8e86e1.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 배포 환경
+### 배포 환경
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[SpringBoot]: https://img.shields.io/badge/back-springboot-green 
+[SpringBoot]: ![springboot](https://user-images.githubusercontent.com/40424414/185561575-01219f38-725f-42e6-ab8c-ca6273192042.svg)
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [JPA]: https://img.shields.io/badge/back-JPA-green
 [JPA-url]: https://spring.io/projects/spring-data-jpa
