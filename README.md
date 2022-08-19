@@ -100,15 +100,17 @@
 ## 개발
 ### 기술 스택
 - FRONTEND:       
-[![JAVASCRIPT][JAVASCRIPT-img]][JAVASCRIPT-url] [![TYPESCRIPT][TYPESCRIPT-img]][TYPESCRIPT-url]      
-[![React][React-img]][React-url] ![ReactRouter][ReactRouter-img] ![REDUX][REDUX-img]       
-![Axios][Axios-img] ![SockJS][SockJS-img] ![StompJS][StompJS-img]    
+  [![JAVASCRIPT][JAVASCRIPT-img]][JAVASCRIPT-url] [![TYPESCRIPT][TYPESCRIPT-img]][TYPESCRIPT-url]      
+  [![React][React-img]][React-url] ![ReactRouter][ReactRouter-img] ![REDUX][REDUX-img]       
+  ![Axios][Axios-img] ![SockJS][SockJS-img] ![StompJS][StompJS-img]    
+
 - **BACKEND**:    
-[![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]   
-![MYSQL][MYSQL-img]
+  [![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]   
+  ![MYSQL][MYSQL-img]
+
 - **CI/CD**
 
- <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white"> <img src="https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=NGINX&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
+  ​	<img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white"> <img src="https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=NGINX&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white">
 
 ### 사용 IDE
 - FRONTEND:     
@@ -145,9 +147,7 @@ JAVA openjdk version 1.8.0_342
 
 ### 배포 아키텍쳐
 
-
-
-<img src="images/화면 캡처 2022-08-19 200133.png" alt="화면 캡처 2022-08-19 200133" style="zoom:67%;" />
+![화면 캡처 2022-08-19 200133](images/화면 캡처 2022-08-19 200133.png)
 
 <p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
