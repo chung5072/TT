@@ -13,7 +13,7 @@ TableTalk
 
 ### 기술 스택 
 
-- FRONTEND: [![React][React.js]][React-url], [![REDUX][REDUX]][REDUX-url], [![TYPESCRIPT][TYPESCRIPT]][TYPESCRIPT-url], [![JAVASCRIPT][JAVASCRIPT]][JAVASCRIPT-url], 
+- FRONTEND: [![React][React-img]][React-url], [![REDUX][REDUX-img]][REDUX-url], [![TYPESCRIPT][TYPESCRIPT-img]][TYPESCRIPT-url], [![JAVASCRIPT][JAVASCRIPT-img]][JAVASCRIPT-url], 
 - BACKEND: [![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]
 
 ### 사용 IDE
@@ -43,12 +43,12 @@ TableTalk
 [JPA-url]: https://spring.io/projects/spring-data-jpa
 [JWT-img]: https://img.shields.io/badge/JWT-512BD4?style=for-the-badge&logo=JWT&logoColor=white
 [JWT-url]: https://jwt.io/
-[React.js]: https://img.shields.io/badge/front-REACT-blue
+[React-img]: https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white
 [React-url]: https://reactjs.org/
-[REDUX]: https://img.shields.io/badge/front-REDUX-blue
+[REDUX-img]: https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white
 [RUDUX-url]: https://redux.js.org/
-[TYPESCRIPT]: https://img.shields.io/badge/front-TYPESCRIPT-blue
+[TYPESCRIPT-img]: https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white
 [TYPESCRIPT-url]: https://www.typescriptlang.org/
-[JAVASCRIPT]: https://img.shields.io/badge/front-JAVASCRIPT-yellow
+[JAVASCRIPT-img]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white
 [JAVASCRIPT-url]: https://www.javascript.com/
 
