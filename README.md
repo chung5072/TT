@@ -109,11 +109,11 @@
 
 ### 사용 IDE
 - FRONTEND:     
-VSCode   
+![VSCODE][VSCODE-img]
 - BACKEND:     
-IntelliJ IDEA, MySql Workbench 8.0 
+![INTELLIJ][INTELLIJ-img], ![MYSQLWorkbench][MYSQLWorkbench-img]
 - 추가:   
-MobaXterm
+![MobaXterm][MobaXterm-img]
 
 <p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
@@ -149,6 +149,7 @@ MobaXterm
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+<!--backend-->
 [SpringBoot-img]: https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [JPA-img]: https://img.shields.io/badge/SpringDataJPA-6DB33F?style=for-the-badge&logo=Spring&logoColor=white
@@ -156,6 +157,7 @@ MobaXterm
 [JWT-img]: https://img.shields.io/badge/JSONWebTokens-000000?style=for-the-badge&logo=JSONWebTokens&logoColor=white
 [JWT-url]: https://jwt.io/
 [MYSQL-img]: https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white
+<!--frontend-->
 [React-img]: https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white
 [React-url]: https://reactjs.org/
 [REDUX-img]: https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white
@@ -168,4 +170,9 @@ MobaXterm
 [StompJS-img]: https://img.shields.io/badge/StompJS-010101?style=for-the-badge&logo=StompJS&logoColor=white
 [Axios-img]: https://img.shields.io/badge/AXIOS-6236FF?style=for-the-badge&logo=AXIOS&logoColor=white
 [ReactRouter-img]: https://img.shields.io/badge/ReactRouter-CA4245?style=for-the-badge&logo=ReactRouter&logoColor=white
+<!--IDE-->
+[VSCODE-img]: https://img.shields.io/badge/VisualStudioCode-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white
+[INTELLIJ-img]: https://img.shields.io/badge/IntelliJIDEA-000000?style=for-the-badge&logo=IntelliJIDEA&logoColor=white
+[MYSQLWorkbench-img]: https://img.shields.io/badge/MySQLWorkbench-4479A1?style=for-the-badge&logo=MySQL&logoColor=white
+[MobaXterm-img]: https://img.shields.io/badge/MobaXterm-000000?style=for-the-badge&logo=MobaXterm&logoColor=white
 
