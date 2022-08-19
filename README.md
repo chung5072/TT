@@ -1,6 +1,6 @@
 # TT
 ### 기술 스택 
-- FRONTEND: React
-- BACKEND: Spring
+- FRONTEND: React, Redux, TypeScript
+- BACKEND: Spring, JPA
 ### 사용 IDE
 - VSCode, IntelliJ IDEA, MySql Workbench 8.0, MobaXterm
