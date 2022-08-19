@@ -12,7 +12,7 @@
 
 ### 기술 스택 
 
-- FRONTEND: [![React][React-img]][React-url] [![REDUX][REDUX-img]][REDUX-url] [![TYPESCRIPT][TYPESCRIPT-img]][TYPESCRIPT-url] [![JAVASCRIPT][JAVASCRIPT-img]][JAVASCRIPT-url] 
+- FRONTEND: [![React][React-img]][React-url] ![REDUX][REDUX-img] [![TYPESCRIPT][TYPESCRIPT-img]][TYPESCRIPT-url] [![JAVASCRIPT][JAVASCRIPT-img]][JAVASCRIPT-url] 
 - BACKEND: [![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]
 
 ### 사용 IDE
@@ -29,6 +29,7 @@
 * ![untitled - Chrome 2022-08-19 오후 3_48_08](https://user-images.githubusercontent.com/40424414/185560369-10754daa-868e-4c91-87e6-d04f4b8e86e1.png)
 2. 백엔드
 * ![서버1](https://user-images.githubusercontent.com/40424414/185569561-f4faf474-e104-4a85-8500-0c742072cb2c.jpg)
+* ![서버2](https://user-images.githubusercontent.com/40424414/185571697-a0f01b5b-1513-495f-acff-404e97ab73be.jpg)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
