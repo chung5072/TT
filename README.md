@@ -41,9 +41,9 @@ TableTalk
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [SpringBoot-img]: https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white
 [SpringBoot-url]: https://spring.io/projects/spring-boot
-[JPA]: https://img.shields.io/badge/back-JPA-green
+[JPA]: https://img.shields.io/badge/Spring Data JPA-6DB33F?style=for-the-badge&logo=SpringDataJPA&logoColor=white
 [JPA-url]: https://spring.io/projects/spring-data-jpa
-[JWT]: https://img.shields.io/badge/back-JWT-orange
+[JWT]: https://img.shields.io/badge/JWT-512BD4?style=for-the-badge&logo=JWT&logoColor=white
 [JWT-url]: https://jwt.io/
 [React.js]: https://img.shields.io/badge/front-REACT-blue
 [React-url]: https://reactjs.org/
