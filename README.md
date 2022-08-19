@@ -17,7 +17,8 @@
 [![React][React-img]][React-url] ![ReactRouter][ReactRouter-img] ![REDUX][REDUX-img]       
 ![Axios][Axios-img] ![SockJS][SockJS-img] ![StompJS][StompJS-img]    
 - BACKEND:    
-[![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]
+[![SpringBoot][SpringBoot-img]][SpringBoot-url] [![JPA][JPA-img]][JPA-url] [![JWT][JWT-img]][JWT-url]   
+![MYSQL][MYSQL-img]
 
 ### 사용 IDE
 - VSCode, IntelliJ IDEA, MySql Workbench 8.0, MobaXterm
@@ -45,10 +46,11 @@
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [SpringBoot-img]: https://img.shields.io/badge/SpringBoot-6DB33F?style=for-the-badge&logo=SpringBoot&logoColor=white
 [SpringBoot-url]: https://spring.io/projects/spring-boot
-[JPA-img]: https://img.shields.io/badge/SpringDataJPA-6DB33F?style=for-the-badge&logo=SpringDataJPA&logoColor=white
+[JPA-img]: https://img.shields.io/badge/SpringDataJPA-6DB33F?style=for-the-badge&logo=Spring&logoColor=white
 [JPA-url]: https://spring.io/projects/spring-data-jpa
 [JWT-img]: https://img.shields.io/badge/JSONWebTokens-000000?style=for-the-badge&logo=JSONWebTokens&logoColor=white
 [JWT-url]: https://jwt.io/
+[MYSQL-img]: https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white
 [React-img]: https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white
 [React-url]: https://reactjs.org/
 [REDUX-img]: https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=white
