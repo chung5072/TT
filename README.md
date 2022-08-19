@@ -1,6 +1,7 @@
 <!-- ABOUT THE PROJECT -->
 # 프로젝트 소개
 ## TT - For TRPG with Online!
+<div id="readme-top"></div>
 <!--사진-->
 ![06 about 화면](https://user-images.githubusercontent.com/40424414/185549536-c7840946-7b3b-4174-bf82-a2d307e4a308.png)
 
@@ -93,7 +94,7 @@
 </div>
 </details>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
 
 ## 개발
@@ -114,7 +115,7 @@ IntelliJ IDEA, MySql Workbench 8.0
 - 추가:   
 MobaXterm
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">맨 위로p</a>)</p>
 
 
 ## 플로우 차트
@@ -125,7 +126,7 @@ MobaXterm
 * ![서버1](https://user-images.githubusercontent.com/40424414/185569561-f4faf474-e104-4a85-8500-0c742072cb2c.jpg)
 * ![서버2](https://user-images.githubusercontent.com/40424414/185571697-a0f01b5b-1513-495f-acff-404e97ab73be.jpg)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
 
 ## 배포 환경
@@ -141,7 +142,7 @@ MobaXterm
 |⭐임완택⭐|팀원|FRONTEND|
 |⭐원민석⭐|팀원|FRONTEND|
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
