@@ -14,7 +14,8 @@ TableTalk
 ### 기술 스택 
 
 - FRONTEND: [![React][React.js]][React-url], [![REDUX][REDUX]][REDUX-url], [![TYPESCRIPT][TYPESCRIPT]][TYPESCRIPT-url], [![JAVASCRIPT][JAVASCRIPT]][JAVASCRIPT-url], 
-- BACKEND: [![SpringBoot][SpringBoot]][SpringBoot-url], [![JPA][JPA]][JPA-url], [![JWT][JWT]][JWT-url]
+- BACKEND: [![SpringBoot][SpringBoot-img]][SpringBoot-url]
+[![JPA][JPA]][JPA-url], [![JWT][JWT]][JWT-url]
 
 
 ### 사용 IDE
@@ -38,7 +39,7 @@ TableTalk
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[SpringBoot]: <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">
+[SpringBoot-img]: <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">
 [SpringBoot-url]: https://spring.io/projects/spring-boot
 [JPA]: https://img.shields.io/badge/back-JPA-green
 [JPA-url]: https://spring.io/projects/spring-data-jpa
