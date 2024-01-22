@@ -146,13 +146,13 @@ JAVA openjdk version 1.8.0_342
 
 ### 배포 아키텍쳐
 
-![화면 캡처 2022-08-19 200133](images/화면 캡처 2022-08-19 200133.png)
+<img title="" src="images/화면 캡처 2022-08-19 200133.png" alt="">
 
 <p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
 ## 팀 멤버
 
-![화면 캡처 2022-08-19 200854](images/화면 캡처 2022-08-19 200854.png)
+<img title="" src="images/화면 캡처 2022-08-19 200854.png" alt="">
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
